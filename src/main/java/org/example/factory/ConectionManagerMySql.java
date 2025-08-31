@@ -10,7 +10,7 @@ public class ConectionManagerMySql {
     private Connection connection;
     private final static String URL = "jdbc:mysql://localhost:3306/tpintegrador?createDatabaseIfNotExist=true";
     private final static String USER = "root";
-    private final static String PASS = "";
+    private final static String PASS = "1234";
 
     private ConectionManagerMySql() {
         try {
@@ -32,5 +32,8 @@ public class ConectionManagerMySql {
             }
         }
         return instance;
+    }
+    public Connection getConnection() {
+        return connection;
     }
 }

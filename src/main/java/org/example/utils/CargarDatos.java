@@ -30,11 +30,11 @@ public class CargarDatos {
     }
     public void run () throws IOException {
        // cargarClientes("/clientes.csv");
-        cargarProductos("/resources/productos.csv");
+        cargarProductos("src/main/resources/productos.csv");
     }
 
     private void cargarProductos(String path) throws IOException {
-        CSVParser parser = CSVFormat.DEFAULT.withHeader().parse(new
+        CSVParser parser = CSVFormat.DEFAULT.withFirstRecordAsHeader().parse(new
                 FileReader(path));
         for(CSVRecord row: parser) {
             productoDao.create(new Producto(Integer.parseInt(row.get("idProducto")),row.get("nombre"),Double.parseDouble(row.get("valor"))));

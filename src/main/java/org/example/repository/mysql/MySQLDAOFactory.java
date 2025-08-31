@@ -4,6 +4,7 @@ import org.example.dao.ClienteDao;
 import org.example.dao.FacturaDao;
 import org.example.dao.FacturaProductoDao;
 import org.example.dao.ProductoDao;
+import org.example.factory.ConectionManagerMySql;
 import org.example.factory.DaoFactory;
 
 public class MySQLDAOFactory extends DaoFactory {
@@ -15,7 +16,7 @@ public class MySQLDAOFactory extends DaoFactory {
 
     @Override
     public ProductoDao createProductoDao() {
-        return null;
+        return new MySqlProductoDao(ConectionManagerMySql.getInstance().getConnection());
     }
 
     @Override
