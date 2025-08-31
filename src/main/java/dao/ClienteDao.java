@@ -1,6 +1,6 @@
-package org.example.dao;
+package dao;
 
-import org.example.entity.Cliente;
+import entity.Cliente;
 
 import java.util.List;
 
