@@ -1,5 +1,6 @@
 package dao;
 
+import dto.ClienteFacturacionDTO;
 import entity.Cliente;
 
 import java.util.List;
@@ -12,4 +13,5 @@ public interface ClienteDao {
     void update(Cliente cliente);
     void delete(int id);
     void deleteAll();
+    List<ClienteFacturacionDTO> listarClientesXFacturacion();
 }

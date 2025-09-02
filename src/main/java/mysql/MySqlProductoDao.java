@@ -1,6 +1,7 @@
 package mysql;
 
 import dao.ProductoDao;
+import dto.ProductoRecaudacionDTO;
 import entity.Producto;
 
 import java.sql.*;
@@ -115,5 +116,28 @@ public class MySqlProductoDao implements ProductoDao {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @Override
+    public ProductoRecaudacionDTO productoMasRecaudo() {
+        String sql= "SELECT p.id, p.nombre, SUM(fp.cantidad * p.valor) AS recaudacion " +
+                    "FROM factura_producto fp " +
+                    "JOIN producto p ON fp.idProducto = p.id " +
+                    "GROUP BY p.id, p.nombre " +
+                    "ORDER BY recaudacion DESC LIMIT 1 ";
+        try {
+            PreparedStatement ps=connection.prepareStatement(sql);
+            ResultSet rs=ps.executeQuery();
+            if(rs.next()) {
+                return new ProductoRecaudacionDTO(rs.getInt("id"),
+                        rs.getString("nombre"),
+                        rs.getDouble("recaudacion"));
+            }
+            return null;
+        } catch (SQLException | RuntimeException e) {
+            throw new RuntimeException(e);
+        }
+
+
     }
 }

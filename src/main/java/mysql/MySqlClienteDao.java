@@ -1,6 +1,7 @@
 package mysql;
 
 import dao.ClienteDao;
+import dto.ClienteFacturacionDTO;
 import entity.Cliente;
 
 import java.sql.*;
@@ -118,5 +119,31 @@ public class MySqlClienteDao implements ClienteDao {
         }catch(SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @Override
+    public List<ClienteFacturacionDTO> listarClientesXFacturacion() {
+        String sql = "SELECT c.id, c.nombre,SUM(fp.cantidad * p.valor) AS totalFacturado " +
+                "FROM cliente c " +
+                "JOIN factura f ON c.id = f.idCliente " +
+                "JOIN factura_producto fp ON f.idFactura = fp.idFactura " +
+                "JOIN producto p ON fp.idProducto = p.id " +
+                "GROUP BY c.id, c.nombre " +
+                "ORDER BY totalFacturado DESC;";
+        List<ClienteFacturacionDTO> clientes=new ArrayList<>();
+        try{
+            Statement st=connection.createStatement();
+            ResultSet rs=st.executeQuery(sql);
+            while(rs.next()){
+                ClienteFacturacionDTO clienteFacturacionDTO=new ClienteFacturacionDTO(rs.getInt("id"),
+                        rs.getString("nombre"),
+                        rs.getDouble("totalFacturado"));
+                clientes.add(clienteFacturacionDTO);
+            }
+            return clientes;
+        }catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+
     }
 }
