@@ -1,4 +1,4 @@
-package org.example.factory;
+package factory;
 
 public enum DBType {
     MYSQL,

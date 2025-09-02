@@ -1,4 +1,4 @@
-package org.example.entity;
+package entity;
 
 import lombok.*;
 
@@ -7,8 +7,8 @@ import lombok.*;
 @Getter
 @Setter
 @ToString
-public class Cliente {
-    private int idCliente;
+public class Producto {
+    private int id;
     private String nombre;
-    private String email;
+    private double valor;
 }

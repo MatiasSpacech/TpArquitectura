@@ -1,6 +1,6 @@
-package org.example.dao;
+package dao;
 
-import org.example.entity.Factura;
+import entity.Factura;
 
 import java.util.List;
 
@@ -9,6 +9,6 @@ public interface FacturaDao {
     List<Factura> findAll();
     void create(Factura factura);
     void update(Factura factura);
-    void delete(Factura factura);
+    void delete(int id);
     void deleteAll();
 }
