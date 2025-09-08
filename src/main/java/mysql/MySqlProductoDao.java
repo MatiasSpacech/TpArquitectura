@@ -124,7 +124,7 @@ public class MySqlProductoDao implements ProductoDao {
                     "FROM factura_producto fp " +
                     "JOIN producto p ON fp.idProducto = p.id " +
                     "GROUP BY p.id, p.nombre " +
-                    "ORDER BY recaudacion DESC LIMIT 1 ";
+                    "ORDER BY recaudacion DESC LIMIT 1";
         try {
             PreparedStatement ps=connection.prepareStatement(sql);
             ResultSet rs=ps.executeQuery();
