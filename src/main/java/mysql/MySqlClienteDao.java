@@ -129,7 +129,7 @@ public class MySqlClienteDao implements ClienteDao {
                 "JOIN factura_producto fp ON f.idFactura = fp.idFactura " +
                 "JOIN producto p ON fp.idProducto = p.id " +
                 "GROUP BY c.id, c.nombre " +
-                "ORDER BY totalFacturado DESC;";
+                "ORDER BY totalFacturado DESC LIMIT 5;";
         List<ClienteFacturacionDTO> clientes=new ArrayList<>();
         try{
             Statement st=connection.createStatement();
