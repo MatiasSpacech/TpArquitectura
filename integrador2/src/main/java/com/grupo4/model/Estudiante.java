@@ -7,11 +7,13 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 
 @Entity
 public class Estudiante {
@@ -25,9 +27,9 @@ public class Estudiante {
     @Column(nullable = false)
     private String apellido;
     @Column(nullable = false)
-    private LocalDate fechaNacimiento;
+    private int fechaNacimiento;
     @Column(nullable = false)
-    private Genero genero;
+    private String genero;
     @Column(nullable = false)
     private String ciudad;
     @Column(nullable = false, unique = true)
@@ -36,16 +38,7 @@ public class Estudiante {
     @OneToMany(mappedBy = "estudiante", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private List<EstudianteCarrera> estudianteCarreraList;
 
-    public Estudiante(String nombre, String apellido, LocalDate fechaNacimiento, Genero genero, String ciudad, int nroLibreta) {
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.fechaNacimiento = fechaNacimiento;
-        this.genero = genero;
-        this.ciudad = ciudad;
-        this.nroLibreta = nroLibreta;
-    }
 
-    public int getEdad() {
-        return LocalDate.now().getYear() - fechaNacimiento.getYear();
-    }
+
+
 }

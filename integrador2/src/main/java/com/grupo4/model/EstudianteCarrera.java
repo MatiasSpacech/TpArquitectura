@@ -28,4 +28,6 @@ public class EstudianteCarrera {
     @ManyToOne
     @JoinColumn(name = "id_carrera",unique = true)
     private Carrera carrera;
+
+
 }
