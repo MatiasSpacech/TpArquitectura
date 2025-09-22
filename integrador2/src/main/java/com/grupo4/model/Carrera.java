@@ -26,7 +26,6 @@ public class Carrera {
     public Carrera(String nombre){
         this.nombre = nombre;
         this.estudiantes = new ArrayList<>();
-        //lkehr{oihq45ýoi4
     }
 }
 
