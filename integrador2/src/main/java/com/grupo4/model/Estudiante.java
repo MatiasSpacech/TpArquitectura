@@ -43,6 +43,7 @@ public class Estudiante {
         this.genero = genero;
         this.ciudad = ciudad;
         this.nroLibreta = nroLibreta;
+        this.estudianteCarreraList = new ArrayList<EstudianteCarrera>();
     }
 
     public int getEdad() {
