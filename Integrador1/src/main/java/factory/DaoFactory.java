@@ -5,7 +5,7 @@ import dao.FacturaDao;
 import dao.FacturaProductoDao;
 import dao.ProductoDao;
 import mysql.MySQLDAOFactory;
-
+//Usamos el patron singleton para asegurarnos una unica instancia
 public abstract class DaoFactory {
     private static volatile DaoFactory instance;
 
