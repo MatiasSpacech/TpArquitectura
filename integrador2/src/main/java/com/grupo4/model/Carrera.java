@@ -20,13 +20,15 @@ public class Carrera {
     private long id;
     @Column(unique = true, nullable = false, length = 100)
     private String nombre;
+    @Column(unique = true, nullable = false)
+    private int duracion;
     @OneToMany(mappedBy = "carrera",fetch = FetchType.LAZY)
     private List<EstudianteCarrera> estudiantes;
 
     public Carrera(String nombre){
         this.nombre = nombre;
         this.estudiantes = new ArrayList<>();
-        //lkehr{oihq45ýoi4
+
     }
 }
 
