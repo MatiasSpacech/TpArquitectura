@@ -2,7 +2,6 @@ import dao.ClienteDao;
 import dao.ProductoDao;
 import dto.ClienteFacturacionDTO;
 import dto.ProductoRecaudacionDTO;
-import entity.Cliente;
 import factory.DaoFactory;
 import utils.BorrarDatos;
 import utils.CargarDatos;
@@ -39,9 +38,11 @@ public class Main {
         System.out.println("////////////////////////////////////////////////////////////////////");
         System.out.println("Lista de clientes, ordenada por a cuál se le facturó más.");
         List<ClienteFacturacionDTO> clientesXfacturacion= clienteDao.listarClientesXFacturacion();
+
         for (ClienteFacturacionDTO cliente: clientesXfacturacion) {
             System.out.println(cliente);
         }
+
 
 //        List<Cliente> clientes=clienteDao.findAll();
 //        for(Cliente cliente:clientes){
