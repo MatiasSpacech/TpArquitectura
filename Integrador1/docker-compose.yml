@@ -9,7 +9,7 @@ services:
         - "3306:3306"
 
     environment:
-      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      MYSQL_ROOT_PASSWORD: clave
       MYSQL_DATABASE: mydatabase
 
     volumes:

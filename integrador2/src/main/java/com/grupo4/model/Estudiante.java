@@ -27,7 +27,7 @@ public class Estudiante {
     @Column(nullable = false)
     private String apellido;
     @Column(nullable = false)
-    private int fechaNacimiento;
+    private int edad;
     @Column(nullable = false)
     private String genero;
     @Column(nullable = false)
@@ -38,7 +38,17 @@ public class Estudiante {
     @OneToMany(mappedBy = "estudiante", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private List<EstudianteCarrera> estudianteCarreraList;
 
-
+    public Estudiante(long dni, String nombre, String apellido, int edad, String genero, String ciudad, int nroLibreta) {
+        this.dni = dni;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.edad = edad;
+        this.genero = genero;
+        this.ciudad = ciudad;
+        this.nroLibreta = nroLibreta;
+        this.estudianteCarreraList = new ArrayList<>();
+    }
 
 
 }
+
