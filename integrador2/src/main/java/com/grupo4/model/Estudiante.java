@@ -17,10 +17,10 @@ import java.util.List;
 
 @Entity
 public class Estudiante {
+    //@Id
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)----------->>>>>lo comenté porque no funciona como id desde el csv,
+    //private int id;                                                    estan los dni como id,si te pones a ver el csv de estudianteCarrera
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    @Column(nullable = false, unique = true)
     private long dni;
     @Column(nullable = false)
     private String nombre;
