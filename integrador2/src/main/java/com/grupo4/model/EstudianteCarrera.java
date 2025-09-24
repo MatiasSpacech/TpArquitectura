@@ -29,4 +29,5 @@ public class EstudianteCarrera {
     @JoinColumn(name = "id_carrera",unique = true)
     private Carrera carrera;
 
+
 }
