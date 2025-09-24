@@ -29,5 +29,12 @@ public class EstudianteCarrera {
     @JoinColumn(name = "id_carrera",unique = true)
     private Carrera carrera;
 
+    public EstudianteCarrera(int fechaIngreso, int fechaGraduacion, int antiguedad, Estudiante estudiante, Carrera carrera) {
+        this.fechaIngreso = fechaIngreso;
+        this.fechaGraduacion = fechaGraduacion;
+        this.antiguedad = antiguedad;
+        this.estudiante = estudiante;
+        this.carrera = carrera;
+    }
 
 }
