@@ -1,3 +1,4 @@
+
 package com.grupo4.utils;
 import com.grupo4.model.Carrera;
 import com.grupo4.model.Estudiante;
@@ -68,4 +69,3 @@ public class CargarDatos {
         }
     }
 }
-
