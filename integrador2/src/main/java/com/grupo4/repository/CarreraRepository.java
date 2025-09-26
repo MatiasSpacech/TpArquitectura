@@ -14,6 +14,7 @@ public interface CarreraRepository {
 
 //    List<ReporteCarreraDTO> getReporteInscripciones();
 //    List<ReporteCarreraDTO>getReporteEgresados();
+    List<ReporteCarreraDTO> getInscriptosYEgresadosPorAnio();
 
 
 }

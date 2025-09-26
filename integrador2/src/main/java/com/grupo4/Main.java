@@ -133,6 +133,19 @@ public class Main {
 //        inscriptos y egresados por año. Se deben ordenar las carreras alfabéticamente, y presentar
 //        los años de manera cronológica.
 
+        // En Main.java, al final del metodo main
+
+        System.out.println("\n--- Reporte de las carreras por año indicando cantidad de inscriptos y egresos ---");
+        List<ReporteCarreraDTO> reporteAnual = carreraRepository.getInscriptosYEgresadosPorAnio();
+        if (reporteAnual != null && !reporteAnual.isEmpty()) {
+            for (ReporteCarreraDTO r : reporteAnual) {
+                System.out.println(r);
+            }
+        } else {
+            System.out.println("No hay datos para generar el reporte.");
+        }
+
+
 
 
 
