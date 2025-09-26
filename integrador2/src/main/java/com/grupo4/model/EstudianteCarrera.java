@@ -22,11 +22,17 @@ public class EstudianteCarrera {
     private int fechaGraduacion;
     @Column(nullable = false)
     private int antiguedad;
+    @Column
+    private boolean graduado;
+
+    // Relación muchos a uno con Carrera
     @ManyToOne
-    @JoinColumn(name = "id_estudiante",unique = true)
+    @JoinColumn(name = "id_estudiante",nullable = false) // no debes usar unique = true, porque en una relación muchos a uno varios registros pueden compartir el mismo estudiante.
     private Estudiante estudiante;
+
+    // Relación muchos a uno con Estudiante
     @ManyToOne
-    @JoinColumn(name = "id_carrera",unique = true)
+    @JoinColumn(name = "id_carrera",nullable = false) //unique = true: impide que varias filas compartan la misma carrera, lo cual no es correcto para una relación muchos a uno.
     private Carrera carrera;
 
     public EstudianteCarrera(int fechaIngreso, int fechaGraduacion, int antiguedad, Estudiante estudiante, Carrera carrera) {

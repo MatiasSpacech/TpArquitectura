@@ -1,9 +1,6 @@
 package com.grupo4.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -14,6 +11,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 
 @Entity
 public class Estudiante {
@@ -48,6 +46,11 @@ public class Estudiante {
         this.nroLibreta = nroLibreta;
         this.estudianteCarreraList = new ArrayList<>();
     }
+
+    //metodo para agregar una carrera a la lista del estudiante
+
+    //metodo para quitar una carrera de la lista del estudiante
+
 
 
 }
