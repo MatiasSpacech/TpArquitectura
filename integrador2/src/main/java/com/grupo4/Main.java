@@ -116,7 +116,6 @@ public class Main {
         }
 
         //recuperar los estudiantes de una determinada carrera, filtrado por ciudad de residencia.
-        //recuperar los estudiantes de una determinada carrera, filtrado por ciudad de residencia.
         System.out.println("\n--- Estudiantes de 'Ingeniería en Sistemas' que viven en 'Córdoba' ---");
         String carreraFiltro = "Ingeniería en Sistemas";
         String ciudadFiltro = "Córdoba";
@@ -129,6 +128,11 @@ public class Main {
                 System.out.println(est.getApellido() + ", " + est.getNombre() + " - DNI: " + est.getDni());
             }
         }
+
+//        Generar un reporte de las carreras, que para cada carrera incluya información de los
+//        inscriptos y egresados por año. Se deben ordenar las carreras alfabéticamente, y presentar
+//        los años de manera cronológica.
+
 
 
 

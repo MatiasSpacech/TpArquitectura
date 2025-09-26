@@ -12,5 +12,8 @@ public interface CarreraRepository {
     public Carrera getCarreraByName(String nombreCarrera);
     List<ReporteCarreraDTO> getReporteCarreras();
 
+//    List<ReporteCarreraDTO> getReporteInscripciones();
+//    List<ReporteCarreraDTO>getReporteEgresados();
+
 
 }

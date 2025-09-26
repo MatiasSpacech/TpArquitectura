@@ -77,4 +77,62 @@ public class CarreraRepositoryImpl implements CarreraRepository{
             em.close();
         }
     }
+
+//    @Override
+//    public List<ReporteCarreraDTO> getReporteInscripciones() {
+//        EntityManager em = JPAutil.getEntityManager();
+//        try{
+//            String jpqlInscriptos = "SELECT new com.grupo4.dto.ReporteCarreraDTO(c.nombre, ec.fechaIngreso, COUNT(ec.estudiante)) " +
+//                    "FROM EstudianteCarrera ec JOIN ec.carrera c " +
+//                    "GROUP BY c.nombre, ec.fechaIngreso " +
+//                    "ORDER BY c.nombre, ec.fechaIngreso";
+//            return em.createQuery(jpqlInscriptos, ReporteCarreraDTO.class).getResultList();
+//
+//        } finally {
+//            em.close();
+//        }
+//    }
+//
+//    @Override
+//    public List<ReporteCarreraDTO> getReporteEgresados() {
+//        EntityManager em = JPAutil.getEntityManager();
+//        try {
+//            String jpql = "SELECT new com.grupo4.dto.ReporteCarreraDTO(c.nombre, COUNT(ec.estudiante), ec.fechaGraduacion) " +
+//                    "FROM EstudianteCarrera ec JOIN ec.carrera c " +
+//                    "WHERE ec.graduado = true " +
+//                    "GROUP BY c.nombre, ec.fechaGraduacion " +
+//                    "ORDER BY c.nombre, ec.fechaGraduacion";
+//            return em.createQuery(jpql, ReporteCarreraDTO.class).getResultList();
+//        } finally {
+//            em.close();
+//        }
+//    }
+//@Override
+//public List<Object[]> getReporteInscripciones() {
+//    EntityManager em = JPAutil.getEntityManager();
+//    try {
+//        String jpql = "SELECT c.nombre, ec.fechaIngreso, COUNT(ec.estudiante) " +
+//                "FROM EstudianteCarrera ec JOIN ec.carrera c " +
+//                "GROUP BY c.nombre, ec.fechaIngreso " +
+//                "ORDER BY c.nombre, ec.fechaIngreso";
+//        return em.createQuery(jpql, Object[].class).getResultList();
+//    } finally {
+//        em.close();
+//    }
+//}
+//
+//    @Override
+//    public List<Object[]> getReporteEgresados() {
+//        EntityManager em = JPAutil.getEntityManager();
+//        try {
+//            String jpql = "SELECT c.nombre, ec.fechaGraduacion, COUNT(ec.estudiante) " +
+//                    "FROM EstudianteCarrera ec JOIN ec.carrera c " +
+//                    "WHERE ec.graduado = true " +
+//                    "GROUP BY c.nombre, ec.fechaGraduacion " +
+//                    "ORDER BY c.nombre, ec.fechaGraduacion";
+//            return em.createQuery(jpql, Object[].class).getResultList();
+//        } finally {
+//            em.close();
+//        }
+//    }
 }
