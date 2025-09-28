@@ -1,17 +1,14 @@
 package com.grupo4.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 @NoArgsConstructor
-@AllArgsConstructor
 @Getter
 @Setter
 @Entity
+@Table(name="estudianteCarrera")
 public class EstudianteCarrera {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,10 +20,10 @@ public class EstudianteCarrera {
     @Column(nullable = false)
     private int antiguedad;
     @ManyToOne
-    @JoinColumn(name = "id_estudiante",unique = true)
+    @JoinColumn(name = "id_estudiante")
     private Estudiante estudiante;
     @ManyToOne
-    @JoinColumn(name = "id_carrera",unique = true)
+    @JoinColumn(name = "id_carrera")
     private Carrera carrera;
 
     public EstudianteCarrera(int fechaIngreso, int fechaGraduacion, int antiguedad, Estudiante estudiante, Carrera carrera) {

@@ -1,5 +1,6 @@
 package com.grupo4.repository;
 
+import com.grupo4.dto.EstudianteDTO;
 import com.grupo4.factory.JPAutil;
 import com.grupo4.model.Estudiante;
 import com.ibm.icu.text.CaseMap;
@@ -15,9 +16,9 @@ public class EstudianteRepositoryImpl implements EstudianteRepository{
             Arrays.asList("nombre","apellido","dni","edad","genero","ciudad")
     );
 
-    //pasar lista de alumnos para cargar
+    //punto a)
     @Override
-    public void cargarEstudiante(Estudiante estudiante) {
+    public void addEstudiante(Estudiante estudiante) {
         try{
             EntityManager em = JPAutil.getEntityManager();
             em.getTransaction().begin();
@@ -29,41 +30,55 @@ public class EstudianteRepositoryImpl implements EstudianteRepository{
         }
     }
 
-    //metodo para obtener todos los estudiantes ordenados por un campo de la lista camposOrdenados
+    //metodo para obtener todos los estudiantes ordenados por un campo de la lista camposOrdenados,PUNTO c)
     @Override
-    public List<Estudiante> obtenerEstudiantesOrdenados(String campo) {
+    public List<EstudianteDTO> getEstudiantesSorted(String campo) {
         //si el campo no existe en camposOrdenados lanzar excepcion
         if(!camposOrdenados.contains(campo.toLowerCase())){
             throw new IllegalArgumentException("el campo a ordenar no existe");
         }
 
         EntityManager em = JPAutil.getEntityManager();
-        List<Estudiante> estudiantes = em.createQuery("SELECT e FROM Estudiante e ORDER BY LOWER(:campo)",Estudiante.class)
-                                                        .setParameter("campo",campo)
-                                                        .getResultList();
+        String jpql = "SELECT new com.grupo4.dto.EstudianteDTO(e.dni,e.nombre,e.apellido,e.edad,e.genero,e.ciudad,e.nroLibreta) " +
+                    "FROM Estudiante e " +
+                    "ORDER BY LOWER(:campo)";
+        List<EstudianteDTO> estudiantes = em.createQuery(jpql,EstudianteDTO.class)
+                    .setParameter("campo",campo)
+                    .getResultList();
+        em.close();
+
         return estudiantes;
     }
 
+    //PUNTO d
     @Override
-    public List<Estudiante> obtenerEstudiantesPorLibreta(int nroLibreta) {
-        EntityManager em = JPAutil.getEntityManager();
-        List<Estudiante> estudiantes = em.createQuery(
-                "SELECT e FROM Estudiante e WHERE e.nroLibreta=:nroLibreta",Estudiante.class
-        ).setParameter("nroLibreta",nroLibreta).getResultList();
+    public EstudianteDTO getEstudianteLU(int nroLibreta) {
+        try {
+            EntityManager em = JPAutil.getEntityManager();
+            String jpql = "SELECT new com.grupo4.dto.EstudianteDTO(e.dni,e.nombre,e.apellido,e.edad,e.genero,e.ciudad,e.nroLibreta) " +
+                        "FROM Estudiante e " +
+                        "WHERE e.nroLibreta=:nroLibreta";
+            EstudianteDTO estudiante = em.createQuery(jpql,EstudianteDTO.class
+            ).setParameter("nroLibreta",nroLibreta).getSingleResult();
+            em.close();
 
-        if(estudiantes.isEmpty()){
+            return estudiante;
+        }catch (Exception e){
+            System.err.println("no se encontro el estudiante con nroLibreta: "+nroLibreta);
             return null;
         }
-
-        return estudiantes;
     }
 
+    //PUNTO e)
     @Override
-    public List<Estudiante> obtenerEstudiantesPorGenero(String genero) {
+    public List<EstudianteDTO> getEstudiantesByGenero(String genero) {
         EntityManager em = JPAutil.getEntityManager();
-        List<Estudiante> estudiantes = em.createQuery(
-                "SELECT e FROM Estudiante e WHERE LOWER(e.genero) = LOWER(:genero)",Estudiante.class
+        String jpql = "SELECT new com.grupo4.dto.EstudianteDTO(e.dni,e.nombre,e.apellido,e.edad,e.genero,e.ciudad,e.nroLibreta) " +
+                    "FROM Estudiante e " +
+                    "WHERE LOWER(e.genero) = LOWER(:genero)";
+        List<EstudianteDTO> estudiantes = em.createQuery(jpql,EstudianteDTO.class
         ).setParameter("genero",genero).getResultList();
+        em.close();
 
         if(estudiantes.isEmpty()){
             return null;
@@ -72,8 +87,9 @@ public class EstudianteRepositoryImpl implements EstudianteRepository{
         return estudiantes;
     }
 
+    //Cargar estudiantes csv
     @Override
-    public void cargarEstudiantes(List<Estudiante> estudiantes) {
+    public void addEstudiantes(List<Estudiante> estudiantes) {
         try{
             EntityManager em = JPAutil.getEntityManager();
             em.getTransaction().begin();
@@ -87,11 +103,30 @@ public class EstudianteRepositoryImpl implements EstudianteRepository{
         }
     }
 
+    //PUNTO g)
+    @Override
+    public List<EstudianteDTO> getEstudiantesByCarreraAndCiudad(String carrera, String ciudad) {
+        EntityManager em = JPAutil.getEntityManager();
+        String jpql = "SELECT new com.grupo4.dto.EstudianteDTO(e.dni,e.nombre,e.apellido,e.edad,e.genero,e.ciudad,e.nroLibreta) " +
+                    "FROM Estudiante e JOIN e.listCarreras m " +
+                                        "JOIN m.carrera c " +
+                    "WHERE LOWER(c.nombre) = LOWER(:carrera) AND LOWER(e.ciudad) = LOWER(:ciudad)";
+        List<EstudianteDTO> estudiantes = em.createQuery(jpql,EstudianteDTO.class)
+                .setParameter("carrera",carrera)
+                .setParameter("ciudad",ciudad)
+                .getResultList();
+        em.close();
+        return estudiantes;
+    }
+
+    //Buscar estudiante por id
     @Override
     public Estudiante findById(long id) {
         EntityManager em = JPAutil.getEntityManager();
-        Estudiante estudiante = em.find(Estudiante.class,id);
+        String jpql = "SELECT e FROM Estudiante e JOIN FETCH e.listCarreras WHERE e.dni=:id";
+        Estudiante estudiante = em.createQuery(jpql,Estudiante.class).setParameter("id",id).getSingleResult();
         em.close();
         return estudiante;
     }
+
 }

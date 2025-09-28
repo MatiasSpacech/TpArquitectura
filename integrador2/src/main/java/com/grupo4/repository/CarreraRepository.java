@@ -1,10 +1,12 @@
 package com.grupo4.repository;
 
+import com.grupo4.dto.CarreraDTO;
 import com.grupo4.model.Carrera;
 
 import java.util.List;
 
 public interface CarreraRepository {
-    public void cargarCarreras(List<Carrera> carreras);
-    public Carrera findById(long id);
+    void addCarreras(List<Carrera> carreras);
+    List<CarreraDTO> getCarrerasConEstudiantes();
+    Carrera findById(int id);
 }

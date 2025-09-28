@@ -1,9 +1,6 @@
 package com.grupo4.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -13,9 +10,8 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
-
 @Entity
+@Table(name="estudiante")
 public class Estudiante {
     //@Id
     //@GeneratedValue(strategy = GenerationType.IDENTITY)----------->>>>>lo comenté porque no funciona como id desde el csv,
@@ -36,7 +32,7 @@ public class Estudiante {
     private int nroLibreta;
 
     @OneToMany(mappedBy = "estudiante", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    private List<EstudianteCarrera> estudianteCarreraList;
+    private List<EstudianteCarrera> listCarreras;
 
     public Estudiante(long dni, String nombre, String apellido, int edad, String genero, String ciudad, int nroLibreta) {
         this.dni = dni;
@@ -46,9 +42,7 @@ public class Estudiante {
         this.genero = genero;
         this.ciudad = ciudad;
         this.nroLibreta = nroLibreta;
-        this.estudianteCarreraList = new ArrayList<>();
+        this.listCarreras = new ArrayList<>();
     }
-
-
 }
 
