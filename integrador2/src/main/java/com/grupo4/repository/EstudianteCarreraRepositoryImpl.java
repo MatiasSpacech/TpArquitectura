@@ -26,12 +26,12 @@ public class EstudianteCarreraRepositoryImpl implements EstudianteCarreraReposit
     @Override
     public List<ReporteCarreraDTO> getReportesCarreras() {
         EntityManager em = JPAutil.getEntityManager();
-        String jpql = "SELECT new com.grupo4.dto.ReporteCarreraDTO(ec.fechaGraduacion,c.nombre,COUNT(ec),(SELECT COUNT(ec2) FROM EstudianteCarrera ec2 WHERE ec2.carrera = c) ) " +
+        String jpql = "SELECT new com.grupo4.dto.ReporteCarreraDTO(ec.fechaGraduacion,c.nombre,COUNT(ec),(SELECT COUNT(ec2) FROM EstudianteCarrera ec2 WHERE ec2.carrera.nombre = c.nombre) ) " +
                     "FROM EstudianteCarrera ec " +
                     "JOIN ec.carrera c " +
                     "WHERE ec.fechaGraduacion != 0 " +
                     "GROUP BY ec.fechaGraduacion,c.nombre " +
-                    "ORDER BY ec.fechaGraduacion,c.nombre";
+                    "ORDER BY c.nombre,ec.fechaGraduacion";
         List<ReporteCarreraDTO> reportes = em.createQuery(jpql,ReporteCarreraDTO.class).getResultList();
         em.close();
         return reportes;

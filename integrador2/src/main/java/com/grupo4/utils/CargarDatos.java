@@ -53,9 +53,10 @@ public class CargarDatos {
                 Carrera carrera = cr.findById(Integer.parseInt(registro.get(2)));
                 Estudiante estudiante = er.findById(Long.parseLong(registro.get(1)));
                 EstudianteCarrera matricula = new EstudianteCarrera(
-                        Integer.parseInt(registro.get(3)),
-                        Integer.parseInt(registro.get(4)),
-                        Integer.parseInt(registro.get(5)),
+                        Long.parseLong(registro.get("id")),
+                        Integer.parseInt(registro.get("inscripcion")),
+                        Integer.parseInt(registro.get("graduacion")),
+                        Integer.parseInt(registro.get("antiguedad")),
                         estudiante,
                         carrera
                 );
@@ -74,6 +75,7 @@ public class CargarDatos {
             CSVParser registros = CSVFormat.DEFAULT.withHeader().parse(new FileReader(ubicacion));
             for(CSVRecord registro:registros){
                 Carrera carrera = new Carrera(
+                        Integer.parseInt(registro.get(0)),
                         registro.get(1),
                         Integer.parseInt(registro.get(2))
                 );

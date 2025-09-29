@@ -17,7 +17,6 @@ import java.util.List;
 @Table(name="carrera")
 public class Carrera {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(unique = true, nullable = false, length = 100)
     private String nombre;
@@ -26,7 +25,8 @@ public class Carrera {
     @OneToMany(mappedBy = "carrera",fetch = FetchType.LAZY)
     private List<EstudianteCarrera> estudiantes;
 
-    public Carrera(String nombre,int duracion){
+    public Carrera(int id,String nombre,int duracion){
+        this.id = id;
         this.nombre = nombre;
         this.duracion = duracion;
         this.estudiantes = new ArrayList<>();

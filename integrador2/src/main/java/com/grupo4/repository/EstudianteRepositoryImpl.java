@@ -123,8 +123,9 @@ public class EstudianteRepositoryImpl implements EstudianteRepository{
     @Override
     public Estudiante findById(long id) {
         EntityManager em = JPAutil.getEntityManager();
-        String jpql = "SELECT e FROM Estudiante e JOIN FETCH e.listCarreras WHERE e.dni=:id";
-        Estudiante estudiante = em.createQuery(jpql,Estudiante.class).setParameter("id",id).getSingleResult();
+        //String jpql = "SELECT e FROM Estudiante e JOIN FETCH e.listCarreras WHERE e.dni=:id";
+        //Estudiante estudiante = em.createQuery(jpql,Estudiante.class).setParameter("id",id).getSingleResult();
+        Estudiante estudiante = em.find(Estudiante.class,id);
         em.close();
         return estudiante;
     }
