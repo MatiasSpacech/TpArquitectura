@@ -1,11 +1,13 @@
 package com.grupo4.dto;
 
-@Getter
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.ToString;
+
 @AllArgsConstructor
-@NoArgsConstructor
+@Getter
 @ToString
 public class CarreraDTO {
-    private long id;
+    private String nombre;
     private int duracion;
-    private List<EstudianteCarrera> estudiantes;
 }

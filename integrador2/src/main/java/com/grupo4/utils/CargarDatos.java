@@ -3,10 +3,7 @@ package com.grupo4.utils;
 import com.grupo4.model.Carrera;
 import com.grupo4.model.Estudiante;
 import com.grupo4.model.EstudianteCarrera;
-import com.grupo4.repository.CarreraRepositoryImpl;
-import com.grupo4.repository.EstudianteCarreraRepositoryImpl;
-import com.grupo4.repository.EstudianteRepository;
-import com.grupo4.repository.EstudianteRepositoryImpl;
+import com.grupo4.repository.*;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
@@ -18,6 +15,7 @@ public class CargarDatos {
 
     public void run(){
         cargarEstudiantes("src/main/resources/csv/estudiantes.csv");
+        cargarCarreras("src/main/resources/csv/carreras.csv");
         cargarMatriculas("src/main/resources/csv/estudianteCarrera.csv");
     }
 
@@ -38,7 +36,7 @@ public class CargarDatos {
                 estudiantes.add(estudiante);
             }
             EstudianteRepository er = new EstudianteRepositoryImpl();
-            er.cargarEstudiantes(estudiantes);
+            er.addEstudiantes(estudiantes);
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -52,12 +50,13 @@ public class CargarDatos {
             ArrayList<EstudianteCarrera> matriculas = new ArrayList<>();
             CSVParser registros = CSVFormat.DEFAULT.withHeader().parse(new FileReader(ubicacion));
             for(CSVRecord registro:registros){
-                Carrera carrera = cr.findById(Long.parseLong(registro.get(2)));
+                Carrera carrera = cr.findById(Integer.parseInt(registro.get(2)));
                 Estudiante estudiante = er.findById(Long.parseLong(registro.get(1)));
                 EstudianteCarrera matricula = new EstudianteCarrera(
-                        Integer.parseInt(registro.get(3)),
-                        Integer.parseInt(registro.get(4)),
-                        Integer.parseInt(registro.get(5)),
+                        Long.parseLong(registro.get("id")),
+                        Integer.parseInt(registro.get("inscripcion")),
+                        Integer.parseInt(registro.get("graduacion")),
+                        Integer.parseInt(registro.get("antiguedad")),
                         estudiante,
                         carrera
                 );
@@ -67,5 +66,25 @@ public class CargarDatos {
         }catch(Exception e){
             e.printStackTrace();
         }
+    }
+
+    private void cargarCarreras(String ubicacion){
+        try {
+            ArrayList<Carrera> carreras = new ArrayList<>();
+            CarreraRepository cr = new CarreraRepositoryImpl();
+            CSVParser registros = CSVFormat.DEFAULT.withHeader().parse(new FileReader(ubicacion));
+            for(CSVRecord registro:registros){
+                Carrera carrera = new Carrera(
+                        Integer.parseInt(registro.get(0)),
+                        registro.get(1),
+                        Integer.parseInt(registro.get(2))
+                );
+                carreras.add(carrera);
+            }
+            cr.addCarreras(carreras);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
     }
 }
