@@ -29,10 +29,11 @@ public class CarreraRepositoryImpl implements CarreraRepository{
     @Override
     public List<CarreraDTO> getCarrerasConEstudiantes() {
         EntityManager em = JPAutil.getEntityManager();
-        String jpql = "SELECT new com.grupo4.dto.CarreraDTO(c.nombre,c.duracion) " +
-                    "FROM Carrera c " +
-                    "WHERE c.estudiantes IS NOT EMPTY ORDER BY c.estudiantes.size ASC";
-        List<CarreraDTO> carreras = em.createQuery(jpql,CarreraDTO.class).getResultList();
+        String jpql = "SELECT new com.grupo4.dto.CarreraDTO(c.nombre, c.duracion) " +
+                      "FROM Carrera c " +
+                      "WHERE c.estudiantes IS NOT EMPTY " +
+                      "ORDER BY SIZE(c.estudiantes) ASC";
+        List<CarreraDTO> carreras = em.createQuery(jpql, CarreraDTO.class).getResultList();
         em.close();
 
         return carreras;
