@@ -10,4 +10,5 @@ import lombok.ToString;
 public class CarreraDTO {
     private String nombre;
     private int duracion;
+    private long cantEstudiantes;
 }
