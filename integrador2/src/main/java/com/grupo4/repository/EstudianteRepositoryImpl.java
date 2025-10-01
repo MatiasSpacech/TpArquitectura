@@ -3,7 +3,6 @@ package com.grupo4.repository;
 import com.grupo4.dto.EstudianteDTO;
 import com.grupo4.factory.JPAutil;
 import com.grupo4.model.Estudiante;
-import com.ibm.icu.text.CaseMap;
 
 import javax.persistence.EntityManager;
 import java.util.ArrayList;
@@ -39,15 +38,15 @@ public class EstudianteRepositoryImpl implements EstudianteRepository{
         }
 
         EntityManager em = JPAutil.getEntityManager();
-        String jpql = "SELECT new com.grupo4.dto.EstudianteDTO(e.dni,e.nombre,e.apellido,e.edad,e.genero,e.ciudad,e.nroLibreta) " +
-                    "FROM Estudiante e " +
-                    "ORDER BY LOWER(:campo)";
-        List<EstudianteDTO> estudiantes = em.createQuery(jpql,EstudianteDTO.class)
-                    .setParameter("campo",campo)
-                    .getResultList();
-        em.close();
+        String jpql = "SELECT new com.grupo4.dto.EstudianteDTO(e.dni, e.nombre, e.apellido, e.edad, e.genero, e.ciudad, e.nroLibreta) " +
+                "FROM Estudiante e " +
+                "ORDER BY LOWER(e." + campo + ")";
+    
+    List<EstudianteDTO> estudiantes = em.createQuery(jpql, EstudianteDTO.class)
+                .getResultList();
+    em.close();
 
-        return estudiantes;
+    return estudiantes;
     }
 
     //PUNTO d
