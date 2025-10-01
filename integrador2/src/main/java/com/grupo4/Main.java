@@ -37,14 +37,11 @@ public class Main {
 
             System.out.println("1. Dar de alta un estudiante");
             System.out.println("2. Matricular un estudiante en una carrera");
-            System.out
-                    .println("3. Recuperar todos los estudiantes, y especificar algún criterio de ordenamiento simple");
+            System.out.println("3. Recuperar todos los estudiantes, y especificar algún criterio de ordenamiento simple");
             System.out.println("4. Recuperar un estudiante, en base a su número de libreta universitaria");
             System.out.println("5. Recuperar todos los estudiantes, en base a su género");
-            System.out.println(
-                    "6. Recuperar las carreras con estudiantes inscriptos, y ordenar por cantidad de inscriptos");
-            System.out.println(
-                    "7. Recuperar los estudiantes de una determinada carrera, filtrado por ciudad de residencia");
+            System.out.println("6. Recuperar las carreras con estudiantes inscriptos, y ordenar por cantidad de inscriptos");
+            System.out.println("7. Recuperar los estudiantes de una determinada carrera, filtrado por ciudad de residencia");
             System.out.println("8. Generar reporte de carreras");
             System.out.println("9. Salir");
             System.out.println("\n");
