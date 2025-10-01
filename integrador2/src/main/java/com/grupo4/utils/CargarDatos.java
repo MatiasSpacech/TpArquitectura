@@ -19,6 +19,7 @@ public class CargarDatos {
         cargarMatriculas("src/main/resources/csv/estudianteCarrera.csv");
     }
 
+    @SuppressWarnings("deprecation")
     private void cargarEstudiantes(String ubicacion){
         try{
             ArrayList<Estudiante> estudiantes = new ArrayList<>();
@@ -42,6 +43,7 @@ public class CargarDatos {
         }
     }
 
+    @SuppressWarnings("deprecation")
     private void cargarMatriculas(String ubicacion){
         try{
             EstudianteCarreraRepositoryImpl ecr = new EstudianteCarreraRepositoryImpl();
@@ -68,6 +70,7 @@ public class CargarDatos {
         }
     }
 
+    @SuppressWarnings("deprecation")
     private void cargarCarreras(String ubicacion){
         try {
             ArrayList<Carrera> carreras = new ArrayList<>();

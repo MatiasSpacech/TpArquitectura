@@ -3,7 +3,6 @@ package com.grupo4.model;
 import lombok.*;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,10 +11,7 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 @Table(name="estudiante")
-public class Estudiante {
-    //@Id
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)----------->>>>>lo comenté porque no funciona como id desde el csv,
-    //private int id;                                                    estan los dni como id,si te pones a ver el csv de estudianteCarrera
+public class Estudiante {                                              
     @Id
     private long dni;
     @Column(nullable = false)

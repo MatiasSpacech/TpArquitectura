@@ -6,6 +6,9 @@
              version="2.1">
     <persistence-unit name="integrador2" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <class>com.grupo4.model.Carrera</class>
+        <class>com.grupo4.model.Estudiante</class>
+        <class>com.grupo4.model.EstudianteCarrera</class>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/integrador2"/>
