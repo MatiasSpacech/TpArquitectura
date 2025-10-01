@@ -16,7 +16,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         CargarDatos cd = new CargarDatos();
-        // cd.run();
+        cd.run();
 
         // REPOSITORYS
         CarreraRepository cr = new CarreraRepositoryImpl();
@@ -173,6 +173,8 @@ public class Main {
                     System.out.println("\n");
                     break;
                 case 9:
+                    scanner.close();
+                    System.out.println("Saliendo...");
                     condition = false;
                     break;
                 default:

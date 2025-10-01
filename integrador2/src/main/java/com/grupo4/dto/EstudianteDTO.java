@@ -2,11 +2,10 @@ package com.grupo4.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.ToString;
+
 
 @AllArgsConstructor
 @Getter
-@ToString
 public class EstudianteDTO {
     private Long dni;
     private String nombre;
@@ -15,5 +14,18 @@ public class EstudianteDTO {
     private String genero;
     private String ciudad;
     private int nroLibreta;
+
+    @Override
+    public String toString() {
+        return "{" +
+                "dni=" + dni +
+                ", nombre='" + nombre + '\'' +
+                ", apellido='" + apellido + '\'' +
+                ", edad=" + edad +
+                ", genero='" + genero + '\'' +
+                ", ciudad='" + ciudad + '\'' +
+                ", nroLibreta=" + nroLibreta +
+                '}';
+    }
 }
 
