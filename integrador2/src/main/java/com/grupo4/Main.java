@@ -77,11 +77,11 @@ public class Main {
                     break;
                 case 2:
                     // Matricular un estudiante en una carrera
-                    System.out.println("Ingrese el nro de libreta del estudiante a matricular: ");
-                    int nroLibretaMatricula = scanner.nextInt();
+                    System.out.println("Ingrese el nro de DNI del estudiante a matricular: ");
+                    Long DNI = scanner.nextLong();
                     System.out.println("Ingrese el id de la carrera: ");
                     int idCarrera = scanner.nextInt();
-                    EstudianteDTO estudianteMatricula = er.getEstudianteLU(nroLibretaMatricula);
+                    Estudiante estudianteMatricula = er.findById(DNI);
                     Carrera carreraMatricula = cr.findById(idCarrera);
                     if (estudianteMatricula != null && carreraMatricula != null) {
                         Estudiante estudianteEntity = er.findById(estudianteMatricula.getDni());
@@ -94,8 +94,12 @@ public class Main {
                         estudianteCarrera.setAntiguedad(0); // Inicialmente 0
                         estudianteCarrera.setEstudiante(estudianteEntity);
                         estudianteCarrera.setCarrera(carreraMatricula);
-                        ecr.matricularEstudiante(estudianteCarrera);
-                        System.out.println("Estudiante matriculado en la carrera: " + carreraMatricula.getNombre());
+                        try {
+                            ecr.matricularEstudiante(estudianteCarrera);
+                            System.out.println("Estudiante matriculado en la carrera: " + carreraMatricula.getNombre());
+                        } catch (Exception ex) {
+                            System.out.println("El estudiante ya esta inscrito en la carrera: " + carreraMatricula.getNombre() + " " + ex.getMessage());
+                        }                        
                     } else {
                         System.out.println("Estudiante o carrera no encontrada.");
                     }
@@ -106,11 +110,17 @@ public class Main {
                     // simple
                     System.out.println("Ingrese el criterio de ordenamiento (nombre, apellido, ciudad): ");
                     String criterio = scanner.next();
-                    List<EstudianteDTO> estudiantes = er.getEstudiantesSorted(criterio);
-                    System.out.println("--------------Estudiantes ordenados por " + criterio + ": ");
-                    for (EstudianteDTO est : estudiantes) {
-                        System.out.println(est);
+                    try {
+                        List<EstudianteDTO> estudiantes = er.getEstudiantesSorted(criterio);
+                        System.out.println("--------------Estudiantes ordenados por " + criterio + ": ");
+                        for (EstudianteDTO est : estudiantes) {
+                            System.out.println(est);
+                        }
+
+                    } catch (Exception e) {
+                        System.out.println("Criterio de ordenamiento no válido.");
                     }
+                   
                     System.out.println("\n");
                     break;
                 case 4:

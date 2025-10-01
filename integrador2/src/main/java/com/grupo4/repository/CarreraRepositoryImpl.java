@@ -31,7 +31,7 @@ public class CarreraRepositoryImpl implements CarreraRepository{
         EntityManager em = JPAutil.getEntityManager();
         String jpql = "SELECT new com.grupo4.dto.CarreraDTO(c.nombre, c.duracion, COUNT(c)) " +
                 "FROM Carrera c JOIN FETCH c.estudiantes e " +
-                "GROUP BY c.id, c.nombre, c.duracion " +
+                "GROUP BY c.id, c.nombre " +
                 "ORDER BY COUNT(c) DESC";
         List<CarreraDTO> carreras = em.createQuery(jpql,CarreraDTO.class).getResultList();
         em.close();
