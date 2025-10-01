@@ -27,6 +27,14 @@ public class Main {
         boolean condition = true;
         while (condition) {
 
+            System.out.println("____                          _  _   ");
+            System.out.println(" / ___|_ __ _   _ _ __   ___   | || |  ");
+            System.out.println("| |  _| '__| | | | '_ \\ / _ \\  | || |_ ");
+            System.out.println("| |_| | |  | |_| | |_) | (_) | |__   _|");
+            System.out.println(" \\____|_|   \\__,_| .__/ \\___/     |_|  ");
+            System.out.println("                 |_|                   ");
+            System.out.println("\n");
+
             System.out.println("1. Dar de alta un estudiante");
             System.out.println("2. Matricular un estudiante en una carrera");
             System.out
