@@ -27,7 +27,7 @@ public class Main {
         boolean condition = true;
         while (condition) {
 
-            System.out.println("____                          _  _   ");
+            System.out.println("  ____                          _  _   ");
             System.out.println(" / ___|_ __ _   _ _ __   ___   | || |  ");
             System.out.println("| |  _| '__| | | | '_ \\ / _ \\  | || |_ ");
             System.out.println("| |_| | |  | |_| | |_) | (_) | |__   _|");
