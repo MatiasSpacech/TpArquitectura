@@ -2,7 +2,7 @@ package com.integrador3.model;
 
 import jakarta.persistence.*;
 import lombok.*;
-import com.integrador3.model.EstudianteCarrera;
+
 
 
 import java.util.ArrayList;
