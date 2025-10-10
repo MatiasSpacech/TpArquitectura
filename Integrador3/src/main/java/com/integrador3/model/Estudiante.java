@@ -1,10 +1,8 @@
 package com.integrador3.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
-
-
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,6 +28,7 @@ public class Estudiante {
     private int nroLibreta;
 
     @OneToMany(mappedBy = "estudiante", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<EstudianteCarrera> listCarreras;
 
     public Estudiante(long dni, String nombre, String apellido, int edad, String genero, String ciudad, int nroLibreta) {
