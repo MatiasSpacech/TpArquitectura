@@ -1,4 +1,44 @@
 package com.integrador3.controllers;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+
+import com.integrador3.model.Carrera;
+import com.integrador3.repositorios.CarreraRepositorio;
+
+
+@RestController
+@RequestMapping("/carreras")
 public class CarreraController {
+    // Inyectar el repositorio de carreras
+    @Autowired
+    private CarreraRepositorio carreraRepositorio;
+
+    @GetMapping("")
+    public ResponseEntity<?> getAllCarreras() {
+        try {
+            List<Carrera> carreras = carreraRepositorio.findAll();
+            return ResponseEntity.status(200).body(carreras);
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body("Error al obtener carreras: " + e.getMessage());
+        }
+    }
+
+    // f) recuperar las carreras con estudiantes inscriptos, y ordenar por cantidad
+    // de inscriptos.
+    // Ejemplo de solicitud: GET /carreras/con-estudiantes
+    @GetMapping("/con-estudiantes")
+    public ResponseEntity<?> getCarrerasConEstudiantes() {
+        try {
+            return ResponseEntity.ok(carreraRepositorio.findCarrerasConEstudiantes());
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body("Error al obtener carreras con estudiantes: " + e.getMessage());
+        }
+    }
 }
