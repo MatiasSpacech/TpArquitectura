@@ -52,15 +52,16 @@ public class CargarDatos {
                 );
                 estudiantes.add(estudiante);
             }
-            if (estudiantes == null){
+            if (estudiantes.isEmpty()){
                 System.out.println("No se pudieron cargar los estudiantes");
-                return;
+                
             }else {
-                System.out.println("Estudiantes cargados correctamente");
                 estudianteRepositorio.saveAll(estudiantes);
+                System.out.println("Estudiantes cargados correctamente");
             }
 
         }catch(Exception e){
+            System.err.println("Error al cargar estudiantes: " + e.getMessage());
             e.printStackTrace();
         }
     }
@@ -78,6 +79,7 @@ public class CargarDatos {
             }
             carreraRepositorio.saveAll(carreras);
         }catch(Exception e){
+            System.err.println("Error al cargar carreras: " + e.getMessage());
             e.printStackTrace();
         }
 
@@ -101,6 +103,7 @@ public class CargarDatos {
                 estudianteCarreraRepositorio.save(matricula);
             }
         }catch(Exception e){
+            System.err.println("Error al cargar estudiante-carrera: " + e.getMessage());
             e.printStackTrace();
         }
     }
