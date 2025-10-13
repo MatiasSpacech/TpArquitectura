@@ -1,7 +1,7 @@
-package com.grupo4.model;
+package com.integrador3.model;
 
+import jakarta.persistence.*;
 import lombok.*;
-import javax.persistence.*;
 
 @NoArgsConstructor
 @Getter

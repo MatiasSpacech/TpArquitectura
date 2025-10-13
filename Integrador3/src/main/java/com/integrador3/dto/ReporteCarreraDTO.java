@@ -1,4 +1,4 @@
-package com.grupo4.dto;
+package com.integrador3.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
