@@ -10,20 +10,20 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 import com.integrador3.model.Carrera;
-import com.integrador3.repositorios.CarreraRepositorio;
+import com.integrador3.servicios.CarreraService;
 
 
 @RestController
 @RequestMapping("/carreras")
 public class CarreraController {
-    // Inyectar el repositorio de carreras
+    // Inyectar el servicio de carreras
     @Autowired
-    private CarreraRepositorio carreraRepositorio;
+    private CarreraService carreraService;
 
     @GetMapping("")
     public ResponseEntity<?> getAllCarreras() {
         try {
-            List<Carrera> carreras = carreraRepositorio.findAll();
+            List<Carrera> carreras = carreraService.findAll();
             return ResponseEntity.status(200).body(carreras);
         } catch (Exception e) {
             return ResponseEntity.status(500).body("Error al obtener carreras: " + e.getMessage());
@@ -36,7 +36,7 @@ public class CarreraController {
     @GetMapping("/con-estudiantes")
     public ResponseEntity<?> getCarrerasConEstudiantes() {
         try {
-            return ResponseEntity.ok(carreraRepositorio.findCarrerasConEstudiantes());
+            return ResponseEntity.ok(carreraService.findCarrerasConEstudiantes());
         } catch (Exception e) {
             return ResponseEntity.status(500).body("Error al obtener carreras con estudiantes: " + e.getMessage());
         }
