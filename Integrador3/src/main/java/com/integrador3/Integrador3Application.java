@@ -8,13 +8,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class Integrador3Application {
-    @Autowired
-    private CargarDatos cargarDatos;
+    // Los datos los cargo desde CargarDatos ya que es @Component que implementa CommandLineRunner
+    // Y ejecuta el metodo run cuando inicia la aplicacion que se hereda de CommandLineRunner
 
-    @PostConstruct
-    public void init(){
-        cargarDatos.cargarDatos();
-    }
 
     public static void main(String[] args) {
         SpringApplication.run(Integrador3Application.class, args);

@@ -19,39 +19,58 @@ public class EstudianteService {
     private EstudianteRepositorio estudianteRepositorio;
 
     @Transactional(readOnly = true)
-    public List<Estudiante> findAll() {
-        return estudianteRepositorio.findAll();
+    public List<EstudianteDTO> findAll() {
+        return estudianteRepositorio.findAll().stream().map(EstudianteDTO::new).toList();
     }
 
     @Transactional(readOnly = true)
-    public Estudiante findById(Long id) {
-        return estudianteRepositorio.findById(id).orElse(null);
+    public EstudianteDTO findById(Long id) {
+        return estudianteRepositorio.findById(id).map(EstudianteDTO::new)
+                .orElseThrow(() -> new RuntimeException("Estudiante no encontrado"));
+    }
+
+    @Transactional(readOnly = true)
+    public Estudiante findByIdEntity(Long id){
+        return estudianteRepositorio.findById(id)
+                .orElseThrow(() -> new RuntimeException("Estudiante no encontrado"));
     }
 
     @Transactional
-    public Estudiante save(Estudiante estudiante) {
-        return estudianteRepositorio.save(estudiante);
+    public EstudianteDTO save(Estudiante estudiante) {
+        Estudiante esSave = estudianteRepositorio.save(estudiante);
+        return new EstudianteDTO(esSave);
     }
 
     @Transactional
     public void deleteById(Long id) {
         estudianteRepositorio.deleteById(id);
     }
+
     @Transactional(readOnly = true)
     public List<EstudianteDTO> getEstudiantesOrderBy(String criterio) {
-        return estudianteRepositorio.getEstudiantesOrderBy(criterio);
+        return estudianteRepositorio.getEstudiantesOrderBy(criterio)
+                .stream().map(EstudianteDTO::new).toList();
     }
+
     @Transactional(readOnly = true)
     public EstudianteDTO findEstudianteByNroLibreta(Long nroLibreta) {
-        return estudianteRepositorio.findEstudianteByNroLibreta(nroLibreta);
+        Estudiante estudiante = estudianteRepositorio.findEstudianteByNroLibreta(nroLibreta);
+        if (estudiante == null) {
+            throw new RuntimeException("Estudiante con libreta " + nroLibreta + " no encontrado");
+        }
+        return new EstudianteDTO(estudiante);   
     }
+
     @Transactional(readOnly = true)
     public List<EstudianteDTO> findEstudiantesByGenero(String genero) {
-        return estudianteRepositorio.findEstudiantesByGenero(genero);
+        return estudianteRepositorio.findEstudiantesByGenero(genero)
+                .stream().map(EstudianteDTO::new).toList();
     }
+
     @Transactional(readOnly = true)
     public List<EstudianteDTO> findEstudiantesByCarreraAndCiudad(String carrera,
             String ciudad) {
-        return estudianteRepositorio.findEstudiantesByCarreraAndCiudad(carrera, ciudad);
+        return estudianteRepositorio.findEstudiantesByCarreraAndCiudad(carrera, ciudad)
+                .stream().map(EstudianteDTO::new).toList();
     }       
 }

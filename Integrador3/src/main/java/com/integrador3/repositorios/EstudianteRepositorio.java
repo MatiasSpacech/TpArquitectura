@@ -13,21 +13,21 @@ import org.springframework.stereotype.Repository;
 @Repository("EstudianteRepositorio")
 public interface EstudianteRepositorio extends JpaRepository<Estudiante, Long> {    
     
-    @Query("SELECT new com.integrador3.dto.EstudianteDTO(e.dni, e.nombre, e.apellido, e.edad, e.genero, e.ciudad, e.nroLibreta) " +
+    @Query("SELECT e " +
            "FROM Estudiante e ORDER BY :criterio")
-    List<EstudianteDTO> getEstudiantesOrderBy(String criterio);
+    List<Estudiante> getEstudiantesOrderBy(String criterio);
 
-    @Query("SELECT new com.integrador3.dto.EstudianteDTO(e.dni,e.nombre,e.apellido,e.edad,e.genero,e.ciudad,e.nroLibreta) " +
+    @Query("SELECT e " +
            "FROM Estudiante e WHERE e.nroLibreta=:nroLibreta")
-    EstudianteDTO findEstudianteByNroLibreta(Long nroLibreta);
+    Estudiante findEstudianteByNroLibreta(Long nroLibreta);
 
-    @Query("SELECT new com.integrador3.dto.EstudianteDTO(e.dni,e.nombre,e.apellido,e.edad,e.genero,e.ciudad,e.nroLibreta) " +
+    @Query("SELECT e " +
            "FROM Estudiante e WHERE LOWER(e.genero) = LOWER(:genero)")
-    List<EstudianteDTO> findEstudiantesByGenero(String genero);
+    List<Estudiante> findEstudiantesByGenero(String genero);
 
-    @Query("SELECT new com.integrador3.dto.EstudianteDTO(e.dni,e.nombre,e.apellido,e.edad,e.genero,e.ciudad,e.nroLibreta) " +
+    @Query("SELECT e " +
            "FROM Estudiante e JOIN e.listCarreras m JOIN m.carrera c " +
            "WHERE LOWER(c.nombre) = LOWER(:carrera) AND LOWER(e.ciudad) = LOWER(:ciudad)")
-    List<EstudianteDTO> findEstudiantesByCarreraAndCiudad(String carrera, String ciudad);
+    List<Estudiante> findEstudiantesByCarreraAndCiudad(String carrera, String ciudad);
 
 }

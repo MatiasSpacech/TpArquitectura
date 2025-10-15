@@ -1,15 +1,14 @@
 package com.integrador3.controllers;
 
+import com.integrador3.dto.ReporteCarreraDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.integrador3.servicios.EstudianteCarreraService;
 
-import org.springframework.web.bind.annotation.RequestParam;
+import java.util.List;
 
 @RestController
 @RequestMapping("/estudiantes-carreras")
@@ -29,5 +28,15 @@ public class EstudianteCarreraController {
         } catch (Exception e) {
             return ResponseEntity.status(500).body("Error al matricular el estudiante en la carrera");
         }
+    }
+
+    @GetMapping("/reportes")
+    public ResponseEntity<?> getReportesCarreras() {
+        List<ReporteCarreraDTO> reportes = estudianteCarreraService.getReportesCarreras();
+        if(reportes.isEmpty()){
+            // Codigo 204 "no content"
+            return ResponseEntity.status(204).body("No hay reportes disponibles");
+        }
+        return ResponseEntity.status(200).body(reportes);
     }
 }

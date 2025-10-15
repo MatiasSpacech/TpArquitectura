@@ -17,7 +17,7 @@ public class EstudianteController {
     @Autowired
     private EstudianteService estudianteService;
 
-    @GetMapping("")
+    @GetMapping("/")
     public ResponseEntity<?> getEstudiantes() {
         try {
             return new ResponseEntity<>(estudianteService.findAll(), HttpStatus.OK);
@@ -31,7 +31,7 @@ public class EstudianteController {
     @GetMapping("/{id}")
     public ResponseEntity<?> getEstudianteById(@PathVariable Long id) {
         try {
-            Estudiante estudiante = estudianteService.findById(id);
+            EstudianteDTO estudiante = estudianteService.findById(id);
             if (estudiante == null) {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Estudiante no encontrado");
             }
@@ -118,10 +118,10 @@ public class EstudianteController {
 
     // a) dar de alta un estudiante
     // Ejemplo de solicitud: POST /estudiantes
-    @PostMapping("")
+    @PostMapping("/")
     public ResponseEntity<?> createEstudiante(@RequestBody Estudiante estudiante) {
         try {
-            Estudiante nuevoEstudiante = estudianteService.save(estudiante);
+            EstudianteDTO nuevoEstudiante = estudianteService.save(estudiante);
             return new ResponseEntity<>(nuevoEstudiante, HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>("Error al crear estudiante: " + e.getMessage(),

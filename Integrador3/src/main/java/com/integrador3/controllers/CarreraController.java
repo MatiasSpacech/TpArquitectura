@@ -2,6 +2,7 @@ package com.integrador3.controllers;
 
 import java.util.List;
 
+import com.integrador3.dto.CarreraDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,10 +21,10 @@ public class CarreraController {
     @Autowired
     private CarreraService carreraService;
 
-    @GetMapping("")
+    @GetMapping("/")
     public ResponseEntity<?> getAllCarreras() {
         try {
-            List<Carrera> carreras = carreraService.findAll();
+            List<CarreraDTO> carreras = carreraService.findAll();
             return ResponseEntity.status(200).body(carreras);
         } catch (Exception e) {
             return ResponseEntity.status(500).body("Error al obtener carreras: " + e.getMessage());
