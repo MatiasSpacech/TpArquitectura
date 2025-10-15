@@ -52,7 +52,7 @@ public class EstudianteController {
         try {
             List<EstudianteDTO> estudiantes = estudianteService.getEstudiantesOrderBy(criterio);
             if (estudiantes.isEmpty()) {
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No se encontraron estudiantes");
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Criterio de ordenamiento no valido");
             }
             return ResponseEntity.status(HttpStatus.OK).body(estudiantes);
         } catch (Exception e) {

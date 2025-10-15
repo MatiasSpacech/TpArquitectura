@@ -1,7 +1,6 @@
 package com.integrador3.repositorios;
 
 import com.integrador3.model.Estudiante;
-import com.integrador3.dto.EstudianteDTO;
 
 import java.util.List;
 
@@ -11,11 +10,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 @Repository("EstudianteRepositorio")
-public interface EstudianteRepositorio extends JpaRepository<Estudiante, Long> {    
-    
-    @Query("SELECT e " +
-           "FROM Estudiante e ORDER BY :criterio")
-    List<Estudiante> getEstudiantesOrderBy(String criterio);
+public interface EstudianteRepositorio extends JpaRepository<Estudiante, Long> {
 
     @Query("SELECT e " +
            "FROM Estudiante e WHERE e.nroLibreta=:nroLibreta")
