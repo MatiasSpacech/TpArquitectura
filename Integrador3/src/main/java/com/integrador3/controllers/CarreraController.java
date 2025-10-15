@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 
-import com.integrador3.model.Carrera;
 import com.integrador3.servicios.CarreraService;
 
 

@@ -1,14 +1,10 @@
 package com.integrador3.repositorios;
 
 import com.integrador3.model.Estudiante;
-import com.integrador3.dto.EstudianteDTO;
 
 import java.util.List;
 
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.PersistenceContext;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
