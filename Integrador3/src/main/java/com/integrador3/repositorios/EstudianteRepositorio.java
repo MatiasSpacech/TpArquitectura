@@ -6,16 +6,15 @@ import com.integrador3.dto.EstudianteDTO;
 import java.util.List;
 
 
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.PersistenceContext;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 @Repository("EstudianteRepositorio")
-public interface EstudianteRepositorio extends JpaRepository<Estudiante, Long> {    
-    
-    @Query("SELECT e " +
-           "FROM Estudiante e ORDER BY :criterio")
-    List<Estudiante> getEstudiantesOrderBy(String criterio);
+public interface EstudianteRepositorio extends JpaRepository<Estudiante, Long> {
 
     @Query("SELECT e " +
            "FROM Estudiante e WHERE e.nroLibreta=:nroLibreta")

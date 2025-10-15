@@ -1,8 +1,10 @@
 package com.integrador3.servicios;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -48,7 +50,14 @@ public class EstudianteService {
 
     @Transactional(readOnly = true)
     public List<EstudianteDTO> getEstudiantesOrderBy(String criterio) {
-        return estudianteRepositorio.getEstudiantesOrderBy(criterio)
+        criterio = criterio.toLowerCase();
+
+        List<String> camposOrdenados = List.of("dni", "nombre","apellido", "nroLibreta", "genero", "edad", "ciudad");
+        if(!camposOrdenados.contains(criterio)){
+            return new ArrayList<>();
+        }
+
+        return estudianteRepositorio.findAll(Sort.by(criterio))
                 .stream().map(EstudianteDTO::new).toList();
     }
 
