@@ -11,11 +11,13 @@ import org.springframework.stereotype.Repository;
 
 @Repository("CarreraRepositorio")
 public interface CarreraRepositorio extends JpaRepository<Carrera, Integer> {
+
     //f) recuperar las carreras con estudiantes inscriptos, y ordenar por cantidad de inscriptos.
     @Query("SELECT new com.integrador3.dto.CarreraDTO(c.nombre, c.duracion, COUNT(c)) " +
             "FROM Carrera c JOIN  c.estudiantes e " +
             "GROUP BY c.id, c.nombre " +
             "ORDER BY COUNT(c) DESC")
     List<CarreraDTO> findCarrerasConEstudiantes();
+
 }
 

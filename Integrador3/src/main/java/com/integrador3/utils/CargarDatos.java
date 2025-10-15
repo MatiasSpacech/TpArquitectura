@@ -10,13 +10,14 @@ import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.io.FileReader;
 import java.util.ArrayList;
 
 @Component
-public class CargarDatos {
+public class CargarDatos implements CommandLineRunner {
 
     private final String rutaCsv="src/main/resources/csv/";
 
@@ -29,6 +30,12 @@ public class CargarDatos {
     @Autowired
     private EstudianteCarreraRepositorio estudianteCarreraRepositorio;
 
+
+    // Metodo que se ejecuta al iniciar la aplicacion ya que extiende de CommandLineRunner
+    @Override
+    public void run(String... args) throws Exception {
+        cargarDatos();
+    }
 
     public void cargarDatos() {
             cargarEstudiantes(rutaCsv+"estudiantes.csv");
