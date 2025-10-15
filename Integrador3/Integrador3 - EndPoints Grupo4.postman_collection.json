@@ -1,0 +1,309 @@
+{
+	"info": {
+		"_postman_id": "d53156bf-6721-4999-ba45-749b9dd35553",
+		"name": "Integrador3 - EndPoints Grupo4",
+		"description": "Colección de endpoints para probar el sistema de gestión universitaria",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39045406"
+	},
+	"item": [
+		{
+			"name": "Estudiantes",
+			"item": [
+				{
+					"name": "Obtener todos los estudiantes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/estudiantes/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"estudiantes",
+								""
+							]
+						},
+						"description": "Recupera la lista completa de estudiantes"
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener estudiante por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/estudiantes/12345678",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"estudiantes",
+								"12345678"
+							]
+						},
+						"description": "Recupera un estudiante por su DNI"
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener estudiantes ordenados",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/estudiantes/ordenar?criterio=nombre",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"estudiantes",
+								"ordenar"
+							],
+							"query": [
+								{
+									"key": "criterio",
+									"value": "nombre",
+									"description": "Opciones: nombre, apellido, edad, dni"
+								}
+							]
+						},
+						"description": "Recupera todos los estudiantes ordenados por un criterio específico"
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener estudiante por número de libreta",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/estudiantes/nroLibreta/1001",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"estudiantes",
+								"nroLibreta",
+								"1001"
+							]
+						},
+						"description": "Recupera un estudiante por su número de libreta universitaria"
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener estudiantes por género",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/estudiantes/genero/Masculino",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"estudiantes",
+								"genero",
+								"Masculino"
+							]
+						},
+						"description": "Recupera todos los estudiantes filtrados por género (Masculino/Femenino)"
+					},
+					"response": []
+				},
+				{
+					"name": "Filtrar estudiantes por carrera y ciudad",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/estudiantes/filtro?carrera=Ingenieria&ciudad=Tandil",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"estudiantes",
+								"filtro"
+							],
+							"query": [
+								{
+									"key": "carrera",
+									"value": "Ingenieria",
+									"description": "Nombre de la carrera"
+								},
+								{
+									"key": "ciudad",
+									"value": "Tandil",
+									"description": "Ciudad de residencia"
+								}
+							]
+						},
+						"description": "Recupera estudiantes de una carrera específica filtrados por ciudad de residencia"
+					},
+					"response": []
+				},
+				{
+					"name": "Crear nuevo estudiante",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"dni\": 87654321,\n    \"nombre\": \"María\",\n    \"apellido\": \"González\",\n    \"edad\": 21,\n    \"genero\": \"Femenino\",\n    \"ciudad\": \"Buenos Aires\",\n    \"nroLibreta\": 2001\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/estudiantes/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"estudiantes",
+								""
+							]
+						},
+						"description": "Dar de alta un nuevo estudiante en el sistema"
+					},
+					"response": []
+				}
+			],
+			"description": "Endpoints relacionados con la gestión de estudiantes"
+		},
+		{
+			"name": "Carreras",
+			"item": [
+				{
+					"name": "Obtener todas las carreras",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/carreras/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"carreras",
+								""
+							]
+						},
+						"description": "Recupera la lista completa de carreras"
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener carreras con estudiantes ordenados por cantidad de estudiantes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/carreras/con-estudiantes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"carreras",
+								"con-estudiantes"
+							]
+						},
+						"description": "Recupera las carreras con estudiantes inscriptos, ordenadas por cantidad de inscriptos"
+					},
+					"response": []
+				}
+			],
+			"description": "Endpoints relacionados con la gestión de carreras"
+		},
+		{
+			"name": "Matrículas",
+			"item": [
+				{
+					"name": "Matricular estudiante en carrera",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/estudiantes-carreras/matricular?estudianteId=12345678&carreraId=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"estudiantes-carreras",
+								"matricular"
+							],
+							"query": [
+								{
+									"key": "estudianteId",
+									"value": "12345678",
+									"description": "DNI del estudiante"
+								},
+								{
+									"key": "carreraId",
+									"value": "1",
+									"description": "ID de la carrera"
+								}
+							]
+						},
+						"description": "Matricular un estudiante en una carrera específica"
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener reportes de carreras",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/estudiantes-carreras/reportes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"estudiantes-carreras",
+								"reportes"
+							]
+						},
+						"description": "Generar reporte de carreras con inscriptos y egresados por año, ordenado alfabéticamente y cronológicamente"
+					},
+					"response": []
+				}
+			],
+			"description": "Endpoints relacionados con matrículas y reportes"
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8080",
+			"type": "string"
+		}
+	]
+}
