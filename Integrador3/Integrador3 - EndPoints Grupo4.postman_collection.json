@@ -37,7 +37,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/estudiantes/12345678",
+							"raw": "http://localhost:8080/estudiantes/10719241",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -45,7 +45,7 @@
 							"port": "8080",
 							"path": [
 								"estudiantes",
-								"12345678"
+								"10719241"
 							]
 						},
 						"description": "Recupera un estudiante por su DNI"
@@ -58,7 +58,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/estudiantes/ordenar?criterio=nombre",
+							"raw": "http://localhost:8080/estudiantes/ordenar?criterio=edad",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -71,7 +71,7 @@
 							"query": [
 								{
 									"key": "criterio",
-									"value": "nombre",
+									"value": "edad",
 									"description": "Opciones: nombre, apellido, edad, dni"
 								}
 							]
@@ -86,7 +86,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/estudiantes/nroLibreta/1001",
+							"raw": "http://localhost:8080/estudiantes/nroLibreta/25789",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -95,7 +95,7 @@
 							"path": [
 								"estudiantes",
 								"nroLibreta",
-								"1001"
+								"25789"
 							]
 						},
 						"description": "Recupera un estudiante por su número de libreta universitaria"
@@ -130,7 +130,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/estudiantes/filtro?carrera=Ingenieria&ciudad=Tandil",
+							"raw": "http://localhost:8080/estudiantes/filtro?carrera=TUDAI&ciudad=Rauch",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -143,12 +143,12 @@
 							"query": [
 								{
 									"key": "carrera",
-									"value": "Ingenieria",
+									"value": "TUDAI",
 									"description": "Nombre de la carrera"
 								},
 								{
 									"key": "ciudad",
-									"value": "Tandil",
+									"value": "Rauch",
 									"description": "Ciudad de residencia"
 								}
 							]
@@ -247,7 +247,7 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/estudiantes-carreras/matricular?estudianteId=12345678&carreraId=1",
+							"raw": "http://localhost:8080/estudiantes-carreras/matricular?estudianteId=16768994&carreraId=1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -260,7 +260,7 @@
 							"query": [
 								{
 									"key": "estudianteId",
-									"value": "12345678",
+									"value": "16768994",
 									"description": "DNI del estudiante"
 								},
 								{
