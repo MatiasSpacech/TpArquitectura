@@ -12,10 +12,9 @@ import java.util.Date;
 
 @EnableFeignClients
 
-@Data
+
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 @Entity
 @Table (name = "factura")
 public class Factura {
@@ -31,7 +30,15 @@ public class Factura {
     private String estado; // Pagada o Pendiente de pago
 
     @Column(name = "usuario_id")
-    private Long UsuarioId;
+    private Long usuarioId;
 
-
+    public Factura(String numeroFactura, String usuario, Date fechaEmision,
+                   double monto, String estado, Long usuarioId) {
+        this.numeroFactura = numeroFactura;
+        this.usuario = usuario;
+        this.fechaEmision = fechaEmision;
+        this.monto = monto;
+        this.estado = estado;
+        this.usuarioId = usuarioId;
+    }
 }
