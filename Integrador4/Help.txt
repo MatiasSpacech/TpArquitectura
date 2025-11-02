@@ -1,0 +1,33 @@
+Detén y elimina el contenedor MySQL
+docker-compose down -v
+
+2. Inicia Docker nuevamente
+docker-compose up -d
+docker-compose logs -f
+
+3. Levanta tu aplicación Spring Boot
+En IntelliJ IDEA, ejecuta la aplicación. Spring Boot detectará la entidad Usuario y creará la tabla automáticamente.
+
+Reinicia Docker y la aplicación
+cd usuario/Docker
+docker-compose down -v
+docker-compose up -d
+
+
+# En la raíz /Integrador4
+docker-compose up -d
+
+# Verificar
+docker ps
+
+Para levantar usuario y monopatin simultáneamente en IntelliJ IDEA, tienes varias opciones:
+
+# Terminal 1
+cd usuario && ./mvnw spring-boot:run
+
+# Terminal 2 (nueva)
+cd monopatin && ./mvnw spring-boot:run
+
+El problema es que ./mvnw no tiene permisos de ejecución. Soluciona así:
+chmod +x ./mvnw
+chmod +x ../monopatin/mvnw

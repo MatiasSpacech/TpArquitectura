@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  mysql-usuario:
+    image: mysql:8.0
+    container_name: mysql_usuario
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      MYSQL_DATABASE: "usuarios"
+    volumes:
+      - mysql_usuario_data:/var/lib/mysql
+    restart: always
+
+  mysql-monopatin:
+    image: mysql:8.0
+    container_name: mysql_monopatin
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      MYSQL_DATABASE: "monopatin_db"
+    volumes:
+      - mysql_monopatin_data:/var/lib/mysql
+    restart: always
+
+volumes:
+  mysql_usuario_data:
+  mysql_monopatin_data:

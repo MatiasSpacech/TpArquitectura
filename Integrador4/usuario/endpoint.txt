@@ -1,0 +1,18 @@
+Para crear un usuario con curl en Postman
+
+curl -X POST http://localhost:8087/usuario \
+  -H "Content-Type: application/json" \
+  -d '{
+        "codigo": "MP002",
+        "latitud": -34.6037,
+        "longitud": -58.3816,
+        "estado": "DISPONIBLE",
+        "kmRecorridos": 45.5,
+        "tiempoDeUsoTotal": 120,
+        "idParada": 1
+      }
+'
+
+http://localhost:8087/usuario/
+"Hello World Usuario"
+

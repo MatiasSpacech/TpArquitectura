@@ -1,0 +1,43 @@
+curl http://localhost:8084/monopatines/hola
+"Como estas desde MonopatinController";
+
+
+curl para crear un monopatin
+
+curl -X POST http://localhost:8084/monopatines \
+  -H "Content-Type: application/json" \
+  -d '{
+    "codigo": "MP001",
+    "latitud": -34.6037,
+    "longitud": -58.3816,
+    "estado": "DISPONIBLE",
+    "kmRecorridos": 45.5,
+    "tiempoDeUsoTotal": 120
+  }'
+
+
+  Obtener todos los monopatines:
+
+curl http://localhost:8084/monopatines
+
+Obtener monopatin por ID:
+curl http://localhost:8084/monopatines/1
+
+# Crear
+curl -X POST http://localhost:8084/monopatines \
+  -H "Content-Type: application/json" \
+  -d '{"codigo":"MP001","latitud":-34.6037,"longitud":-58.3816,"estado":"DISPONIBLE","km":45.5,"tiempoUsoMinutos":120}'
+
+# Obtener todos
+curl http://localhost:8084/monopatines
+
+# Obtener por ID
+curl http://localhost:8084/monopatines/1
+
+# Actualizar
+curl -X PUT http://localhost:8084/monopatines/1 \
+  -H "Content-Type: application/json" \
+  -d '{"codigo":"MP001","latitud":-34.6037,"longitud":-58.3816,"estado":"EN_USO","km":50.5,"tiempoUsoMinutos":150}'
+
+# Eliminar
+curl -X DELETE http://localhost:8084/monopatines/1
