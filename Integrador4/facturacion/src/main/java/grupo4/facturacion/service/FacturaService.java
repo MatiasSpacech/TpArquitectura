@@ -1,5 +1,6 @@
 package grupo4.facturacion.service;
 
+import grupo4.facturacion.client.TarifaFeignClient;
 import grupo4.facturacion.entity.Factura;
 
 import grupo4.facturacion.repository.FacturaRepository;
@@ -17,6 +18,9 @@ public class FacturaService {
 
     @Autowired
     private FacturaRepository facturaRepository;
+
+    @Autowired
+    private TarifaFeignClient tarifaFeignClient;
 
     @Transactional(readOnly = true)
     public List<Factura> findAll(){
@@ -63,4 +67,7 @@ public class FacturaService {
     public List<Factura> findByFechaBetween(Date fecha1, Date fecha2){
         return facturaRepository.findByFechaBetween(fecha1,fecha2);
     }
+
+    // Aquí puedes usar tarifaFeignClient cuando necesites consultar tarifas
+    // Ejemplo: TarifaDTO tarifa = tarifaFeignClient.findTarifaById(id).getBody();
 }
