@@ -9,13 +9,20 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+//@AllArgsConstructor
 
 @Document(collection = "monopatines")
 public class Monopatin {
     private String id;
     private Estado estado;
-    private int latitud;
-    private int longitud;
-    private Long kmRecorridos;
+    private double latitud;
+    private double longitud;
+    private int kmRecorridos;
+
+    public Monopatin(Estado estado, double latitud, double longitud) {
+        this.estado = estado;
+        this.latitud = latitud;
+        this.longitud = longitud;
+        this.kmRecorridos = 0;
+    }
 }
