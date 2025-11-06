@@ -94,4 +94,20 @@ package grupo4.mscvcuenta.controller;
         public ResponseEntity<List<UsuarioDto>> obtenerTodosLosUsuarios() {
             return ResponseEntity.ok(cuentaService.obtenerTodosLosUsuarios());
         }
+
+        //asociar cuenta a usuario
+        // Nuevo endpoint para asociar un usuario a una cuenta
+        @PutMapping("/{nroCuenta}/usuarios/{idUsuario}")
+        public ResponseEntity<Cuenta> asociarUsuario(@PathVariable String nroCuenta, @PathVariable Long idUsuario) {
+            Cuenta cuentaActualizada = cuentaService.asociarUsuario(nroCuenta, idUsuario);
+            return ResponseEntity.ok(cuentaActualizada);
+        }
+
+        // Nuevo endpoint para desasociar un usuario de una cuenta
+        @DeleteMapping("/{nroCuenta}/usuarios/{idUsuario}")
+        public ResponseEntity<Cuenta> desasociarUsuario(@PathVariable String nroCuenta, @PathVariable Long idUsuario) {
+            // Usar DELETE es más semántico para eliminar una asociación
+            Cuenta cuentaActualizada = cuentaService.desasociarUsuario(nroCuenta, idUsuario);
+            return ResponseEntity.ok(cuentaActualizada);
+        }
     }
