@@ -88,5 +88,17 @@ public class CuentaService {
         return cuentaRepository.save(cuenta);
     }
 
+    @Transactional
+    public Cuenta cambiarEstado(String idCuenta, Estado nuevoEstado) {
+        // 1. Buscamos la cuenta en la base de datos por su ID (String).
+        Cuenta cuenta = cuentaRepository.findById(idCuenta)
+                .orElseThrow(() -> new IllegalArgumentException("No se encontró la cuenta con ID: " + idCuenta));
+
+        // 2. Actualizamos el estado del objeto en memoria.
+        cuenta.setEstado(nuevoEstado);
+
+        // 3. Guardamos la cuenta actualizada en la base de datos.
+        return cuentaRepository.save(cuenta);
+    }
 
 }

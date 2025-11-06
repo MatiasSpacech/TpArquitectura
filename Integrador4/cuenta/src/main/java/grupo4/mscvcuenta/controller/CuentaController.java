@@ -2,6 +2,7 @@ package grupo4.mscvcuenta.controller;
 
     import grupo4.mscvcuenta.dto.UsuarioDto;
     import grupo4.mscvcuenta.entity.Cuenta;
+    import grupo4.mscvcuenta.entity.Estado;
     import grupo4.mscvcuenta.service.CuentaService;
     import org.springframework.beans.factory.annotation.Autowired;
     import org.springframework.http.ResponseEntity;
@@ -109,5 +110,24 @@ package grupo4.mscvcuenta.controller;
             // Usar DELETE es más semántico para eliminar una asociación
             Cuenta cuentaActualizada = cuentaService.desasociarUsuario(nroCuenta, idUsuario);
             return ResponseEntity.ok(cuentaActualizada);
+        }
+
+
+        /**
+         * Endpoint para cambiar el estado de una cuenta (ej. anularla).
+         * El nuevo estado se pasa como un parámetro en la URL.
+         * Ejemplo de llamada: PUT http://localhost:8082/cuentas/1/estado?nuevoEstado=SUSPENDIDA
+         */
+        @PutMapping("/{idCuenta}/estado")
+        public ResponseEntity<?> cambiarEstadoDeCuenta(@PathVariable String idCuenta, @RequestParam Estado nuevoEstado) {
+            try {
+                // Llama al servicio para ejecutar la lógica de negocio
+                Cuenta cuentaActualizada = cuentaService.cambiarEstado(idCuenta, nuevoEstado);
+                return ResponseEntity.ok(cuentaActualizada);
+            } catch (IllegalArgumentException e) {
+                // Si el servicio lanza una excepción (porque la cuenta no existe),
+                // devolvemos un error 404 Not Found.
+                return ResponseEntity.notFound().build();
+            }
         }
     }
