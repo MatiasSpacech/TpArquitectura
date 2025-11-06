@@ -1,0 +1,16 @@
+
+
+INSERT INTO cuentas.cuenta(monto, fecha_alta, nro_cuenta, usuario, estado, tipo_cuenta) VALUES
+    (0.00, '2023-01-15', '1', 'usuario1', 'ACTIVA', 'STANDARD');
+
+INSERT INTO cuentas.cuenta(monto, fecha_alta, nro_cuenta, estado, tipo_cuenta) VALUES
+    (0.00, '2023-01-15', '1', 'INACTIVA', 'STANDARD');
+
+
+
+DELETE  From cuentas.cuenta where id = 1;
+
+ALTER TABLE `cuentas`.`cuenta`
+    MODIFY COLUMN `tipo_cuenta` ENUM('STANDARD','PREMIUM','BASIC') NOT NULL;
+
+SELECT * FROM cuentas.cuenta;

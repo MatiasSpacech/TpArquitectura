@@ -5,8 +5,43 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="723662e4-479d-4db5-9852-0ec9a71ebf68" name="Changes" comment="creo Usuario y monopatin REpo, Services, Controller, Entity, endpoint , Docker, bases de datos, cliente feing">
+      <change afterPath="$PROJECT_DIR$/cuenta/endpoint.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cuenta/sql.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cuenta/src/main/java/grupo4/mscvcuenta/controller/CuentaController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cuenta/src/main/java/grupo4/mscvcuenta/dto/UsuarioDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cuenta/src/main/java/grupo4/mscvcuenta/entity/Cuenta.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cuenta/src/main/java/grupo4/mscvcuenta/entity/Estado.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cuenta/src/main/java/grupo4/mscvcuenta/entity/TipoCuenta.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cuenta/src/main/java/grupo4/mscvcuenta/exceptions/GlobalExceptionHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cuenta/src/main/java/grupo4/mscvcuenta/exceptions/NotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cuenta/src/main/java/grupo4/mscvcuenta/feignClients/UsuarioClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cuenta/src/main/java/grupo4/mscvcuenta/repository/CuentaRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cuenta/src/main/java/grupo4/mscvcuenta/service/CuentaService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/usuario/sql.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/usuario/src/main/java/grupo4/mscvusuario/entity/Rol.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/0e600de9-8930-40a5-bad9-ea324d8a8285.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/0e600de9-8930-40a5-bad9-ea324d8a8285/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/0e600de9-8930-40a5-bad9-ea324d8a8285/storage_v2/_src_/schema/mysql.osA4Bg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/0e600de9-8930-40a5-bad9-ea324d8a8285/storage_v2/_src_/schema/performance_schema.kIw0nw.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/0e600de9-8930-40a5-bad9-ea324d8a8285/storage_v2/_src_/schema/sys.zb4BAA.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/0e600de9-8930-40a5-bad9-ea324d8a8285/storage_v2/_src_/schema/viajes.yi9Rzw.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/7b36b67b-40da-4435-aff6-32711f86335c.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/7b36b67b-40da-4435-aff6-32711f86335c/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/7b36b67b-40da-4435-aff6-32711f86335c/storage_v2/_src_/schema/mysql.osA4Bg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/7b36b67b-40da-4435-aff6-32711f86335c/storage_v2/_src_/schema/performance_schema.kIw0nw.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/7b36b67b-40da-4435-aff6-32711f86335c/storage_v2/_src_/schema/sys.zb4BAA.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/data_source_mapping.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/data_source_mapping.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cuenta/src/main/java/grupo4/mscvcuenta/CuentaApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/cuenta/src/main/java/grupo4/mscvcuenta/CuentaApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cuenta/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/cuenta/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usuario/src/main/java/grupo4/mscvusuario/Rol.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usuario/src/main/java/grupo4/mscvusuario/controllers/UsuarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/usuario/src/main/java/grupo4/mscvusuario/controllers/UsuarioController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usuario/src/main/java/grupo4/mscvusuario/entity/EstadoMonopatin.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usuario/src/main/java/grupo4/mscvusuario/entity/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/usuario/src/main/java/grupo4/mscvusuario/entity/Usuario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usuario/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/usuario/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +64,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -94,9 +130,10 @@
     &quot;Spring Boot.TarifasApplication.executor&quot;: &quot;Run&quot;,
     &quot;Spring Boot.UsuarioApplication.executor&quot;: &quot;Run&quot;,
     &quot;Spring Boot.ViajesApplication.executor&quot;: &quot;Run&quot;,
+    &quot;database.data.extractors.current.export.id&quot;: &quot;Comma-separated (CSV)_id&quot;,
     &quot;git-widget-placeholder&quot;: &quot;ruso&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/ruso/Documents/TUDAI/Arquitecturas web/TP4/TpArquitectura/Integrador4/monopatin&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/ruso/Documents/TUDAI/Arquitecturas web/TP4/TpArquitectura/Integrador4/cuenta/src/main/java/grupo4/mscvcuenta&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -115,6 +152,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/cuenta/src/main/java/grupo4/mscvcuenta" />
       <recent name="$PROJECT_DIR$/monopatin" />
     </key>
   </component>
@@ -134,8 +172,8 @@
             <map>
               <entry key="AdminApplication" value="STOPPED" />
               <entry key="CuentaApplication" value="STOPPED" />
-              <entry key="MonopatinApplication" value="FAILED" />
-              <entry key="UsuarioApplication" value="FAILED" />
+              <entry key="MonopatinApplication" value="STOPPED" />
+              <entry key="UsuarioApplication" value="STOPPED" />
               <entry key="ViajesApplication" value="STOPPED" />
             </map>
           </value>
@@ -143,7 +181,7 @@
       </map>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.UsuarioApplication">
+  <component name="RunManager" selected="Spring Boot.AdminApplication">
     <configuration name="AdminApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="admin" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="grupo4.mscvadmin.AdminApplication" />
@@ -193,7 +231,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UsuarioApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+    <configuration name="UsuarioApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="usuario" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="grupo4.mscvusuario.UsuarioApplication" />
       <method v="2">
@@ -228,6 +266,7 @@
       <workItem from="1761908567454" duration="32993000" />
       <workItem from="1762193323460" duration="6413000" />
       <workItem from="1762346388775" duration="301000" />
+      <workItem from="1762448552513" duration="5420000" />
     </task>
     <task id="LOCAL-00001" summary="creo Usuario y monopatin REpo, Services, Controller, Entity, endpoint , Docker, bases de datos">
       <option name="closed" value="true" />

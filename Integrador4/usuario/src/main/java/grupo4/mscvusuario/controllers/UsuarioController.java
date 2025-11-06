@@ -10,7 +10,7 @@ package grupo4.mscvusuario.controllers;
         import java.util.List;
 
         @RestController
-        @RequestMapping("/usuario")
+        @RequestMapping("/usuarios")
         public class UsuarioController {
 
             @Autowired

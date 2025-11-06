@@ -1,0 +1,15 @@
+INSERT INTO usuario (email, last_name, name, user_name, rol, latitud, longitud)
+VALUES (
+           'email@gmail.com',
+           'Perez',
+           'Alberto',
+           'USUARIO1',
+              'USUARIO',
+
+              1.0,
+                1.0
+       );
+
+DELETE FROM usuario WHERE user_name = 'USUARIO1';
+
+SELECT * FROM usuario;

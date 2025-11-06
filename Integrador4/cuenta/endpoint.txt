@@ -1,0 +1,33 @@
+# GET /cuentas/hola
+curl -i -X GET "http://localhost:8082/cuentas/hola"
+
+# GET /cuentas (lista)
+curl -i -X GET "http://localhost:8082/cuentas" -H "Accept: application/json"
+
+# GET /cuentas/{id}
+curl -i -X GET "http://localhost:8082/cuentas/12345" -H "Accept: application/json"
+
+# POST /cuentas (crear)
+curl -i -X POST "http://localhost:8082/cuentas" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "nroCuenta":"12345",
+    "usuario":"juan",
+    "monto":1000.00,
+    "estado":"ACTIVA",
+    "tipoCuenta":"CAJA_AHORRO"
+  }'
+
+# PUT /cuentas/{id} (actualizar)
+curl -i -X PUT "http://localhost:8082/cuentas/12345" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "nroCuenta":"12345",
+    "usuario":"juan_actualizado",
+    "monto":1500.00,
+    "estado":"ACTIVA",
+    "tipoCuenta":"CAJA_AHORRO"
+  }'
+
+# DELETE /cuentas/{id}
+curl -i -X DELETE "http://localhost:8082/cuentas/12345"

@@ -1,4 +1,4 @@
-package grupo4.mscvusuario;
+package grupo4.mscvusuario.entity;
 
 public enum Rol {
     //admin mantenimiento usuario
