@@ -1,0 +1,48 @@
+El Flujo Completo: Desde el Registro hasta el Alquiler
+Aquí tienes el paso a paso lógico, basado en tu diseño de microservicios y el enunciado del TP.
+
+Fase 1: Preparación del Usuario (Registro y Carga de Saldo)
+Objetivo: Un nuevo usuario se registra y se prepara para poder alquilar un monopatín.
+
+Paso 1.1: El usuario crea su cuenta.
+
+Acción: El usuario abre la app por primera vez y se registra. Lo primero que se crea es la "billetera" o el contrato con la empresa.
+Microservicio Involucrado: MSVC-CUENTA
+Endpoint: POST /cuentas
+Body (JSON):
+code
+JSON
+{
+    "numeroCuenta": "C-54321",
+    "monto": 0.0,
+    "estado": "ACTIVA",
+    "tipoCuenta": "PERSONAL"
+}
+Resultado: Se crea una nueva cuenta en la base de datos de MSVC-CUENTA. La aplicación guarda el ID de esta nueva cuenta (ej: 1).
+Paso 1.2: El usuario registra sus datos personales.
+
+Acción: La app pide al usuario sus datos.
+Microservicio Involucrado: MSVC-USUARIO
+Endpoint: POST /usuarios
+Body (JSON):
+code
+JSON
+{
+    "nombre": "Ana",
+    "apellido": "Gomez",
+    "mail": "ana.gomez@email.com",
+    "celular": "1122334455"
+}
+Resultado: Se crea un nuevo usuario en la base de datos de MSVC-USUARIO. La aplicación guarda el ID de este nuevo usuario (ej: 1).
+Paso 1.3: La aplicación asocia al usuario con su cuenta.
+
+Acción: Ahora vinculamos a la persona (idUsuario=1) con su billetera (idCuenta=1).
+Microservicio Involucrado Principal: MSVC-CUENTA (porque es el "dueño" de la relación).
+Microservicio Involucrado Secundario: MSVC-USUARIO (para validación).
+Endpoint: POST /cuentas/1/asociar-usuario/1
+Flujo de Comunicación Interna:
+La petición llega al CuentaController.
+El CuentaService recibe la petición.
+Usa su Feign Client (UsuarioClient) para llamar a GET /usuarios/1 en MSVC-USUARIO para asegurarse de que el usuario realmente existe.
+Si MSVC-USUARIO responde OK, el CuentaService añade el idUsuario=1 a la lista de usuarios de la cuenta y la guarda en su base de datos.
+Resultado: La cuenta 1 ahora está lógicamente vinculada al usuario 1.

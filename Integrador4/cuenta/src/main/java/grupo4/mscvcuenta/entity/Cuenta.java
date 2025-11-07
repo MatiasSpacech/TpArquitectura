@@ -23,7 +23,7 @@ public class Cuenta {
     private String usuarios;
 
     @Column(name = "monto", nullable = false)
-    private BigDecimal monto;
+    private Double monto;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "estado", nullable = false)

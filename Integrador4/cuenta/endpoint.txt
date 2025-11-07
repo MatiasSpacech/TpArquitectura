@@ -33,25 +33,13 @@ curl -i -X PUT "http://localhost:8082/cuentas/12345" \
 curl -i -X DELETE "http://localhost:8082/cuentas/12345"
 
 
-//asoxiar o desasociar usuarios a una cuenta
-Este endpoint añade el ID de un usuario a la lista de usuarios asociados a una cuenta específica.
-Método HTTP: PUT
-URL: /cuentas/{nroCuenta}/asociar-usuario/{idUsuario}
-Descripción:
-{nroCuenta}: Es el número de la cuenta que quieres modificar.
-{idUsuario}: Es el ID del usuario que quieres asociar a esa cuenta.
 
-Ejemplo de uso con Postman o cURL:
-PUT http://localhost:8082/cuentas/1/asociar-usuario/1
+asocia al usuario con id=1 a la cuenta con nro_cuenta=1. Esto también cambiará el estado de la cuenta a ACTIVA.
+curl -X PUT http://localhost:8082/cuentas/1/usuarios/1
 
-2. Desasociar un Usuario de una Cuenta
-Este endpoint elimina el ID de un usuario de la lista de usuarios asociados a una cuenta.
-Método HTTP: PUT
-URL: /cuentas/{nroCuenta}/desasociar-usuario/{idUsuario}
-Descripción:
-{nroCuenta}: Es el número de la cuenta que quieres modificar.
-{idUsuario}: Es el ID del usuario que quieres quitar de la cuenta.
-Ejemplo de uso con Postman o cURL:
 
-PUT http://localhost:8082/cuentas/C-1001/desasociar-usuario/1
+Este comando cambia el estado de la cuenta con id=1 a SUSPENDIDA.
+curl -X PUT "http://localhost:8082/cuentas/1/estado?nuevoEstado=SUSPENDIDA"
 
+Este comando añade 500.0 al saldo de la cuenta con id=1.
+curl -X PUT -H "Content-Type: application/json" -d '{"monto": 500.0}' http://localhost:8082/cuentas/1/cargar-saldo

@@ -101,4 +101,15 @@ public class CuentaService {
         return cuentaRepository.save(cuenta);
     }
 
+    @Transactional
+    public Cuenta cargarSaldo(String idCuenta, Double monto) {
+        if (monto <= 0) {
+            throw new IllegalArgumentException("El monto a cargar debe ser positivo.");
+        }
+        Cuenta cuenta = cuentaRepository.findById(idCuenta)
+                .orElseThrow(() -> new IllegalArgumentException("No se encontró la cuenta con ID: " + idCuenta));
+
+        cuenta.setMonto(cuenta.getMonto() + monto);
+        return cuentaRepository.save(cuenta);
+    }
 }

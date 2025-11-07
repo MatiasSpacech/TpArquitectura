@@ -10,8 +10,9 @@ package grupo4.mscvcuenta.controller;
 
     import java.net.URI;
     import java.util.List;
+    import java.util.Map;
 
-    @RestController
+@RestController
     @RequestMapping("/cuentas")
     public class CuentaController {
 
@@ -128,6 +129,21 @@ package grupo4.mscvcuenta.controller;
                 // Si el servicio lanza una excepción (porque la cuenta no existe),
                 // devolvemos un error 404 Not Found.
                 return ResponseEntity.notFound().build();
+            }
+        }
+
+
+        @PutMapping("/{idCuenta}/cargar-saldo")
+        public ResponseEntity<?> cargarSaldoEnCuenta(@PathVariable String idCuenta, @RequestBody Map<String, Double> request) {
+            try {
+                Double monto = request.get("monto");
+                if (monto == null) {
+                    return ResponseEntity.badRequest().body("El cuerpo de la petición debe contener el 'monto'.");
+                }
+                Cuenta cuentaActualizada = cuentaService.cargarSaldo(idCuenta, monto);
+                return ResponseEntity.ok(cuentaActualizada);
+            } catch (IllegalArgumentException e) {
+                return ResponseEntity.badRequest().body(e.getMessage());
             }
         }
     }
