@@ -1,14 +1,12 @@
 package grupo4.mscvmonopatin.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Getter
 @Setter
 @NoArgsConstructor
+@ToString
 //@AllArgsConstructor
 
 @Document(collection = "monopatines")
@@ -18,11 +16,15 @@ public class Monopatin {
     private double latitud;
     private double longitud;
     private int kmRecorridos;
+    private int tiempoUsado;
+    private Long idParada;
 
-    public Monopatin(Estado estado, double latitud, double longitud) {
+    public Monopatin(Estado estado, double latitud, double longitud,Long idParada) {
         this.estado = estado;
         this.latitud = latitud;
         this.longitud = longitud;
         this.kmRecorridos = 0;
+        this.tiempoUsado = 0;
+        this.idParada = idParada;
     }
 }

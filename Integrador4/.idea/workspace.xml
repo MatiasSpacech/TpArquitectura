@@ -5,30 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="723662e4-479d-4db5-9852-0ec9a71ebf68" name="Changes" comment="Implementado los microservicios de dani y el crud del microservicio de monopatines">
-      <change afterPath="$PROJECT_DIR$/facturacion/src/main/java/grupo4/facturacion/client/TarifaFeignClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/facturacion/src/main/java/grupo4/facturacion/config/RestTemplateConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/facturacion/src/main/java/grupo4/facturacion/controller/FacturaController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/facturacion/src/main/java/grupo4/facturacion/dto/FacturaDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/facturacion/src/main/java/grupo4/facturacion/dto/TarifaDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/facturacion/src/main/java/grupo4/facturacion/entity/Factura.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/facturacion/src/main/java/grupo4/facturacion/repository/FacturaRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/facturacion/src/main/java/grupo4/facturacion/service/FacturaService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/monopatin/src/main/java/grupo4/mscvmonopatin/dtos/MonopatinDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/monopatin/src/main/java/grupo4/mscvmonopatin/dtos/MonopatinPatchDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/monopatin/src/main/java/grupo4/mscvmonopatin/services/MonopatinService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/monopatin/src/main/java/grupo4/mscvmonopatin/services/exceptions/InvalidEstadoException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/monopatin/src/main/java/grupo4/mscvmonopatin/services/exceptions/NotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tarifas/src/main/java/grupo4/tarifas/controller/TarifaController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tarifas/src/main/java/grupo4/tarifas/dto/TarifaDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tarifas/src/main/java/grupo4/tarifas/entity/Tarifa.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tarifas/src/main/java/grupo4/tarifas/repository/TarifaRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tarifas/src/main/java/grupo4/tarifas/service/TarifaService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/monopatin/src/main/java/grupo4/mscvmonopatin/feignClients/ParadaFeignClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/monopatin/src/main/java/grupo4/mscvmonopatin/feignModel/Parada.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/parada/src/main/java/grupo4/parada/controllers/ParadaController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/parada/src/main/java/grupo4/parada/dtos/ParadaDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/parada/src/main/java/grupo4/parada/dtos/ParadaPatchDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/parada/src/main/java/grupo4/parada/feignClients/MonopatinFeignClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/parada/src/main/java/grupo4/parada/feignModel/Monopatin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/parada/src/main/java/grupo4/parada/model/Parada.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/parada/src/main/java/grupo4/parada/repository/ParadaRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/parada/src/main/java/grupo4/parada/services/ParadaService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/parada/src/main/java/grupo4/parada/services/exceptions/NotFoundException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/monopatin/src/main/java/grupo4/mscvmonopatin/MonopatinApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/monopatin/src/main/java/grupo4/mscvmonopatin/MonopatinApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/monopatin/src/main/java/grupo4/mscvmonopatin/controllers/MonopatinController.java" beforeDir="false" afterPath="$PROJECT_DIR$/monopatin/src/main/java/grupo4/mscvmonopatin/controllers/MonopatinController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/monopatin/src/main/java/grupo4/mscvmonopatin/model/Estado.java" beforeDir="false" afterPath="$PROJECT_DIR$/monopatin/src/main/java/grupo4/mscvmonopatin/model/Estado.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/monopatin/src/main/java/grupo4/mscvmonopatin/dtos/MonopatinDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/monopatin/src/main/java/grupo4/mscvmonopatin/dtos/MonopatinDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/monopatin/src/main/java/grupo4/mscvmonopatin/dtos/MonopatinPatchDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/monopatin/src/main/java/grupo4/mscvmonopatin/dtos/MonopatinPatchDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/monopatin/src/main/java/grupo4/mscvmonopatin/model/Monopatin.java" beforeDir="false" afterPath="$PROJECT_DIR$/monopatin/src/main/java/grupo4/mscvmonopatin/model/Monopatin.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/monopatin/src/main/java/grupo4/mscvmonopatin/repository/MonopatinRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/monopatin/src/main/java/grupo4/mscvmonopatin/repository/MonopatinRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/monopatin/src/main/java/grupo4/mscvmonopatin/services/MonopatinService.java" beforeDir="false" afterPath="$PROJECT_DIR$/monopatin/src/main/java/grupo4/mscvmonopatin/services/MonopatinService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parada/src/main/java/grupo4/parada/ParadaApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/parada/src/main/java/grupo4/parada/ParadaApplication.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +69,7 @@
   }
 }</component>
   <component name="HttpClientEndpointsTabState">
-    <option name="cachedRequestData" value="&lt;CachedHttpClientTabRequests&gt;&#10;  &lt;entry key=&quot;a2ca466a0c7acbe367ea86722dbc0ba50bd4e720&quot; value=&quot;###&amp;#10;POST http://localhost:8084/monopatines&quot; /&gt;&#10;&lt;/CachedHttpClientTabRequests&gt;" />
+    <option name="cachedRequestData" value="&lt;CachedHttpClientTabRequests /&gt;" />
   </component>
   <component name="HttpClientOnboardingState">{
   &quot;isOnboardingCommentShown&quot;: true
@@ -89,53 +85,56 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Maven.viaje [clean].executor": "Run",
-    "Maven.viaje [compile].executor": "Run",
-    "Maven.viaje [validate].executor": "Run",
-    "Maven.viaje [verify].executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Spring Boot.AdminApplication.executor": "Run",
-    "Spring Boot.CuentaApplication.executor": "Run",
-    "Spring Boot.FacturacionApplication.executor": "Run",
-    "Spring Boot.MonopatinApplication.executor": "Run",
-    "Spring Boot.MscvAdminApplication.executor": "Run",
-    "Spring Boot.MscvCuentaApplication.executor": "Run",
-    "Spring Boot.MscvMonopatinApplication.executor": "Run",
-    "Spring Boot.MscvUsuarioApplication.executor": "Run",
-    "Spring Boot.MscvViajeApplication.executor": "Run",
-    "Spring Boot.ParadaApplication.executor": "Run",
-    "Spring Boot.TarifasApplication.executor": "Run",
-    "Spring Boot.UsuarioApplication.executor": "Run",
-    "Spring Boot.ViajesApplication.executor": "Run",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/USUARIO/Desktop/TUDAI/Arquitecturas Web/TpArquitectura/Integrador4/facturacion/src/main/java/grupo4/facturacion",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "onboarding.tips.debug.path": "D:/USUARIO/Desktop/TUDAI/Arquitecturas Web/TpArquitectura/Integrador4/src/main/java/grupo4/Main.java",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "run.configurations.included.in.services": "true",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Maven.viaje [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.viaje [compile].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.viaje [validate].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.viaje [verify].executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Notification.DisplayName-DoNotAsk-DatabaseConfigFileWatcher.found&quot;: &quot;New/updated database configurations found&quot;,
+    &quot;Notification.DoNotAsk-DatabaseConfigFileWatcher.found&quot;: &quot;true&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Spring Boot.AdminApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.CuentaApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.FacturacionApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.MonopatinApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.MscvAdminApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.MscvCuentaApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.MscvMonopatinApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.MscvUsuarioApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.MscvViajeApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.ParadaApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.TarifasApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.UsuarioApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.ViajesApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/USUARIO/Desktop/TUDAI/Arquitecturas Web/TpArquitectura/Integrador4/parada/src/main/java/grupo4/parada/services&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;D:/USUARIO/Desktop/TUDAI/Arquitecturas Web/TpArquitectura/Integrador4/src/main/java/grupo4/Main.java&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\USUARIO\Desktop\TUDAI\Arquitecturas Web\TpArquitectura\Integrador4\parada\src\main\java\grupo4\parada\services" />
       <recent name="D:\USUARIO\Desktop\TUDAI\Arquitecturas Web\TpArquitectura\Integrador4\facturacion\src\main\java\grupo4\facturacion" />
       <recent name="D:\USUARIO\Desktop\TUDAI\Arquitecturas Web\TpArquitectura\Integrador4\tarifas\src\main\java\grupo4\tarifas" />
     </key>
@@ -157,6 +156,8 @@
               <entry key="AdminApplication" value="STOPPED" />
               <entry key="CuentaApplication" value="STOPPED" />
               <entry key="MonopatinApplication" value="STOPPED" />
+              <entry key="ParadaApplication" value="STOPPED" />
+              <entry key="TarifasApplication" value="STOPPED" />
               <entry key="UsuarioApplication" value="STOPPED" />
               <entry key="ViajesApplication" value="STOPPED" />
             </map>
@@ -249,7 +250,9 @@
       <workItem from="1761862551198" duration="783000" />
       <workItem from="1762271318299" duration="1310000" />
       <workItem from="1762310079032" duration="6951000" />
-      <workItem from="1762401115319" duration="7993000" />
+      <workItem from="1762401115319" duration="8630000" />
+      <workItem from="1762492324738" duration="8404000" />
+      <workItem from="1762539539724" duration="12185000" />
     </task>
     <task id="LOCAL-00001" summary="Compose agregado con las 3 bases y un get y post en mongo en msvc-monpatin">
       <option name="closed" value="true" />
@@ -259,7 +262,15 @@
       <option name="project" value="LOCAL" />
       <updated>1762318604981</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Implementado los microservicios de dani y el crud del microservicio de monopatines">
+      <option name="closed" value="true" />
+      <created>1762409578288</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1762409578288</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -16,11 +16,13 @@ public class MonopatinDTO {
     private double latitud;
     private double longitud;
     private int kmRecorridos;
+    private int tiempoUsado;
 
     public MonopatinDTO(Monopatin monopatin) {
         this.estado = monopatin.getEstado();
         this.latitud = monopatin.getLatitud();
         this.longitud = monopatin.getLongitud();
         this.kmRecorridos = monopatin.getKmRecorridos();
+        this.tiempoUsado = monopatin.getTiempoUsado();
     }
 }

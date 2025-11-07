@@ -10,5 +10,7 @@ public record MonopatinPatchDTO(
         Estado estado,
         Double latitud,
         Double longitud,
-        Integer kmRecorridos)
+        Integer kmRecorridos,
+        Integer tiempoUsado,
+        Long idParada)
 {}
