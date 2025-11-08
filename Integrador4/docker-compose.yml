@@ -38,7 +38,20 @@
           - mysql_cuenta_data:/var/lib/mysql
         restart: always
 
+      mysql-parada:
+        image: mysql:8.0
+        container_name: mysql_parada
+        ports:
+          - "3309:3306"
+        environment:
+          MYSQL_ROOT_PASSWORD: "root"
+          MYSQL_DATABASE: "parada_db"
+        volumes:
+          - mysql_parada_data:/var/lib/mysql
+        restart: always
+
     volumes:
       mysql_usuario_data:
       mysql_monopatin_data:
       mysql_cuenta_data:
+      mysql_parada_data:

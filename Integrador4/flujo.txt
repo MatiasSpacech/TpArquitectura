@@ -46,3 +46,60 @@ El CuentaService recibe la petición.
 Usa su Feign Client (UsuarioClient) para llamar a GET /usuarios/1 en MSVC-USUARIO para asegurarse de que el usuario realmente existe.
 Si MSVC-USUARIO responde OK, el CuentaService añade el idUsuario=1 a la lista de usuarios de la cuenta y la guarda en su base de datos.
 Resultado: La cuenta 1 ahora está lógicamente vinculada al usuario 1.
+
+
+Crea un monopatin
+curl -X POST -H "Content-Type: application/json" -d '{
+    "latitud": -34.6037,
+    "longitud": -58.3816,
+    "estado": "DISPONIBLE"
+}' http://localhost:8084/monopatines
+
+
+Fase 2: El Usuario Inicia un Viaje
+Objetivo: El usuario, que ya está registrado y tiene saldo, va a alquilar un monopatín.
+
+Paso 2.1: El usuario busca monopatines cercanos.
+
+Acción: El usuario abre el mapa en la app para ver dónde hay monopatines.
+Microservicio Involucrado Principal: MSVC-USUARIO (la acción es del usuario).
+Microservicio Involucrado Secundario: MSVC-MONOPATIN (provee la información).
+Endpoint: GET /usuarios/monopatines-cercanos?latitud=-34.60&longitud=-58.38
+Flujo de Comunicación Interna:
+La petición llega al UsuarioController.
+El UsuarioService usa su Feign Client (MonopatinClient) para llamar a GET /monopatines en MSVC-MONOPATIN y obtener la lista de TODOS los monopatines.
+El UsuarioService filtra esa lista para quedarse solo con los que están cerca de la ubicación del usuario y cuyo estado es DISPONIBLE.
+Resultado: La app muestra en el mapa los monopatines disponibles cercanos.
+Paso 2.2: El usuario activa un monopatín y comienza el viaje.
+
+Acción: El usuario escanea el código QR de un monopatín (ej: idMonopatin=5). Esta es la operación más compleja.
+Microservicio Involucrado Principal: MSVC-VIAJE (su razón de ser es gestionar esto).
+Microservicios Involucrados Secundarios: MSVC-CUENTA y MSVC-MONOPATIN (para validaciones y actualizaciones de estado).
+Endpoint: POST /viajes
+Body (JSON):
+code
+JSON
+{
+    "idCuenta": 1,
+    "idMonopatin": 5
+}
+Flujo de Comunicación Interna (Orquestación):
+La petición llega a ViajeController.
+El ViajeService recibe la petición y comienza una serie de validaciones:
+Validar Cuenta: Usa su Feign Client (CuentaClient) para llamar a GET /cuentas/1 en MSVC-CUENTA. Verifica que la cuenta exista, no esté SUSPENDIDA y tenga monto > 0.
+Validar Monopatín: Usa su Feign Client (MonopatinClient) para llamar a GET /monopatines/5 en MSVC-MONOPATIN. Verifica que el monopatín exista y que su estado sea DISPONIBLE.
+Si AMBAS validaciones son correctas:
+a. El ViajeService crea un nuevo registro de Viaje en su propia base de datos con el estado "INICIADO".
+b. Actualizar Estado del Monopatín: El ViajeService hace una segunda llamada a MSVC-MONOPATIN usando su Feign Client: PUT /monopatines/5/estado con el nuevo estado EN_USO.
+Resultado: Se ha creado un viaje, y el monopatín 5 ahora figura como EN_USO y no puede ser alquilado por nadie más.
+Resumen de Microservicios y Orden
+Creación de Entidades Base (sin comunicación):
+MSVC-CUENTA: Se crea la cuenta (POST /cuentas).
+MSVC-USUARIO: Se crea el usuario (POST /usuarios).
+Vinculación de Entidades (primera comunicación):
+MSVC-CUENTA -> MSVC-USUARIO: Se asocia el usuario a la cuenta (POST /cuentas/{id}/asociar-usuario/{id}), validando que el usuario exista.
+Inicio del Flujo de Negocio (múltiples comunicaciones):
+MSVC-USUARIO -> MSVC-MONOPATIN: Para buscar monopatines cercanos.
+MSVC-VIAJE -> MSVC-CUENTA: Para validar el saldo y estado de la cuenta.
+MSVC-VIAJE -> MSVC-MONOPATIN: Para validar el estado del monopatín.
+MSVC-VIAJE -> MSVC-MONOPATIN: Para actualizar el estado del monopatín a EN_USO.
