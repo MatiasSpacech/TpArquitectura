@@ -5,26 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="723662e4-479d-4db5-9852-0ec9a71ebf68" name="Changes" comment="Implementado los microservicios de dani y el crud del microservicio de monopatines">
-      <change afterPath="$PROJECT_DIR$/monopatin/src/main/java/grupo4/mscvmonopatin/feignClients/ParadaFeignClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/monopatin/src/main/java/grupo4/mscvmonopatin/feignModel/Parada.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/parada/src/main/java/grupo4/parada/controllers/ParadaController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/parada/src/main/java/grupo4/parada/dtos/ParadaDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/parada/src/main/java/grupo4/parada/dtos/ParadaPatchDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/parada/src/main/java/grupo4/parada/feignClients/MonopatinFeignClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/parada/src/main/java/grupo4/parada/feignModel/Monopatin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/parada/src/main/java/grupo4/parada/model/Parada.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/parada/src/main/java/grupo4/parada/repository/ParadaRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/parada/src/main/java/grupo4/parada/services/ParadaService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/parada/src/main/java/grupo4/parada/services/exceptions/NotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/data_source_mapping.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/monopatin/src/main/java/grupo4/mscvmonopatin/MonopatinApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/monopatin/src/main/java/grupo4/mscvmonopatin/MonopatinApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/monopatin/src/main/java/grupo4/mscvmonopatin/controllers/MonopatinController.java" beforeDir="false" afterPath="$PROJECT_DIR$/monopatin/src/main/java/grupo4/mscvmonopatin/controllers/MonopatinController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/monopatin/src/main/java/grupo4/mscvmonopatin/dtos/MonopatinDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/monopatin/src/main/java/grupo4/mscvmonopatin/dtos/MonopatinDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/monopatin/src/main/java/grupo4/mscvmonopatin/dtos/MonopatinPatchDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/monopatin/src/main/java/grupo4/mscvmonopatin/dtos/MonopatinPatchDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/monopatin/src/main/java/grupo4/mscvmonopatin/model/Monopatin.java" beforeDir="false" afterPath="$PROJECT_DIR$/monopatin/src/main/java/grupo4/mscvmonopatin/model/Monopatin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/monopatin/src/main/java/grupo4/mscvmonopatin/repository/MonopatinRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/monopatin/src/main/java/grupo4/mscvmonopatin/repository/MonopatinRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/monopatin/src/main/java/grupo4/mscvmonopatin/services/MonopatinService.java" beforeDir="false" afterPath="$PROJECT_DIR$/monopatin/src/main/java/grupo4/mscvmonopatin/services/MonopatinService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parada/src/main/java/grupo4/parada/ParadaApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/parada/src/main/java/grupo4/parada/ParadaApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usuario/.gitattributes" beforeDir="false" afterPath="$PROJECT_DIR$/usuario-cuenta/.gitattributes" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usuario/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/usuario-cuenta/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usuario/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/usuario-cuenta/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usuario/mvnw" beforeDir="false" afterPath="$PROJECT_DIR$/usuario-cuenta/mvnw" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usuario/mvnw.cmd" beforeDir="false" afterPath="$PROJECT_DIR$/usuario-cuenta/mvnw.cmd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usuario/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/usuario-cuenta/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usuario/src/main/java/grupo4/mscvusuario/UsuarioApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/usuario-cuenta/src/main/java/grupo4/mscvusuario/UsuarioApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usuario/src/main/java/grupo4/mscvusuario/controllers/UsuarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/usuario-cuenta/src/main/java/grupo4/mscvusuario/controllers/UsuarioController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usuario/src/main/java/grupo4/mscvusuario/entity/Cuenta.java" beforeDir="false" afterPath="$PROJECT_DIR$/usuario-cuenta/src/main/java/grupo4/mscvusuario/entity/Cuenta.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usuario/src/main/java/grupo4/mscvusuario/entity/Rol.java" beforeDir="false" afterPath="$PROJECT_DIR$/usuario-cuenta/src/main/java/grupo4/mscvusuario/entity/Rol.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usuario/src/main/java/grupo4/mscvusuario/entity/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/usuario-cuenta/src/main/java/grupo4/mscvusuario/entity/Usuario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usuario/src/main/java/grupo4/mscvusuario/repository/UsuarioRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/usuario-cuenta/src/main/java/grupo4/mscvusuario/repository/UsuarioRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usuario/src/main/java/grupo4/mscvusuario/service/UsuarioService.java" beforeDir="false" afterPath="$PROJECT_DIR$/usuario-cuenta/src/main/java/grupo4/mscvusuario/service/UsuarioService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usuario/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/usuario-cuenta/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usuario/src/test/java/grupo4/mscvusuario/MscvUsuarioApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/usuario-cuenta/src/test/java/grupo4/mscvusuario/MscvUsuarioApplicationTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -168,14 +167,14 @@
   </component>
   <component name="RunManager" selected="Spring Boot.MonopatinApplication">
     <configuration name="AdminApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
-      <module name="mscv-admin" />
+      <module name="admin" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="grupo4.mscvadmin.AdminApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration name="CuentaApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
-      <module name="mscv-cuenta" />
+      <module name="cuenta" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="grupo4.mscvcuenta.CuentaApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -196,7 +195,7 @@
       </method>
     </configuration>
     <configuration name="MonopatinApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
-      <module name="mscv-monopatin" />
+      <module name="monopatin" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="grupo4.mscvmonopatin.MonopatinApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -217,7 +216,7 @@
       </method>
     </configuration>
     <configuration name="UsuarioApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
-      <module name="usuario" />
+      <module name="usuario-cuenta" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="grupo4.mscvusuario.UsuarioApplication" />
       <method v="2">
         <option name="Make" enabled="true" />

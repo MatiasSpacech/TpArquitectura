@@ -20,11 +20,20 @@ public class Usuario {
     @Column
     private String nombre;
     @Column
+    private String lastName;
+    @Column
     private String email;
+    @Enumerated(EnumType.STRING)
     @Column
     private Rol rol;
 
     @ManyToMany(cascade = CascadeType.ALL)
     List<Cuenta> cuentas;
+
+    @Column()
+    private Double latitud; // "LATITUD"
+
+    @Column()
+    private Double longitud; // "LONGITUD"
 
 }
