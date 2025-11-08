@@ -1,9 +1,0 @@
-GET http://localhost:8084/monopatines
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.1
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-<> 2025-11-07T152228.200.json
-
-###
-

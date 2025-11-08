@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/admin")
+@RequestMapping("/api/admin")
 public class AdminController {
 
     @Autowired
@@ -16,6 +16,7 @@ public class AdminController {
 
     @GetMapping("/")
     public String getUsuario() {
-        return usuarioService.getUsuario();
+        return "probando gateway";
+        //return usuarioService.getUsuario();
     }
 }

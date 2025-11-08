@@ -25,6 +25,7 @@
         <module>facturacion</module>
         <module>tarifas</module>
         <module>parada</module>
+        <module>gateway</module>
     </modules>
 
     <properties>

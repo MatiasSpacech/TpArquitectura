@@ -4,7 +4,7 @@ import grupo4.facturacion.client.TarifaFeignClient;
 import grupo4.facturacion.entity.Factura;
 
 import grupo4.facturacion.repository.FacturaRepository;
-import grupo4.mscvadmin.services.UsuarioService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
