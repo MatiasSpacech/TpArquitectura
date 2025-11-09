@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Date;
 
 @RestController
-@RequestMapping("/api/tarifas")
+@RequestMapping("/api/tarifas") //http://localhost:8080/api/tarifas/
 public class TarifaController {
 
     @Autowired
@@ -38,7 +38,16 @@ public class TarifaController {
     public ResponseEntity<?> actualizarTarifaDesdeFecha(
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date fecha,
             @RequestParam double porcentajeIncremento) {
-        return ResponseEntity.ok(tarifaService.actualizarTarifaDesdeFecha(fecha, porcentajeIncremento));
+        try {
+            System.out.println("Fecha recibida: " + fecha);
+            System.out.println("Porcentaje recibido: " + porcentajeIncremento);
+            TarifaDTO resultado = tarifaService.actualizarTarifaDesdeFecha(fecha, porcentajeIncremento);
+            return ResponseEntity.ok(resultado);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Error: " + e.getMessage() + " - Causa: " + (e.getCause() != null ? e.getCause().getMessage() : "N/A"));
+        }
     }
 
     @PostMapping("/actualizar")
@@ -62,7 +71,7 @@ public class TarifaController {
         return ResponseEntity.status(HttpStatus.OK).body(tarifaService.findAllTarifas());
     }
 
-    @GetMapping("/tarifa/id/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<?> findTarifaById(@PathVariable Long id) {
         return ResponseEntity.status(HttpStatus.OK).body(tarifaService.findTarifaById(id));
     }

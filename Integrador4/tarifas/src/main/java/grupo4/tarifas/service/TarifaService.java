@@ -17,14 +17,48 @@ public class TarifaService {
     private TarifaRepository tarifaRepository;
 
     @Transactional
-    public TarifaDTO actualizarTarifaDesdeFecha(Date fecha, double montoExtra) {
-        Tarifa tarifa = tarifaRepository.findTarifaVigenteDesde(fecha);
-        if (tarifa == null) {
-            throw new RuntimeException("No se encontró tarifa vigente para la fecha");
+    public TarifaDTO actualizarTarifaDesdeFecha(Date fecha, double porcentajeIncremento) {
+        System.out.println("Buscando tarifa vigente desde: " + fecha);
+
+        // Primero verifica cuántas tarifas hay
+        List<Tarifa> todasLasTarifas = tarifaRepository.findAll();
+        System.out.println("Total de tarifas en BD: " + todasLasTarifas.size());
+        todasLasTarifas.forEach(t -> {
+            System.out.println("  - ID: " + t.getId() + ", Fecha: " + t.getFecha() + 
+                          " (comparando con " + fecha + " -> " + (t.getFecha().compareTo(fecha) <= 0 ? "VÁLIDA" : "FUTURA") + ")");
+        });
+
+        List<Tarifa> tarifasVigentes = tarifaRepository.findTarifasVigentesDesde(fecha);
+        System.out.println("Tarifas vigentes encontradas: " + tarifasVigentes.size());
+        
+        if (tarifasVigentes.isEmpty()) {
+            throw new RuntimeException("No se encontró tarifa vigente para la fecha: " + fecha + 
+                    ". Tarifas disponibles: " + todasLasTarifas.size());
         }
-        tarifa.setMonto(tarifa.getMonto() * montoExtra);
-        tarifaRepository.save(tarifa);
-        return new TarifaDTO(tarifa);
+        
+        Tarifa tarifa = tarifasVigentes.get(0); // Tomar la primera (más reciente)
+        
+        System.out.println("Tarifa encontrada - ID: " + tarifa.getId() + ", Fecha: " + tarifa.getFecha() + ", Monto actual: " + tarifa.getMonto());
+
+        // Aplicar el incremento porcentual
+        double montoOriginal = tarifa.getMonto();
+        double nuevoMonto = montoOriginal * (1 + porcentajeIncremento / 100.0);
+
+        System.out.println("Aplicando incremento de " + porcentajeIncremento + "%");
+        System.out.println("Monto original: " + montoOriginal + " -> Nuevo monto: " + nuevoMonto);
+
+        tarifa.setMonto(nuevoMonto);
+
+        // Si también hay montoExtra, aplicar el mismo incremento
+        double montoExtraOriginal = tarifa.getMontoExtra();
+        double nuevoMontoExtra = montoExtraOriginal * (1 + porcentajeIncremento / 100.0);
+        tarifa.setMontoExtra(nuevoMontoExtra);
+        System.out.println("MontoExtra actualizado: " + montoExtraOriginal + " -> " + nuevoMontoExtra);
+
+        Tarifa tarifaGuardada = tarifaRepository.save(tarifa);
+        System.out.println("Tarifa guardada con nuevo monto: " + tarifaGuardada.getMonto());
+
+        return new TarifaDTO(tarifaGuardada);
     }
 
     @Transactional
