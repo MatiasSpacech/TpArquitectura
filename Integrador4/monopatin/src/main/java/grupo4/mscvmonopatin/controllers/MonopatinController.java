@@ -7,23 +7,23 @@ import grupo4.mscvmonopatin.repository.MonopatinRepository;
 import grupo4.mscvmonopatin.services.MonopatinService;
 import grupo4.mscvmonopatin.services.exceptions.InvalidEstadoException;
 import grupo4.mscvmonopatin.services.exceptions.NotFoundException;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/monopatines")
+@RequestMapping("api/monopatines")
+// Todos los atributos final les crea un cosntructor con los mismos parametros
+@RequiredArgsConstructor
 public class MonopatinController {
 
     private final MonopatinService service;
-
-    public MonopatinController(MonopatinService service) {
-        this.service = service;
-    }
 
     @GetMapping
     public ResponseEntity<List<MonopatinDTO>> findAll() {
@@ -107,13 +107,18 @@ public class MonopatinController {
     }
 
     @GetMapping("/parada/{idParada}")
-    public ResponseEntity<List<MonopatinDTO>> findMonopatinesByIdParada(@PathVariable Long idParada){
-        List<MonopatinDTO> monopatinesEnParada = service.findMonopatinesByIdParada(idParada);
-
-        if (monopatinesEnParada.isEmpty()) {
-            return ResponseEntity.noContent().build();
+    public ResponseEntity<List<MonopatinDTO>> findMonopatinesByIdParada(@PathVariable Long idParada,
+                                                                        @RequestParam(name= "estado", required = false) String estado){
+        List<MonopatinDTO> monopatinesEnParada = new ArrayList<>();
+        if(estado!=null && !estado.trim().isEmpty()){
+            monopatinesEnParada.addAll(
+                    service.findMonopatinesPorEstadoByIdParada(idParada,estado));
+        }
+        else{
+            monopatinesEnParada.addAll(service.findMonopatinesByIdParada(idParada));
         }
 
         return ResponseEntity.ok(monopatinesEnParada);
     }
+
 }

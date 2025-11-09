@@ -8,8 +8,6 @@
         <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
-<<<<<<< HEAD
-=======
     <option name="ignoredFiles">
       <set>
         <option value="$PROJECT_DIR$/cuenta/pom.xml" />
@@ -19,7 +17,6 @@
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_21" default="true" project-jdk-name="21" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
->>>>>>> fb646ce02e72d59eaef87039e83fb3e1c31fe36f
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_21" default="true" project-jdk-name="21" project-jdk-type="JavaSDK" />
 </project>

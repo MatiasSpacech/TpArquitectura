@@ -22,4 +22,12 @@ public class Parada {
     private Double latitud;
     @Column(nullable = false)
     private Double longitud;
+
+    public Parada(String nombre, String ciudad, String direccion, Double latitud, Double longitud) {
+        this.nombre = nombre;
+        this.ciudad = ciudad;
+        this.direccion = direccion;
+        this.latitud = latitud;
+        this.longitud = longitud;
+    }
 }

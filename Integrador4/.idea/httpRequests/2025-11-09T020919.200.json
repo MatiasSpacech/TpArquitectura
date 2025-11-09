@@ -1,0 +1,23 @@
+[
+  {
+    "estado": "MANTENIMIENTO",
+    "latitud": 200.0,
+    "longitud": 30.0,
+    "kmRecorridos": 0,
+    "tiempoUsado": 0
+  },
+  {
+    "estado": "LIBRE",
+    "latitud": 240.0,
+    "longitud": 30.0,
+    "kmRecorridos": 0,
+    "tiempoUsado": 0
+  },
+  {
+    "estado": "MANTENIMIENTO",
+    "latitud": 200.0,
+    "longitud": 30.0,
+    "kmRecorridos": 0,
+    "tiempoUsado": 0
+  }
+]

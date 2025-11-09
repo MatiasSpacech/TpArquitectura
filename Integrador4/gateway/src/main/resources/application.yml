@@ -17,7 +17,7 @@ spring:
             - id: facturacion
               uri: http://localhost:8083
               predicates:
-                - Path=/api/facturacion/**
+                - Path=/api/facturas/**
 
             - id: monopatin
               uri: http://localhost:8084
@@ -35,14 +35,19 @@ spring:
                 - Path=/api/tarifas/**
             
             - id: viajes
-              uri: http://localhost:8088
+              uri: http://localhost:8087
               predicates:
                 - Path=/api/viajes/**
 
-            - id: cuenta-usuario
+            - id: cuenta
               uri: http://localhost:8082
               predicates:
-                - Path=/api/cuenta-usuario/**
+                - Path=/api/cuenta/**
+
+            - id: usuario
+              uri: http://localhost:8082
+              predicates:
+                - Path=/api/usuario/**
 
           
 logging:

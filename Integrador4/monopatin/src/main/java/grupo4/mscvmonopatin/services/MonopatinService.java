@@ -9,6 +9,7 @@ import grupo4.mscvmonopatin.model.Monopatin;
 import grupo4.mscvmonopatin.repository.MonopatinRepository;
 import grupo4.mscvmonopatin.services.exceptions.InvalidEstadoException;
 import grupo4.mscvmonopatin.services.exceptions.NotFoundException;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,13 +19,11 @@ import java.util.List;
 import java.util.Map;
 
 @Service
+@RequiredArgsConstructor
 public class MonopatinService {
+    private final ParadaFeignClient paradaFeignClient;
 
-    @Autowired
-    private ParadaFeignClient paradaFeignClient;
-
-    @Autowired
-    private MonopatinRepository repository;
+    private final MonopatinRepository repository;
 
     @Transactional(readOnly = true)
     public List<MonopatinDTO> findAll() {
@@ -56,29 +55,6 @@ public class MonopatinService {
         return map;
     }
 
-//    @Transactional
-//    public Monopatin save(Monopatin monopatin){
-//        System.out.println("entro al service");
-//        String estado = monopatin.getEstado().toString();
-//        // Si el estado no existe en el enum,tiro la exception
-//        if(Estado.perteneceAlEnum(estado)==null){
-//            System.out.println("no pertenece al enum");
-//            throw new InvalidEstadoException(estado);
-//        }
-//
-//        // Verifico que la parada exista
-//        Parada parada = paradaFeignClient.findById(monopatin.getIdParada());
-//        if(parada==null){
-//            System.out.println("parada no existe");
-//            throw new NotFoundException("Parada",monopatin.getIdParada().toString());
-//        }
-//        Monopatin monoNuevo = repository.save(monopatin);
-////        return new MonopatinDTO(repository.save(monopatin));
-//        System.out.println(monoNuevo);
-////        return new MonopatinDTO(monoNuevo);
-//        return monoNuevo;
-//    }
-
     @Transactional
     public MonopatinDTO save (Monopatin monopatin) {
         // Verifico el estado pasado
@@ -93,7 +69,8 @@ public class MonopatinService {
             throw new NotFoundException("Parada",monopatin.getIdParada().toString());
         }
 
-        return new MonopatinDTO(repository.save(monopatin));
+        Monopatin monopatinNuevo = repository.save(monopatin);
+        return new MonopatinDTO(monopatinNuevo);
     }
 
     @Transactional
@@ -151,6 +128,19 @@ public class MonopatinService {
     @Transactional(readOnly = true)
     public List<MonopatinDTO> findMonopatinesByIdParada(Long idParada){
         return repository.findByIdParada(idParada).stream().map(MonopatinDTO::new).toList();
+    }
+
+    @Transactional(readOnly=true)
+    public List<MonopatinDTO> findMonopatinesPorEstadoByIdParada(Long idParada,String estado) {
+        estado = estado.toUpperCase();
+
+        if(Estado.perteneceAlEnum(estado)==null){
+            throw new InvalidEstadoException(estado);
+        }
+
+        return repository.findByEstadoStringAndIdParada(estado,idParada)
+                .stream().map(MonopatinDTO::new)
+                .toList();
     }
 
 

@@ -8,7 +8,7 @@ import lombok.RequiredArgsConstructor;
 public class NotFoundException extends RuntimeException {
     private final String message;
 
-    public NotFoundException(String entity, String id) {
+    public NotFoundException(String entity, Long id) {
         this.message = String.format("La entidad %s con id %s no encontrado", entity, id);
     }
 }
