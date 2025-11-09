@@ -4,14 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="723662e4-479d-4db5-9852-0ec9a71ebf68" name="Changes" comment="CRUD BASICO">
-      <change afterPath="$PROJECT_DIR$/usuario-cuenta/src/main/java/grupo4/mscvusuario/controllers/CuentaController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/usuario-cuenta/src/main/java/grupo4/mscvusuario/repository/CuentaRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/usuario-cuenta/src/main/java/grupo4/mscvusuario/service/CuentaService.java" afterDir="false" />
+    <list default="true" id="723662e4-479d-4db5-9852-0ec9a71ebf68" name="Changes" comment="CRUD">
+      <change afterPath="$PROJECT_DIR$/usuario-cuenta/endPoint.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/usuario-cuenta/src/main/java/grupo4/mscvusuario/controllers/UsuarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/usuario-cuenta/src/main/java/grupo4/mscvusuario/controllers/UsuarioController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/usuario-cuenta/src/main/java/grupo4/mscvusuario/entity/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/usuario-cuenta/src/main/java/grupo4/mscvusuario/entity/Usuario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/usuario-cuenta/src/main/java/grupo4/mscvusuario/service/UsuarioService.java" beforeDir="false" afterPath="$PROJECT_DIR$/usuario-cuenta/src/main/java/grupo4/mscvusuario/service/UsuarioService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -281,7 +277,15 @@
       <option name="project" value="LOCAL" />
       <updated>1762644294601</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="CRUD">
+      <option name="closed" value="true" />
+      <created>1762645752456</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1762645752456</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -315,7 +319,8 @@
     <MESSAGE value="Implementado los microservicios de dani y el crud del microservicio de monopatines" />
     <MESSAGE value="refactorizacion usuario cuenta, ahora es un solo microservicio usuario-cuenta, elimino el micfoservicio cuenta, ajusto pom general &lt;module&gt;usuario-cuenta&lt;/module&gt;" />
     <MESSAGE value="CRUD BASICO" />
-    <option name="LAST_COMMIT_MESSAGE" value="CRUD BASICO" />
+    <MESSAGE value="CRUD" />
+    <option name="LAST_COMMIT_MESSAGE" value="CRUD" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

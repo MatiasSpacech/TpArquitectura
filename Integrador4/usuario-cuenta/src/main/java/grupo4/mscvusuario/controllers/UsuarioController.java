@@ -16,6 +16,12 @@ public class UsuarioController {
     @Autowired
     private UsuarioService usuarioService;
 
+    //end ponit de prueba hola desde usuario controller
+    @GetMapping("/hola")
+    public ResponseEntity<String> hola() {
+        return ResponseEntity.ok("Hola desde Usuario Controller");
+    }
+
     @GetMapping
     public ResponseEntity<List<Usuario>> findAll(){
         List<Usuario> usuarios = usuarioService.findAll();
