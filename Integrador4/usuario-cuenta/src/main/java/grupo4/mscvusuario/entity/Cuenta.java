@@ -55,6 +55,11 @@ public class Cuenta {
     @Column(name = "fecha_renovacion_cupo")
     private LocalDate fechaRenovacionCupo; // Se usa solo si tipoCuenta es PREMIUM
 
+    public void addUsuario(Usuario usuario) {
+        this.usuarios.add(usuario);
+        usuario.getCuentas().add(this);
+    }
+
     // Usamos @PrePersist para establecer valores por defecto de forma segura
     @PrePersist
     public void prePersist() {

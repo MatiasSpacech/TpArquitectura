@@ -1,6 +1,7 @@
 package grupo4.mscvusuario.service;
 
 import grupo4.mscvusuario.entity.Cuenta;
+import grupo4.mscvusuario.entity.EstadoCuenta;
 import grupo4.mscvusuario.entity.Usuario;
 import grupo4.mscvusuario.repository.CuentaRepository;
 import grupo4.mscvusuario.repository.UsuarioRepository;
@@ -53,5 +54,19 @@ public class UsuarioService {
             }
         }
         return Optional.empty();
+    }
+
+    //punto B Anular cuentas de usuarios 
+    //Interpretacion : Cambiar el estado de todas las cuentas de un usuario a INACTIVA
+    @Transactional
+    public void cambiarEstadoCuentas(Long idUsuario, EstadoCuenta nuevoEstado) {
+        Optional<Usuario> oUsuario = usuarioRepository.findById(idUsuario);
+        if (oUsuario.isPresent()) {
+            Usuario usuario = oUsuario.get();
+            for (Cuenta cuenta : usuario.getCuentas()) {
+                cuenta.setEstado(nuevoEstado);;// Asumiendo que tienes un metodo setEstadoCuenta en tu entidad Cuenta
+                cuentaRepository.save(cuenta);
+            }
+        }
     }
 }
