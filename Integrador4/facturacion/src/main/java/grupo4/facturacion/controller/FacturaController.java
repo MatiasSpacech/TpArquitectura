@@ -1,0 +1,89 @@
+package grupo4.facturacion.controller;
+
+import grupo4.facturacion.dto.ViajeFacturaRequestDTO;
+import grupo4.facturacion.entity.Factura;
+import grupo4.facturacion.service.FacturaService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Date;
+
+@RestController
+@RequestMapping("/api/facturas")
+public class FacturaController {
+
+    @Autowired
+    private FacturaService facturaService;
+
+    @GetMapping("/")
+    public ResponseEntity<?> findAll(){
+        return ResponseEntity.status(HttpStatus.OK).body(facturaService.findAll());
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<?> findById(@PathVariable Long id) {
+        return ResponseEntity.status(HttpStatus.OK).body(facturaService.findById(id));
+    }
+
+    @GetMapping("/entre-fechas")
+    public ResponseEntity<?> findByFechaBetween(
+            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date fechaInicio,
+            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date fechaFin) {
+        return ResponseEntity.status(HttpStatus.OK).body(facturaService.findByFechaBetween(fechaInicio, fechaFin));
+    }
+
+    @PostMapping("/")
+    public ResponseEntity<?> save(@RequestBody Factura factura) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(facturaService.save(factura));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> delete(@PathVariable Long id) {
+        facturaService.delete(id);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
+
+    /**
+     * Consultar total facturado en rango de meses
+     * GET /api/facturas/total-facturado?anio=2025&mesDesde=1&mesHasta=6
+     */
+    @GetMapping("/total-facturado")
+    public ResponseEntity<?> getTotalFacturado(
+            @RequestParam int anio,
+            @RequestParam int mesDesde,
+            @RequestParam int mesHasta) {
+
+        // Validación
+        if (mesDesde < 1 || mesDesde > 12 || mesHasta < 1 || mesHasta > 12 || mesDesde > mesHasta) {
+            return ResponseEntity.badRequest().body("Meses inválidos. Deben estar entre 1-12 y mesDesde <= mesHasta");
+        }
+
+        Double total = facturaService.getTotalFacturadoPorRangoMeses(anio, mesDesde, mesHasta);
+        return ResponseEntity.ok(total);
+    }
+
+    /**
+     * Facturar viaje con usuarios premium y recargo por pausa
+     * POST /api/facturas/viaje
+     * Body: {
+     *   "viajeId": 1,
+     *   "usuarioId": 1,
+     *   "distanciaKm": 15.5,
+     *   "tarifaId": 1,
+     *   "tiempoPausaMinutos": 20
+     * }
+     */
+    @PostMapping("/viaje")
+    public ResponseEntity<?> facturarViaje(@RequestBody ViajeFacturaRequestDTO request) {
+        try {
+            Factura factura = facturaService.crearFacturaDesdeViaje(request);
+            return ResponseEntity.status(HttpStatus.CREATED).body(factura);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                    .body("Error al crear factura: " + e.getMessage());
+        }
+    }
+}

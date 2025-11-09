@@ -1,0 +1,1382 @@
+Index: facturacion/.gitignore
+===================================================================
+diff --git a/facturacion/.gitignore b/facturacion/.gitignore
+deleted file mode 100644
+--- a/facturacion/.gitignore	(revision a999649bd2774411a74018b93cc730e3d8af51e5)
++++ /dev/null	(revision a999649bd2774411a74018b93cc730e3d8af51e5)
+@@ -1,33 +0,0 @@
+-HELP.md
+-target/
+-.mvn/wrapper/maven-wrapper.jar
+-!**/src/main/**/target/
+-!**/src/test/**/target/
+-
+-### STS ###
+-.apt_generated
+-.classpath
+-.factorypath
+-.project
+-.settings
+-.springBeans
+-.sts4-cache
+-
+-### IntelliJ IDEA ###
+-.idea
+-*.iws
+-*.iml
+-*.ipr
+-
+-### NetBeans ###
+-/nbproject/private/
+-/nbbuild/
+-/dist/
+-/nbdist/
+-/.nb-gradle/
+-build/
+-!**/src/main/**/build/
+-!**/src/test/**/build/
+-
+-### VS Code ###
+-.vscode/
+Index: tarifas/src/main/java/grupo4/tarifas/TarifasApplication.java
+===================================================================
+diff --git a/tarifas/src/main/java/grupo4/tarifas/TarifasApplication.java b/tarifas/src/main/java/grupo4/tarifas/TarifasApplication.java
+deleted file mode 100644
+--- a/tarifas/src/main/java/grupo4/tarifas/TarifasApplication.java	(revision a999649bd2774411a74018b93cc730e3d8af51e5)
++++ /dev/null	(revision a999649bd2774411a74018b93cc730e3d8af51e5)
+@@ -1,13 +0,0 @@
+-package grupo4.tarifas;
+-
+-import org.springframework.boot.SpringApplication;
+-import org.springframework.boot.autoconfigure.SpringBootApplication;
+-
+-@SpringBootApplication
+-public class TarifasApplication {
+-
+-    public static void main(String[] args) {
+-        SpringApplication.run(TarifasApplication.class, args);
+-    }
+-
+-}
+Index: facturacion/src/main/java/grupo4/facturacion/client/TarifaFeignClient.java
+===================================================================
+diff --git a/facturacion/src/main/java/grupo4/facturacion/client/TarifaFeignClient.java b/facturacion/src/main/java/grupo4/facturacion/client/TarifaFeignClient.java
+deleted file mode 100644
+--- a/facturacion/src/main/java/grupo4/facturacion/client/TarifaFeignClient.java	(revision a999649bd2774411a74018b93cc730e3d8af51e5)
++++ /dev/null	(revision a999649bd2774411a74018b93cc730e3d8af51e5)
+@@ -1,28 +0,0 @@
+-package grupo4.facturacion.client;
+-
+-import grupo4.facturacion.dto.TarifaDTO;
+-import org.springframework.cloud.openfeign.FeignClient;
+-import org.springframework.http.ResponseEntity;
+-import org.springframework.web.bind.annotation.GetMapping;
+-import org.springframework.web.bind.annotation.PathVariable;
+-import org.springframework.web.bind.annotation.RequestParam;
+-
+-import java.util.Date;
+-import java.util.List;
+-
+-@FeignClient(name = "tarifas", url = "http://localhost:8086")
+-public interface TarifaFeignClient {
+-
+-    @GetMapping("/tarifas/")
+-    ResponseEntity<List<TarifaDTO>> findAllTarifas();
+-
+-    @GetMapping("/tarifas/tarifa/id/{id}")
+-    ResponseEntity<TarifaDTO> findTarifaById(@PathVariable Long id);
+-
+-    @GetMapping("/tarifas/buscar/fecha/{fecha}")
+-    ResponseEntity<TarifaDTO> findTarifaByFecha(@PathVariable Date fecha);
+-
+-    @GetMapping("/tarifas/tarifa/monto/{monto}")
+-    ResponseEntity<TarifaDTO> findTarifaByMonto(@PathVariable double monto);
+-}
+-
+Index: facturacion/src/main/java/grupo4/facturacion/config/RestTemplateConfig.java
+===================================================================
+diff --git a/facturacion/src/main/java/grupo4/facturacion/config/RestTemplateConfig.java b/facturacion/src/main/java/grupo4/facturacion/config/RestTemplateConfig.java
+deleted file mode 100644
+--- a/facturacion/src/main/java/grupo4/facturacion/config/RestTemplateConfig.java	(revision a999649bd2774411a74018b93cc730e3d8af51e5)
++++ /dev/null	(revision a999649bd2774411a74018b93cc730e3d8af51e5)
+@@ -1,14 +0,0 @@
+-package grupo4.facturacion.config;
+-
+-import org.springframework.context.annotation.Bean;
+-import org.springframework.context.annotation.Configuration;
+-import org.springframework.web.client.RestTemplate;
+-
+-@Configuration
+-public class RestTemplateConfig {
+-
+-    @Bean
+-    public RestTemplate restTemplate() {
+-        return new RestTemplate();
+-    }
+-}
+Index: tarifas/src/main/java/grupo4/tarifas/entity/Tarifa.java
+===================================================================
+diff --git a/tarifas/src/main/java/grupo4/tarifas/entity/Tarifa.java b/tarifas/src/main/java/grupo4/tarifas/entity/Tarifa.java
+deleted file mode 100644
+--- a/tarifas/src/main/java/grupo4/tarifas/entity/Tarifa.java	(revision a999649bd2774411a74018b93cc730e3d8af51e5)
++++ /dev/null	(revision a999649bd2774411a74018b93cc730e3d8af51e5)
+@@ -1,30 +0,0 @@
+-package grupo4.tarifas.entity;
+-
+-
+-import jakarta.persistence.*;
+-import lombok.AllArgsConstructor;
+-import lombok.Getter;
+-import lombok.NoArgsConstructor;
+-
+-import java.util.Date;
+-
+-@AllArgsConstructor
+-@NoArgsConstructor
+-@Entity
+-@Getter
+-@Table(name = "tarifa")
+-public class Tarifa {
+-    @Id
+-    @GeneratedValue(strategy = GenerationType.AUTO)
+-    private Long id;
+-    private double monto;
+-    @Column(name = "monto_extra")
+-    private double montoExtra;
+-    private Date fecha;
+-
+-    public Tarifa(double monto, double montoExtra, Date date) {
+-        this.monto = monto;
+-        this.montoExtra = montoExtra;
+-        this.fecha = date;
+-    }
+-}
+Index: facturacion/src/main/java/grupo4/facturacion/repository/FacturaRepository.java
+===================================================================
+diff --git a/facturacion/src/main/java/grupo4/facturacion/repository/FacturaRepository.java b/facturacion/src/main/java/grupo4/facturacion/repository/FacturaRepository.java
+deleted file mode 100644
+--- a/facturacion/src/main/java/grupo4/facturacion/repository/FacturaRepository.java	(revision a999649bd2774411a74018b93cc730e3d8af51e5)
++++ /dev/null	(revision a999649bd2774411a74018b93cc730e3d8af51e5)
+@@ -1,34 +0,0 @@
+-package grupo4.facturacion.repository;
+-
+-import grupo4.facturacion.entity.Factura;
+-import org.springframework.data.jpa.repository.JpaRepository;
+-import org.springframework.data.jpa.repository.Query;
+-import org.springframework.data.repository.query.Param;
+-import org.springframework.stereotype.Repository;
+-
+-import java.util.Date;
+-import java.util.List;
+-
+-@Repository("FacturaRepository")
+-public interface FacturaRepository extends JpaRepository<Factura,Long> {
+-
+-    // Buscar por ID de usuario
+-    @Query("SELECT f FROM Factura f WHERE f.usuarioId = :id")
+-    List<Factura> findByUsuarioId(@Param("id") Long id);
+-
+-    // Buscar por nombre de usuario
+-    @Query("SELECT f FROM Factura f WHERE f.usuario = :usuario")
+-    List<Factura> findByUsuario(@Param("usuario") String usuario);
+-
+-    // Buscar por estado
+-    @Query("SELECT f FROM Factura f WHERE f.estado = :estado")
+-    List<Factura> findByEstado(@Param("estado") String estado);
+-
+-    // Buscar por fecha exacta
+-    @Query("SELECT f FROM Factura f WHERE f.fechaEmision = :fecha")
+-    List<Factura> findByFecha(@Param("fecha") Date fecha);
+-
+-    // Buscar entre fechas
+-    @Query("SELECT f FROM Factura f WHERE f.fechaEmision BETWEEN :desde AND :hasta")
+-    List<Factura> findByFechaBetween(@Param("desde") Date fecha1, @Param("hasta") Date fecha2);
+-}
+Index: facturacion/src/test/java/grupo4/facturacion/FacturacionApplicationTests.java
+===================================================================
+diff --git a/facturacion/src/test/java/grupo4/facturacion/FacturacionApplicationTests.java b/facturacion/src/test/java/grupo4/facturacion/FacturacionApplicationTests.java
+deleted file mode 100644
+--- a/facturacion/src/test/java/grupo4/facturacion/FacturacionApplicationTests.java	(revision a999649bd2774411a74018b93cc730e3d8af51e5)
++++ /dev/null	(revision a999649bd2774411a74018b93cc730e3d8af51e5)
+@@ -1,13 +0,0 @@
+-package grupo4.facturacion;
+-
+-import org.junit.jupiter.api.Test;
+-import org.springframework.boot.test.context.SpringBootTest;
+-
+-@SpringBootTest
+-class FacturacionApplicationTests {
+-
+-    @Test
+-    void contextLoads() {
+-    }
+-
+-}
+Index: tarifas/pom.xml
+===================================================================
+diff --git a/tarifas/pom.xml b/tarifas/pom.xml
+deleted file mode 100644
+--- a/tarifas/pom.xml	(revision a999649bd2774411a74018b93cc730e3d8af51e5)
++++ /dev/null	(revision a999649bd2774411a74018b93cc730e3d8af51e5)
+@@ -1,103 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+-    <modelVersion>4.0.0</modelVersion>
+-    <parent>
+-        <groupId>grupo4</groupId>
+-        <artifactId>Integrador4</artifactId>
+-        <version>1.0-SNAPSHOT</version>
+-    </parent>
+-    <groupId>grupo4</groupId>
+-    <artifactId>tarifas</artifactId>
+-    <version>0.0.1-SNAPSHOT</version>
+-    <name>tarifas</name>
+-    <description>tarifas</description>
+-    <url/>
+-    <licenses>
+-        <license/>
+-    </licenses>
+-    <developers>
+-        <developer/>
+-    </developers>
+-    <scm>
+-        <connection/>
+-        <developerConnection/>
+-        <tag/>
+-        <url/>
+-    </scm>
+-    <properties>
+-        <java.version>21</java.version>
+-        <spring-cloud.version>2025.0.0</spring-cloud.version>
+-    </properties>
+-    <dependencies>
+-        <dependency>
+-            <groupId>org.springframework.boot</groupId>
+-            <artifactId>spring-boot-starter-data-jpa</artifactId>
+-        </dependency>
+-        <dependency>
+-            <groupId>org.springframework.boot</groupId>
+-            <artifactId>spring-boot-starter-web</artifactId>
+-        </dependency>
+-        <dependency>
+-            <groupId>org.springframework.cloud</groupId>
+-            <artifactId>spring-cloud-starter-openfeign</artifactId>
+-        </dependency>
+-
+-        <dependency>
+-            <groupId>com.mysql</groupId>
+-            <artifactId>mysql-connector-j</artifactId>
+-            <scope>runtime</scope>
+-        </dependency>
+-        <dependency>
+-            <groupId>org.projectlombok</groupId>
+-            <artifactId>lombok</artifactId>
+-            <optional>true</optional>
+-        </dependency>
+-        <dependency>
+-            <groupId>org.springframework.boot</groupId>
+-            <artifactId>spring-boot-starter-test</artifactId>
+-            <scope>test</scope>
+-        </dependency>
+-    </dependencies>
+-    <dependencyManagement>
+-        <dependencies>
+-            <dependency>
+-                <groupId>org.springframework.cloud</groupId>
+-                <artifactId>spring-cloud-dependencies</artifactId>
+-                <version>${spring-cloud.version}</version>
+-                <type>pom</type>
+-                <scope>import</scope>
+-            </dependency>
+-        </dependencies>
+-    </dependencyManagement>
+-
+-    <build>
+-        <plugins>
+-            <plugin>
+-                <groupId>org.apache.maven.plugins</groupId>
+-                <artifactId>maven-compiler-plugin</artifactId>
+-                <configuration>
+-                    <annotationProcessorPaths>
+-                        <path>
+-                            <groupId>org.projectlombok</groupId>
+-                            <artifactId>lombok</artifactId>
+-                        </path>
+-                    </annotationProcessorPaths>
+-                </configuration>
+-            </plugin>
+-            <plugin>
+-                <groupId>org.springframework.boot</groupId>
+-                <artifactId>spring-boot-maven-plugin</artifactId>
+-                <configuration>
+-                    <excludes>
+-                        <exclude>
+-                            <groupId>org.projectlombok</groupId>
+-                            <artifactId>lombok</artifactId>
+-                        </exclude>
+-                    </excludes>
+-                </configuration>
+-            </plugin>
+-        </plugins>
+-    </build>
+-
+-</project>
+Index: facturacion/.mvn/wrapper/maven-wrapper.properties
+===================================================================
+diff --git a/facturacion/.mvn/wrapper/maven-wrapper.properties b/facturacion/.mvn/wrapper/maven-wrapper.properties
+deleted file mode 100644
+--- a/facturacion/.mvn/wrapper/maven-wrapper.properties	(revision a999649bd2774411a74018b93cc730e3d8af51e5)
++++ /dev/null	(revision a999649bd2774411a74018b93cc730e3d8af51e5)
+@@ -1,3 +0,0 @@
+-wrapperVersion=3.3.4
+-distributionType=only-script
+-distributionUrl=https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.9.11/apache-maven-3.9.11-bin.zip
+Index: tarifas/src/main/java/grupo4/tarifas/repository/TarifaRepository.java
+===================================================================
+diff --git a/tarifas/src/main/java/grupo4/tarifas/repository/TarifaRepository.java b/tarifas/src/main/java/grupo4/tarifas/repository/TarifaRepository.java
+deleted file mode 100644
+--- a/tarifas/src/main/java/grupo4/tarifas/repository/TarifaRepository.java	(revision a999649bd2774411a74018b93cc730e3d8af51e5)
++++ /dev/null	(revision a999649bd2774411a74018b93cc730e3d8af51e5)
+@@ -1,49 +0,0 @@
+-package grupo4.tarifas.repository;
+-
+-import grupo4.tarifas.entity.Tarifa;
+-import org.springframework.data.jpa.repository.JpaRepository;
+-import org.springframework.data.jpa.repository.Query;
+-import org.springframework.data.repository.query.Param;
+-import org.springframework.format.annotation.DateTimeFormat;
+-import org.springframework.web.bind.annotation.PathVariable;
+-
+-import java.util.Date;
+-
+-public interface TarifaRepository extends JpaRepository<Tarifa, Long> {
+-
+-    //Actualizar Tarifa por desde una fecha dada
+-    @Query("UPDATE Tarifa t SET t.monto = :monto WHERE t.fecha = :fecha")
+-    void actualizarTarifaDesdeFecha(@Param("monto") double monto,
+-                                    @PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date fecha);
+-
+-    // Actualizar Tarifa
+-    @Query("UPDATE Tarifa t SET t.monto = :monto, t.montoExtra = :montoExtra, t.fecha = :fecha WHERE t.id = :id")
+-    void actualizarTarifa(@Param("id") Long id,
+-                          @Param("monto") double monto,
+-                          @Param("montoExtra") double montoExtra,
+-                          @PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date fecha);
+-
+-    // Eliminar Tarifa
+-    @Query("DELETE FROM Tarifa t WHERE t.id = :id")
+-    void eliminarTarifa(@Param("id") Long id);
+-
+-    // Crear Tarifa
+-    @Query("INSERT INTO Tarifa (monto, montoExtra, fecha) VALUES (:monto, :montoExtra, :fecha)")
+-    void crearTarifa(@Param("monto") double monto,
+-                     @Param("montoExtra") double montoExtra,
+-                     @PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date fecha);
+-
+-    // Buscar la tarifa vigente desde una fecha dada
+-    @Query("SELECT t FROM Tarifa t WHERE t.fecha <= :fecha ORDER BY t.fecha DESC")
+-    Tarifa findTarifaVigenteDesde(@PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date fecha);
+-
+-    // Buscar tarifa por fecha
+-    @Query("SELECT t FROM Tarifa t WHERE t.fecha = :fecha")
+-    Tarifa findByFecha(@PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date fecha);
+-
+-    // Buscar Tarifa por monto
+-    @Query("SELECT t FROM Tarifa t WHERE t.monto = :monto")
+-    Tarifa findByMonto(@Param("monto") double monto);
+-
+-
+-}
+Index: tarifas/src/main/java/grupo4/tarifas/controller/TarifaController.java
+===================================================================
+diff --git a/tarifas/src/main/java/grupo4/tarifas/controller/TarifaController.java b/tarifas/src/main/java/grupo4/tarifas/controller/TarifaController.java
+deleted file mode 100644
+--- a/tarifas/src/main/java/grupo4/tarifas/controller/TarifaController.java	(revision a999649bd2774411a74018b93cc730e3d8af51e5)
++++ /dev/null	(revision a999649bd2774411a74018b93cc730e3d8af51e5)
+@@ -1,62 +0,0 @@
+-package grupo4.tarifas.controller;
+-
+-import grupo4.tarifas.entity.Tarifa;
+-import grupo4.tarifas.repository.TarifaRepository;
+-import grupo4.tarifas.service.TarifaService;
+-import org.springframework.beans.factory.annotation.Autowired;
+-import org.springframework.http.HttpStatus;
+-import org.springframework.http.ResponseEntity;
+-import org.springframework.web.bind.annotation.*;
+-
+-import java.util.Date;
+-
+-@RestController
+-@RequestMapping("/tarifas")
+-public class TarifaController {
+-
+-    @Autowired
+-    private TarifaService tarifaService;
+-
+-    @PostMapping("/actualizar-desde-fecha")
+-    public ResponseEntity<?> actualizarTarifaDesdeFecha(@RequestParam Date fecha, @RequestParam double montoExtra) {
+-      return ResponseEntity.ok(tarifaService.actualizarTarifaDesdeFecha(fecha, montoExtra));
+-    }
+-
+-    @PostMapping("/actualizar")
+-    public ResponseEntity<?> actualizarTarifa(@RequestParam Tarifa tarifa) {
+-        return ResponseEntity.ok(tarifaService.actualizarTarifa(tarifa));
+-    }
+-
+-    @DeleteMapping("/{id}")
+-    public ResponseEntity<?> eliminarTarifa(@PathVariable Long id) {
+-       tarifaService.eliminarTarifa(id);
+-       return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+-    }
+-
+-    @PostMapping("/crear")
+-    public ResponseEntity<?> crearTarifa(@RequestBody Tarifa tarifa) {
+-        return ResponseEntity.status(HttpStatus.CREATED).body(tarifaService.crearTarifa(tarifa));
+-    }
+-
+-    @GetMapping("/")
+-    public ResponseEntity<?> findAllTarifas() {
+-        return ResponseEntity.status(HttpStatus.OK).body(tarifaService.findAllTarifas());
+-    }
+-
+-    @GetMapping("/tarifa/id/{id}")
+-    public ResponseEntity<?> findTarifaById(@PathVariable Long id) {
+-        return ResponseEntity.status(HttpStatus.OK).body(tarifaService.findTarifaById(id));
+-    }
+-
+-    @GetMapping("/buscar/fecha/{fecha}")
+-    public ResponseEntity<?> findTarifaByFecha(@PathVariable @RequestParam Date fecha) {
+-        return ResponseEntity.status(HttpStatus.OK).body(tarifaService.findTarifaByFecha(fecha));
+-    }
+-
+-
+-    @GetMapping("/tarifa/monto/{monto}")
+-    public ResponseEntity<?> findTarifaByMonto(@PathVariable double monto) {
+-        return ResponseEntity.status(HttpStatus.OK).body(tarifaService.findTarifaByMonto(monto));
+-    }
+-}
+-
+Index: tarifas/src/main/java/grupo4/tarifas/dto/TarifaDTO.java
+===================================================================
+diff --git a/tarifas/src/main/java/grupo4/tarifas/dto/TarifaDTO.java b/tarifas/src/main/java/grupo4/tarifas/dto/TarifaDTO.java
+deleted file mode 100644
+--- a/tarifas/src/main/java/grupo4/tarifas/dto/TarifaDTO.java	(revision a999649bd2774411a74018b93cc730e3d8af51e5)
++++ /dev/null	(revision a999649bd2774411a74018b93cc730e3d8af51e5)
+@@ -1,29 +0,0 @@
+-package grupo4.tarifas.dto;
+-
+-import lombok.AllArgsConstructor;
+-import lombok.Getter;
+-import lombok.NoArgsConstructor;
+-
+-import java.util.Date;
+-
+-
+-@NoArgsConstructor
+-@Getter
+-public class TarifaDTO {
+-    private double monto;
+-    private double montoExtra;
+-    private Date date;
+-
+-    public TarifaDTO(double monto, double montoExtra, Date date) {
+-        this.monto = monto;
+-        this.montoExtra = montoExtra;
+-        this.date = date;
+-    }
+-
+-    @Override
+-    public String toString() {
+-        return "TarifaDTO [monto=" + monto +
+-                ", montoExtra=" + montoExtra +
+-                ", date=" + date + "]";
+-    }
+-}
+Index: facturacion/src/main/java/grupo4/facturacion/FacturacionApplication.java
+===================================================================
+diff --git a/facturacion/src/main/java/grupo4/facturacion/FacturacionApplication.java b/facturacion/src/main/java/grupo4/facturacion/FacturacionApplication.java
+deleted file mode 100644
+--- a/facturacion/src/main/java/grupo4/facturacion/FacturacionApplication.java	(revision a999649bd2774411a74018b93cc730e3d8af51e5)
++++ /dev/null	(revision a999649bd2774411a74018b93cc730e3d8af51e5)
+@@ -1,13 +0,0 @@
+-package grupo4.facturacion;
+-
+-import org.springframework.boot.SpringApplication;
+-import org.springframework.boot.autoconfigure.SpringBootApplication;
+-
+-@SpringBootApplication
+-public class FacturacionApplication {
+-
+-    public static void main(String[] args) {
+-        SpringApplication.run(FacturacionApplication.class, args);
+-    }
+-
+-}
+Index: tarifas/.mvn/wrapper/maven-wrapper.properties
+===================================================================
+diff --git a/tarifas/.mvn/wrapper/maven-wrapper.properties b/tarifas/.mvn/wrapper/maven-wrapper.properties
+deleted file mode 100644
+--- a/tarifas/.mvn/wrapper/maven-wrapper.properties	(revision a999649bd2774411a74018b93cc730e3d8af51e5)
++++ /dev/null	(revision a999649bd2774411a74018b93cc730e3d8af51e5)
+@@ -1,3 +0,0 @@
+-wrapperVersion=3.3.4
+-distributionType=only-script
+-distributionUrl=https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.9.11/apache-maven-3.9.11-bin.zip
+Index: tarifas/src/main/resources/application.properties
+===================================================================
+diff --git a/tarifas/src/main/resources/application.properties b/tarifas/src/main/resources/application.properties
+deleted file mode 100644
+--- a/tarifas/src/main/resources/application.properties	(revision a999649bd2774411a74018b93cc730e3d8af51e5)
++++ /dev/null	(revision a999649bd2774411a74018b93cc730e3d8af51e5)
+@@ -1,13 +0,0 @@
+-spring.application.name=tarifas
+-
+-server.port=8086
+-
+-spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+-spring.datasource.username=root
+-spring.datasource.password=
+-spring.datasource.url=jdbc:mysql://localhost:3306/tarifas?createDatabaseIfNotExist=true
+-
+-spring.jpa.show-sql=true
+-spring.jpa.database=mysql
+-spring.sql.init.mode=always
+-spring.jpa.hibernate.ddl-auto=update
+Index: facturacion/pom.xml
+===================================================================
+diff --git a/facturacion/pom.xml b/facturacion/pom.xml
+deleted file mode 100644
+--- a/facturacion/pom.xml	(revision a999649bd2774411a74018b93cc730e3d8af51e5)
++++ /dev/null	(revision a999649bd2774411a74018b93cc730e3d8af51e5)
+@@ -1,103 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+-    <modelVersion>4.0.0</modelVersion>
+-    <parent>
+-        <groupId>grupo4</groupId>
+-        <artifactId>Integrador4</artifactId>
+-        <version>1.0-SNAPSHOT</version>
+-    </parent>
+-    <groupId>grupo4</groupId>
+-    <artifactId>facturacion</artifactId>
+-    <version>0.0.1-SNAPSHOT</version>
+-    <name>facturacion</name>
+-    <description>facturacion</description>
+-    <url/>
+-    <licenses>
+-        <license/>
+-    </licenses>
+-    <developers>
+-        <developer/>
+-    </developers>
+-    <scm>
+-        <connection/>
+-        <developerConnection/>
+-        <tag/>
+-        <url/>
+-    </scm>
+-    <properties>
+-        <java.version>21</java.version>
+-        <spring-cloud.version>2025.0.0</spring-cloud.version>
+-    </properties>
+-    <dependencies>
+-        <dependency>
+-            <groupId>org.springframework.boot</groupId>
+-            <artifactId>spring-boot-starter-data-jpa</artifactId>
+-        </dependency>
+-        <dependency>
+-            <groupId>org.springframework.boot</groupId>
+-            <artifactId>spring-boot-starter-web</artifactId>
+-        </dependency>
+-        <dependency>
+-            <groupId>org.springframework.cloud</groupId>
+-            <artifactId>spring-cloud-starter-openfeign</artifactId>
+-        </dependency>
+-
+-        <dependency>
+-            <groupId>org.postgresql</groupId>
+-            <artifactId>postgresql</artifactId>
+-            <scope>runtime</scope>
+-        </dependency>
+-        <dependency>
+-            <groupId>org.projectlombok</groupId>
+-            <artifactId>lombok</artifactId>
+-            <optional>true</optional>
+-        </dependency>
+-        <dependency>
+-            <groupId>org.springframework.boot</groupId>
+-            <artifactId>spring-boot-starter-test</artifactId>
+-            <scope>test</scope>
+-        </dependency>
+-    </dependencies>
+-    <dependencyManagement>
+-        <dependencies>
+-            <dependency>
+-                <groupId>org.springframework.cloud</groupId>
+-                <artifactId>spring-cloud-dependencies</artifactId>
+-                <version>${spring-cloud.version}</version>
+-                <type>pom</type>
+-                <scope>import</scope>
+-            </dependency>
+-        </dependencies>
+-    </dependencyManagement>
+-
+-    <build>
+-        <plugins>
+-            <plugin>
+-                <groupId>org.apache.maven.plugins</groupId>
+-                <artifactId>maven-compiler-plugin</artifactId>
+-                <configuration>
+-                    <annotationProcessorPaths>
+-                        <path>
+-                            <groupId>org.projectlombok</groupId>
+-                            <artifactId>lombok</artifactId>
+-                        </path>
+-                    </annotationProcessorPaths>
+-                </configuration>
+-            </plugin>
+-            <plugin>
+-                <groupId>org.springframework.boot</groupId>
+-                <artifactId>spring-boot-maven-plugin</artifactId>
+-                <configuration>
+-                    <excludes>
+-                        <exclude>
+-                            <groupId>org.projectlombok</groupId>
+-                            <artifactId>lombok</artifactId>
+-                        </exclude>
+-                    </excludes>
+-                </configuration>
+-            </plugin>
+-        </plugins>
+-    </build>
+-
+-</project>
+Index: facturacion/src/main/java/grupo4/facturacion/entity/Factura.java
+===================================================================
+diff --git a/facturacion/src/main/java/grupo4/facturacion/entity/Factura.java b/facturacion/src/main/java/grupo4/facturacion/entity/Factura.java
+deleted file mode 100644
+--- a/facturacion/src/main/java/grupo4/facturacion/entity/Factura.java	(revision a999649bd2774411a74018b93cc730e3d8af51e5)
++++ /dev/null	(revision a999649bd2774411a74018b93cc730e3d8af51e5)
+@@ -1,44 +0,0 @@
+-package grupo4.facturacion.entity;
+-
+-import jakarta.persistence.*;
+-import lombok.AllArgsConstructor;
+-import lombok.Builder;
+-import lombok.Data;
+-import lombok.NoArgsConstructor;
+-import org.springframework.cloud.openfeign.EnableFeignClients;
+-
+-
+-import java.util.Date;
+-
+-@EnableFeignClients
+-
+-
+-@AllArgsConstructor
+-@NoArgsConstructor
+-@Entity
+-@Table (name = "factura")
+-public class Factura {
+-    @Id
+-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+-    private Long id;
+-    @Column(name = "numero_factura", nullable = false, unique = true)
+-    private String numeroFactura;
+-    private String usuario; //
+-    @Column(name = "fecha_emision")
+-    private Date fechaEmision;
+-    private double monto;
+-    private String estado; // Pagada o Pendiente de pago
+-
+-    @Column(name = "usuario_id")
+-    private Long usuarioId;
+-
+-    public Factura(String numeroFactura, String usuario, Date fechaEmision,
+-                   double monto, String estado, Long usuarioId) {
+-        this.numeroFactura = numeroFactura;
+-        this.usuario = usuario;
+-        this.fechaEmision = fechaEmision;
+-        this.monto = monto;
+-        this.estado = estado;
+-        this.usuarioId = usuarioId;
+-    }
+-}
+Index: facturacion/src/main/java/grupo4/facturacion/controller/FacturaController.java
+===================================================================
+diff --git a/facturacion/src/main/java/grupo4/facturacion/controller/FacturaController.java b/facturacion/src/main/java/grupo4/facturacion/controller/FacturaController.java
+deleted file mode 100644
+--- a/facturacion/src/main/java/grupo4/facturacion/controller/FacturaController.java	(revision a999649bd2774411a74018b93cc730e3d8af51e5)
++++ /dev/null	(revision a999649bd2774411a74018b93cc730e3d8af51e5)
+@@ -1,66 +0,0 @@
+-package grupo4.facturacion.controller;
+-
+-import grupo4.facturacion.entity.Factura;
+-import grupo4.facturacion.service.FacturaService;
+-import org.springframework.beans.factory.annotation.Autowired;
+-import org.springframework.format.annotation.DateTimeFormat;
+-import org.springframework.http.HttpStatus;
+-import org.springframework.http.ResponseEntity;
+-import org.springframework.web.bind.annotation.*;
+-
+-import java.util.Date;
+-
+-@RestController
+-@RequestMapping("/facturas")
+-public class FacturaController {
+-
+-    @Autowired
+-    private FacturaService facturaService;
+-
+-    @GetMapping("/")
+-    public ResponseEntity<?> findAll(){
+-        return ResponseEntity.status(HttpStatus.OK).body(facturaService.findAll());
+-    }
+-
+-    @GetMapping("/{id}")
+-    public ResponseEntity<?> findById(@PathVariable Long id) {
+-        return ResponseEntity.status(HttpStatus.OK).body(facturaService.findById(id));
+-    }
+-
+-    @GetMapping("/usuario/id/{id}")
+-    public ResponseEntity<?> findByUsuarioId(@PathVariable Long id) {
+-        return ResponseEntity.status(HttpStatus.OK).body(facturaService.findByUsuarioId(id));
+-    }
+-
+-    @PostMapping("")
+-    public ResponseEntity<?> save(@RequestBody Factura factura) {
+-        return ResponseEntity.status(HttpStatus.CREATED).body(facturaService.save(factura));
+-    }
+-
+-    @DeleteMapping("/{id}")
+-    public ResponseEntity<?> delete(@PathVariable Long id) {
+-        facturaService.delete(id);
+-        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+-    }
+-
+-    @GetMapping("/usuario/name/{usuario}")
+-    public ResponseEntity<?> findByUsuario(@PathVariable String usuario) {
+-        return ResponseEntity.status(HttpStatus.OK).body(facturaService.findByUsuario(usuario));
+-    }
+-
+-    @GetMapping("/estado/{estado}")
+-    public ResponseEntity<?> findByEstado(@PathVariable String estado) {
+-        return ResponseEntity.status(HttpStatus.OK).body(facturaService.findByEstado(estado));
+-    }
+-
+-    @GetMapping("/fecha/{fecha}")
+-    public ResponseEntity<?> findByFecha(@PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date fecha) {
+-        return ResponseEntity.status(HttpStatus.OK).body(facturaService.findByFecha(fecha));
+-    }
+-
+-    @GetMapping("/fechaBetween")
+-    public ResponseEntity<?>findByFechaBetween(@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)Date fecha1,
+-                                               @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)Date fecha2) {
+-        return ResponseEntity.status(HttpStatus.OK).body(facturaService.findByFechaBetween(fecha1, fecha2));
+-    }
+-}
+Index: tarifas/src/main/java/grupo4/tarifas/service/TarifaService.java
+===================================================================
+diff --git a/tarifas/src/main/java/grupo4/tarifas/service/TarifaService.java b/tarifas/src/main/java/grupo4/tarifas/service/TarifaService.java
+deleted file mode 100644
+--- a/tarifas/src/main/java/grupo4/tarifas/service/TarifaService.java	(revision a999649bd2774411a74018b93cc730e3d8af51e5)
++++ /dev/null	(revision a999649bd2774411a74018b93cc730e3d8af51e5)
+@@ -1,79 +0,0 @@
+-package grupo4.tarifas.service;
+-
+-import grupo4.tarifas.dto.TarifaDTO;
+-import grupo4.tarifas.entity.Tarifa;
+-import grupo4.tarifas.repository.TarifaRepository;
+-import org.springframework.beans.factory.annotation.Autowired;
+-import org.springframework.stereotype.Service;
+-import org.springframework.transaction.annotation.Transactional;
+-
+-import java.util.Collections;
+-import java.util.Date;
+-import java.util.List;
+-
+-@Service
+-public class TarifaService {
+-
+-    @Autowired
+-    private TarifaRepository tarifaRepository;
+-
+-    @Transactional
+-    public TarifaDTO actualizarTarifaDesdeFecha(Date fecha, double montoExtra) {
+-        Tarifa tarifa = tarifaRepository.findTarifaVigenteDesde(fecha);
+-        if (tarifa == null) {
+-            throw new RuntimeException("No se encontró tarifa vigente para la fecha");
+-        }
+-        double nuevoMonto = tarifa.getMonto() * montoExtra;
+-        return new TarifaDTO(nuevoMonto, montoExtra, tarifa.getFecha());
+-    }
+-
+-    @Transactional
+-    public TarifaDTO actualizarTarifa(Tarifa tarifa) {
+-        Tarifa tarifaGuardada = tarifaRepository.save(tarifa);
+-        return new TarifaDTO(tarifaGuardada.getMonto(), tarifaGuardada.getMontoExtra(),
+-                tarifaGuardada.getFecha());
+-    }
+-
+-    @Transactional
+-    public void eliminarTarifa(Long id) {
+-        tarifaRepository.deleteById(id);
+-    }
+-
+-    @Transactional
+-    public TarifaDTO crearTarifa(Tarifa tarifa) {
+-        Tarifa tarifaGuardada = tarifaRepository.save(tarifa);
+-        return new TarifaDTO(tarifaGuardada.getMonto(), tarifaGuardada.getMontoExtra(),
+-                tarifaGuardada.getFecha());
+-    }
+-
+-    @Transactional
+-    public List<Tarifa> findAllTarifas() {
+-        return tarifaRepository.findAll();
+-    }
+-
+-    @Transactional
+-    public TarifaDTO findTarifaById(Long id) {
+-        Tarifa tarifa = tarifaRepository.findById(id).orElse(null);
+-        if (tarifa == null) {
+-            return null;
+-        }
+-        return new TarifaDTO(tarifa.getMonto(), tarifa.getMontoExtra(), tarifa.getFecha());
+-    }
+-
+-    @Transactional
+-    public TarifaDTO findTarifaByFecha(Date fecha) {
+-        Tarifa tarifa = tarifaRepository.findByFecha(fecha);
+-        if (tarifa == null) {
+-            return null;
+-        }
+-        return new TarifaDTO(tarifa.getMonto(), tarifa.getMontoExtra(), tarifa.getFecha());
+-    }
+-
+-    @Transactional
+-    public List<TarifaDTO> findTarifaByMonto(Double monto) {
+-        List<Tarifa> tarifas = Collections.singletonList(tarifaRepository.findByMonto(monto));
+-        return tarifas.stream()
+-                .map(t -> new TarifaDTO(t.getMonto(), t.getMontoExtra(), t.getFecha()))
+-                .toList();
+-    }
+-}
+Index: facturacion/src/main/java/grupo4/facturacion/dto/FacturaDTO.java
+===================================================================
+diff --git a/facturacion/src/main/java/grupo4/facturacion/dto/FacturaDTO.java b/facturacion/src/main/java/grupo4/facturacion/dto/FacturaDTO.java
+deleted file mode 100644
+--- a/facturacion/src/main/java/grupo4/facturacion/dto/FacturaDTO.java	(revision a999649bd2774411a74018b93cc730e3d8af51e5)
++++ /dev/null	(revision a999649bd2774411a74018b93cc730e3d8af51e5)
+@@ -1,45 +0,0 @@
+-package grupo4.facturacion.dto;
+-
+-import lombok.AllArgsConstructor;
+-import lombok.Builder;
+-import lombok.Data;
+-import lombok.NoArgsConstructor;
+-
+-@Data
+-@AllArgsConstructor
+-@NoArgsConstructor
+-@Builder
+-public class FacturaDTO {
+-    private Long id;
+-    private String numeroFactura;
+-    private String usuario;
+-    private String fechaEmision;
+-    private double monto;
+-    private String estado;
+-    private Long usuarioId;
+-
+-    public FacturaDTO(String numeroFactura, String usuario, String fechaEmision,
+-                      double monto, String estado, Long usuarioId) {
+-        this.numeroFactura = numeroFactura;
+-        this.usuario = usuario;
+-        this.fechaEmision = fechaEmision;
+-        this.monto = monto;
+-        this.estado = estado;
+-        this.usuarioId = usuarioId;
+-    }
+-
+-
+-    @Override
+-    public String toString() {
+-        return "FacturaDTO{" +
+-                "id=" + id +
+-                ", numeroFactura='" + numeroFactura + '\'' +
+-                ", usuario='" + usuario + '\'' +
+-                ", fechaEmision='" + fechaEmision + '\'' +
+-                ", monto=" + monto +
+-                ", estado='" + estado + '\'' +
+-                ", usuarioId=" + usuarioId +
+-                '}';
+-    }
+-
+-}
+Index: tarifas/src/test/java/grupo4/tarifas/TarifasApplicationTests.java
+===================================================================
+diff --git a/tarifas/src/test/java/grupo4/tarifas/TarifasApplicationTests.java b/tarifas/src/test/java/grupo4/tarifas/TarifasApplicationTests.java
+deleted file mode 100644
+--- a/tarifas/src/test/java/grupo4/tarifas/TarifasApplicationTests.java	(revision a999649bd2774411a74018b93cc730e3d8af51e5)
++++ /dev/null	(revision a999649bd2774411a74018b93cc730e3d8af51e5)
+@@ -1,13 +0,0 @@
+-package grupo4.tarifas;
+-
+-import org.junit.jupiter.api.Test;
+-import org.springframework.boot.test.context.SpringBootTest;
+-
+-@SpringBootTest
+-class TarifasApplicationTests {
+-
+-    @Test
+-    void contextLoads() {
+-    }
+-
+-}
+Index: facturacion/src/main/java/grupo4/facturacion/service/FacturaService.java
+===================================================================
+diff --git a/facturacion/src/main/java/grupo4/facturacion/service/FacturaService.java b/facturacion/src/main/java/grupo4/facturacion/service/FacturaService.java
+deleted file mode 100644
+--- a/facturacion/src/main/java/grupo4/facturacion/service/FacturaService.java	(revision a999649bd2774411a74018b93cc730e3d8af51e5)
++++ /dev/null	(revision a999649bd2774411a74018b93cc730e3d8af51e5)
+@@ -1,73 +0,0 @@
+-package grupo4.facturacion.service;
+-
+-import grupo4.facturacion.client.TarifaFeignClient;
+-import grupo4.facturacion.entity.Factura;
+-
+-import grupo4.facturacion.repository.FacturaRepository;
+-import grupo4.mscvadmin.services.UsuarioService;
+-import org.springframework.beans.factory.annotation.Autowired;
+-import org.springframework.stereotype.Service;
+-import org.springframework.transaction.annotation.Transactional;
+-import org.springframework.web.client.RestTemplate;
+-
+-import java.util.Date;
+-import java.util.List;
+-
+-@Service
+-public class FacturaService {
+-
+-    @Autowired
+-    private FacturaRepository facturaRepository;
+-
+-    @Autowired
+-    private TarifaFeignClient tarifaFeignClient;
+-
+-    @Transactional(readOnly = true)
+-    public List<Factura> findAll(){
+-        return facturaRepository.findAll();
+-    }
+-
+-    @Transactional(readOnly = true)
+-    public Factura findById(Long id){
+-        return facturaRepository.findById(id).orElse(null);
+-    }
+-
+-    @Transactional
+-    public List<Factura> findByUsuarioId(Long id){
+-        return facturaRepository.findByUsuarioId(id);
+-    }
+-
+-
+-    @Transactional
+-    public Factura save(Factura factura){
+-        return facturaRepository.save(factura);
+-    }
+-
+-    @Transactional
+-    public void delete(Long id){
+-        facturaRepository.deleteById(id);
+-    }
+-
+-    @Transactional
+-    public List<Factura> findByUsuario(String usuario) {
+-        return facturaRepository.findByUsuario(usuario);
+-    }
+-
+-    @Transactional
+-    public List<Factura> findByEstado(String estado){
+-        return facturaRepository.findByEstado(estado);
+-    }
+-
+-    @Transactional
+-    public List<Factura> findByFecha(Date fecha){
+-        return facturaRepository.findByFecha(fecha);
+-    }
+-
+-    @Transactional
+-    public List<Factura> findByFechaBetween(Date fecha1, Date fecha2){
+-        return facturaRepository.findByFechaBetween(fecha1,fecha2);
+-    }
+-
+-    // Aquí puedes usar tarifaFeignClient cuando necesites consultar tarifas
+-    // Ejemplo: TarifaDTO tarifa = tarifaFeignClient.findTarifaById(id).getBody();
+-}
+Index: facturacion/src/main/java/grupo4/facturacion/dto/TarifaDTO.java
+===================================================================
+diff --git a/facturacion/src/main/java/grupo4/facturacion/dto/TarifaDTO.java b/facturacion/src/main/java/grupo4/facturacion/dto/TarifaDTO.java
+deleted file mode 100644
+--- a/facturacion/src/main/java/grupo4/facturacion/dto/TarifaDTO.java	(revision a999649bd2774411a74018b93cc730e3d8af51e5)
++++ /dev/null	(revision a999649bd2774411a74018b93cc730e3d8af51e5)
+@@ -1,24 +0,0 @@
+-package grupo4.facturacion.dto;
+-
+-import lombok.AllArgsConstructor;
+-import lombok.Getter;
+-import lombok.NoArgsConstructor;
+-
+-import java.util.Date;
+-
+-@NoArgsConstructor
+-@AllArgsConstructor
+-@Getter
+-public class TarifaDTO {
+-    private double monto;
+-    private double montoExtra;
+-    private Date date;
+-
+-    @Override
+-    public String toString() {
+-        return "TarifaDTO [monto=" + monto +
+-                ", montoExtra=" + montoExtra +
+-                ", date=" + date + "]";
+-    }
+-}
+-
+Index: facturacion/src/main/resources/application.properties
+===================================================================
+diff --git a/facturacion/src/main/resources/application.properties b/facturacion/src/main/resources/application.properties
+deleted file mode 100644
+--- a/facturacion/src/main/resources/application.properties	(revision a999649bd2774411a74018b93cc730e3d8af51e5)
++++ /dev/null	(revision a999649bd2774411a74018b93cc730e3d8af51e5)
+@@ -1,14 +0,0 @@
+-spring.application.name=facturacion
+-
+-server.port=8083
+-
+-spring.datasource.driver-class-name=org.postgresql.Driver
+-spring.datasource.url=jdbc:postgresql://localhost:5432/facturas
+-spring.datasource.username=postgres
+-spring.datasource.password=password
+-
+-spring.jpa.show-sql=true
+-spring.jpa.database=postgresql
+-spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect
+-spring.sql.init.mode=always
+-spring.jpa.hibernate.ddl-auto=update
+\ No newline at end of file
+Index: tarifas/.gitignore
+===================================================================
+diff --git a/tarifas/.gitignore b/tarifas/.gitignore
+deleted file mode 100644
+--- a/tarifas/.gitignore	(revision a999649bd2774411a74018b93cc730e3d8af51e5)
++++ /dev/null	(revision a999649bd2774411a74018b93cc730e3d8af51e5)
+@@ -1,33 +0,0 @@
+-HELP.md
+-target/
+-.mvn/wrapper/maven-wrapper.jar
+-!**/src/main/**/target/
+-!**/src/test/**/target/
+-
+-### STS ###
+-.apt_generated
+-.classpath
+-.factorypath
+-.project
+-.settings
+-.springBeans
+-.sts4-cache
+-
+-### IntelliJ IDEA ###
+-.idea
+-*.iws
+-*.iml
+-*.ipr
+-
+-### NetBeans ###
+-/nbproject/private/
+-/nbbuild/
+-/dist/
+-/nbdist/
+-/.nb-gradle/
+-build/
+-!**/src/main/**/build/
+-!**/src/test/**/build/
+-
+-### VS Code ###
+-.vscode/
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"723662e4-479d-4db5-9852-0ec9a71ebf68\" name=\"Changes\" comment=\"Implementado los microservicios de dani y el crud del microservicio de monopatines\">\r\n      <change afterPath=\"$PROJECT_DIR$/facturacion/src/main/java/grupo4/facturacion/client/TarifaFeignClient.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/facturacion/src/main/java/grupo4/facturacion/config/RestTemplateConfig.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/facturacion/src/main/java/grupo4/facturacion/controller/FacturaController.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/facturacion/src/main/java/grupo4/facturacion/dto/FacturaDTO.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/facturacion/src/main/java/grupo4/facturacion/dto/TarifaDTO.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/facturacion/src/main/java/grupo4/facturacion/entity/Factura.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/facturacion/src/main/java/grupo4/facturacion/repository/FacturaRepository.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/facturacion/src/main/java/grupo4/facturacion/service/FacturaService.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/monopatin/src/main/java/grupo4/mscvmonopatin/dtos/MonopatinDTO.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/monopatin/src/main/java/grupo4/mscvmonopatin/dtos/MonopatinPatchDTO.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/monopatin/src/main/java/grupo4/mscvmonopatin/services/MonopatinService.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/monopatin/src/main/java/grupo4/mscvmonopatin/services/exceptions/InvalidEstadoException.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/monopatin/src/main/java/grupo4/mscvmonopatin/services/exceptions/NotFoundException.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/tarifas/src/main/java/grupo4/tarifas/controller/TarifaController.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/tarifas/src/main/java/grupo4/tarifas/dto/TarifaDTO.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/tarifas/src/main/java/grupo4/tarifas/entity/Tarifa.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/tarifas/src/main/java/grupo4/tarifas/repository/TarifaRepository.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/tarifas/src/main/java/grupo4/tarifas/service/TarifaService.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/docker-compose.yml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/docker-compose.yml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/monopatin/src/main/java/grupo4/mscvmonopatin/controllers/MonopatinController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/monopatin/src/main/java/grupo4/mscvmonopatin/controllers/MonopatinController.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/monopatin/src/main/java/grupo4/mscvmonopatin/model/Estado.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/monopatin/src/main/java/grupo4/mscvmonopatin/model/Estado.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/monopatin/src/main/java/grupo4/mscvmonopatin/model/Monopatin.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/monopatin/src/main/java/grupo4/mscvmonopatin/model/Monopatin.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/monopatin/src/main/java/grupo4/mscvmonopatin/repository/MonopatinRepository.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/monopatin/src/main/java/grupo4/mscvmonopatin/repository/MonopatinRepository.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"ExternalProjectsManager\">\r\n    <system id=\"GRADLE\">\r\n      <state>\r\n        <projects_view>\r\n          <tree_state>\r\n            <expand />\r\n            <select />\r\n          </tree_state>\r\n        </projects_view>\r\n      </state>\r\n    </system>\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Enum\" />\r\n        <option value=\"Interface\" />\r\n        <option value=\"Record\" />\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$/..\" />\r\n  </component>\r\n  <component name=\"GitHubPullRequestSearchHistory\">{\r\n  &quot;lastFilter&quot;: {\r\n    &quot;state&quot;: &quot;OPEN&quot;,\r\n    &quot;assignee&quot;: &quot;AgustinVanWaarde&quot;\r\n  }\r\n}</component>\r\n  <component name=\"GithubPullRequestsUISettings\">{\r\n  &quot;selectedUrlAndAccountId&quot;: {\r\n    &quot;url&quot;: &quot;https://github.com/MatiasSpacech/TpArquitectura.git&quot;,\r\n    &quot;accountId&quot;: &quot;3d410d32-784d-47f1-8c1b-8d2e9e5b7da0&quot;\r\n  }\r\n}</component>\r\n  <component name=\"HttpClientEndpointsTabState\">\r\n    <option name=\"cachedRequestData\" value=\"&lt;CachedHttpClientTabRequests&gt;&#10;  &lt;entry key=&quot;a2ca466a0c7acbe367ea86722dbc0ba50bd4e720&quot; value=&quot;###&amp;#10;POST http://localhost:8084/monopatines&quot; /&gt;&#10;&lt;/CachedHttpClientTabRequests&gt;\" />\r\n  </component>\r\n  <component name=\"HttpClientOnboardingState\">{\r\n  &quot;isOnboardingCommentShown&quot;: true\r\n}</component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 8\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"34nn4u7la51mqnzqLchzQRAzBEP\" />\r\n  <component name=\"ProjectLevelVcsManager\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"Maven.viaje [clean].executor\": \"Run\",\r\n    \"Maven.viaje [compile].executor\": \"Run\",\r\n    \"Maven.viaje [validate].executor\": \"Run\",\r\n    \"Maven.viaje [verify].executor\": \"Run\",\r\n    \"ModuleVcsDetector.initialDetectionPerformed\": \"true\",\r\n    \"RequestMappingsPanelOrder0\": \"0\",\r\n    \"RequestMappingsPanelOrder1\": \"1\",\r\n    \"RequestMappingsPanelWidth0\": \"75\",\r\n    \"RequestMappingsPanelWidth1\": \"75\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252\": \"true\",\r\n    \"RunOnceActivity.git.unshallow\": \"true\",\r\n    \"SHARE_PROJECT_CONFIGURATION_FILES\": \"true\",\r\n    \"Spring Boot.AdminApplication.executor\": \"Run\",\r\n    \"Spring Boot.CuentaApplication.executor\": \"Run\",\r\n    \"Spring Boot.FacturacionApplication.executor\": \"Run\",\r\n    \"Spring Boot.MonopatinApplication.executor\": \"Run\",\r\n    \"Spring Boot.MscvAdminApplication.executor\": \"Run\",\r\n    \"Spring Boot.MscvCuentaApplication.executor\": \"Run\",\r\n    \"Spring Boot.MscvMonopatinApplication.executor\": \"Run\",\r\n    \"Spring Boot.MscvUsuarioApplication.executor\": \"Run\",\r\n    \"Spring Boot.MscvViajeApplication.executor\": \"Run\",\r\n    \"Spring Boot.ParadaApplication.executor\": \"Run\",\r\n    \"Spring Boot.TarifasApplication.executor\": \"Run\",\r\n    \"Spring Boot.UsuarioApplication.executor\": \"Run\",\r\n    \"Spring Boot.ViajesApplication.executor\": \"Run\",\r\n    \"git-widget-placeholder\": \"main\",\r\n    \"kotlin-language-version-configured\": \"true\",\r\n    \"last_opened_file_path\": \"D:/USUARIO/Desktop/TUDAI/Arquitecturas Web/TpArquitectura/Integrador4/facturacion/src/main/java/grupo4/facturacion\",\r\n    \"node.js.detected.package.eslint\": \"true\",\r\n    \"node.js.detected.package.tslint\": \"true\",\r\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\r\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\r\n    \"nodejs_package_manager_path\": \"npm\",\r\n    \"onboarding.tips.debug.path\": \"D:/USUARIO/Desktop/TUDAI/Arquitecturas Web/TpArquitectura/Integrador4/src/main/java/grupo4/Main.java\",\r\n    \"project.structure.last.edited\": \"Modules\",\r\n    \"project.structure.proportion\": \"0.0\",\r\n    \"project.structure.side.proportion\": \"0.0\",\r\n    \"run.configurations.included.in.services\": \"true\",\r\n    \"settings.editor.selected.configurable\": \"preferences.pluginManager\",\r\n    \"vue.rearranger.settings.migration\": \"true\"\r\n  }\r\n}]]></component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CopyFile.RECENT_KEYS\">\r\n      <recent name=\"D:\\USUARIO\\Desktop\\TUDAI\\Arquitecturas Web\\TpArquitectura\\Integrador4\\facturacion\\src\\main\\java\\grupo4\\facturacion\" />\r\n      <recent name=\"D:\\USUARIO\\Desktop\\TUDAI\\Arquitecturas Web\\TpArquitectura\\Integrador4\\tarifas\\src\\main\\java\\grupo4\\tarifas\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunDashboard\">\r\n    <option name=\"configurationTypes\">\r\n      <set>\r\n        <option value=\"KtorApplicationConfigurationType\" />\r\n        <option value=\"MicronautRunConfigurationType\" />\r\n        <option value=\"QuarkusRunConfigurationType\" />\r\n        <option value=\"SpringBootApplicationConfigurationType\" />\r\n      </set>\r\n    </option>\r\n    <option name=\"configurationStatuses\">\r\n      <map>\r\n        <entry key=\"SpringBootApplicationConfigurationType\">\r\n          <value>\r\n            <map>\r\n              <entry key=\"AdminApplication\" value=\"STOPPED\" />\r\n              <entry key=\"CuentaApplication\" value=\"STOPPED\" />\r\n              <entry key=\"MonopatinApplication\" value=\"STOPPED\" />\r\n              <entry key=\"UsuarioApplication\" value=\"STOPPED\" />\r\n              <entry key=\"ViajesApplication\" value=\"STOPPED\" />\r\n            </map>\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"Spring Boot.MonopatinApplication\">\r\n    <configuration name=\"AdminApplication\" type=\"SpringBootApplicationConfigurationType\" factoryName=\"Spring Boot\" nameIsGenerated=\"true\">\r\n      <module name=\"mscv-admin\" />\r\n      <option name=\"SPRING_BOOT_MAIN_CLASS\" value=\"grupo4.mscvadmin.AdminApplication\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"CuentaApplication\" type=\"SpringBootApplicationConfigurationType\" factoryName=\"Spring Boot\" nameIsGenerated=\"true\">\r\n      <module name=\"mscv-cuenta\" />\r\n      <option name=\"SPRING_BOOT_MAIN_CLASS\" value=\"grupo4.mscvcuenta.CuentaApplication\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"FacturacionApplication\" type=\"SpringBootApplicationConfigurationType\" factoryName=\"Spring Boot\" nameIsGenerated=\"true\">\r\n      <module name=\"facturacion\" />\r\n      <option name=\"SPRING_BOOT_MAIN_CLASS\" value=\"grupo4.facturacion.FacturacionApplication\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"GatewayApplication\" type=\"SpringBootApplicationConfigurationType\" factoryName=\"Spring Boot\" nameIsGenerated=\"true\">\r\n      <module name=\"gateway\" />\r\n      <option name=\"SPRING_BOOT_MAIN_CLASS\" value=\"grupo4.gateway.GatewayApplication\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"MonopatinApplication\" type=\"SpringBootApplicationConfigurationType\" factoryName=\"Spring Boot\" nameIsGenerated=\"true\">\r\n      <module name=\"mscv-monopatin\" />\r\n      <option name=\"SPRING_BOOT_MAIN_CLASS\" value=\"grupo4.mscvmonopatin.MonopatinApplication\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"ParadaApplication\" type=\"SpringBootApplicationConfigurationType\" factoryName=\"Spring Boot\" nameIsGenerated=\"true\">\r\n      <module name=\"parada\" />\r\n      <option name=\"SPRING_BOOT_MAIN_CLASS\" value=\"grupo4.parada.ParadaApplication\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"TarifasApplication\" type=\"SpringBootApplicationConfigurationType\" factoryName=\"Spring Boot\" nameIsGenerated=\"true\">\r\n      <module name=\"tarifas\" />\r\n      <option name=\"SPRING_BOOT_MAIN_CLASS\" value=\"grupo4.tarifas.TarifasApplication\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"UsuarioApplication\" type=\"SpringBootApplicationConfigurationType\" factoryName=\"Spring Boot\" nameIsGenerated=\"true\">\r\n      <module name=\"usuario\" />\r\n      <option name=\"SPRING_BOOT_MAIN_CLASS\" value=\"grupo4.mscvusuario.UsuarioApplication\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"ViajesApplication\" type=\"SpringBootApplicationConfigurationType\" factoryName=\"Spring Boot\" nameIsGenerated=\"true\">\r\n      <module name=\"viajes\" />\r\n      <option name=\"SPRING_BOOT_MAIN_CLASS\" value=\"grupo4.viajes.ViajesApplication\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n  </component>\r\n  <component name=\"SharedIndexes\">\r\n    <attachedChunks>\r\n      <set>\r\n        <option value=\"bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.25557.131\" />\r\n        <option value=\"bundled-js-predefined-d6986cc7102b-b598e85cdad2-JavaScript-IU-252.25557.131\" />\r\n      </set>\r\n    </attachedChunks>\r\n  </component>\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"723662e4-479d-4db5-9852-0ec9a71ebf68\" name=\"Changes\" comment=\"\" />\r\n      <created>1761858017227</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1761858017227</updated>\r\n      <workItem from=\"1761858018176\" duration=\"4508000\" />\r\n      <workItem from=\"1761862551198\" duration=\"783000\" />\r\n      <workItem from=\"1762271318299\" duration=\"1310000\" />\r\n      <workItem from=\"1762310079032\" duration=\"6951000\" />\r\n      <workItem from=\"1762401115319\" duration=\"7993000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"Compose agregado con las 3 bases y un get y post en mongo en msvc-monpatin\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1762318604981</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1762318604981</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"2\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State>\r\n              <option name=\"FILTERS\">\r\n                <map>\r\n                  <entry key=\"branch\">\r\n                    <value>\r\n                      <list>\r\n                        <option value=\"main\" />\r\n                      </list>\r\n                    </value>\r\n                  </entry>\r\n                </map>\r\n              </option>\r\n            </State>\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"Compose agregado con las 3 bases y un get y post en mongo en msvc-monpatin\" />\r\n    <MESSAGE value=\"Implementado los microservicios de dani y el crud del microservicio de monopatines\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Implementado los microservicios de dani y el crud del microservicio de monopatines\" />\r\n  </component>\r\n  <component name=\"XDebuggerManager\">\r\n    <breakpoint-manager>\r\n      <breakpoints>\r\n        <line-breakpoint enabled=\"true\" type=\"java-line\">\r\n          <url>file://$PROJECT_DIR$/src/main/java/grupo4/Main.java</url>\r\n          <line>13</line>\r\n          <option name=\"timeStamp\" value=\"1\" />\r\n        </line-breakpoint>\r\n      </breakpoints>\r\n    </breakpoint-manager>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision a999649bd2774411a74018b93cc730e3d8af51e5)
++++ b/.idea/workspace.xml	(date 1762658465320)
+@@ -5,30 +5,38 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="723662e4-479d-4db5-9852-0ec9a71ebf68" name="Changes" comment="Implementado los microservicios de dani y el crud del microservicio de monopatines">
+-      <change afterPath="$PROJECT_DIR$/facturacion/src/main/java/grupo4/facturacion/client/TarifaFeignClient.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/facturacion/src/main/java/grupo4/facturacion/config/RestTemplateConfig.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/facturacion/src/main/java/grupo4/facturacion/controller/FacturaController.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/facturacion/src/main/java/grupo4/facturacion/dto/FacturaDTO.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/facturacion/src/main/java/grupo4/facturacion/dto/TarifaDTO.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/facturacion/src/main/java/grupo4/facturacion/entity/Factura.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/facturacion/src/main/java/grupo4/facturacion/repository/FacturaRepository.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/facturacion/src/main/java/grupo4/facturacion/service/FacturaService.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/monopatin/src/main/java/grupo4/mscvmonopatin/dtos/MonopatinDTO.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/monopatin/src/main/java/grupo4/mscvmonopatin/dtos/MonopatinPatchDTO.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/monopatin/src/main/java/grupo4/mscvmonopatin/services/MonopatinService.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/monopatin/src/main/java/grupo4/mscvmonopatin/services/exceptions/InvalidEstadoException.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/monopatin/src/main/java/grupo4/mscvmonopatin/services/exceptions/NotFoundException.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/tarifas/src/main/java/grupo4/tarifas/controller/TarifaController.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/tarifas/src/main/java/grupo4/tarifas/dto/TarifaDTO.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/tarifas/src/main/java/grupo4/tarifas/entity/Tarifa.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/tarifas/src/main/java/grupo4/tarifas/repository/TarifaRepository.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/tarifas/src/main/java/grupo4/tarifas/service/TarifaService.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/monopatin/src/main/java/grupo4/mscvmonopatin/controllers/MonopatinController.java" beforeDir="false" afterPath="$PROJECT_DIR$/monopatin/src/main/java/grupo4/mscvmonopatin/controllers/MonopatinController.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/monopatin/src/main/java/grupo4/mscvmonopatin/model/Estado.java" beforeDir="false" afterPath="$PROJECT_DIR$/monopatin/src/main/java/grupo4/mscvmonopatin/model/Estado.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/monopatin/src/main/java/grupo4/mscvmonopatin/model/Monopatin.java" beforeDir="false" afterPath="$PROJECT_DIR$/monopatin/src/main/java/grupo4/mscvmonopatin/model/Monopatin.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/monopatin/src/main/java/grupo4/mscvmonopatin/repository/MonopatinRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/monopatin/src/main/java/grupo4/mscvmonopatin/repository/MonopatinRepository.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/facturacion/.gitattributes" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/facturacion/.gitignore" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/facturacion/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/facturacion/mvnw" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/facturacion/mvnw.cmd" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/facturacion/pom.xml" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/facturacion/src/main/java/grupo4/facturacion/FacturacionApplication.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/facturacion/src/main/java/grupo4/facturacion/client/TarifaFeignClient.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/facturacion/src/main/java/grupo4/facturacion/config/RestTemplateConfig.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/facturacion/src/main/java/grupo4/facturacion/controller/FacturaController.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/facturacion/src/main/java/grupo4/facturacion/dto/FacturaDTO.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/facturacion/src/main/java/grupo4/facturacion/dto/TarifaDTO.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/facturacion/src/main/java/grupo4/facturacion/entity/Factura.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/facturacion/src/main/java/grupo4/facturacion/repository/FacturaRepository.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/facturacion/src/main/java/grupo4/facturacion/service/FacturaService.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/facturacion/src/main/resources/application.properties" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/facturacion/src/test/java/grupo4/facturacion/FacturacionApplicationTests.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/tarifas/.gitattributes" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/tarifas/.gitignore" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/tarifas/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/tarifas/mvnw" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/tarifas/mvnw.cmd" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/tarifas/pom.xml" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/tarifas/src/main/java/grupo4/tarifas/TarifasApplication.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/tarifas/src/main/java/grupo4/tarifas/controller/TarifaController.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/tarifas/src/main/java/grupo4/tarifas/dto/TarifaDTO.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/tarifas/src/main/java/grupo4/tarifas/entity/Tarifa.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/tarifas/src/main/java/grupo4/tarifas/repository/TarifaRepository.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/tarifas/src/main/java/grupo4/tarifas/service/TarifaService.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/tarifas/src/main/resources/application.properties" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/tarifas/src/test/java/grupo4/tarifas/TarifasApplicationTests.java" beforeDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -60,24 +68,29 @@
+   <component name="Git.Settings">
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+   </component>
+-  <component name="GitHubPullRequestSearchHistory">{
+-  &quot;lastFilter&quot;: {
+-    &quot;state&quot;: &quot;OPEN&quot;,
+-    &quot;assignee&quot;: &quot;AgustinVanWaarde&quot;
++  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
++  "history": [
++    {
++      "state": "OPEN"
++    }
++  ],
++  "lastFilter": {
++    "state": "OPEN"
+   }
+-}</component>
++}]]></component>
+   <component name="GithubPullRequestsUISettings">{
+   &quot;selectedUrlAndAccountId&quot;: {
+     &quot;url&quot;: &quot;https://github.com/MatiasSpacech/TpArquitectura.git&quot;,
+-    &quot;accountId&quot;: &quot;3d410d32-784d-47f1-8c1b-8d2e9e5b7da0&quot;
++    &quot;accountId&quot;: &quot;c1300c4d-f39e-49c3-8ea0-ed4021f6131c&quot;
+   }
+ }</component>
+-  <component name="HttpClientEndpointsTabState">
+-    <option name="cachedRequestData" value="&lt;CachedHttpClientTabRequests&gt;&#10;  &lt;entry key=&quot;a2ca466a0c7acbe367ea86722dbc0ba50bd4e720&quot; value=&quot;###&amp;#10;POST http://localhost:8084/monopatines&quot; /&gt;&#10;&lt;/CachedHttpClientTabRequests&gt;" />
+-  </component>
+   <component name="HttpClientOnboardingState">{
+   &quot;isOnboardingCommentShown&quot;: true
+ }</component>
++  <component name="KubernetesApiPersistence">{}</component>
++  <component name="KubernetesApiProvider">{
++  &quot;isMigrated&quot;: true
++}</component>
+   <component name="ProjectColorInfo">{
+   &quot;associatedIndex&quot;: 8
+ }</component>
+@@ -89,51 +102,51 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent"><![CDATA[{
+-  "keyToString": {
+-    "Maven.viaje [clean].executor": "Run",
+-    "Maven.viaje [compile].executor": "Run",
+-    "Maven.viaje [validate].executor": "Run",
+-    "Maven.viaje [verify].executor": "Run",
+-    "ModuleVcsDetector.initialDetectionPerformed": "true",
+-    "RequestMappingsPanelOrder0": "0",
+-    "RequestMappingsPanelOrder1": "1",
+-    "RequestMappingsPanelWidth0": "75",
+-    "RequestMappingsPanelWidth1": "75",
+-    "RunOnceActivity.ShowReadmeOnStart": "true",
+-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+-    "RunOnceActivity.git.unshallow": "true",
+-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+-    "Spring Boot.AdminApplication.executor": "Run",
+-    "Spring Boot.CuentaApplication.executor": "Run",
+-    "Spring Boot.FacturacionApplication.executor": "Run",
+-    "Spring Boot.MonopatinApplication.executor": "Run",
+-    "Spring Boot.MscvAdminApplication.executor": "Run",
+-    "Spring Boot.MscvCuentaApplication.executor": "Run",
+-    "Spring Boot.MscvMonopatinApplication.executor": "Run",
+-    "Spring Boot.MscvUsuarioApplication.executor": "Run",
+-    "Spring Boot.MscvViajeApplication.executor": "Run",
+-    "Spring Boot.ParadaApplication.executor": "Run",
+-    "Spring Boot.TarifasApplication.executor": "Run",
+-    "Spring Boot.UsuarioApplication.executor": "Run",
+-    "Spring Boot.ViajesApplication.executor": "Run",
+-    "git-widget-placeholder": "main",
+-    "kotlin-language-version-configured": "true",
+-    "last_opened_file_path": "D:/USUARIO/Desktop/TUDAI/Arquitecturas Web/TpArquitectura/Integrador4/facturacion/src/main/java/grupo4/facturacion",
+-    "node.js.detected.package.eslint": "true",
+-    "node.js.detected.package.tslint": "true",
+-    "node.js.selected.package.eslint": "(autodetect)",
+-    "node.js.selected.package.tslint": "(autodetect)",
+-    "nodejs_package_manager_path": "npm",
+-    "onboarding.tips.debug.path": "D:/USUARIO/Desktop/TUDAI/Arquitecturas Web/TpArquitectura/Integrador4/src/main/java/grupo4/Main.java",
+-    "project.structure.last.edited": "Modules",
+-    "project.structure.proportion": "0.0",
+-    "project.structure.side.proportion": "0.0",
+-    "run.configurations.included.in.services": "true",
+-    "settings.editor.selected.configurable": "preferences.pluginManager",
+-    "vue.rearranger.settings.migration": "true"
++  <component name="PropertiesComponent">{
++  &quot;keyToString&quot;: {
++    &quot;Maven.viaje [clean].executor&quot;: &quot;Run&quot;,
++    &quot;Maven.viaje [compile].executor&quot;: &quot;Run&quot;,
++    &quot;Maven.viaje [validate].executor&quot;: &quot;Run&quot;,
++    &quot;Maven.viaje [verify].executor&quot;: &quot;Run&quot;,
++    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
++    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
++    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
++    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
++    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
++    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
++    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
++    &quot;Spring Boot.AdminApplication.executor&quot;: &quot;Run&quot;,
++    &quot;Spring Boot.CuentaApplication.executor&quot;: &quot;Run&quot;,
++    &quot;Spring Boot.FacturacionApplication.executor&quot;: &quot;Run&quot;,
++    &quot;Spring Boot.MonopatinApplication.executor&quot;: &quot;Run&quot;,
++    &quot;Spring Boot.MscvAdminApplication.executor&quot;: &quot;Run&quot;,
++    &quot;Spring Boot.MscvCuentaApplication.executor&quot;: &quot;Run&quot;,
++    &quot;Spring Boot.MscvMonopatinApplication.executor&quot;: &quot;Run&quot;,
++    &quot;Spring Boot.MscvUsuarioApplication.executor&quot;: &quot;Run&quot;,
++    &quot;Spring Boot.MscvViajeApplication.executor&quot;: &quot;Run&quot;,
++    &quot;Spring Boot.ParadaApplication.executor&quot;: &quot;Run&quot;,
++    &quot;Spring Boot.TarifasApplication.executor&quot;: &quot;Run&quot;,
++    &quot;Spring Boot.UsuarioApplication.executor&quot;: &quot;Run&quot;,
++    &quot;Spring Boot.ViajesApplication.executor&quot;: &quot;Run&quot;,
++    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
++    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
++    &quot;last_opened_file_path&quot;: &quot;C:/Users/sdter/Documents/TUDAI/ARQUITETURA WEB/U2- Practica/TP Especial 1/TpArquitectura/Integrador4&quot;,
++    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
++    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
++    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
++    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
++    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
++    &quot;onboarding.tips.debug.path&quot;: &quot;D:/USUARIO/Desktop/TUDAI/Arquitecturas Web/TpArquitectura/Integrador4/src/main/java/grupo4/Main.java&quot;,
++    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
++    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
++    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
++    &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
++    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
++    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+   }
+-}]]></component>
++}</component>
+   <component name="RecentsManager">
+     <key name="CopyFile.RECENT_KEYS">
+       <recent name="D:\USUARIO\Desktop\TUDAI\Arquitecturas Web\TpArquitectura\Integrador4\facturacion\src\main\java\grupo4\facturacion" />
+@@ -149,32 +162,17 @@
+         <option value="SpringBootApplicationConfigurationType" />
+       </set>
+     </option>
+-    <option name="configurationStatuses">
+-      <map>
+-        <entry key="SpringBootApplicationConfigurationType">
+-          <value>
+-            <map>
+-              <entry key="AdminApplication" value="STOPPED" />
+-              <entry key="CuentaApplication" value="STOPPED" />
+-              <entry key="MonopatinApplication" value="STOPPED" />
+-              <entry key="UsuarioApplication" value="STOPPED" />
+-              <entry key="ViajesApplication" value="STOPPED" />
+-            </map>
+-          </value>
+-        </entry>
+-      </map>
+-    </option>
+   </component>
+   <component name="RunManager" selected="Spring Boot.MonopatinApplication">
+     <configuration name="AdminApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+-      <module name="mscv-admin" />
++      <module name="admin" />
+       <option name="SPRING_BOOT_MAIN_CLASS" value="grupo4.mscvadmin.AdminApplication" />
+       <method v="2">
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
+     <configuration name="CuentaApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+-      <module name="mscv-cuenta" />
++      <module name="cuenta" />
+       <option name="SPRING_BOOT_MAIN_CLASS" value="grupo4.mscvcuenta.CuentaApplication" />
+       <method v="2">
+         <option name="Make" enabled="true" />
+@@ -195,7 +193,7 @@
+       </method>
+     </configuration>
+     <configuration name="MonopatinApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+-      <module name="mscv-monopatin" />
++      <module name="monopatin" />
+       <option name="SPRING_BOOT_MAIN_CLASS" value="grupo4.mscvmonopatin.MonopatinApplication" />
+       <method v="2">
+         <option name="Make" enabled="true" />
+@@ -233,8 +231,8 @@
+   <component name="SharedIndexes">
+     <attachedChunks>
+       <set>
+-        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.25557.131" />
+-        <option value="bundled-js-predefined-d6986cc7102b-b598e85cdad2-JavaScript-IU-252.25557.131" />
++        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.26199.169" />
++        <option value="bundled-js-predefined-d6986cc7102b-9c94529fcfe0-JavaScript-IU-252.26199.169" />
+       </set>
+     </attachedChunks>
+   </component>
+@@ -250,6 +248,9 @@
+       <workItem from="1762271318299" duration="1310000" />
+       <workItem from="1762310079032" duration="6951000" />
+       <workItem from="1762401115319" duration="7993000" />
++      <workItem from="1762570085745" duration="4115000" />
++      <workItem from="1762574255621" duration="1116000" />
++      <workItem from="1762613903564" duration="7307000" />
+     </task>
+     <task id="LOCAL-00001" summary="Compose agregado con las 3 bases y un get y post en mongo en msvc-monpatin">
+       <option name="closed" value="true" />
