@@ -10,7 +10,7 @@ public class UsuarioService {
     @Autowired
     private UsuarioFeignClient usuarioFeignClient;
 
-
+    
     public String getUsuario() {
         return usuarioFeignClient.holaMundo();
     }

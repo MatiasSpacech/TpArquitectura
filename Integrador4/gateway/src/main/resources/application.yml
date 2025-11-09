@@ -22,12 +22,12 @@ spring:
             - id: monopatin
               uri: http://localhost:8084
               predicates:
-                - Path=/api/monopatin/**
+                - Path=/api/monopatines/**
 
             - id: parada
               uri: http://localhost:8085
               predicates:
-                - Path=/api/parada/**
+                - Path=/api/paradas/**
 
             - id: tarifas
               uri: http://localhost:8086
