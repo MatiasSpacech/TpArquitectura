@@ -1,9 +1,538 @@
-GET http://localhost:8084/monopatines
+GET http://localhost:8087/usuario
 User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.1
 Accept-Encoding: br, deflate, gzip, x-gzip
 Accept: */*
 
-<> 2025-11-07T152228.200.json
+<> 2025-11-09T193604.200.json
+
+###
+
+PUT http://localhost:8087/usuario/2/cambiar-estado-cuentas?nuevoEstado=SUSPENDIDA
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+###
+
+GET http://localhost:8087/usuario
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2025-11-09T193533.200.json
+
+###
+
+GET http://localhost:8087/usuario
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2025-11-09T191857.200.json
+
+###
+
+PUT http://localhost:8087/usuario/2/cambiar-estado-cuentas?nuevoEstado=SUSPENDIDA
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2025-11-09T191833.404.json
+
+###
+
+PUT http://localhost:8087/usuario/2/cambiar-estado-cuentas?nuevoEstado=SUSPENDIDA
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2025-11-09T191817.404.json
+
+###
+
+GET http://localhost:8087/usuario
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2025-11-09T191555.200.json
+
+###
+
+GET http://localhost:8087/usuario
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2025-11-09T190812.200.json
+
+###
+
+GET http://localhost:8087/usuario/hola
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2025-11-09T190808.200.txt
+
+###
+
+GET http://localhost:8087/usuario
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2025-11-09T185741.200.json
+
+###
+
+GET http://localhost:8087/usuario/hola
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2025-11-09T185731.200.txt
+
+###
+
+GET http://localhost:8087/usuario/1
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+###
+
+GET http://localhost:8087/usuario
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2025-11-09T185649.200.json
+
+###
+
+POST http://localhost:8087/usuario
+Content-Type: application/json
+Content-Length: 139
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "nombre": "Jane",
+  "apellido": "Doe",
+  "email": "janae@hola.com",
+  "latitud": -34.6037,
+  "longitud": -58.3816,
+  "rol": "USUARIO"
+}
+
+<> 2025-11-09T185641.201.json
+
+###
+
+POST http://localhost:8087/usuario
+Content-Type: application/json
+Content-Length: 138
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "nombre": "Jane",
+  "apellido": "Doe",
+  "email": "jane@hola.com",
+  "latitud": -34.6037,
+  "longitud": -58.3816,
+  "rol": "USUARIO"
+}
+
+<> 2025-11-09T185456.500.json
+
+###
+
+POST http://localhost:8087/usuario
+Content-Type: application/json
+Content-Length: 138
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "nombre": "Jane",
+  "apellido": "Doe",
+  "email": "jane@hola.com",
+  "latitud": -34.6037,
+  "longitud": -58.3816,
+  "rol": "USUARIO"
+}
+
+<> 2025-11-09T185423.500.json
+
+###
+
+GET http://localhost:8087/usuario
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2025-11-09T185417.200.json
+
+###
+
+GET http://localhost:8087/usuario
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2025-11-09T185403.200.json
+
+###
+
+GET http://localhost:8087/usuario
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2025-11-09T185357.200.json
+
+###
+
+POST http://localhost:8087/usuario
+Content-Type: application/json
+Content-Length: 138
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "nombre": "Jane",
+  "apellido": "Doe",
+  "email": "jane@hola.com",
+  "latitud": -34.6037,
+  "longitud": -58.3816,
+  "rol": "USUARIO"
+}
+
+<> 2025-11-09T185354.500.json
+
+###
+
+GET http://localhost:8087/usuario
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2025-11-09T185347.200.json
+
+###
+
+GET http://localhost:8087/usuario/1
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+###
+
+PUT http://localhost:8087/usuario/2/asignar-cuenta/3
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2025-11-09T184730.201.json
+
+###
+
+GET http://localhost:8087/usuario
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2025-11-09T184713.200.json
+
+###
+
+POST http://localhost:8087/cuenta
+Content-Type: application/json
+Content-Length: 51
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "idMercadoPago": "un-id-unico-de-mercadopago"
+}
+
+<> 2025-11-09T184703.201.json
+
+###
+
+GET http://localhost:8087/cuenta
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2025-11-09T184650.200.json
+
+###
+
+DELETE http://localhost:8087/cuenta/2
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+###
+
+GET http://localhost:8087/cuenta
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2025-11-09T184631.200.json
+
+###
+
+DELETE http://localhost:8087/cuenta/1
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+###
+
+DELETE http://localhost:8087/cuenta/1
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+###
+
+GET http://localhost:8087/cuenta
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2025-11-09T184356.200.json
+
+###
+
+DELETE http://localhost:8087/cuenta/1
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+###
+
+GET http://localhost:8087/cuenta
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2025-11-09T184343.200.json
+
+###
+
+DELETE http://localhost:8087/cuenta/1
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2025-11-09T184223.405.json
+
+###
+
+DELETE http://localhost:8087/cuenta/1
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2025-11-09T184201.405.json
+
+###
+
+PUT http://localhost:8087/cuenta/2
+Content-Type: application/json
+Content-Length: 22
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "saldo": 7500.50
+}
+
+<> 2025-11-09T184145.201.json
+
+###
+
+GET http://localhost:8087/cuenta/2
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2025-11-09T184135.200.json
+
+###
+
+GET http://localhost:8087/usuario
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2025-11-09T184109.200.json
+
+###
+
+PUT http://localhost:8087/cuenta/2
+Content-Type: application/json
+Content-Length: 22
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "saldo": 7500.50
+}
+
+<> 2025-11-09T183908.500.json
+
+###
+
+PUT http://localhost:8087/cuenta/2
+Content-Type: application/json
+Content-Length: 22
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "saldo": 7500.50
+}
+
+<> 2025-11-09T183851.500.json
+
+###
+
+GET http://localhost:8087/cuenta/2
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2025-11-09T183844.200.json
+
+###
+
+PUT http://localhost:8087/cuenta/2
+Content-Type: application/json
+Content-Length: 22
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "saldo": 7500.50
+}
+
+<> 2025-11-09T183238.405.json
+
+###
+
+PUT http://localhost:8087/cuenta/2
+Content-Type: application/json
+Content-Length: 22
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "saldo": 7500.50
+}
+
+<> 2025-11-09T183217.405.json
+
+###
+
+GET http://localhost:8087/cuenta/2
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2025-11-09T183202.200.json
+
+###
+
+PUT http://localhost:8087/cuenta/2
+Content-Type: application/json
+Content-Length: 22
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "saldo": 7500.50
+}
+
+<> 2025-11-09T183146.405.json
+
+###
+
+POST http://localhost:8087/cuenta
+Content-Type: application/json
+Content-Length: 51
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "idMercadoPago": "un-id-unico-de-mercadopago"
+}
+
+<> 2025-11-09T183125.201.json
+
+###
+
+GET http://localhost:8087/cuenta/1
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2025-11-09T183015.200.json
+
+###
+
+GET http://localhost:8087/cuenta
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2025-11-09T183006.200.json
+
+###
+
+GET http://localhost:8087/cuenta
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2025-11-09T182738.500.json
+
+###
+
+GET http://localhost:8087/usuario
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2025-11-09T182644.200.json
 
 ###
 

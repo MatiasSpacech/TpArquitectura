@@ -1,5 +1,7 @@
 package grupo4.mscvusuario.controllers;
 
+import grupo4.mscvusuario.entity.Cuenta;
+import grupo4.mscvusuario.entity.EstadoCuenta;
 import grupo4.mscvusuario.entity.Usuario;
 import grupo4.mscvusuario.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,9 +25,9 @@ public class UsuarioController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Usuario>> findAll(){
+    public ResponseEntity<List<Usuario>> findAll() {
         List<Usuario> usuarios = usuarioService.findAll();
-        if(usuarios.isEmpty()){
+        if (usuarios.isEmpty()) {
             return ResponseEntity.noContent().build();
         }
         return ResponseEntity.ok(usuarios);
@@ -74,4 +76,23 @@ public class UsuarioController {
         }
         return ResponseEntity.notFound().build();
     }
+
+    @DeleteMapping("/{usuarioId}/desasignar-cuenta/{cuentaId}")
+    public ResponseEntity<?> desasignarCuenta(@PathVariable Long usuarioId, @PathVariable Long cuentaId) {
+        Optional<Cuenta> cuentaOptional = usuarioService.desasignarCuenta(usuarioId, cuentaId);
+        if (cuentaOptional.isPresent()) {
+            return ResponseEntity.status(HttpStatus.OK).body(cuentaOptional.get());
+        }
+        return ResponseEntity.notFound().build();
+    }
+
+    // java
+    @PutMapping(path = "/{idUsuario}/cambiar-estado-cuentas", params = "nuevoEstado")
+    public ResponseEntity<Void> cambiarEstadoCuentas(
+            @PathVariable Long idUsuario,
+            @RequestParam("nuevoEstado") EstadoCuenta nuevoEstado) {
+        usuarioService.cambiarEstadoCuentas(idUsuario, nuevoEstado);
+        return ResponseEntity.noContent().build();
+    }
 }
+

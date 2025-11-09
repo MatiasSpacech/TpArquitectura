@@ -1,15 +1,19 @@
 package grupo4.mscvusuario.service;
 
 import grupo4.mscvusuario.entity.Cuenta;
+import grupo4.mscvusuario.entity.EstadoCuenta;
 import grupo4.mscvusuario.entity.Usuario;
 import grupo4.mscvusuario.repository.CuentaRepository;
 import grupo4.mscvusuario.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class UsuarioService {
@@ -53,5 +57,35 @@ public class UsuarioService {
             }
         }
         return Optional.empty();
+    }
+
+    @Transactional
+    public Optional<Cuenta> desasignarCuenta(Long usuarioId, Long cuentaId) {
+        Optional<Usuario> usuarioOpt = usuarioRepository.findById(usuarioId);
+        Optional<Cuenta> cuentaOpt = cuentaRepository.findById(cuentaId);
+
+        if (usuarioOpt.isPresent() && cuentaOpt.isPresent()) {
+            Usuario usuario = usuarioOpt.get();
+            Cuenta cuenta = cuentaOpt.get();
+
+            cuenta.getUsuarios().remove(usuario);
+            cuentaRepository.save(cuenta);
+            return Optional.of(cuenta);
+        }
+        return Optional.empty();
+    }
+
+    @Transactional
+    public void cambiarEstadoCuentas(Long idUsuario, EstadoCuenta nuevoEstado) {
+        if (!usuarioRepository.existsById(idUsuario)) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuario no encontrado");
+        }
+
+        int updated = cuentaRepository.updateEstadoByUsuarioId(idUsuario, nuevoEstado);
+
+        // Forzar flush para que la actualización se envíe inmediatamente al DB y el EntityManager quede consistente.
+        cuentaRepository.flush();
+
+        // updated == 0 significa que el usuario no tenía cuentas; no se lanza error por si es válido.
     }
 }

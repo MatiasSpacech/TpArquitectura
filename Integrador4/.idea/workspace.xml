@@ -5,9 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="723662e4-479d-4db5-9852-0ec9a71ebf68" name="Changes" comment="CRUD">
-      <change afterPath="$PROJECT_DIR$/usuario-cuenta/endPoint.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/usuario-cuenta/src/main/java/grupo4/mscvusuario/requests.http" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/usuario-cuenta/src/main/java/grupo4/mscvusuario/utils/CargaUsuarios.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/cb48f936-31e2-4ca4-a7cc-5c4f51aee68a.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/cb48f936-31e2-4ca4-a7cc-5c4f51aee68a.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/data_source_mapping.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/data_source_mapping.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2025-11-07T152228.200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/http-requests-log.http" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/httpRequests/http-requests-log.http" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usuario-cuenta/src/main/java/grupo4/mscvusuario/controllers/CuentaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/usuario-cuenta/src/main/java/grupo4/mscvusuario/controllers/CuentaController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/usuario-cuenta/src/main/java/grupo4/mscvusuario/controllers/UsuarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/usuario-cuenta/src/main/java/grupo4/mscvusuario/controllers/UsuarioController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usuario-cuenta/src/main/java/grupo4/mscvusuario/entity/Cuenta.java" beforeDir="false" afterPath="$PROJECT_DIR$/usuario-cuenta/src/main/java/grupo4/mscvusuario/entity/Cuenta.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usuario-cuenta/src/main/java/grupo4/mscvusuario/entity/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/usuario-cuenta/src/main/java/grupo4/mscvusuario/entity/Usuario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usuario-cuenta/src/main/java/grupo4/mscvusuario/repository/CuentaRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/usuario-cuenta/src/main/java/grupo4/mscvusuario/repository/CuentaRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usuario-cuenta/src/main/java/grupo4/mscvusuario/service/CuentaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/usuario-cuenta/src/main/java/grupo4/mscvusuario/service/CuentaService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usuario-cuenta/src/main/java/grupo4/mscvusuario/service/UsuarioService.java" beforeDir="false" afterPath="$PROJECT_DIR$/usuario-cuenta/src/main/java/grupo4/mscvusuario/service/UsuarioService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,14 +60,18 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/MatiasSpacech/TpArquitectura.git&quot;,
-    &quot;accountId&quot;: &quot;3d410d32-784d-47f1-8c1b-8d2e9e5b7da0&quot;
+    &quot;accountId&quot;: &quot;1b5257a9-3260-4df6-be48-ef49d0ef41c1&quot;
   }
 }</component>
   <component name="HttpClientEndpointsTabState">
-    <option name="cachedRequestData" value="&lt;CachedHttpClientTabRequests /&gt;" />
+    <option name="cachedRequestData" value="&lt;CachedHttpClientTabRequests&gt;&#10;  &lt;entry key=&quot;9e274651fd95241406b2a7bd50f24c65b9e34288&quot; value=&quot;###&amp;#10;PUT http://localhost:8087/usuario/3/cambiar-estado-cuentas?&amp;#10;    nuevoEstado={{$random.alphanumeric(8)}}&quot; /&gt;&#10;  &lt;entry key=&quot;c7ed9c99d6378102bcded1ca9864ff38ad973d1b&quot; value=&quot;###&amp;#10;GET http://localhost:8087/usuario&quot; /&gt;&#10;&lt;/CachedHttpClientTabRequests&gt;" />
   </component>
   <component name="HttpClientOnboardingState">{
   &quot;isOnboardingCommentShown&quot;: true
+}</component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
 }</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
@@ -70,6 +86,19 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "HTTP Request.requests | #8.executor": "Run",
+    "HTTP Request.requests | Actualizar un usuario.executor": "Run",
+    "HTTP Request.requests | Actualizar una cuenta.executor": "Run",
+    "HTTP Request.requests | Asignar una cuenta a un usuario.executor": "Run",
+    "HTTP Request.requests | Cambiar estado de todas las cuentas de un usuario (ejemplo: pasar a SUSPENDIDA).executor": "Run",
+    "HTTP Request.requests | Crear un nuevo usuario.executor": "Run",
+    "HTTP Request.requests | Crear una nueva cuenta.executor": "Run",
+    "HTTP Request.requests | Eliminar un usuario.executor": "Run",
+    "HTTP Request.requests | Eliminar una cuenta.executor": "Run",
+    "HTTP Request.requests | Endpoint de prueba.executor": "Run",
+    "HTTP Request.requests | Obtener todos los usuarios.executor": "Run",
+    "HTTP Request.requests | Obtener un usuario por ID.executor": "Run",
+    "HTTP Request.requests | Obtener una cuenta por ID.executor": "Run",
     "Maven.viaje [clean].executor": "Run",
     "Maven.viaje [compile].executor": "Run",
     "Maven.viaje [validate].executor": "Run",
@@ -139,6 +168,17 @@
     </option>
     <option name="configurationStatuses">
       <map>
+        <entry key="HttpClient.HttpRequestRunConfigurationType">
+          <value>
+            <map>
+              <entry key="requests | Cambiar estado de todas las cuentas de un usuario (ejemplo: pasar a SUSPENDIDA)" value="STOPPED" />
+              <entry key="requests | Crear un nuevo usuario" value="STOPPED" />
+              <entry key="requests | Endpoint de prueba" value="STOPPED" />
+              <entry key="requests | Obtener todos los usuarios" value="STOPPED" />
+              <entry key="requests | Obtener un usuario por ID" value="STOPPED" />
+            </map>
+          </value>
+        </entry>
         <entry key="SpringBootApplicationConfigurationType">
           <value>
             <map>
@@ -155,6 +195,21 @@
     </option>
   </component>
   <component name="RunManager" selected="Spring Boot.UsuarioCuentaApplication">
+    <configuration name="requests | Cambiar estado de todas las cuentas de un usuario (ejemplo: pasar a SUSPENDIDA)" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/usuario-cuenta/src/main/java/grupo4/mscvusuario/requests.http" executionIdentifier="Cambiar estado de todas las cuentas de un usuario (ejemplo: pasar a SUSPENDIDA)" index="14" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="requests | Crear un nuevo usuario" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/usuario-cuenta/src/main/java/grupo4/mscvusuario/requests.http" executionIdentifier="Crear un nuevo usuario" index="4" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="requests | Endpoint de prueba" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/usuario-cuenta/src/main/java/grupo4/mscvusuario/requests.http" executionIdentifier="Endpoint de prueba" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="requests | Obtener todos los usuarios" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/usuario-cuenta/src/main/java/grupo4/mscvusuario/requests.http" executionIdentifier="Obtener todos los usuarios" index="2" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="requests | Obtener un usuario por ID" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/usuario-cuenta/src/main/java/grupo4/mscvusuario/requests.http" executionIdentifier="Obtener un usuario por ID" index="3" runType="Run single request">
+      <method v="2" />
+    </configuration>
     <configuration name="AdminApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="admin" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="grupo4.mscvadmin.AdminApplication" />
@@ -198,7 +253,7 @@
       </method>
     </configuration>
     <configuration name="UsuarioCuentaApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <module name="usuario-cuenta" />
+      <module name="usuario" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="grupo4.mscvusuario.UsuarioApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -212,6 +267,11 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="HTTP Request.requests | Cambiar estado de todas las cuentas de un usuario (ejemplo: pasar a SUSPENDIDA)" />
+      <item itemvalue="HTTP Request.requests | Crear un nuevo usuario" />
+      <item itemvalue="HTTP Request.requests | Endpoint de prueba" />
+      <item itemvalue="HTTP Request.requests | Obtener todos los usuarios" />
+      <item itemvalue="HTTP Request.requests | Obtener un usuario por ID" />
       <item itemvalue="Spring Boot.AdminApplication" />
       <item itemvalue="Spring Boot.FacturacionApplication" />
       <item itemvalue="Spring Boot.GatewayApplication" />
@@ -221,6 +281,15 @@
       <item itemvalue="Spring Boot.UsuarioCuentaApplication" />
       <item itemvalue="Spring Boot.ViajesApplication" />
     </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="HTTP Request.requests | Obtener todos los usuarios" />
+        <item itemvalue="HTTP Request.requests | Cambiar estado de todas las cuentas de un usuario (ejemplo: pasar a SUSPENDIDA)" />
+        <item itemvalue="HTTP Request.requests | Endpoint de prueba" />
+        <item itemvalue="HTTP Request.requests | Obtener un usuario por ID" />
+        <item itemvalue="HTTP Request.requests | Crear un nuevo usuario" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -244,6 +313,8 @@
       <workItem from="1762401115319" duration="8630000" />
       <workItem from="1762492324738" duration="8404000" />
       <workItem from="1762539539724" duration="12185000" />
+      <workItem from="1762722498836" duration="3040000" />
+      <workItem from="1762725845217" duration="1816000" />
     </task>
     <task id="LOCAL-00001" summary="Compose agregado con las 3 bases y un get y post en mongo en msvc-monpatin">
       <option name="closed" value="true" />
@@ -285,7 +356,15 @@
       <option name="project" value="LOCAL" />
       <updated>1762645752456</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="CRUD">
+      <option name="closed" value="true" />
+      <created>1762696170540</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1762696170540</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

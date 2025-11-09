@@ -1,5 +1,6 @@
 package grupo4.mscvusuario.entity;
 
+        import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
         import jakarta.persistence.*;
         import lombok.AllArgsConstructor;
         import lombok.Getter;
@@ -33,6 +34,7 @@ package grupo4.mscvusuario.entity;
             private Rol rol;
 
             @ManyToMany(mappedBy = "usuarios", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+            @JsonIgnoreProperties("usuarios")
             private Set<Cuenta> cuentas = new HashSet<>();
 
             @Column()

@@ -1,5 +1,6 @@
 package grupo4.mscvusuario.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -46,11 +47,12 @@ public class Cuenta {
             joinColumns = @JoinColumn(name = "id_cuenta"),
             inverseJoinColumns = @JoinColumn(name = "id_usuario")
     )
+    @JsonIgnoreProperties("cuentas")
     private Set<Usuario> usuarios = new HashSet<>();
 
     // Campos específicos para la lógica de cuentas PREMIUM
     @Column(name = "km_consumidos_mes")
-    private double kmConsumidosMes; // Se usa solo si tipoCuenta es PREMIUM
+    private Double kmConsumidosMes; // Se usa solo si tipoCuenta es PREMIUM
 
     @Column(name = "fecha_renovacion_cupo")
     private LocalDate fechaRenovacionCupo; // Se usa solo si tipoCuenta es PREMIUM
