@@ -19,8 +19,7 @@
     <modules>
         <module>admin</module>
         <module>monopatin</module>
-        <module>usuario</module>
-        <module>cuenta</module>
+        <module>usuario-cuenta</module>
         <module>viajes</module>
         <module>facturacion</module>
         <module>tarifas</module>

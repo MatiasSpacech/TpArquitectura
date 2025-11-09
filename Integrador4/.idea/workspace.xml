@@ -4,6 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="1cc54f86-421c-497a-97cc-5533275d5991" name="Changes" comment="">
       <change afterPath="$PROJECT_DIR$/gateway/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../.idea/compiler.xml" beforeDir="false" />
@@ -30,12 +31,47 @@
       <change beforePath="$PROJECT_DIR$/admin/src/main/java/grupo4/mscvadmin/controllers/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/grupo4/mscvadmin/controllers/AdminController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gateway/src/main/java/grupo4/gateway/GatewayApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/grupo4/gateway/GatewayApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gateway/src/main/resources/application.properties" beforeDir="false" />
+=======
+    <list default="true" id="723662e4-479d-4db5-9852-0ec9a71ebf68" name="Changes" comment="CRUD BASICO">
+      <change afterPath="$PROJECT_DIR$/usuario-cuenta/src/main/java/grupo4/mscvusuario/controllers/CuentaController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/usuario-cuenta/src/main/java/grupo4/mscvusuario/repository/CuentaRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/usuario-cuenta/src/main/java/grupo4/mscvusuario/service/CuentaService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usuario-cuenta/src/main/java/grupo4/mscvusuario/controllers/UsuarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/usuario-cuenta/src/main/java/grupo4/mscvusuario/controllers/UsuarioController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usuario-cuenta/src/main/java/grupo4/mscvusuario/entity/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/usuario-cuenta/src/main/java/grupo4/mscvusuario/entity/Usuario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usuario-cuenta/src/main/java/grupo4/mscvusuario/service/UsuarioService.java" beforeDir="false" afterPath="$PROJECT_DIR$/usuario-cuenta/src/main/java/grupo4/mscvusuario/service/UsuarioService.java" afterDir="false" />
+>>>>>>> fb646ce02e72d59eaef87039e83fb3e1c31fe36f
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+<<<<<<< HEAD
+=======
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Record" />
+        <option value="Enum" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+>>>>>>> fb646ce02e72d59eaef87039e83fb3e1c31fe36f
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
@@ -61,26 +97,83 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+<<<<<<< HEAD
     "ModuleVcsDetector.initialDetectionPerformed": "true",
+=======
+    "Maven.viaje [clean].executor": "Run",
+    "Maven.viaje [compile].executor": "Run",
+    "Maven.viaje [validate].executor": "Run",
+    "Maven.viaje [verify].executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Notification.DisplayName-DoNotAsk-DatabaseConfigFileWatcher.found": "New/updated database configurations found",
+    "Notification.DoNotAsk-DatabaseConfigFileWatcher.found": "true",
+>>>>>>> fb646ce02e72d59eaef87039e83fb3e1c31fe36f
     "RequestMappingsPanelOrder0": "0",
     "RequestMappingsPanelOrder1": "1",
     "RequestMappingsPanelWidth0": "75",
     "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+<<<<<<< HEAD
     "RunOnceActivity.git.unshallow": "true",
     "Spring Boot.AdminApplication.executor": "Run",
     "Spring Boot.GatewayApplication.executor": "Run",
     "git-widget-placeholder": "main",
     "last_opened_file_path": "/home/matias/Integrador Arquitecturas/TpArquitectura/Integrador4",
+=======
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Spring Boot.AdminApplication.executor": "Run",
+    "Spring Boot.CuentaApplication.executor": "Run",
+    "Spring Boot.FacturacionApplication.executor": "Run",
+    "Spring Boot.MonopatinApplication.executor": "Run",
+    "Spring Boot.MscvAdminApplication.executor": "Run",
+    "Spring Boot.MscvCuentaApplication.executor": "Run",
+    "Spring Boot.MscvMonopatinApplication.executor": "Run",
+    "Spring Boot.MscvUsuarioApplication.executor": "Run",
+    "Spring Boot.MscvViajeApplication.executor": "Run",
+    "Spring Boot.ParadaApplication.executor": "Run",
+    "Spring Boot.TarifasApplication.executor": "Run",
+    "Spring Boot.UsuarioApplication.executor": "Run",
+    "Spring Boot.UsuarioCuentaApplication.executor": "Run",
+    "Spring Boot.ViajesApplication.executor": "Run",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/USUARIO/Desktop/TUDAI/Arquitecturas Web/TpArquitectura/Integrador4/parada/src/main/java/grupo4/parada/services",
+>>>>>>> fb646ce02e72d59eaef87039e83fb3e1c31fe36f
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+<<<<<<< HEAD
     "run.configurations.included.in.services": "true",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+=======
+    "onboarding.tips.debug.path": "D:/USUARIO/Desktop/TUDAI/Arquitecturas Web/TpArquitectura/Integrador4/src/main/java/grupo4/Main.java",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "run.configurations.included.in.services": "true",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
+    ]
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\USUARIO\Desktop\TUDAI\Arquitecturas Web\TpArquitectura\Integrador4\parada\src\main\java\grupo4\parada\services" />
+      <recent name="D:\USUARIO\Desktop\TUDAI\Arquitecturas Web\TpArquitectura\Integrador4\facturacion\src\main\java\grupo4\facturacion" />
+      <recent name="D:\USUARIO\Desktop\TUDAI\Arquitecturas Web\TpArquitectura\Integrador4\tarifas\src\main\java\grupo4\tarifas" />
+    </key>
+  </component>
+>>>>>>> fb646ce02e72d59eaef87039e83fb3e1c31fe36f
   <component name="RunDashboard">
     <option name="configurationTypes">
       <set>
@@ -95,14 +188,26 @@
           <value>
             <map>
               <entry key="AdminApplication" value="STOPPED" />
+<<<<<<< HEAD
               <entry key="GatewayApplication" value="STOPPED" />
+=======
+              <entry key="MonopatinApplication" value="STOPPED" />
+              <entry key="ParadaApplication" value="STOPPED" />
+              <entry key="TarifasApplication" value="STOPPED" />
+              <entry key="UsuarioCuentaApplication" value="STOPPED" />
+              <entry key="ViajesApplication" value="STOPPED" />
+>>>>>>> fb646ce02e72d59eaef87039e83fb3e1c31fe36f
             </map>
           </value>
         </entry>
       </map>
     </option>
   </component>
+<<<<<<< HEAD
   <component name="RunManager" selected="Spring Boot.GatewayApplication">
+=======
+  <component name="RunManager" selected="Spring Boot.UsuarioCuentaApplication">
+>>>>>>> fb646ce02e72d59eaef87039e83fb3e1c31fe36f
     <configuration name="AdminApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="admin" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="grupo4.mscvadmin.AdminApplication" />
@@ -110,6 +215,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+<<<<<<< HEAD
     <configuration name="CuentaApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="cuenta" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="grupo4.mscvcuenta.CuentaApplication" />
@@ -117,6 +223,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+=======
+>>>>>>> fb646ce02e72d59eaef87039e83fb3e1c31fe36f
     <configuration name="FacturacionApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="facturacion" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="grupo4.facturacion.FacturacionApplication" />
@@ -152,8 +260,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UsuarioApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
-      <module name="usuario" />
+    <configuration name="UsuarioCuentaApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="usuario-cuenta" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="grupo4.mscvusuario.UsuarioApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -166,6 +274,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Spring Boot.AdminApplication" />
+      <item itemvalue="Spring Boot.FacturacionApplication" />
+      <item itemvalue="Spring Boot.GatewayApplication" />
+      <item itemvalue="Spring Boot.MonopatinApplication" />
+      <item itemvalue="Spring Boot.ParadaApplication" />
+      <item itemvalue="Spring Boot.TarifasApplication" />
+      <item itemvalue="Spring Boot.UsuarioCuentaApplication" />
+      <item itemvalue="Spring Boot.ViajesApplication" />
+    </list>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -184,9 +302,89 @@
       <updated>1762637922383</updated>
       <workItem from="1762637923858" duration="2954000" />
     </task>
+<<<<<<< HEAD
+=======
+    <task id="LOCAL-00001" summary="Compose agregado con las 3 bases y un get y post en mongo en msvc-monpatin">
+      <option name="closed" value="true" />
+      <created>1762318604981</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1762318604981</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Implementado los microservicios de dani y el crud del microservicio de monopatines">
+      <option name="closed" value="true" />
+      <created>1762409578288</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1762409578288</updated>
+    </task>
+    <task id="LOCAL-00003" summary="refactorizacion usuario cuenta, ahora es un solo microservicio usuario-cuenta, elimino el micfoservicio cuenta, ajusto pom general &lt;module&gt;usuario-cuenta&lt;/module&gt;">
+      <option name="closed" value="true" />
+      <created>1762638538512</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1762638538512</updated>
+    </task>
+    <task id="LOCAL-00004" summary="CRUD BASICO">
+      <option name="closed" value="true" />
+      <created>1762644294600</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1762644294601</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
+>>>>>>> fb646ce02e72d59eaef87039e83fb3e1c31fe36f
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+<<<<<<< HEAD
+=======
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="main" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Compose agregado con las 3 bases y un get y post en mongo en msvc-monpatin" />
+    <MESSAGE value="Implementado los microservicios de dani y el crud del microservicio de monopatines" />
+    <MESSAGE value="refactorizacion usuario cuenta, ahora es un solo microservicio usuario-cuenta, elimino el micfoservicio cuenta, ajusto pom general &lt;module&gt;usuario-cuenta&lt;/module&gt;" />
+    <MESSAGE value="CRUD BASICO" />
+    <option name="LAST_COMMIT_MESSAGE" value="CRUD BASICO" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/grupo4/Main.java</url>
+          <line>13</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+>>>>>>> fb646ce02e72d59eaef87039e83fb3e1c31fe36f
 </project>

@@ -10,7 +10,12 @@
     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/tarifas/src/main/java" charset="UTF-8" />
+<<<<<<< HEAD
     <file url="file://$PROJECT_DIR$/usuario/src/main/java" charset="UTF-8" />
+=======
+    <file url="file://$PROJECT_DIR$/usuario-cuenta/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/viaje/src/main/java" charset="UTF-8" />
+>>>>>>> fb646ce02e72d59eaef87039e83fb3e1c31fe36f
     <file url="file://$PROJECT_DIR$/viajes/src/main/java" charset="UTF-8" />
   </component>
 </project>
