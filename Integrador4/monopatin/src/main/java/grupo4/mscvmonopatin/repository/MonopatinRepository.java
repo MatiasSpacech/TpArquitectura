@@ -16,4 +16,9 @@ public interface MonopatinRepository extends MongoRepository<Monopatin, String> 
 
     @Query("{ 'estado' : ?0, 'idParada': ?1 }")
     List<Monopatin> findByEstadoStringAndIdParada(String estado, Long idParada);
+
+    // Traer todos los monopatines que sus
+    @Query("{ 'kmRecorridos' : { $gte: ?0 } }")
+    List<Monopatin> getReportesMantenimiento(Integer kmRecorridos);
+
 }

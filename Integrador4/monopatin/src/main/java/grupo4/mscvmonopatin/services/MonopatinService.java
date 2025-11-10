@@ -2,6 +2,7 @@ package grupo4.mscvmonopatin.services;
 
 import grupo4.mscvmonopatin.dtos.MonopatinDTO;
 import grupo4.mscvmonopatin.dtos.MonopatinPatchDTO;
+import grupo4.mscvmonopatin.dtos.ReporteMantenimientoDTO;
 import grupo4.mscvmonopatin.feignClients.ParadaFeignClient;
 import grupo4.mscvmonopatin.feignModel.Parada;
 import grupo4.mscvmonopatin.model.Estado;
@@ -142,6 +143,12 @@ public class MonopatinService {
         return repository.findByEstadoStringAndIdParada(estado,idParada)
                 .stream().map(MonopatinDTO::new)
                 .toList();
+    }
+
+    @Transactional(readOnly=true)
+    public List<ReporteMantenimientoDTO> getReportesMantenimiento(Integer kmMantenimiento) {
+        return repository.getReportesMantenimiento(kmMantenimiento)
+                .stream().map(ReporteMantenimientoDTO::new).toList();
     }
 
 

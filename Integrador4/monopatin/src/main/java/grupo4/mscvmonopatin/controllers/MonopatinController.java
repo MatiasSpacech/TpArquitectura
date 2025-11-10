@@ -2,6 +2,7 @@ package grupo4.mscvmonopatin.controllers;
 
 import grupo4.mscvmonopatin.dtos.MonopatinDTO;
 import grupo4.mscvmonopatin.dtos.MonopatinPatchDTO;
+import grupo4.mscvmonopatin.dtos.ReporteMantenimientoDTO;
 import grupo4.mscvmonopatin.model.Monopatin;
 import grupo4.mscvmonopatin.repository.MonopatinRepository;
 import grupo4.mscvmonopatin.services.MonopatinService;
@@ -50,6 +51,18 @@ public class MonopatinController {
     @GetMapping("/{id}/parada")
     public ResponseEntity<Map<String, Object>> getMonopatinConParada(@PathVariable String id) {
         return ResponseEntity.ok(service.getMonopatinConParada(id));
+    }
+
+    @GetMapping("/reportes-manetinimiento/{kmMaximo}")
+    public ResponseEntity<List<ReporteMantenimientoDTO>> getMonopatinesManetinimiento(
+                                                    @PathVariable Integer kmMaximo) {
+        List<ReporteMantenimientoDTO> reportes = service.getReportesMantenimiento(kmMaximo);
+
+        if(reportes.isEmpty()){
+            return ResponseEntity.noContent().build();
+        }
+
+        return ResponseEntity.ok(reportes);
     }
 
     @PostMapping
