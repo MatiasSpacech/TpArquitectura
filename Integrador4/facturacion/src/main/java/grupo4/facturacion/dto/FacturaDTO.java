@@ -1,6 +1,5 @@
 package grupo4.facturacion.dto;
 
-import grupo4.mscvusuario.entity.Usuario;
 import lombok.*;
 
 @Data

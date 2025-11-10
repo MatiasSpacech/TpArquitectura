@@ -62,7 +62,7 @@ public class TarifaController {
         return ResponseEntity.status(HttpStatus.OK).body(tarifaService.findAllTarifas());
     }
 
-    @GetMapping("/tarifa/id/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<?> findTarifaById(@PathVariable Long id) {
         return ResponseEntity.status(HttpStatus.OK).body(tarifaService.findTarifaById(id));
     }

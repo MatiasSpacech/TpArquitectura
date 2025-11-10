@@ -1,5 +1,6 @@
 package grupo4.mscvusuario.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -40,6 +41,7 @@ public class Cuenta {
     private TipoCuenta tipoCuenta; // Enum con BASICA, PREMIUM
 
     // ¡ESTA ES LA DUEÑA DE LA RELACIÓN!
+    @JsonIgnore
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}) // Usar CascadeType.ALL (o REMOVE) en una relación @ManyToMany es generalmente una mala idea. Significaría que si borras una Cuenta, ¡también se borrarían todos los Usuarios asociados a ella!, incluso si esos usuarios están asociados a otras cuentas. La configuración que tienes (PERSIST, MERGE) es mucho más segura.
     @JoinTable(
             name = "cuenta_usuario",

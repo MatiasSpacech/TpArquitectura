@@ -35,6 +35,18 @@ public class UsuarioController {
         return ResponseEntity.notFound().build();
     }
 
+    @GetMapping("/{idUsuario}/cuenta-asociada/{idCuenta}")
+    public ResponseEntity<Boolean> verificarCuentaAsociada(
+                                @PathVariable Long idUsuario,
+                                @PathVariable Long idCuenta) {
+
+        // El service ejecuta la lógica en la BD
+        boolean esValido = usuarioService.cuentaAsociada(idUsuario, idCuenta);
+
+        // Retorna 200 OK con el booleano en el cuerpo
+        return ResponseEntity.ok(esValido);
+    }
+
     @PostMapping // http://localhost:8080/api/usuario
     public ResponseEntity<Usuario> save(@RequestBody Usuario usuario) {
         return ResponseEntity.status(HttpStatus.CREATED).body(usuarioService.save(usuario));

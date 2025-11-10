@@ -39,7 +39,8 @@ public class MonopatinController {
     @GetMapping("/{id}")
     public ResponseEntity<MonopatinDTO> findById(@PathVariable String id) {
         try {
-            return ResponseEntity.ok(service.findById(id));
+            MonopatinDTO monopatin = service.findById(id);
+            return ResponseEntity.ok(monopatin);
         }
         catch (NotFoundException e) {
             return ResponseEntity.notFound().build();
