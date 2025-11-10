@@ -1,3 +1,54 @@
+POST http://localhost:8087/api/viajes
+Content-Type: application/json
+Content-Length: 243
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "id": 0,
+  "paradaOrigen": 0,
+  "paradaDestino": 0,
+  "idTarifa": 0,
+  "idMonopatin": "",
+  "idUsuario": 0,
+  "idCuenta": 0,
+  "fechaInicio": "",
+  "fechaFin": "",
+  "tiempoTotalMinutos": 0,
+  "kilometrosRecorridos": 0,
+  "activo": false
+}
+
+###
+
+GET http://localhost:8082/api/usuario
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2025-11-10T004203.200.json
+
+###
+
+GET http://localhost:8082/api/cuenta
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2025-11-10T004149.200.json
+
+###
+
+GET http://localhost:8082/api/cuenta
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2025-11-10T004137.200.json
+
+###
+
 GET http://localhost:8085/api/paradas
 User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.1
 Accept-Encoding: br, deflate, gzip, x-gzip

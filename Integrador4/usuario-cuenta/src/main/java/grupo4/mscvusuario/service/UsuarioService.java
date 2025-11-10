@@ -69,4 +69,13 @@ public class UsuarioService {
             }
         }
     }
+
+    @Transactional(readOnly = true)
+    public boolean cuentaAsociada(Long idUsuario, Long idCuenta) {
+        if (idUsuario == null || idCuenta == null) {
+            return false;
+        }
+
+        return usuarioRepository.existsCuentaInUsuario(idUsuario,idCuenta);
+    }
 }

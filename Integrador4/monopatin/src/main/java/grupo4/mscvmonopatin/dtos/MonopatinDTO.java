@@ -12,14 +12,14 @@ import lombok.Setter;
 @AllArgsConstructor
 @RequiredArgsConstructor
 public class MonopatinDTO {
-    private Estado estado;
+    private String estado;
     private double latitud;
     private double longitud;
     private int kmRecorridos;
     private int tiempoUsado;
 
     public MonopatinDTO(Monopatin monopatin) {
-        this.estado = monopatin.getEstado();
+        this.estado = monopatin.getEstado().toString();
         this.latitud = monopatin.getLatitud();
         this.longitud = monopatin.getLongitud();
         this.kmRecorridos = monopatin.getKmRecorridos();

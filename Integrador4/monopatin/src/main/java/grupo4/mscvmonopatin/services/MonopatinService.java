@@ -33,8 +33,9 @@ public class MonopatinService {
 
     @Transactional(readOnly = true)
     public MonopatinDTO findById(String id){
-        return repository.findById(id).map(MonopatinDTO::new)
+        Monopatin monopatin = repository.findById(id)
                 .orElseThrow( () -> new NotFoundException("Monopatin",id));
+        return new MonopatinDTO(monopatin);
     }
 
     @Transactional(readOnly = true)
@@ -58,7 +59,7 @@ public class MonopatinService {
     @Transactional
     public MonopatinDTO save (Monopatin monopatin) {
         // Verifico el estado pasado
-        String estadoPasado = monopatin.getEstado().toString();
+        String estadoPasado = monopatin.getEstado().toString().toUpperCase();
         if(Estado.perteneceAlEnum(estadoPasado)==null){
             throw new InvalidEstadoException(estadoPasado);
         }
