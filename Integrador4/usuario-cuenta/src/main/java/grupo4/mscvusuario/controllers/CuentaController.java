@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/cuenta")
+@RequestMapping("api/cuenta") // http://localhost:8080/api/cuenta
 public class CuentaController {
 
     @Autowired
@@ -21,7 +21,7 @@ public class CuentaController {
         return cuentaService.findAll();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/{id}") //http://localhost:8080/api/cuenta/1
     public ResponseEntity<Cuenta> findById(@PathVariable Long id) {
         Cuenta cuenta = cuentaService.findById(id);
         if (cuenta != null) {
@@ -34,4 +34,15 @@ public class CuentaController {
     public ResponseEntity<Cuenta> save(@RequestBody Cuenta cuenta) {
         return ResponseEntity.status(HttpStatus.CREATED).body(cuentaService.save(cuenta));
     }
+    @PatchMapping("/{id}/cambiar-estado-cuenta") // http://localhost:8080/api/cuenta/1/cambiar-estado-cuenta
+    public ResponseEntity<Cuenta> cambiarEstadoCuenta(@PathVariable Long id) {
+        Cuenta cuentaActualizada = cuentaService.cambiarEstadoCuenta(id);
+        if (cuentaActualizada != null) {
+            return ResponseEntity.ok(cuentaActualizada);
+        }
+        return ResponseEntity.notFound().build();
+    }
+    
+
+    
 }

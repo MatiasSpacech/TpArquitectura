@@ -50,7 +50,7 @@ public class FacturaController {
      * Consultar total facturado en rango de meses
      * GET /api/facturas/total-facturado?anio=2025&mesDesde=1&mesHasta=6
      */
-    @GetMapping("/total-facturado")
+    @GetMapping("/total-facturado") // http://localhost:8083/api/facturas/total-facturado?anio=2025&mesDesde=1&mesHasta=6
     public ResponseEntity<?> getTotalFacturado(
             @RequestParam int anio,
             @RequestParam int mesDesde,

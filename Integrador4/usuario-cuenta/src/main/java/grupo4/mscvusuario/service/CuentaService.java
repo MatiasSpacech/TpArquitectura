@@ -33,4 +33,18 @@ public class CuentaService {
     public void delete(Long id) {
         cuentaRepository.deleteById(id);
     }
+
+    @Transactional
+    public Cuenta cambiarEstadoCuenta(Long id){
+        Cuenta cuenta = cuentaRepository.findById(id).orElse(null);
+        if(cuenta != null){
+            if(cuenta.getEstado() == grupo4.mscvusuario.entity.EstadoCuenta.ACTIVA){
+                cuenta.setEstado(grupo4.mscvusuario.entity.EstadoCuenta.SUSPENDIDA);
+            } else if (cuenta.getEstado() == grupo4.mscvusuario.entity.EstadoCuenta.SUSPENDIDA) {
+                cuenta.setEstado(grupo4.mscvusuario.entity.EstadoCuenta.ACTIVA);
+            }
+            return cuentaRepository.save(cuenta);
+        }
+        return null;
+    }
 }

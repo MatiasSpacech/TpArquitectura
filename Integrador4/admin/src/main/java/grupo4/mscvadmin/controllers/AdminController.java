@@ -54,7 +54,7 @@ public class AdminController {
      * inhabilitar el uso
      * momentáneo de la aplicación.
      */
-    @GetMapping("/usuarios/{id}/anular")
+    @GetMapping("//{id}/anular")
     public String anularUsuario(@PathVariable String id) {
         // Lógica para anular la cuenta de usuario
         return "Cuenta de usuario " + id + " anulada.";
