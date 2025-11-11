@@ -17,7 +17,7 @@ import java.util.Map;
 
 @Service
 public class ParadaService {
-    private static final Double RADIO_MAX_BUSQUEDA = 1000.0;
+    private static final Double RADIO_MAX_BUSQUEDA = 100.0;
 
     @Autowired
     private ParadaRepository repository;

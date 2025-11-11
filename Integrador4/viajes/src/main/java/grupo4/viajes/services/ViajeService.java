@@ -1,6 +1,7 @@
 package grupo4.viajes.services;
 
 import grupo4.viajes.dtos.ReporteViajePeriodoDTO;
+import grupo4.viajes.dtos.ReporteViajeUsuariosDTO;
 import grupo4.viajes.dtos.ViajePatch;
 import grupo4.viajes.dtos.ViajeDTO;
 import grupo4.viajes.feignClients.*;
@@ -136,5 +137,10 @@ public class ViajeService {
     @Transactional(readOnly = true)
     public List<ReporteViajePeriodoDTO> getReporteViajeAnio(Integer anio, Integer xViajes) {
         return repository.getReporteViajeAnio(anio, xViajes);
+    }
+
+    @Transactional
+    public List<ReporteViajeUsuariosDTO> getReporteViajesPorUsuariosPeriodo(Integer anioDesde, Integer anioHasta) {
+        return repository.getReportesViajesPorUsuariosPeriodo(anioDesde, anioHasta);
     }
 }

@@ -10,6 +10,6 @@ import lombok.Setter;
 @Setter
 public class ReporteViajePeriodoDTO {
     private String idMonopatin;
-    private int cantidadViajes;
-    private int anio;
+    private Long cantidadViajes;
+    private Object anio;
 }

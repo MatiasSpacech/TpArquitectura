@@ -5,11 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1cc54f86-421c-497a-97cc-5533275d5991" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/monopatin/src/main/java/grupo4/mscvmonopatin/controllers/MonopatinController.java" beforeDir="false" afterPath="$PROJECT_DIR$/monopatin/src/main/java/grupo4/mscvmonopatin/controllers/MonopatinController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/monopatin/src/main/java/grupo4/mscvmonopatin/repository/MonopatinRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/monopatin/src/main/java/grupo4/mscvmonopatin/repository/MonopatinRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/monopatin/src/main/java/grupo4/mscvmonopatin/services/MonopatinService.java" beforeDir="false" afterPath="$PROJECT_DIR$/monopatin/src/main/java/grupo4/mscvmonopatin/services/MonopatinService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/facturacion/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/facturacion/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parada/src/main/java/grupo4/parada/services/ParadaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/parada/src/main/java/grupo4/parada/services/ParadaService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/viajes/src/main/java/grupo4/viajes/controllers/ViajeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/viajes/src/main/java/grupo4/viajes/controllers/ViajeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/viajes/src/main/java/grupo4/viajes/dtos/ReporteViajePeriodoDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/viajes/src/main/java/grupo4/viajes/dtos/ReporteViajePeriodoDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/viajes/src/main/java/grupo4/viajes/repository/ViajeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/viajes/src/main/java/grupo4/viajes/repository/ViajeRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/viajes/src/main/java/grupo4/viajes/services/ViajeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/viajes/src/main/java/grupo4/viajes/services/ViajeService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,12 +50,12 @@
     &quot;assignee&quot;: &quot;MatiasSpacech&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/MatiasSpacech/TpArquitectura.git",
-    "accountId": "208eacd1-7c64-4e55-a349-0ed9b8e747ba"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/MatiasSpacech/TpArquitectura.git&quot;,
+    &quot;accountId&quot;: &quot;208eacd1-7c64-4e55-a349-0ed9b8e747ba&quot;
   }
-}]]></component>
+}</component>
   <component name="HttpClientEndpointsTabState">
     <option name="cachedRequestData" value="&lt;CachedHttpClientTabRequests&gt;&#10;  &lt;entry key=&quot;847442cfab263638f20a1961fbe00e998dd90bf4&quot; value=&quot;###&amp;#10;POST http://localhost:8087/api/viajes&amp;#10;Content-Type: application/json&amp;#10;&amp;#10;{&amp;#10;  &amp;quot;id&amp;quot;: 0,&amp;#10;  &amp;quot;paradaOrigen&amp;quot;: 0,&amp;#10;  &amp;quot;paradaDestino&amp;quot;: 0,&amp;#10;  &amp;quot;idTarifa&amp;quot;: 0,&amp;#10;  &amp;quot;idMonopatin&amp;quot;: &amp;quot;&amp;quot;,&amp;#10;  &amp;quot;idUsuario&amp;quot;: 0,&amp;#10;  &amp;quot;idCuenta&amp;quot;: 0,&amp;#10;  &amp;quot;fechaInicio&amp;quot;: &amp;quot;&amp;quot;,&amp;#10;  &amp;quot;fechaFin&amp;quot;: &amp;quot;&amp;quot;,&amp;#10;  &amp;quot;tiempoTotalMinutos&amp;quot;: 0,&amp;#10;  &amp;quot;kilometrosRecorridos&amp;quot;: 0,&amp;#10;  &amp;quot;activo&amp;quot;: false&amp;#10;}&quot; /&gt;&#10;  &lt;entry key=&quot;bbf9496c0d1a32b3e3ee7d1f2c2c0313cdc394e5&quot; value=&quot;###&amp;#10;GET http://localhost:8081/usuario/1&quot; /&gt;&#10;&lt;/CachedHttpClientTabRequests&gt;" />
   </component>
@@ -150,9 +152,9 @@
           <value>
             <map>
               <entry key="AdminApplication" value="STOPPED" />
-              <entry key="FacturacionApplication" value="FAILED" />
+              <entry key="FacturacionApplication" value="STOPPED" />
               <entry key="GatewayApplication" value="STOPPED" />
-              <entry key="MonopatinApplication" value="FAILED" />
+              <entry key="MonopatinApplication" value="STOPPED" />
               <entry key="ParadaApplication" value="STOPPED" />
               <entry key="TarifasApplication" value="STOPPED" />
               <entry key="UsuarioCuentaApplication" value="STOPPED" />
@@ -163,7 +165,7 @@
       </map>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.MonopatinApplication">
+  <component name="RunManager" selected="Spring Boot.ParadaApplication">
     <configuration name="AdminApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="admin" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="grupo4.mscvadmin.AdminApplication" />
@@ -267,6 +269,7 @@
       <workItem from="1762696564298" duration="248000" />
       <workItem from="1762744146201" duration="9832000" />
       <workItem from="1762758432739" duration="9362000" />
+      <workItem from="1762816839228" duration="3742000" />
     </task>
     <task id="LOCAL-00001" summary="Compose agregado con las 3 bases y un get y post en mongo en msvc-monpatin">
       <option name="closed" value="true" />

@@ -1,6 +1,7 @@
 package grupo4.viajes.controllers;
 
 import grupo4.viajes.dtos.ReporteViajePeriodoDTO;
+import grupo4.viajes.dtos.ReporteViajeUsuariosDTO;
 import grupo4.viajes.dtos.ViajeDTO;
 import grupo4.viajes.model.Viaje;
 import grupo4.viajes.services.ViajeService;
@@ -41,20 +42,27 @@ public class ViajeController {
         }
     }
 
-    @GetMapping("/reporte")
+    @GetMapping("/reportes")
     public ResponseEntity<?> getReporteViajes(@RequestParam(required = false, name="anio") Integer anio,
-                                              @RequestParam(required = false, name="cantidad") Integer cantidad) {
-        try {
+                                              @RequestParam(required = false, name="cantidad") Integer cantidad,
+                                              @RequestParam(required = false, name="anioDesde") Integer anioDesde,
+                                              @RequestParam(required = false, name="anioHasta") Integer anioHasta){
+        if (anio!=null && cantidad!=null){
             List<ReporteViajePeriodoDTO> reportes = service.getReporteViajeAnio(anio,cantidad);
-
             if(reportes.isEmpty()){
                 return ResponseEntity.noContent().build();
             }
-
             return ResponseEntity.ok(reportes);
         }
-        catch (Exception e){
-            return ResponseEntity.badRequest().body("Error en los parametros");
+        else if (anioDesde!=null && anioHasta!=null){
+            List<ReporteViajeUsuariosDTO> reportes = service.getReporteViajesPorUsuariosPeriodo(anioDesde,anioHasta);
+            if(reportes.isEmpty()){
+                return ResponseEntity.noContent().build();
+            }
+            return ResponseEntity.ok(reportes);
+        }
+        else {
+            return ResponseEntity.badRequest().body("Faltan parametros");
         }
     }
 
