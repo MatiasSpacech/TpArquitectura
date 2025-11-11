@@ -14,6 +14,7 @@ public class CargarFacturas implements CommandLineRunner{
     FacturaRepository facturaRepository;
 
     public void CargarDatosIniciales(FacturaRepository facturaRepository) {
+        if (facturaRepository.count() > 0) return;
         // Lógica para cargar facturas iniciales en la base de datos
         Factura factura1 = new Factura();
         factura1.setNumeroFactura("FACT-2025-001");

@@ -2,10 +2,13 @@ package grupo4.mscvusuario.service;
 
 import grupo4.mscvusuario.entity.Cuenta;
 import grupo4.mscvusuario.repository.CuentaRepository;
+import grupo4.mscvusuario.service.exceptions.NotFoundException;
+import grupo4.mscvusuario.service.exceptions.SaldoInsuficenteException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Service
@@ -46,5 +49,19 @@ public class CuentaService {
             return cuentaRepository.save(cuenta);
         }
         return null;
+    }
+
+    @Transactional
+    public Cuenta restarSaldoCuenta(Long id, BigDecimal montoArestar) {
+        Cuenta cuenta = cuentaRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException("Cuenta",id));
+
+        if(cuenta.getSaldo().compareTo(montoArestar) < 0){
+            throw new SaldoInsuficenteException(cuenta.getSaldo(),montoArestar);
+        }
+
+        BigDecimal nuevoSaldo = cuenta.getSaldo().subtract(montoArestar);
+        cuenta.setSaldo(nuevoSaldo);
+        return cuentaRepository.save(cuenta);
     }
 }

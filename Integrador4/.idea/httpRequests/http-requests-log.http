@@ -1,3 +1,21 @@
+GET http://localhost:8086/api/tarifas/1
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2025-11-11T033631.200.json
+
+###
+
+GET http://localhost:8086/api/tarifas/1
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2025-11-11T033616.200.json
+
+###
+
 POST http://localhost:8087/api/viajes
 Content-Type: application/json
 Content-Length: 243

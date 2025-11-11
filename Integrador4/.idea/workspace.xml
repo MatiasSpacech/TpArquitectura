@@ -5,13 +5,44 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1cc54f86-421c-497a-97cc-5533275d5991" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/2025-11-11T033616.200.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/2025-11-11T033631.200.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/usuario-cuenta/src/main/java/grupo4/mscvusuario/service/exceptions/NotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/usuario-cuenta/src/main/java/grupo4/mscvusuario/service/exceptions/SaldoInsuficenteException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/viajes/src/main/java/grupo4/viajes/feignClients/FacturacionFeignClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/viajes/src/main/java/grupo4/viajes/feignModels/Factura.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/viajes/src/main/java/grupo4/viajes/feignModels/FacturaEmitida.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/viajes/src/main/java/grupo4/viajes/services/exceptions/ViajeFinalizadoException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/viajes/src/main/java/grupo4/viajes/utils/CargarViajes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/http-requests-log.http" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/httpRequests/http-requests-log.http" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/facturacion/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/facturacion/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parada/src/main/java/grupo4/parada/services/ParadaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/parada/src/main/java/grupo4/parada/services/ParadaService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/facturacion/src/main/java/grupo4/facturacion/client/TarifaFeignClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/facturacion/src/main/java/grupo4/facturacion/client/TarifaFeignClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/facturacion/src/main/java/grupo4/facturacion/entity/Factura.java" beforeDir="false" afterPath="$PROJECT_DIR$/facturacion/src/main/java/grupo4/facturacion/entity/Factura.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/facturacion/src/main/java/grupo4/facturacion/service/FacturaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/facturacion/src/main/java/grupo4/facturacion/service/FacturaService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/facturacion/src/main/java/grupo4/facturacion/utils/CargarFacturas.java" beforeDir="false" afterPath="$PROJECT_DIR$/facturacion/src/main/java/grupo4/facturacion/utils/CargarFacturas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/monopatin/src/main/java/grupo4/mscvmonopatin/controllers/MonopatinController.java" beforeDir="false" afterPath="$PROJECT_DIR$/monopatin/src/main/java/grupo4/mscvmonopatin/controllers/MonopatinController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/monopatin/src/main/java/grupo4/mscvmonopatin/dtos/MonopatinDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/monopatin/src/main/java/grupo4/mscvmonopatin/dtos/MonopatinDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/monopatin/src/main/java/grupo4/mscvmonopatin/utils/CargarMonopatines.java" beforeDir="false" afterPath="$PROJECT_DIR$/monopatin/src/main/java/grupo4/mscvmonopatin/utils/CargarMonopatines.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parada/src/main/java/grupo4/parada/utils/CargarParadas.java" beforeDir="false" afterPath="$PROJECT_DIR$/parada/src/main/java/grupo4/parada/utils/CargarParadas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parada/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/parada/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tarifas/src/main/java/grupo4/tarifas/dto/TarifaDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/tarifas/src/main/java/grupo4/tarifas/dto/TarifaDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tarifas/src/main/java/grupo4/tarifas/entity/Tarifa.java" beforeDir="false" afterPath="$PROJECT_DIR$/tarifas/src/main/java/grupo4/tarifas/entity/Tarifa.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usuario-cuenta/src/main/java/grupo4/mscvusuario/controllers/CuentaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/usuario-cuenta/src/main/java/grupo4/mscvusuario/controllers/CuentaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usuario-cuenta/src/main/java/grupo4/mscvusuario/service/CuentaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/usuario-cuenta/src/main/java/grupo4/mscvusuario/service/CuentaService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/viajes/src/main/java/grupo4/viajes/controllers/ViajeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/viajes/src/main/java/grupo4/viajes/controllers/ViajeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/viajes/src/main/java/grupo4/viajes/dtos/ReporteViajePeriodoDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/viajes/src/main/java/grupo4/viajes/dtos/ReporteViajePeriodoDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/viajes/src/main/java/grupo4/viajes/repository/ViajeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/viajes/src/main/java/grupo4/viajes/repository/ViajeRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/viajes/src/main/java/grupo4/viajes/feignClients/CuentaFeignClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/viajes/src/main/java/grupo4/viajes/feignClients/CuentaFeignClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/viajes/src/main/java/grupo4/viajes/feignClients/MonopatinFeignClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/viajes/src/main/java/grupo4/viajes/feignClients/MonopatinFeignClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/viajes/src/main/java/grupo4/viajes/feignClients/TarifaFeignClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/viajes/src/main/java/grupo4/viajes/feignClients/TarifaFeignClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/viajes/src/main/java/grupo4/viajes/feignModels/Monopatin.java" beforeDir="false" afterPath="$PROJECT_DIR$/viajes/src/main/java/grupo4/viajes/feignModels/Monopatin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/viajes/src/main/java/grupo4/viajes/feignModels/Tarifa.java" beforeDir="false" afterPath="$PROJECT_DIR$/viajes/src/main/java/grupo4/viajes/feignModels/Tarifa.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/viajes/src/main/java/grupo4/viajes/model/Viaje.java" beforeDir="false" afterPath="$PROJECT_DIR$/viajes/src/main/java/grupo4/viajes/model/Viaje.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/viajes/src/main/java/grupo4/viajes/services/ViajeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/viajes/src/main/java/grupo4/viajes/services/ViajeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/viajes/src/main/java/grupo4/viajes/services/exceptions/CuentaNoAsociada.java" beforeDir="false" afterPath="$PROJECT_DIR$/viajes/src/main/java/grupo4/viajes/services/exceptions/CuentaNoAsociadaException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/viajes/src/main/java/grupo4/viajes/services/exceptions/DestinoNoValido.java" beforeDir="false" afterPath="$PROJECT_DIR$/viajes/src/main/java/grupo4/viajes/services/exceptions/DestinoNoValidoException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/viajes/src/main/java/grupo4/viajes/services/exceptions/MonopatinNoDisponible.java" beforeDir="false" afterPath="$PROJECT_DIR$/viajes/src/main/java/grupo4/viajes/services/exceptions/MonopatinNoDisponibleException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/viajes/src/main/java/grupo4/viajes/services/exceptions/SaldoCuentaInsuficiente.java" beforeDir="false" afterPath="$PROJECT_DIR$/viajes/src/main/java/grupo4/viajes/services/exceptions/SaldoCuentaInsuficienteException.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,8 +65,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="Interface" />
         <option value="Record" />
+        <option value="Interface" />
         <option value="Exception" />
         <option value="Class" />
       </list>
@@ -53,11 +84,11 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/MatiasSpacech/TpArquitectura.git&quot;,
-    &quot;accountId&quot;: &quot;208eacd1-7c64-4e55-a349-0ed9b8e747ba&quot;
+    &quot;accountId&quot;: &quot;3d410d32-784d-47f1-8c1b-8d2e9e5b7da0&quot;
   }
 }</component>
   <component name="HttpClientEndpointsTabState">
-    <option name="cachedRequestData" value="&lt;CachedHttpClientTabRequests&gt;&#10;  &lt;entry key=&quot;847442cfab263638f20a1961fbe00e998dd90bf4&quot; value=&quot;###&amp;#10;POST http://localhost:8087/api/viajes&amp;#10;Content-Type: application/json&amp;#10;&amp;#10;{&amp;#10;  &amp;quot;id&amp;quot;: 0,&amp;#10;  &amp;quot;paradaOrigen&amp;quot;: 0,&amp;#10;  &amp;quot;paradaDestino&amp;quot;: 0,&amp;#10;  &amp;quot;idTarifa&amp;quot;: 0,&amp;#10;  &amp;quot;idMonopatin&amp;quot;: &amp;quot;&amp;quot;,&amp;#10;  &amp;quot;idUsuario&amp;quot;: 0,&amp;#10;  &amp;quot;idCuenta&amp;quot;: 0,&amp;#10;  &amp;quot;fechaInicio&amp;quot;: &amp;quot;&amp;quot;,&amp;#10;  &amp;quot;fechaFin&amp;quot;: &amp;quot;&amp;quot;,&amp;#10;  &amp;quot;tiempoTotalMinutos&amp;quot;: 0,&amp;#10;  &amp;quot;kilometrosRecorridos&amp;quot;: 0,&amp;#10;  &amp;quot;activo&amp;quot;: false&amp;#10;}&quot; /&gt;&#10;  &lt;entry key=&quot;bbf9496c0d1a32b3e3ee7d1f2c2c0313cdc394e5&quot; value=&quot;###&amp;#10;GET http://localhost:8081/usuario/1&quot; /&gt;&#10;&lt;/CachedHttpClientTabRequests&gt;" />
+    <option name="cachedRequestData" value="&lt;CachedHttpClientTabRequests&gt;&#10;  &lt;entry key=&quot;847442cfab263638f20a1961fbe00e998dd90bf4&quot; value=&quot;###&amp;#10;POST http://localhost:8087/api/viajes&amp;#10;Content-Type: application/json&amp;#10;&amp;#10;{&amp;#10;  &amp;quot;id&amp;quot;: 0,&amp;#10;  &amp;quot;paradaOrigen&amp;quot;: 0,&amp;#10;  &amp;quot;paradaDestino&amp;quot;: 0,&amp;#10;  &amp;quot;idTarifa&amp;quot;: 0,&amp;#10;  &amp;quot;idMonopatin&amp;quot;: &amp;quot;&amp;quot;,&amp;#10;  &amp;quot;idUsuario&amp;quot;: 0,&amp;#10;  &amp;quot;idCuenta&amp;quot;: 0,&amp;#10;  &amp;quot;fechaInicio&amp;quot;: &amp;quot;&amp;quot;,&amp;#10;  &amp;quot;fechaFin&amp;quot;: &amp;quot;&amp;quot;,&amp;#10;  &amp;quot;tiempoTotalMinutos&amp;quot;: 0,&amp;#10;  &amp;quot;kilometrosRecorridos&amp;quot;: 0,&amp;#10;  &amp;quot;activo&amp;quot;: false&amp;#10;}&quot; /&gt;&#10;  &lt;entry key=&quot;ab32e389cacaa5adee32fd0a71f37b9f6b5ecc6a&quot; value=&quot;###&amp;#10;GET http://localhost:8086/api/tarifas/1&amp;#10;&quot; /&gt;&#10;  &lt;entry key=&quot;bbf9496c0d1a32b3e3ee7d1f2c2c0313cdc394e5&quot; value=&quot;###&amp;#10;GET http://localhost:8081/usuario/1&quot; /&gt;&#10;&lt;/CachedHttpClientTabRequests&gt;" />
   </component>
   <component name="HttpClientOnboardingState">{
   &quot;isOnboardingCommentShown&quot;: true
@@ -146,6 +177,17 @@
         <option value="SpringBootApplicationConfigurationType" />
       </set>
     </option>
+    <option name="hiddenConfigurations">
+      <map>
+        <entry key="SpringBootApplicationConfigurationType">
+          <value>
+            <set>
+              <option value="AdminApplication" />
+            </set>
+          </value>
+        </entry>
+      </map>
+    </option>
     <option name="configurationStatuses">
       <map>
         <entry key="SpringBootApplicationConfigurationType">
@@ -165,7 +207,7 @@
       </map>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.ParadaApplication">
+  <component name="RunManager" selected="Spring Boot.ViajesApplication">
     <configuration name="AdminApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="admin" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="grupo4.mscvadmin.AdminApplication" />
@@ -229,8 +271,8 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Spring Boot.GatewayApplication" />
       <item itemvalue="Spring Boot.AdminApplication" />
+      <item itemvalue="Spring Boot.GatewayApplication" />
       <item itemvalue="Spring Boot.FacturacionApplication" />
       <item itemvalue="Spring Boot.MonopatinApplication" />
       <item itemvalue="Spring Boot.ParadaApplication" />
@@ -247,8 +289,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.23892.409" />
-        <option value="bundled-js-predefined-d6986cc7102b-e03c56caf84a-JavaScript-IU-252.23892.409" />
+        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.25557.131" />
+        <option value="bundled-js-predefined-d6986cc7102b-b598e85cdad2-JavaScript-IU-252.25557.131" />
       </set>
     </attachedChunks>
   </component>
@@ -270,6 +312,8 @@
       <workItem from="1762744146201" duration="9832000" />
       <workItem from="1762758432739" duration="9362000" />
       <workItem from="1762816839228" duration="3742000" />
+      <workItem from="1762840953590" duration="2872000" />
+      <workItem from="1762876034859" duration="12944000" />
     </task>
     <task id="LOCAL-00001" summary="Compose agregado con las 3 bases y un get y post en mongo en msvc-monpatin">
       <option name="closed" value="true" />

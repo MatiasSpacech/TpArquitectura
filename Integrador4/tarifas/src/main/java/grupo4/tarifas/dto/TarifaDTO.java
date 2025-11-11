@@ -15,8 +15,8 @@ import java.util.Date;
 @Setter
 public class TarifaDTO {
     private Long id;
-    private double monto; // precio por km
-    private double montoExtra; // tarifa fija adicional
+    private Double monto; // precio por km
+    private Double montoExtra; // tarifa fija adicional
     private Date fecha;
 
     // este debe de recibirse para calcular recargos por pausas en el viaje desde el microservicio de viajes
@@ -25,7 +25,7 @@ public class TarifaDTO {
     private Double cuotaMensualPremium;
 
 
-    public TarifaDTO(double monto, double montoExtra, Date fecha) {
+    public TarifaDTO(Double monto, Double montoExtra, Date fecha) {
         this.monto = monto;
         this.montoExtra = montoExtra;
         this.fecha = fecha;

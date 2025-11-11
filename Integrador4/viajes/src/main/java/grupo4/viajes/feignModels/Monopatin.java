@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Monopatin {
+    private String id;
     private String estado;
     private double latitud;
     private double longitud;

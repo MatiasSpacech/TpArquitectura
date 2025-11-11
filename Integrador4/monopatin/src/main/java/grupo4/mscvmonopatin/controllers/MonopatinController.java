@@ -106,7 +106,7 @@ public class MonopatinController {
 
     }
 
-    @PatchMapping("/{id}/estado/{estado}")
+    @PutMapping("/{id}/estado/{estado}")
     public ResponseEntity<?> setEstado(@PathVariable String id, @PathVariable String estado) {
         try {
             MonopatinDTO monopatinEditado = service.setEstadoMonopatin(id, estado);

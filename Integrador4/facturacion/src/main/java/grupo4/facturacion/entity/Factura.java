@@ -27,6 +27,9 @@ public class Factura {
     @Column(name = "usuario_id")
     private Long usuarioId;
 
+    @Column(name = "viaje_id")
+    private Long viajeId;
+
     @Column(name = "tarifa_id")
     private Long tarifaId;
 }

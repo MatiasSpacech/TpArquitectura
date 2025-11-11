@@ -12,6 +12,8 @@ public class CargarParadas implements CommandLineRunner {
     private ParadaRepository repository;
 
     public void run(String... args) {
+        if (this.repository.count() > 0) return;
+
         Parada p1 = new Parada();
         p1.setNombre("Parada 1");
         p1.setCiudad("Tres Arroyos");

@@ -5,10 +5,10 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @Getter
-public class CuentaNoAsociada extends RuntimeException {
+public class CuentaNoAsociadaException extends RuntimeException {
     private final String message;
 
-    public CuentaNoAsociada(Long id) {
+    public CuentaNoAsociadaException(Long id) {
        this.message = String.format("La cuenta no esta asociada a este usuario: %s",id);
     }
 }

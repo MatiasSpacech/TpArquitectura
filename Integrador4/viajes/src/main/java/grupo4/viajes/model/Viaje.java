@@ -22,8 +22,8 @@ public class Viaje {
     private Long paradaOrigen;
     @Column(nullable = false)
     private Long paradaDestino;
-//    @Column(nullable = false)
-    private Long idTarifa;
+    @Column(nullable = false)
+    private long idTarifa;
     @Column(nullable = false)
     private String idMonopatin;
     @Column(nullable = false)
@@ -34,18 +34,20 @@ public class Viaje {
     private LocalDateTime fechaFin;
     private int tiempoTotalMinutos;
     private int kilometrosRecorridos;
+    private int tiempoPausa;
     private boolean activo;
 
-    public Viaje(Long paradaOrigen, Long paradaDestino, Long idUsuario, Long idCuenta, String idMonopatin) {
+    public Viaje(Long paradaOrigen, Long paradaDestino, Long idUsuario, Long idCuenta, String idMonopatin, Long idTarifa) {
         this.paradaOrigen = paradaOrigen;
         this.paradaDestino = paradaDestino;
         this.idUsuario = idUsuario;
         this.idCuenta = idCuenta;
-        this.idTarifa = null;
+        this.idTarifa = idTarifa;
         this.idMonopatin = idMonopatin;
         this.fechaFin = null;
         this.tiempoTotalMinutos = 0;
         this.kilometrosRecorridos = 0;
+        this.tiempoPausa = 0;
         this.activo = true;
     }
 
@@ -55,5 +57,4 @@ public class Viaje {
             fechaInicio = LocalDateTime.now();
         }
     }
-
 }

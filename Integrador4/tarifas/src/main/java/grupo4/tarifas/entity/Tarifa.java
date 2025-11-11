@@ -17,21 +17,15 @@ import java.util.Date;
 @Table(name = "tarifa")
 public class Tarifa {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private double monto; // precio por km
-    private double montoExtra; // tarifa fija adicional
+    private Double monto; // precio por km
+    private Double montoExtra; // tarifa fija adicional
     private Date fecha;
 
-    @Column(name = "tiempo_maximo_pausa_minutos")
     private Integer tiempoMaximoPausaMinutos; // ej: 10 minutos
 
-    @Column(name = "porcentaje_recargo_pausa")
     private Double porcentajeRecargoPausa; // ej: 0.20 (= 20%)
 
-    @Column(name = "cuota_mensual_premium")
     private Double cuotaMensualPremium; // ej: 5000.0
-
-
 }

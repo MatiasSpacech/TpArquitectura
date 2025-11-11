@@ -14,8 +14,9 @@ public class CargarMonopatines implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
+        if(this.repository.count() > 0) return;
+
         Monopatin m1 = new Monopatin();
-//        m1.setId();
         m1.setEstado(Estado.LIBRE);
         m1.setLatitud(40.416775);
         m1.setLongitud(-3.703790);

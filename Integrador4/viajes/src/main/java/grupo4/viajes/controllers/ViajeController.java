@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequiredArgsConstructor
@@ -71,6 +72,17 @@ public class ViajeController {
         try {
             ViajeDTO nuevoViaje = service.save(body);
             return new ResponseEntity<>(nuevoViaje, HttpStatus.CREATED);
+        }
+        catch (RuntimeException e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @PatchMapping("/finalizar-viaje/{id}")
+    public ResponseEntity<?> finalizarViaje(@PathVariable Long id){
+        try {
+            Map<String,Object> retorno = service.finalizarViaje(id);
+            return new ResponseEntity<>(retorno, HttpStatus.OK);
         }
         catch (RuntimeException e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);

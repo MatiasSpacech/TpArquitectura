@@ -107,6 +107,9 @@ public class FacturaService {
         factura.setNumeroFactura(generarNumeroFactura());
         factura.setFechaEmision(new Date());
         factura.setImporte(importe);
+        factura.setUsuarioId(request.getUsuarioId());
+        factura.setTarifaId(request.getTarifaId());
+        factura.setViajeId(request.getViajeId());
 
         // 6. Guardar en base de datos
         return facturaRepository.save(factura);

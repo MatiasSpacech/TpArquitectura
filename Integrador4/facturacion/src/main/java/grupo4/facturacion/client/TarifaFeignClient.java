@@ -6,12 +6,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-@FeignClient(name = "tarifas", url = "http://localhost:8086")
+@FeignClient(name = "tarifas", url = "http://localhost:8086/api/tarifas")
 public interface TarifaFeignClient {
 
-    @GetMapping("/api/tarifas/")
+    @GetMapping("/")
     ResponseEntity<TarifaDTO[]> findAllTarifas();
 
-    @GetMapping("/api/tarifas/tarifa/id/{id}")
+    @GetMapping("/{id}")
     ResponseEntity<TarifaDTO> findTarifaById(@PathVariable Long id);
 }

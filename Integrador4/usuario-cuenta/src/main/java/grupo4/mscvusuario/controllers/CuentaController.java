@@ -2,11 +2,14 @@ package grupo4.mscvusuario.controllers;
 
 import grupo4.mscvusuario.entity.Cuenta;
 import grupo4.mscvusuario.service.CuentaService; // Deberás crear este servicio
+import grupo4.mscvusuario.service.exceptions.NotFoundException;
+import grupo4.mscvusuario.service.exceptions.SaldoInsuficenteException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
@@ -41,6 +44,24 @@ public class CuentaController {
             return ResponseEntity.ok(cuentaActualizada);
         }
         return ResponseEntity.notFound().build();
+    }
+
+    @PutMapping("/restar-saldo/{id}")
+    public ResponseEntity<?> restarSaldoCuenta(@PathVariable Long id,
+                                               @RequestParam(name="montoRestar") BigDecimal montoArestar) {
+        try {
+            Cuenta cuentaActualizada = cuentaService.restarSaldoCuenta(id, montoArestar);
+            return ResponseEntity.ok(cuentaActualizada);
+        }
+        catch (NotFoundException e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+        }
+        catch (SaldoInsuficenteException e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
+        }
+        catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
     }
     
 
