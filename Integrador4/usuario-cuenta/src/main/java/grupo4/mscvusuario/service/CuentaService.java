@@ -1,6 +1,7 @@
 package grupo4.mscvusuario.service;
 
 import grupo4.mscvusuario.entity.Cuenta;
+import grupo4.mscvusuario.entity.Usuario;
 import grupo4.mscvusuario.repository.CuentaRepository;
 import grupo4.mscvusuario.service.exceptions.NotFoundException;
 import grupo4.mscvusuario.service.exceptions.SaldoInsuficenteException;

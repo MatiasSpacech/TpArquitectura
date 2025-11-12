@@ -18,6 +18,7 @@ import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 @Service
 @RequiredArgsConstructor
@@ -195,13 +196,43 @@ public class ViajeService {
         return new ViajeDTO(repository.save(viaje));
     }
 
+    // Punto c
     @Transactional(readOnly = true)
     public List<ReporteViajePeriodoDTO> getReporteViajeAnio(Integer anio, Integer xViajes) {
         return repository.getReporteViajeAnio(anio, xViajes);
     }
 
-    @Transactional
+    // Punto e
+    @Transactional(readOnly = true)
     public List<ReporteViajeUsuariosDTO> getReporteViajesPorUsuariosPeriodo(Integer anioDesde, Integer anioHasta) {
         return repository.getReportesViajesPorUsuariosPeriodo(anioDesde, anioHasta);
+    }
+
+    // Punto h
+    @Transactional(readOnly = true)
+    public Map<String, Object> getReportesUsuarioYasociadosPerido(Long idUsuario, Integer anioDesde, Integer anioHasta) {
+        Usuario usuario = usuarioFeignClient.findById(idUsuario);
+        if(usuario == null)
+            throw new NotFoundException("Usuario",idUsuario);
+
+        // Traigo todas las cuentas del usuario para usarlo en el query de jpql
+        Set<Cuenta> cuentasUsuario = usuarioFeignClient.getCuentasByUsuario(idUsuario);
+
+        // Lista de reportes del usuario y ademas todos los que usen las cuentas
+        List<ReporteViajeUsuariosDTO> reportes = repository.
+                getReportesViajesPorUsuarioYcuentasAsociadasPeriodo(cuentasUsuario, anioDesde, anioHasta);
+
+        // Remuevo el reporte  main buscado del usuario por parametro
+        ReporteViajeUsuariosDTO reporteMain = reportes.stream()
+                .filter(r -> r.getIdUsuario().equals(idUsuario)).findFirst().orElse(null);
+
+        if(reporteMain != null)
+            reportes.remove(reporteMain);
+
+        Map<String, Object> retorno = new HashMap<>();
+        retorno.put("reporte usuario buscado", reporteMain);
+        retorno.put("usuarios asociado cuentas", reportes);
+
+        return retorno;
     }
 }

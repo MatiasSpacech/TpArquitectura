@@ -47,9 +47,17 @@ public class ViajeController {
     public ResponseEntity<?> getReporteViajes(@RequestParam(required = false, name="anio") Integer anio,
                                               @RequestParam(required = false, name="cantidad") Integer cantidad,
                                               @RequestParam(required = false, name="anioDesde") Integer anioDesde,
-                                              @RequestParam(required = false, name="anioHasta") Integer anioHasta){
+                                              @RequestParam(required = false, name="anioHasta") Integer anioHasta,
+                                              @RequestParam(required = false, name="idUsuario") Long idUsuario){
         if (anio!=null && cantidad!=null){
             List<ReporteViajePeriodoDTO> reportes = service.getReporteViajeAnio(anio,cantidad);
+            if(reportes.isEmpty()){
+                return ResponseEntity.noContent().build();
+            }
+            return ResponseEntity.ok(reportes);
+        }
+        else if (anioDesde != null && anioHasta != null && idUsuario != null){
+            Map<String, Object> reportes = service.getReportesUsuarioYasociadosPerido(idUsuario,anioDesde,anioHasta);
             if(reportes.isEmpty()){
                 return ResponseEntity.noContent().build();
             }

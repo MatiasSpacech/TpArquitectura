@@ -1,13 +1,17 @@
 package grupo4.mscvusuario.controllers;
 
+import grupo4.mscvusuario.entity.Cuenta;
 import grupo4.mscvusuario.entity.EstadoCuenta;
 import grupo4.mscvusuario.entity.Usuario;
 import grupo4.mscvusuario.service.UsuarioService;
+import grupo4.mscvusuario.service.exceptions.NotFoundException;
+import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,6 +37,17 @@ public class UsuarioController {
             return ResponseEntity.ok(usuario);
         }
         return ResponseEntity.notFound().build();
+    }
+
+    @GetMapping("/cuentas/{id}")
+    public ResponseEntity<Set<Cuenta>> obtenerCuentasUsuario(@PathVariable Long id) {
+        try {
+            Set<Cuenta> cuentas = usuarioService.getCuentasByUsuario(id);
+            return ResponseEntity.ok(cuentas);
+        }
+        catch (NotFoundException e) {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @GetMapping("/{idUsuario}/cuenta-asociada/{idCuenta}")

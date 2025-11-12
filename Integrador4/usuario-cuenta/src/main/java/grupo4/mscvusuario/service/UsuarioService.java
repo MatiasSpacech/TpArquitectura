@@ -5,12 +5,14 @@ import grupo4.mscvusuario.entity.EstadoCuenta;
 import grupo4.mscvusuario.entity.Usuario;
 import grupo4.mscvusuario.repository.CuentaRepository;
 import grupo4.mscvusuario.repository.UsuarioRepository;
+import grupo4.mscvusuario.service.exceptions.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class UsuarioService {
@@ -29,6 +31,15 @@ public class UsuarioService {
     public Usuario findById(Long id){
         return usuarioRepository.findById(id).orElse(null);
     }
+
+    @Transactional(readOnly = true)
+    public Set<Cuenta> getCuentasByUsuario(Long idUsuario) {
+        Usuario usuario = usuarioRepository.findById(idUsuario)
+                .orElseThrow(() -> new NotFoundException("Usuario",idUsuario));
+
+        return usuario.getCuentas();
+    }
+
 
     @Transactional
     public Usuario save(Usuario usuario){
