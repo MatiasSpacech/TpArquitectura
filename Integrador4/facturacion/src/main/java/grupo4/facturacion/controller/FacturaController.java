@@ -1,5 +1,6 @@
 package grupo4.facturacion.controller;
 
+import grupo4.facturacion.dto.TotalFacturadoDTO;
 import grupo4.facturacion.dto.ViajeFacturaRequestDTO;
 import grupo4.facturacion.entity.Factura;
 import grupo4.facturacion.service.FacturaService;
@@ -61,7 +62,7 @@ public class FacturaController {
             return ResponseEntity.badRequest().body("Meses inválidos. Deben estar entre 1-12 y mesDesde <= mesHasta");
         }
 
-        Double total = facturaService.getTotalFacturadoPorRangoMeses(anio, mesDesde, mesHasta);
+        TotalFacturadoDTO total = facturaService.getTotalFacturadoPorRangoMeses(anio, mesDesde, mesHasta);
         return ResponseEntity.ok(total);
     }
 

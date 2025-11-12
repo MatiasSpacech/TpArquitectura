@@ -3,6 +3,7 @@ package grupo4.facturacion.service;
 import grupo4.facturacion.client.TarifaFeignClient;
 import grupo4.facturacion.client.UsuarioFeignClient;
 import grupo4.facturacion.dto.TarifaDTO;
+import grupo4.facturacion.dto.TotalFacturadoDTO;
 import grupo4.facturacion.dto.UsuarioPremiumDTO;
 import grupo4.facturacion.dto.ViajeFacturaRequestDTO;
 import grupo4.facturacion.entity.Factura;
@@ -56,8 +57,13 @@ public class FacturaService {
     }
 
     @Transactional(readOnly = true)
-    public Double getTotalFacturadoPorRangoMeses(int anio, int mesDesde, int mesHasta) {
-        return facturaRepository.getTotalFacturadoPorRangoMeses(anio, mesDesde, mesHasta);
+    public TotalFacturadoDTO getTotalFacturadoPorRangoMeses(int anio, int mesDesde, int mesHasta) {
+        TotalFacturadoDTO totalFacturado = new TotalFacturadoDTO();
+        totalFacturado.setAnio(anio);
+        totalFacturado.setMesDesde(mesDesde);
+        totalFacturado.setMesHasta(mesHasta);
+        totalFacturado.setTotalFacturado(facturaRepository.getTotalFacturadoPorRangoMeses(anio, mesDesde, mesHasta));
+        return totalFacturado;
     }
 
     /**

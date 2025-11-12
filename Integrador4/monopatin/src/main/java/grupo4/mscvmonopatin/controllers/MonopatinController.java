@@ -53,7 +53,7 @@ public class MonopatinController {
         return ResponseEntity.ok(service.getMonopatinConParada(id));
     }
 
-    @GetMapping("/reportes-manetinimiento/{kmMaximo}")
+    @GetMapping("/reportes-mantenimiento/{kmMaximo}") // http://localhost:8080/api/monopatines/reportes-mantenimiento/100
     public ResponseEntity<List<ReporteMantenimientoDTO>> getMonopatinesManetinimiento(
                                                     @PathVariable Integer kmMaximo) {
         List<ReporteMantenimientoDTO> reportes = service.getReportesMantenimiento(kmMaximo);

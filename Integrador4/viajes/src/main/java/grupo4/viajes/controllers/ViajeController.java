@@ -43,7 +43,8 @@ public class ViajeController {
         }
     }
 
-    @GetMapping("/reportes")
+    @GetMapping("/reportes") // http://localhost:8080/api/viajes/reportes?anio=2023&cantidad=5
+                            // http://localhost:8080/api/viajes/reportes?anioDesde=2022&anioHasta=2023&idUsuario=1
     public ResponseEntity<?> getReporteViajes(@RequestParam(required = false, name="anio") Integer anio,
                                               @RequestParam(required = false, name="cantidad") Integer cantidad,
                                               @RequestParam(required = false, name="anioDesde") Integer anioDesde,
