@@ -18,6 +18,6 @@ public interface UsuarioFeignClient {
     @GetMapping("/{idUsuario}/cuenta-asociada/{idCuenta}")
     Boolean cuentaAsociada(@PathVariable Long idUsuario, @PathVariable Long idCuenta);
 
-    @GetMapping("/cuentas/{id}}")
-    public Set<Cuenta> getCuentasByUsuario(@PathVariable Long id);
+    @GetMapping("/cuentas/{id}")
+    Set<Cuenta> getCuentasByUsuario(@PathVariable Long id);
 }

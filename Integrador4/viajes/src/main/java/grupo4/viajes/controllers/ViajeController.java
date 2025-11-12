@@ -43,7 +43,7 @@ public class ViajeController {
         }
     }
 
-    @GetMapping("/reportes") // http://localhost:8080/api/viajes/reportes?anio=2023&cantidad=5
+    /* @GetMapping("/reportes") // http://localhost:8080/api/viajes/reportes?anio=2023&cantidad=5
                             // http://localhost:8080/api/viajes/reportes?anioDesde=2022&anioHasta=2023&idUsuario=1
     public ResponseEntity<?> getReporteViajes(@RequestParam(required = false, name="anio") Integer anio,
                                               @RequestParam(required = false, name="cantidad") Integer cantidad,
@@ -73,6 +73,51 @@ public class ViajeController {
         }
         else {
             return ResponseEntity.badRequest().body("Faltan parametros");
+        }
+    } */
+
+
+
+    @GetMapping("/reportes")
+    public ResponseEntity<?> getReporteViajes(
+            @RequestParam(required = false, name = "anio") Integer anio,
+            @RequestParam(required = false, name = "cantidad") Integer cantidad,
+            @RequestParam(required = false, name = "anioDesde") Integer anioDesde,
+            @RequestParam(required = false, name = "anioHasta") Integer anioHasta,
+            @RequestParam(required = false, name = "idUsuario") Long idUsuario) {
+
+        try {
+            // Reporte por año específico
+            if (anio != null && cantidad != null) {
+                List<ReporteViajePeriodoDTO> reportes = service.getReporteViajeAnio(anio, cantidad);
+                return reportes.isEmpty()
+                    ? ResponseEntity.noContent().build()
+                    : ResponseEntity.ok(reportes);
+            }
+
+            // Reporte de usuario en período
+            if (anioDesde != null && anioHasta != null && idUsuario != null) {
+                Map<String, Object> reportes = service.getReportesUsuarioYasociadosPerido(idUsuario, anioDesde, anioHasta);
+                return reportes.isEmpty()
+                    ? ResponseEntity.noContent().build()
+                    : ResponseEntity.ok(reportes);
+            }
+
+            // Reporte general por período
+            if (anioDesde != null && anioHasta != null) {
+                List<ReporteViajeUsuariosDTO> reportes = service.getReporteViajesPorUsuariosPeriodo(anioDesde, anioHasta);
+                return reportes.isEmpty()
+                    ? ResponseEntity.noContent().build()
+                    : ResponseEntity.ok(reportes);
+            }
+
+            return ResponseEntity.badRequest()
+                .body("Parámetros inválidos. Opciones: (anio+cantidad) | (anioDesde+anioHasta+idUsuario) | (anioDesde+anioHasta)");
+                
+        } catch (Exception e) {
+            e.printStackTrace(); 
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .body("Error al generar reporte: " + e.getMessage());
         }
     }
 

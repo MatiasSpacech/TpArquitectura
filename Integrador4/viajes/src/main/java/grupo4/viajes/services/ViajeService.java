@@ -217,10 +217,15 @@ public class ViajeService {
 
         // Traigo todas las cuentas del usuario para usarlo en el query de jpql
         Set<Cuenta> cuentasUsuario = usuarioFeignClient.getCuentasByUsuario(idUsuario);
+        
+        // Extraigo los IDs de las cuentas
+        Set<Long> cuentaIds = cuentasUsuario.stream()
+                .map(Cuenta::getId)
+                .collect(java.util.stream.Collectors.toSet());
 
         // Lista de reportes del usuario y ademas todos los que usen las cuentas
         List<ReporteViajeUsuariosDTO> reportes = repository.
-                getReportesViajesPorUsuarioYcuentasAsociadasPeriodo(cuentasUsuario, anioDesde, anioHasta);
+                getReportesViajesPorUsuarioYcuentasAsociadasPeriodo(cuentaIds, anioDesde, anioHasta);
 
         // Remuevo el reporte  main buscado del usuario por parametro
         ReporteViajeUsuariosDTO reporteMain = reportes.stream()
