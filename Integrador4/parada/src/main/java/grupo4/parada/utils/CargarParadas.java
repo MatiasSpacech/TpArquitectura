@@ -25,7 +25,7 @@ public class CargarParadas implements CommandLineRunner {
         p2.setNombre("Parada 2");
         p2.setCiudad("Tandil");
         p2.setDireccion("San Martin");
-        p2.setLatitud(40.420150);
+        p2.setLatitud(70.420150);
         p2.setLongitud(-3.708900);
 
         Parada p3 = new Parada();

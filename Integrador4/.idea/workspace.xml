@@ -6,12 +6,20 @@
   <component name="ChangeListManager">
     <list default="true" id="1cc54f86-421c-497a-97cc-5533275d5991" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parada/src/main/java/grupo4/parada/dtos/ParadaDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/parada/src/main/java/grupo4/parada/dtos/ParadaDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parada/src/main/java/grupo4/parada/services/ParadaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/parada/src/main/java/grupo4/parada/services/ParadaService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parada/src/main/java/grupo4/parada/utils/CargarParadas.java" beforeDir="false" afterPath="$PROJECT_DIR$/parada/src/main/java/grupo4/parada/utils/CargarParadas.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/usuario-cuenta/src/main/java/grupo4/mscvusuario/controllers/UsuarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/usuario-cuenta/src/main/java/grupo4/mscvusuario/controllers/UsuarioController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/usuario-cuenta/src/main/java/grupo4/mscvusuario/service/CuentaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/usuario-cuenta/src/main/java/grupo4/mscvusuario/service/CuentaService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usuario-cuenta/src/main/java/grupo4/mscvusuario/entity/Rol.java" beforeDir="false" afterPath="$PROJECT_DIR$/usuario-cuenta/src/main/java/grupo4/mscvusuario/entity/Rol.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usuario-cuenta/src/main/java/grupo4/mscvusuario/repository/UsuarioRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/usuario-cuenta/src/main/java/grupo4/mscvusuario/repository/UsuarioRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/usuario-cuenta/src/main/java/grupo4/mscvusuario/service/UsuarioService.java" beforeDir="false" afterPath="$PROJECT_DIR$/usuario-cuenta/src/main/java/grupo4/mscvusuario/service/UsuarioService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usuario-cuenta/src/main/java/grupo4/mscvusuario/utils/CargaUsuarios.java" beforeDir="false" afterPath="$PROJECT_DIR$/usuario-cuenta/src/main/java/grupo4/mscvusuario/utils/CargaUsuarios.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/viajes/src/main/java/grupo4/viajes/controllers/ViajeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/viajes/src/main/java/grupo4/viajes/controllers/ViajeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/viajes/src/main/java/grupo4/viajes/dtos/ViajeDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/viajes/src/main/java/grupo4/viajes/dtos/ViajeDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/viajes/src/main/java/grupo4/viajes/feignClients/UsuarioFeignClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/viajes/src/main/java/grupo4/viajes/feignClients/UsuarioFeignClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/viajes/src/main/java/grupo4/viajes/repository/ViajeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/viajes/src/main/java/grupo4/viajes/repository/ViajeRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/viajes/src/main/java/grupo4/viajes/services/ViajeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/viajes/src/main/java/grupo4/viajes/services/ViajeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/viajes/src/main/java/grupo4/viajes/utils/CargarViajes.java" beforeDir="false" afterPath="$PROJECT_DIR$/viajes/src/main/java/grupo4/viajes/utils/CargarViajes.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -149,37 +157,8 @@
         <option value="SpringBootApplicationConfigurationType" />
       </set>
     </option>
-    <option name="hiddenConfigurations">
-      <map>
-        <entry key="SpringBootApplicationConfigurationType">
-          <value>
-            <set>
-              <option value="AdminApplication" />
-            </set>
-          </value>
-        </entry>
-      </map>
-    </option>
-    <option name="configurationStatuses">
-      <map>
-        <entry key="SpringBootApplicationConfigurationType">
-          <value>
-            <map>
-              <entry key="AdminApplication" value="STOPPED" />
-              <entry key="FacturacionApplication" value="STOPPED" />
-              <entry key="GatewayApplication" value="STOPPED" />
-              <entry key="MonopatinApplication" value="STOPPED" />
-              <entry key="ParadaApplication" value="STOPPED" />
-              <entry key="TarifasApplication" value="STOPPED" />
-              <entry key="UsuarioCuentaApplication" value="FAILED" />
-              <entry key="ViajesApplication" value="STOPPED" />
-            </map>
-          </value>
-        </entry>
-      </map>
-    </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.ViajesApplication">
+  <component name="RunManager" selected="Spring Boot.ParadaApplication">
     <configuration name="AdminApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="admin" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="grupo4.mscvadmin.AdminApplication" />
@@ -286,6 +265,7 @@
       <workItem from="1762816839228" duration="3742000" />
       <workItem from="1762840953590" duration="2872000" />
       <workItem from="1762876034859" duration="12944000" />
+      <workItem from="1762996226080" duration="4717000" />
     </task>
     <task id="LOCAL-00001" summary="Compose agregado con las 3 bases y un get y post en mongo en msvc-monpatin">
       <option name="closed" value="true" />

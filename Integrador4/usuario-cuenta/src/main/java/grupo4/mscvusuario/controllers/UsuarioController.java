@@ -6,6 +6,8 @@ import grupo4.mscvusuario.entity.Usuario;
 import grupo4.mscvusuario.service.UsuarioService;
 import grupo4.mscvusuario.service.exceptions.NotFoundException;
 import java.util.Set;
+
+import jakarta.servlet.ServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -60,6 +62,17 @@ public class UsuarioController {
 
         // Retorna 200 OK con el booleano en el cuerpo
         return ResponseEntity.ok(esValido);
+    }
+
+    @GetMapping("/tipo/{rol}")
+    public ResponseEntity<Set<Long>> getUsuariosByRol(@PathVariable String rol) {
+        try {
+            Set<Long> usuarios = usuarioService.getUsuarioByRol(rol);
+            return ResponseEntity.ok(usuarios);
+        }
+        catch (Exception e) {
+            return ResponseEntity.badRequest().build();
+        }
     }
 
     @PostMapping // http://localhost:8080/api/usuario

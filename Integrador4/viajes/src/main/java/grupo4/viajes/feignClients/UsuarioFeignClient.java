@@ -20,4 +20,7 @@ public interface UsuarioFeignClient {
 
     @GetMapping("/cuentas/{id}")
     Set<Cuenta> getCuentasByUsuario(@PathVariable Long id);
+
+    @GetMapping("tipo/{rol}")
+    Set<Long> getUsuarioByRol(@PathVariable String rol);
 }

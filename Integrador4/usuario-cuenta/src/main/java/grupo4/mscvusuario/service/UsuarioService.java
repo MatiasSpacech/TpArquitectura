@@ -2,6 +2,7 @@ package grupo4.mscvusuario.service;
 
 import grupo4.mscvusuario.entity.Cuenta;
 import grupo4.mscvusuario.entity.EstadoCuenta;
+import grupo4.mscvusuario.entity.Rol;
 import grupo4.mscvusuario.entity.Usuario;
 import grupo4.mscvusuario.repository.CuentaRepository;
 import grupo4.mscvusuario.repository.UsuarioRepository;
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -38,6 +40,14 @@ public class UsuarioService {
                 .orElseThrow(() -> new NotFoundException("Usuario",idUsuario));
 
         return usuario.getCuentas();
+    }
+
+    @Transactional
+    public Set<Long> getUsuarioByRol(String rol) {
+        if(Rol.perteneceAlEnum(rol) == null){
+            return new HashSet<>();
+        }
+        return usuarioRepository.getUsuariosByRol(rol);
     }
 
 

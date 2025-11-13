@@ -8,9 +8,9 @@ import grupo4.parada.model.Parada;
 import grupo4.parada.repository.ParadaRepository;
 import grupo4.parada.services.exceptions.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -35,8 +35,18 @@ public class ParadaService {
     }
 
     public List<ParadaDTO> findParadasCercanas(Double latitud, Double longitud){
-        return repository.findParadasCercanas(latitud, longitud, RADIO_MAX_BUSQUEDA).stream()
-                .map(ParadaDTO::new).toList();
+        List<ParadaDTO> paradas = repository.findParadasCercanas(latitud, longitud, RADIO_MAX_BUSQUEDA)
+                .stream().map(ParadaDTO::new).toList();
+
+        for(ParadaDTO parada : paradas){
+            try {
+                parada.setMonopatinesLibres(monopatinFeignClient.findMonopatinesLibresByIdParada(parada.getId()));
+            }
+            catch (Exception e) {
+                parada.setMonopatinesLibres(new ArrayList<>());
+            }
+        }
+        return paradas;
     }
 
     public Map<String, Object> findParadaConMonopatines(Long id){

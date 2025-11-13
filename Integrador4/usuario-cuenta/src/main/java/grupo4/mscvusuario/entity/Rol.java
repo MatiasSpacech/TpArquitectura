@@ -4,5 +4,16 @@ public enum Rol
 {
     ADMIN,
     USUARIO,
-    MANTENIMIENTO
+    MANTENIMIENTO;
+
+    public static Rol perteneceAlEnum(String estado) {
+        try {
+            return Rol.valueOf(estado.toUpperCase());
+        }
+        catch (IllegalArgumentException e) {
+            return null;
+        }
+    }
 }
+
+

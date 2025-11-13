@@ -13,6 +13,7 @@ import java.time.LocalDateTime;
 public class ViajeDTO {
     private Long paradaOrigen;
     private Long paradaDestino;
+    private Long idUsuario;
     private String idMonopatin;
     private LocalDateTime fechaInicio;
     private LocalDateTime fechaFin;
@@ -25,6 +26,7 @@ public class ViajeDTO {
         this.paradaDestino = viaje.getParadaDestino();
         this.idMonopatin = viaje.getIdMonopatin();
         this.fechaInicio = viaje.getFechaInicio();
+        this.idUsuario = viaje.getIdUsuario();
         this.fechaFin = viaje.getFechaFin();
         this.tiempoTotalMinutos = viaje.getTiempoTotalMinutos();
         this.kilometrosRecorridos = viaje.getKilometrosRecorridos();

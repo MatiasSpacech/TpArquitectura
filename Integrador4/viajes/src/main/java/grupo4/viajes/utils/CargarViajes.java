@@ -29,7 +29,7 @@ public class CargarViajes implements CommandLineRunner {
         v1.setParadaDestino(2L);
         v1.setIdUsuario(1L);
         v1.setIdCuenta(1L);
-        v1.setIdMonopatin("6912b90234e14ff3385b8da6"); // Primer monopatin de mongo
+        v1.setIdMonopatin("6912b90234e14ff3385b8da7"); // Primer monopatin de mongo
         v1.setIdTarifa(1L);
         v1.setFechaInicio(LocalDateTime.now().minusDays(5));
         v1.setTiempoTotalMinutos(25);
@@ -122,7 +122,7 @@ public class CargarViajes implements CommandLineRunner {
         v7.setParadaDestino(3L);
         v7.setIdUsuario(3L);
         v7.setIdCuenta(4L);
-        v7.setIdMonopatin("6912b90234e14ff3385b8dac");
+        v7.setIdMonopatin("6912b90234e14ff3385b8dad");
         v7.setIdTarifa(4L);
         v7.setFechaInicio(LocalDateTime.now().minusHours(5));
         v7.setTiempoTotalMinutos(30);
@@ -153,7 +153,7 @@ public class CargarViajes implements CommandLineRunner {
         v9.setParadaDestino(3L);
         v9.setIdUsuario(4L);
         v9.setIdCuenta(5L);
-        v9.setIdMonopatin("6912b90234e14ff3385b8dae");
+        v9.setIdMonopatin("6912b90234e14ff3385b8dad");
         v9.setIdTarifa(5L);
         v9.setFechaInicio(LocalDateTime.now().minusMinutes(45));
         v9.setFechaFin(LocalDateTime.now().minusMinutes(10));
@@ -178,5 +178,81 @@ public class CargarViajes implements CommandLineRunner {
         v10.setTiempoPausa(0);
         v10.setActivo(false);
         viajeRepository.save(v10);
+
+        // Agrego 5 viajes adicionales que usan 5 nuevos idMonopatin únicos
+        // (representan 5 monopatines más para otros microservicios)
+
+        Viaje v11 = new Viaje();
+        v11.setParadaOrigen(1L);
+        v11.setParadaDestino(2L);
+        v11.setIdUsuario(2L);
+        v11.setIdCuenta(3L);
+        v11.setIdMonopatin("6912b90234e14ff3385b8db0");
+        v11.setIdTarifa(1L);
+        v11.setFechaInicio(LocalDateTime.now().minusDays(6));
+        v11.setFechaFin(LocalDateTime.now().minusDays(6).plusMinutes(22));
+        v11.setTiempoTotalMinutos(22);
+        v11.setKilometrosRecorridos(4);
+        v11.setTiempoPausa(0);
+        v11.setActivo(false);
+        viajeRepository.save(v11);
+
+        Viaje v12 = new Viaje();
+        v12.setParadaOrigen(2L);
+        v12.setParadaDestino(3L);
+        v12.setIdUsuario(2L);
+        v12.setIdCuenta(3L);
+        v12.setIdMonopatin("6912b90234e14ff3385b8db1");
+        v12.setIdTarifa(2L);
+        v12.setFechaInicio(LocalDateTime.now().minusDays(2));
+        v12.setTiempoTotalMinutos(18);
+        v12.setKilometrosRecorridos(3);
+        v12.setTiempoPausa(0);
+        v12.setActivo(true);
+        viajeRepository.save(v12);
+
+        Viaje v13 = new Viaje();
+        v13.setParadaOrigen(3L);
+        v13.setParadaDestino(1L);
+        v13.setIdUsuario(4L);
+        v13.setIdCuenta(5L);
+        v13.setIdMonopatin("6912b90234e14ff3385b8db3");
+        v13.setIdTarifa(3L);
+        v13.setFechaInicio(LocalDateTime.now().minusHours(10));
+        v13.setFechaFin(LocalDateTime.now().minusHours(9).minusMinutes(40));
+        v13.setTiempoTotalMinutos(20);
+        v13.setKilometrosRecorridos(5);
+        v13.setTiempoPausa(0);
+        v13.setActivo(false);
+        viajeRepository.save(v13);
+
+        Viaje v14 = new Viaje();
+        v14.setParadaOrigen(1L);
+        v14.setParadaDestino(3L);
+        v14.setIdUsuario(3L);
+        v14.setIdCuenta(4L);
+        v14.setIdMonopatin("6912b90234e14ff3385b8db3");
+        v14.setIdTarifa(4L);
+        v14.setFechaInicio(LocalDateTime.now().minusDays(1).minusHours(2));
+        v14.setTiempoTotalMinutos(45);
+        v14.setKilometrosRecorridos(11);
+        v14.setTiempoPausa(5);
+        v14.setActivo(true);
+        viajeRepository.save(v14);
+
+        Viaje v15 = new Viaje();
+        v15.setParadaOrigen(2L);
+        v15.setParadaDestino(1L);
+        v15.setIdUsuario(1L);
+        v15.setIdCuenta(1L);
+        v15.setIdMonopatin("6912b90234e14ff3385b8db3");
+        v15.setIdTarifa(5L);
+        v15.setFechaInicio(LocalDateTime.now().minusMinutes(90));
+        v15.setFechaFin(LocalDateTime.now().minusMinutes(30));
+        v15.setTiempoTotalMinutos(60);
+        v15.setKilometrosRecorridos(12);
+        v15.setTiempoPausa(0);
+        v15.setActivo(false);
+        viajeRepository.save(v15);
     }
 }

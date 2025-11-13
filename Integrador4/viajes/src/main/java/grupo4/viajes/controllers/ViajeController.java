@@ -43,48 +43,14 @@ public class ViajeController {
         }
     }
 
-    /* @GetMapping("/reportes") // http://localhost:8080/api/viajes/reportes?anio=2023&cantidad=5
-                            // http://localhost:8080/api/viajes/reportes?anioDesde=2022&anioHasta=2023&idUsuario=1
-    public ResponseEntity<?> getReporteViajes(@RequestParam(required = false, name="anio") Integer anio,
-                                              @RequestParam(required = false, name="cantidad") Integer cantidad,
-                                              @RequestParam(required = false, name="anioDesde") Integer anioDesde,
-                                              @RequestParam(required = false, name="anioHasta") Integer anioHasta,
-                                              @RequestParam(required = false, name="idUsuario") Long idUsuario){
-        if (anio!=null && cantidad!=null){
-            List<ReporteViajePeriodoDTO> reportes = service.getReporteViajeAnio(anio,cantidad);
-            if(reportes.isEmpty()){
-                return ResponseEntity.noContent().build();
-            }
-            return ResponseEntity.ok(reportes);
-        }
-        else if (anioDesde != null && anioHasta != null && idUsuario != null){
-            Map<String, Object> reportes = service.getReportesUsuarioYasociadosPerido(idUsuario,anioDesde,anioHasta);
-            if(reportes.isEmpty()){
-                return ResponseEntity.noContent().build();
-            }
-            return ResponseEntity.ok(reportes);
-        }
-        else if (anioDesde!=null && anioHasta!=null){
-            List<ReporteViajeUsuariosDTO> reportes = service.getReporteViajesPorUsuariosPeriodo(anioDesde,anioHasta);
-            if(reportes.isEmpty()){
-                return ResponseEntity.noContent().build();
-            }
-            return ResponseEntity.ok(reportes);
-        }
-        else {
-            return ResponseEntity.badRequest().body("Faltan parametros");
-        }
-    } */
-
-
-
     @GetMapping("/reportes")
     public ResponseEntity<?> getReporteViajes(
             @RequestParam(required = false, name = "anio") Integer anio,
             @RequestParam(required = false, name = "cantidad") Integer cantidad,
             @RequestParam(required = false, name = "anioDesde") Integer anioDesde,
             @RequestParam(required = false, name = "anioHasta") Integer anioHasta,
-            @RequestParam(required = false, name = "idUsuario") Long idUsuario) {
+            @RequestParam(required = false, name = "idUsuario") Long idUsuario,
+            @RequestParam(required = false, name = "rol") String rol) {
 
         try {
             // Reporte por año específico
@@ -105,7 +71,7 @@ public class ViajeController {
 
             // Reporte general por período
             if (anioDesde != null && anioHasta != null) {
-                List<ReporteViajeUsuariosDTO> reportes = service.getReporteViajesPorUsuariosPeriodo(anioDesde, anioHasta);
+                List<ReporteViajeUsuariosDTO> reportes = service.getReporteViajesPorUsuariosPeriodo(anioDesde, anioHasta, rol);
                 return reportes.isEmpty()
                     ? ResponseEntity.noContent().build()
                     : ResponseEntity.ok(reportes);

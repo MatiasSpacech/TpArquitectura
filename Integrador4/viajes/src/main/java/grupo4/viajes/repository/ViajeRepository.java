@@ -19,7 +19,7 @@ public interface ViajeRepository extends JpaRepository<Viaje, Long> {
             WHERE FUNCTION('YEAR', v.fechaFin) = :anioBuscado\s
                        AND v.activo = false
             GROUP BY v.idMonopatin
-            HAVING COUNT(v) > :xViajes
+            HAVING COUNT(v) >= :xViajes
             ORDER BY COUNT(v) DESC
            \s""")
     List<ReporteViajePeriodoDTO> getReporteViajeAnio(Integer anioBuscado,Integer xViajes);
@@ -34,6 +34,20 @@ public interface ViajeRepository extends JpaRepository<Viaje, Long> {
             ORDER BY COUNT(v) DESC 
             """)
     List<ReporteViajeUsuariosDTO> getReportesViajesPorUsuariosPeriodo(Integer aniDesde, Integer anioHasta);
+
+
+    @Query("""
+            SELECT new grupo4.viajes.dtos.ReporteViajeUsuariosDTO(v.idUsuario,COUNT(v),SUM(v.kilometrosRecorridos),SUM(v.tiempoTotalMinutos))
+            FROM Viaje v 
+            WHERE v.activo = false AND 
+                    FUNCTION('YEAR', v.fechaFin) BETWEEN :aniDesde AND :anioHasta AND 
+                    v.idUsuario IN (:usuariosRol)
+            GROUP BY v.idUsuario
+            ORDER BY COUNT(v) DESC 
+            """)
+    List<ReporteViajeUsuariosDTO> getReportesViajesPorUsuariosPeriodoPorTipoUsuario(Integer aniDesde, Integer anioHasta, Set<Long> usuariosRol);
+
+
 
     @Query("""
             SELECT new grupo4.viajes.dtos.ReporteViajeUsuariosDTO(v.idUsuario,COUNT(v),SUM(v.kilometrosRecorridos),SUM(v.tiempoTotalMinutos))

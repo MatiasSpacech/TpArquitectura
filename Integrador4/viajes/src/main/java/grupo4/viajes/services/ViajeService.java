@@ -204,7 +204,16 @@ public class ViajeService {
 
     // Punto e
     @Transactional(readOnly = true)
-    public List<ReporteViajeUsuariosDTO> getReporteViajesPorUsuariosPeriodo(Integer anioDesde, Integer anioHasta) {
+    public List<ReporteViajeUsuariosDTO> getReporteViajesPorUsuariosPeriodo(Integer anioDesde, Integer anioHasta, String rol) {
+        if (rol != null) {
+            Set<Long> usuarios = usuarioFeignClient.getUsuarioByRol(rol);
+            // Si no tengo nada quiere decir que el rol no existe
+            if(usuarios.isEmpty())
+                throw new IllegalArgumentException("Tipo de rol no existe");
+
+            return repository.getReportesViajesPorUsuariosPeriodoPorTipoUsuario(anioDesde, anioHasta, usuarios);
+        }
+        // Si no me pasan un rol traigo todos los reportes de todos los usuarios
         return repository.getReportesViajesPorUsuariosPeriodo(anioDesde, anioHasta);
     }
 
