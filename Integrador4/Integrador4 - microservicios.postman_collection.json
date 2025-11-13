@@ -1,0 +1,921 @@
+{
+	"info": {
+		"_postman_id": "a2722f2f-661d-481a-8301-a8bcc9861656",
+		"name": "Integrador4 - microservicios",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "49926876",
+		"_collection_link": "https://espacech-2298913.postman.co/workspace/Eduardo-Mat%C3%ADas-Spacech's-Worksp~8314f5b5-d9a2-4932-883d-48377ad87855/collection/49926876-a2722f2f-661d-481a-8301-a8bcc9861656?action=share&source=collection_link&creator=49926876"
+	},
+	"item": [
+		{
+			"name": "Servicios/Reportes requeridos (puntos del \"a\" al \"h\")",
+			"item": [
+				{
+					"name": "Admin",
+					"item": [
+						{
+							"name": "A) Como administrador quiero poder generar un reporte de uso de monopatines por kilómetros para establecer si un monopatín requiere de mantenimiento. Este reporte debe poder configurarse para incluir (o no) los tiempos de pausa.",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{HOST_GATEWAY}}/monopatines/reportes-mantenimiento/50",
+									"host": [
+										"{{HOST_GATEWAY}}"
+									],
+									"path": [
+										"monopatines",
+										"reportes-mantenimiento",
+										"50"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "B) Como administrador quiero poder anular cuentas de usuarios, para inhabilitar el uso momentáneo de la aplicación.",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "{{HOST_GATEWAY}}/cuenta/1/cambiar-estado-cuenta",
+									"host": [
+										"{{HOST_GATEWAY}}"
+									],
+									"path": [
+										"cuenta",
+										"1",
+										"cambiar-estado-cuenta"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "C) Como administrador quiero consultar los monopatines con más de X viajes en un cierto año.",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{HOST_GATEWAY}}/viajes/reportes?anio=2025&cantidad=0",
+									"host": [
+										"{{HOST_GATEWAY}}"
+									],
+									"path": [
+										"viajes",
+										"reportes"
+									],
+									"query": [
+										{
+											"key": "anio",
+											"value": "2025"
+										},
+										{
+											"key": "cantidad",
+											"value": "0"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "D) Como administrador quiero consultar el total facturado en un rango de  meses de cierto año.",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{HOST_GATEWAY}}/facturas/total-facturado?anio=2025&mesDesde=1&mesHasta=12",
+									"host": [
+										"{{HOST_GATEWAY}}"
+									],
+									"path": [
+										"facturas",
+										"total-facturado"
+									],
+									"query": [
+										{
+											"key": "anio",
+											"value": "2025"
+										},
+										{
+											"key": "mesDesde",
+											"value": "1"
+										},
+										{
+											"key": "mesHasta",
+											"value": "12"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "E) Como administrador quiero ver los usuarios que más utilizan los monopatines, filtrado por período y por tipo de usuario.",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{HOST_GATEWAY}}/viajes/reportes?anioDesde=2022&anioHasta=2025",
+									"host": [
+										"{{HOST_GATEWAY}}"
+									],
+									"path": [
+										"viajes",
+										"reportes"
+									],
+									"query": [
+										{
+											"key": "anioDesde",
+											"value": "2022"
+										},
+										{
+											"key": "anioHasta",
+											"value": "2025"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "F) hacer un ajuste de precios, y que a partir de cierta fecha el sistema habilite los nuevos precios",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{HOST_GATEWAY}}/tarifas/actualizar-desde-fecha?fecha=2025-02-15&porcentajeIncremento=10.5",
+									"host": [
+										"{{HOST_GATEWAY}}"
+									],
+									"path": [
+										"tarifas",
+										"actualizar-desde-fecha"
+									],
+									"query": [
+										{
+											"key": "fecha",
+											"value": "2025-02-15"
+										},
+										{
+											"key": "porcentajeIncremento",
+											"value": "10.5"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "G) Como usuario quiero buscar un listado de los monopatines cercanos a mi zona, para poder encontrar un monopatín cerca de mi ubicación",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{HOST_GATEWAY}}/paradas/cercanas?latitud=70&longitud=-3",
+									"host": [
+										"{{HOST_GATEWAY}}"
+									],
+									"path": [
+										"paradas",
+										"cercanas"
+									],
+									"query": [
+										{
+											"key": "latitud",
+											"value": "70"
+										},
+										{
+											"key": "longitud",
+											"value": "-3"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "H) Como usuario quiero saber cuánto he usado los monopatines en un período, y opcionalmente si otros usuarios relacionados a mi cuenta los han usado.",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{HOST_GATEWAY}}/viajes/reportes?anioDesde=2000&anioHasta=2026&idUsuario=3",
+									"host": [
+										"{{HOST_GATEWAY}}"
+									],
+									"path": [
+										"viajes",
+										"reportes"
+									],
+									"query": [
+										{
+											"key": "anioDesde",
+											"value": "2000"
+										},
+										{
+											"key": "anioHasta",
+											"value": "2026"
+										},
+										{
+											"key": "idUsuario",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Monopatin EndPoints",
+			"item": [
+				{
+					"name": "Insertar monopatin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"estado\" : \"MANTENIMIENTO\",\r\n    \"latitud\" : 200,\r\n    \"longitud\" : 30,\r\n    \"idParada\" : 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST_GATEWAY}}/monopatines",
+							"host": [
+								"{{HOST_GATEWAY}}"
+							],
+							"path": [
+								"monopatines"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener monopatines",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST_GATEWAY}}/monopatines",
+							"host": [
+								"{{HOST_GATEWAY}}"
+							],
+							"path": [
+								"monopatines"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener monopatin",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST_GATEWAY}}/monopatines/690e6b126a60c4b228e000be",
+							"host": [
+								"{{HOST_GATEWAY}}"
+							],
+							"path": [
+								"monopatines",
+								"690e6b126a60c4b228e000be"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener Monopatin con parada",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST_GATEWAY}}/monopatines/690e6b126a60c4b228e000be/parada",
+							"host": [
+								"{{HOST_GATEWAY}}"
+							],
+							"path": [
+								"monopatines",
+								"690e6b126a60c4b228e000be",
+								"parada"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar monopatin",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{HOST_GATEWAY}}/monopatines/690e6d336a60c4b228e000c0",
+							"host": [
+								"{{HOST_GATEWAY}}"
+							],
+							"path": [
+								"monopatines",
+								"690e6d336a60c4b228e000c0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Patch Monopatin",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"latitud\" : 240,\r\n    \"idParada\" : 12\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST_GATEWAY}}/monopatines/690e6d336a60c4b228e000c0",
+							"host": [
+								"{{HOST_GATEWAY}}"
+							],
+							"path": [
+								"monopatines",
+								"690e6d336a60c4b228e000c0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Setear Estado monopatin",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{HOST_GATEWAY}}/monopatines/6912b90234e14ff3385b8da5/estado/MANTENIMIENTo",
+							"host": [
+								"{{HOST_GATEWAY}}"
+							],
+							"path": [
+								"monopatines",
+								"6912b90234e14ff3385b8da5",
+								"estado",
+								"MANTENIMIENTo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener monopatines en una parada",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST_GATEWAY}}/monopatines/parada/1",
+							"host": [
+								"{{HOST_GATEWAY}}"
+							],
+							"path": [
+								"monopatines",
+								"parada",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener monopatines en una parada con tal estado",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST_GATEWAY}}/monopatines/parada/1?estado=LIBRE",
+							"host": [
+								"{{HOST_GATEWAY}}"
+							],
+							"path": [
+								"monopatines",
+								"parada",
+								"1"
+							],
+							"query": [
+								{
+									"key": "estado",
+									"value": "LIBRE"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener reportes mantenimiento",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST_GATEWAY}}/monopatines/reportes-manetinimiento/119",
+							"host": [
+								"{{HOST_GATEWAY}}"
+							],
+							"path": [
+								"monopatines",
+								"reportes-manetinimiento",
+								"119"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Parada EndPoints",
+			"item": [
+				{
+					"name": "Insertar Parada",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nombre\": \"Parada 2\",\r\n  \"ciudad\": \"Tres Arroyos\",\r\n  \"direccion\": \"Sarmiento\",\r\n  \"latitud\": 150,\r\n  \"longitud\": 160\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST_GATEWAY}}/paradas",
+							"host": [
+								"{{HOST_GATEWAY}}"
+							],
+							"path": [
+								"paradas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener paradas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST_GATEWAY}}/paradas",
+							"host": [
+								"{{HOST_GATEWAY}}"
+							],
+							"path": [
+								"paradas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener parada por id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST_GATEWAY}}/paradas/1",
+							"host": [
+								"{{HOST_GATEWAY}}"
+							],
+							"path": [
+								"paradas",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Editar una parada",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\" : \"Parada 1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST_GATEWAY}}/paradas/1",
+							"host": [
+								"{{HOST_GATEWAY}}"
+							],
+							"path": [
+								"paradas",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar parada",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{HOST_GATEWAY}}/paradas/2",
+							"host": [
+								"{{HOST_GATEWAY}}"
+							],
+							"path": [
+								"paradas",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener parada con monopatines",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST_GATEWAY}}/paradas/monopatines/1",
+							"host": [
+								"{{HOST_GATEWAY}}"
+							],
+							"path": [
+								"paradas",
+								"monopatines",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener parada con monopatines libres",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST_GATEWAY}}/paradas/monopatines-libres/1",
+							"host": [
+								"{{HOST_GATEWAY}}"
+							],
+							"path": [
+								"paradas",
+								"monopatines-libres",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener paradas en un radio cercano",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST_GATEWAY}}/paradas/cercanas?latitud=50&longitud=60",
+							"host": [
+								"{{HOST_GATEWAY}}"
+							],
+							"path": [
+								"paradas",
+								"cercanas"
+							],
+							"query": [
+								{
+									"key": "latitud",
+									"value": "50"
+								},
+								{
+									"key": "longitud",
+									"value": "60"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Usuario EndPoints",
+			"item": [
+				{
+					"name": "Obtener usuarios",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST_GATEWAY}}/usuario/1/cuenta-asociada/1",
+							"host": [
+								"{{HOST_GATEWAY}}"
+							],
+							"path": [
+								"usuario",
+								"1",
+								"cuenta-asociada",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Viajes EndPoints",
+			"item": [
+				{
+					"name": "Crear viaje",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"paradaOrigen\" : 1,\r\n    \"paradaDestino\" :1,\r\n    \"idUsuario\" : 1,\r\n    \"idCuenta\" : 1,\r\n    \"idMonopatin\" : \"6912b90234e14ff3385b8da5\",\r\n    \"idTarifa\" : 3\r\n}\r\n\r\n\r\n// {\r\n//     \"paradaOrigen\": 1,\r\n//     \"paradaDestino\": 1,\r\n//     \"idTarifa\": 1,\r\n//     \"idMonopatin\": \"6912b90234e14ff3385b8da5\",\r\n//     \"idUsuario\": 2,\r\n//     \"idCuenta\": 3,\r\n//     \"fechaInicio\": \"2025-11-10T04:57:00\",\r\n//     \"fechaFin\": \"2025-11-10T04:57:00\",\r\n//     \"tiempoTotalMinutos\": 50,\r\n//     \"kilometrosRecorridos\": 100,\r\n//     \"tiempoPausa\" : 0,\r\n//     \"activo\": true\r\n// }\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST_GATEWAY}}/viajes",
+							"host": [
+								"{{HOST_GATEWAY}}"
+							],
+							"path": [
+								"viajes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener reportes monopatin x viajes en anio",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST_GATEWAY}}/viajes/reportes?anio=2025&cantidad=0",
+							"host": [
+								"{{HOST_GATEWAY}}"
+							],
+							"path": [
+								"viajes",
+								"reportes"
+							],
+							"query": [
+								{
+									"key": "anio",
+									"value": "2025"
+								},
+								{
+									"key": "cantidad",
+									"value": "0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener reportes viajes por usuarios",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST_GATEWAY}}/viajes/reportes?anioDesde=2020&anioHasta=2026",
+							"host": [
+								"{{HOST_GATEWAY}}"
+							],
+							"path": [
+								"viajes",
+								"reportes"
+							],
+							"query": [
+								{
+									"key": "anioDesde",
+									"value": "2020"
+								},
+								{
+									"key": "anioHasta",
+									"value": "2026"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Finalizar viaje",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{HOST_GATEWAY}}/viajes/finalizar-viaje/1",
+							"host": [
+								"{{HOST_GATEWAY}}"
+							],
+							"path": [
+								"viajes",
+								"finalizar-viaje",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener viajes",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\" : \"Parada 1\"\r\n}"
+						},
+						"url": {
+							"raw": "{{HOST_GATEWAY}}/viajes",
+							"host": [
+								"{{HOST_GATEWAY}}"
+							],
+							"path": [
+								"viajes"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cuenta EndPoints",
+			"item": [
+				{
+					"name": "Obtener cuentas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST_GATEWAY}}/cuenta",
+							"host": [
+								"{{HOST_GATEWAY}}"
+							],
+							"path": [
+								"cuenta"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener cuenta",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST_GATEWAY}}/cuenta/1",
+							"host": [
+								"{{HOST_GATEWAY}}"
+							],
+							"path": [
+								"cuenta",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{HOST_GATEWAY}}/cuenta/restar-saldo/1?montoRestar=200",
+							"host": [
+								"{{HOST_GATEWAY}}"
+							],
+							"path": [
+								"cuenta",
+								"restar-saldo",
+								"1"
+							],
+							"query": [
+								{
+									"key": "montoRestar",
+									"value": "200"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Facturacion Endpoints",
+			"item": [
+				{
+					"name": "Todas las facturas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST_GATEWAY}}/facturas/",
+							"host": [
+								"{{HOST_GATEWAY}}"
+							],
+							"path": [
+								"facturas",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Tarifa Endpoints",
+			"item": [
+				{
+					"name": "Todas las tarifas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST_GATEWAY}}/tarifas/",
+							"host": [
+								"{{HOST_GATEWAY}}"
+							],
+							"path": [
+								"tarifas",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "HOST_GATEWAY",
+			"value": ""
+		}
+	]
+}
