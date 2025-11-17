@@ -1,0 +1,10 @@
+{
+  "id": 6,
+  "nombre": "Juan Alberto",
+  "apellido": "Perez",
+  "email": "janae@hola.com",
+  "rol": "USUARIO",
+  "cuentas": [],
+  "latitud": -34.6037,
+  "longitud": -58.3816
+}

@@ -58,6 +58,12 @@ spring:
               predicates:
                 - Path=/api/usuario/**
 
+            - id: ia
+              uri: http://localhost:8082
+              predicates:
+                - Path=/api/usuario/**
+
+
           
 logging:
   level:

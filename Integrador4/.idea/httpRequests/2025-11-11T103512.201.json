@@ -1,0 +1,10 @@
+{
+  "id": 6,
+  "nombre": "Jane",
+  "apellido": "Doe",
+  "email": "janae@hola.com",
+  "rol": "USUARIO",
+  "cuentas": [],
+  "latitud": -34.6037,
+  "longitud": -58.3816
+}

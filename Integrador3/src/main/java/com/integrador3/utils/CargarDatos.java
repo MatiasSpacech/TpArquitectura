@@ -1,11 +1,7 @@
 package com.integrador3.utils;
 
-import com.integrador3.model.Carrera;
-import com.integrador3.model.Estudiante;
-import com.integrador3.model.EstudianteCarrera;
-import com.integrador3.repositorios.CarreraRepositorio;
-import com.integrador3.repositorios.EstudianteCarreraRepositorio;
-import com.integrador3.repositorios.EstudianteRepositorio;
+import com.integrador3.model.*;
+import com.integrador3.repositorios.*;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
@@ -30,17 +26,37 @@ public class CargarDatos implements CommandLineRunner {
     @Autowired
     private EstudianteCarreraRepositorio estudianteCarreraRepositorio;
 
+    @Autowired
+    private PersonaRepository personRepository;
+
+    @Autowired
+    private PhoneBookRepository phoneBookRepository;
+
+
 
     // Metodo que se ejecuta al iniciar la aplicacion ya que extiende de CommandLineRunner
     @Override
     public void run(String... args) throws Exception {
-        cargarDatos();
+//        cargarDatos();
     }
 
     public void cargarDatos() {
             cargarEstudiantes(rutaCsv+"estudiantes.csv");
             cargarCarreras(rutaCsv+"carreras.csv");
             cargarEstudianteCarrera(rutaCsv+"estudianteCarrera.csv");
+    }
+
+    private void cargarPersonasYTelefonos() {
+        // Insertar personas
+        personRepository.save(new Person(1L, "Juan", "Cito"));
+        personRepository.save(new Person(2L, "Albert", "Dade"));
+        personRepository.save(new Person(3L, "Brian", "Est"));
+
+        // Insertar teléfonos
+        phoneBookRepository.save(new PhoneBook(1L, "Cito", "1234567890"));
+        phoneBookRepository.save(new PhoneBook(2L, "Dade", "1234567890"));
+        phoneBookRepository.save(new PhoneBook(3L, "Est", "1234567890"));
+        phoneBookRepository.save(new PhoneBook(5L, "Cito", "567"));
     }
 
     private void cargarEstudiantes(String ubicacion){

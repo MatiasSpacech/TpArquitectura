@@ -5,24 +5,80 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1cc54f86-421c-497a-97cc-5533275d5991" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/grupo4/gateway/Controller/JwtController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/grupo4/gateway/Controller/UserController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/grupo4/gateway/config/SecurityConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/grupo4/gateway/entity/Authority.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/grupo4/gateway/entity/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/grupo4/gateway/repository/AuthorityRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/grupo4/gateway/repository/UserRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/grupo4/gateway/security/AuthotityConstant.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/grupo4/gateway/security/DomainUserDetailsService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/grupo4/gateway/security/jwt/JwtFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/grupo4/gateway/security/jwt/TokenProvider.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/grupo4/gateway/service/UserService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/grupo4/gateway/service/dto/login/LoginDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/grupo4/gateway/service/dto/user/UserDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_9_11_2025_00_21_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_9_11_2025_00_21__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Integrador3/src/main/java/com/integrador3/controllers/PersonaController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Integrador3/src/main/java/com/integrador3/controllers/PhoneBookController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Integrador3/src/main/java/com/integrador3/controllers/UsuarioController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Integrador3/src/main/java/com/integrador3/dto/ReportePersonDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Integrador3/src/main/java/com/integrador3/dto/ReporteVentaDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Integrador3/src/main/java/com/integrador3/model/Person.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Integrador3/src/main/java/com/integrador3/model/PhoneBook.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Integrador3/src/main/java/com/integrador3/model/Producto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Integrador3/src/main/java/com/integrador3/model/Transacciones.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Integrador3/src/main/java/com/integrador3/model/Usuario.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Integrador3/src/main/java/com/integrador3/repositorios/PersonaRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Integrador3/src/main/java/com/integrador3/repositorios/PhoneBookRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Integrador3/src/main/java/com/integrador3/repositorios/UsuarioRepositorio.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Integrador3/src/main/java/com/integrador3/servicios/PersonaService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Integrador3/src/main/java/com/integrador3/servicios/PhoneBookServices.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Integrador3/src/main/java/com/integrador3/servicios/UsuarioService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/cb48f936-31e2-4ca4-a7cc-5c4f51aee68a.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/cb48f936-31e2-4ca4-a7cc-5c4f51aee68a/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/cb48f936-31e2-4ca4-a7cc-5c4f51aee68a/storage_v2/_src_/schema/mysql.osA4Bg.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/cb48f936-31e2-4ca4-a7cc-5c4f51aee68a/storage_v2/_src_/schema/performance_schema.kIw0nw.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/cb48f936-31e2-4ca4-a7cc-5c4f51aee68a/storage_v2/_src_/schema/sys.zb4BAA.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/2025-11-09T173330.415.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/2025-11-09T173752.415.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/2025-11-09T173814.415.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/2025-11-09T173856.200.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/2025-11-09T174334.415.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/2025-11-09T175125.200.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/2025-11-09T175131.415.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/2025-11-09T175218.415.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/2025-11-09T180153.200.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/2025-11-09T180157.415.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/2025-11-11T094731.404.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/2025-11-11T094818.404.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/2025-11-11T094841.404.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/2025-11-11T103108.404.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/2025-11-11T103131.404.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/2025-11-11T103157.404.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/2025-11-11T103220.200.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/2025-11-11T103423.404.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/2025-11-11T103426.404.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/2025-11-11T103431.200.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/2025-11-11T103446.200.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/2025-11-11T103505.404.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/2025-11-11T103512.201.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/2025-11-11T103522.200.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/2025-11-11T103531.404.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/2025-11-11T103537.200.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/2025-11-11T103545.404.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/2025-11-11T103559.200.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/2025-11-11T103613.200.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IA/.gitattributes" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IA/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IA/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IA/mvnw" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IA/mvnw.cmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IA/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IA/src/main/java/org/example/ia/IaApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IA/src/main/java/org/example/ia/client/GroqClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IA/src/main/java/org/example/ia/controller/IaController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IA/src/main/java/org/example/ia/dto/RespuestaApi.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IA/src/main/java/org/example/ia/service/IaService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IA/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IA/src/main/resources/dump.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/usuario-cuenta/src/main/java/requests.http" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/viajes/status.http" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Integrador3/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Integrador3/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Integrador3/src/main/java/com/integrador3/utils/CargarDatos.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Integrador3/src/main/java/com/integrador3/utils/CargarDatos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Integrador3/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../Integrador3/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gateway/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -183,6 +239,14 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="IaApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="IA" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.example.ia.IaApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="MonopatinApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="monopatin" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="grupo4.mscvmonopatin.MonopatinApplication" />
@@ -225,6 +289,7 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Spring Boot.IaApplication" />
       <item itemvalue="Spring Boot.AdminApplication" />
       <item itemvalue="Spring Boot.GatewayApplication" />
       <item itemvalue="Spring Boot.FacturacionApplication" />
@@ -247,6 +312,9 @@
         <option value="bundled-js-predefined-d6986cc7102b-b598e85cdad2-JavaScript-IU-252.25557.131" />
       </set>
     </attachedChunks>
+  </component>
+  <component name="StructureViewState">
+    <option name="selectedTab" value="Logical" />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">

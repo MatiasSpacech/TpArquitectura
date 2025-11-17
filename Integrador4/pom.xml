@@ -26,6 +26,7 @@
         <module>tarifas</module>
         <module>parada</module>
         <module>gateway</module>
+        <module>IA</module>
     </modules>
 
     <properties>

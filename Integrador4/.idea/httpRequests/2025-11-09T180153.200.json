@@ -1,0 +1,12 @@
+[
+  {
+    "id": 1,
+    "nombre": "Gonzalo",
+    "apellido": "ROM",
+    "email": "gonza@gmail.com",
+    "rol": "USUARIO",
+    "cuentas": [],
+    "latitud": -34.6037,
+    "longitud": -58.3816
+  }
+]

@@ -1,0 +1,33 @@
+### Variables
+@baseUrl = http://localhost:8087
+
+### Obtener todos los viajes
+GET http://localhost:8087/api/viajes
+Accept: application/json
+
+### Obtener viaje por ID
+GET {{baseUrl}}/api/viajes/1
+Accept: application/json
+
+### Obtener reporte de viajes por año y cantidad
+GET {{baseUrl}}/api/viajes/reporte?anio=2024&cantidad=10
+Accept: application/json
+
+### Crear un nuevo viaje
+# Asegúrate de que la estructura del JSON coincida con tu entidad 'Viaje'
+POST {{baseUrl}}/api/viajes
+Content-Type: application/json
+
+{
+  "fechaInicio": "2024-01-15T08:00:00",
+  "kmSalida": 120000,
+  "kmLlegada": 120500,
+  "tipoCarga": "Electrónicos",
+  "costo": 750.50,
+  "costoCombustible": 200.00,
+  "idVehiculo": 1,
+  "idChofer": 1
+}
+
+### Eliminar un viaje por ID
+DELETE {{baseUrl}}/api/viajes/1
