@@ -5,21 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1cc54f86-421c-497a-97cc-5533275d5991" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parada/src/main/java/grupo4/parada/dtos/ParadaDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/parada/src/main/java/grupo4/parada/dtos/ParadaDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parada/src/main/java/grupo4/parada/services/ParadaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/parada/src/main/java/grupo4/parada/services/ParadaService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parada/src/main/java/grupo4/parada/utils/CargarParadas.java" beforeDir="false" afterPath="$PROJECT_DIR$/parada/src/main/java/grupo4/parada/utils/CargarParadas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/usuario-cuenta/src/main/java/grupo4/mscvusuario/controllers/UsuarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/usuario-cuenta/src/main/java/grupo4/mscvusuario/controllers/UsuarioController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/usuario-cuenta/src/main/java/grupo4/mscvusuario/entity/Rol.java" beforeDir="false" afterPath="$PROJECT_DIR$/usuario-cuenta/src/main/java/grupo4/mscvusuario/entity/Rol.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/usuario-cuenta/src/main/java/grupo4/mscvusuario/repository/UsuarioRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/usuario-cuenta/src/main/java/grupo4/mscvusuario/repository/UsuarioRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/usuario-cuenta/src/main/java/grupo4/mscvusuario/service/UsuarioService.java" beforeDir="false" afterPath="$PROJECT_DIR$/usuario-cuenta/src/main/java/grupo4/mscvusuario/service/UsuarioService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/usuario-cuenta/src/main/java/grupo4/mscvusuario/utils/CargaUsuarios.java" beforeDir="false" afterPath="$PROJECT_DIR$/usuario-cuenta/src/main/java/grupo4/mscvusuario/utils/CargaUsuarios.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/viajes/src/main/java/grupo4/viajes/controllers/ViajeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/viajes/src/main/java/grupo4/viajes/controllers/ViajeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/viajes/src/main/java/grupo4/viajes/dtos/ViajeDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/viajes/src/main/java/grupo4/viajes/dtos/ViajeDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/viajes/src/main/java/grupo4/viajes/feignClients/UsuarioFeignClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/viajes/src/main/java/grupo4/viajes/feignClients/UsuarioFeignClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/viajes/src/main/java/grupo4/viajes/repository/ViajeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/viajes/src/main/java/grupo4/viajes/repository/ViajeRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/viajes/src/main/java/grupo4/viajes/services/ViajeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/viajes/src/main/java/grupo4/viajes/services/ViajeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/viajes/src/main/java/grupo4/viajes/utils/CargarViajes.java" beforeDir="false" afterPath="$PROJECT_DIR$/viajes/src/main/java/grupo4/viajes/utils/CargarViajes.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/grupo4/gateway/Controller/JwtController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/grupo4/gateway/Controller/UserController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/grupo4/gateway/config/SecurityConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/grupo4/gateway/entity/Authority.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/grupo4/gateway/entity/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/grupo4/gateway/repository/AuthorityRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/grupo4/gateway/repository/UserRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/grupo4/gateway/security/AuthotityConstant.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/grupo4/gateway/security/DomainUserDetailsService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/grupo4/gateway/security/jwt/JwtFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/grupo4/gateway/security/jwt/TokenProvider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/grupo4/gateway/service/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/grupo4/gateway/service/dto/login/LoginDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/grupo4/gateway/service/dto/user/UserDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_9_11_2025_00_21_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_9_11_2025_00_21__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
