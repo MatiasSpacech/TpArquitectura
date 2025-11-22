@@ -57,8 +57,8 @@ public class CargarViajes implements CommandLineRunner {
         Viaje v3 = new Viaje();
         v3.setParadaOrigen(1L);
         v3.setParadaDestino(3L);
-        v3.setIdUsuario(3L);
-        v3.setIdCuenta(4L);
+        v3.setIdUsuario(2L);
+        v3.setIdCuenta(1L);
         v3.setIdMonopatin("6912b90234e14ff3385b8da8");
         v3.setIdTarifa(2L);
         v3.setFechaInicio(LocalDateTime.now().minusDays(3));

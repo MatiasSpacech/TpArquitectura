@@ -84,20 +84,6 @@ public class UsuarioService {
         return Optional.empty();
     }
 
-    //punto B Anular cuentas de usuarios 
-    //Interpretacion : Cambiar el estado de todas las cuentas de un usuario a INACTIVA
-    @Transactional
-    public void cambiarEstadoCuentas(Long idUsuario, EstadoCuenta nuevoEstado) {
-        Optional<Usuario> oUsuario = usuarioRepository.findById(idUsuario);
-        if (oUsuario.isPresent()) {
-            Usuario usuario = oUsuario.get();
-            for (Cuenta cuenta : usuario.getCuentas()) {
-                cuenta.setEstado(nuevoEstado);;// Asumiendo que tienes un metodo setEstadoCuenta en tu entidad Cuenta
-                cuentaRepository.save(cuenta);
-            }
-        }
-    }
-
     @Transactional(readOnly = true)
     public boolean cuentaAsociada(Long idUsuario, Long idCuenta) {
         if (idUsuario == null || idCuenta == null) {

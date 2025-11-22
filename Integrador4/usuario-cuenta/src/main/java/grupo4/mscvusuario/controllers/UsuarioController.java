@@ -121,9 +121,4 @@ public class UsuarioController {
         return ResponseEntity.notFound().build();
     }
 
-    @PutMapping("/{idUsuario}/cambiar-estado-cuentas")  // http://localhost:8080/api/usuario/1/cambiar-estado-cuentas?nuevoEstado=INACTIVA
-    public ResponseEntity<Void> cambiarEstadoCuentas(@PathVariable Long idUsuario, @RequestParam EstadoCuenta nuevoEstado) {
-        usuarioService.cambiarEstadoCuentas(idUsuario, nuevoEstado);
-        return ResponseEntity.noContent().build();
-    }
 }

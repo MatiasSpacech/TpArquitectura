@@ -1,5 +1,6 @@
 package grupo4.gateway.config;
 
+import grupo4.gateway.security.AuthotityConstant;
 import grupo4.gateway.security.jwt.JwtFilter;
 import grupo4.gateway.security.jwt.TokenProvider;
 import org.springframework.context.annotation.Bean;
@@ -43,9 +44,23 @@ public class SecurityConfig {
             .authorizeHttpRequests( authz -> authz
                     .requestMatchers(HttpMethod.POST, "/api/token").permitAll()
                     .requestMatchers(HttpMethod.POST, "/api/registrar").permitAll()
-//                    .requestMatchers( "/api/carreras/**").hasAuthority( AuthotityConstant._ALUMNO )
-//                    .requestMatchers("/api/estudiantes/**").hasAuthority( AuthotityConstant._ALUMNO )
-//                    .requestMatchers( "/api/inscripciones/**").hasAuthority( AuthotityConstant._ADMIN )
+                    // MS-PARADAS
+                    .requestMatchers(HttpMethod.GET, "/api/paradas/**").hasAnyAuthority( AuthotityConstant._USUARIO, AuthotityConstant._ADMIN )
+                    .requestMatchers("/api/paradas/**").hasAuthority( AuthotityConstant._ADMIN )
+                    // MS-USUARIO Y CUENTA
+                    .requestMatchers("/api/usuario").hasAuthority( AuthotityConstant._ADMIN)
+                    .requestMatchers(HttpMethod.PUT, "/api/usuario/{idUsuario}/asignar-cuenta/{idCuenta}").hasAuthority( AuthotityConstant._USUARIO)
+                    .requestMatchers("/api/cuenta/**").hasAuthority( AuthotityConstant._ADMIN)
+                    // MS-MONOPATINES
+                    .requestMatchers("/api/monopatines/reportes-mantenimiento/{kmMaximo}").hasAuthority( AuthotityConstant._ADMIN)
+                    .requestMatchers(HttpMethod.GET, "/api/monopatines/**").hasAnyAuthority( AuthotityConstant._USUARIO, AuthotityConstant._ADMIN)
+                    .requestMatchers("/api/monopatines/**").hasAuthority( AuthotityConstant._ADMIN )
+                    // MS-FACTURAS Y TARIFA SOLO ADMINS
+                    .requestMatchers("/api/facturas/**").hasAuthority( AuthotityConstant._ADMIN )
+                    .requestMatchers("/api/tarifas/**").hasAuthority( AuthotityConstant._ADMIN )
+                    // MS-VIAJES
+                    .requestMatchers("/api/viajes/reportes").hasAuthority( AuthotityConstant._ADMIN )
+                    .requestMatchers("/api/viajes/**").hasAnyAuthority( AuthotityConstant._USUARIO, AuthotityConstant._ADMIN )
                     .anyRequest().authenticated()
             )
             .httpBasic( Customizer.withDefaults() )

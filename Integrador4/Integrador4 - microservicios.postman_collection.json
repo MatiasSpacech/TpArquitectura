@@ -1,10 +1,9 @@
 {
 	"info": {
-		"_postman_id": "a2722f2f-661d-481a-8301-a8bcc9861656",
+		"_postman_id": "5b2e7a7d-2075-47d5-b833-97fd254b4366",
 		"name": "Integrador4 - microservicios",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "49926876",
-		"_collection_link": "https://espacech-2298913.postman.co/workspace/Eduardo-Mat%C3%ADas-Spacech's-Worksp~8314f5b5-d9a2-4932-883d-48377ad87855/collection/49926876-a2722f2f-661d-481a-8301-a8bcc9861656?action=share&source=collection_link&creator=49926876"
+		"_exporter_id": "39045406"
 	},
 	"item": [
 		{
@@ -16,17 +15,27 @@
 						{
 							"name": "A) Como administrador quiero poder generar un reporte de uso de monopatines por kilómetros para establecer si un monopatín requiere de mantenimiento. Este reporte debe poder configurarse para incluir (o no) los tiempos de pausa.",
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZ3VzdmFuQGdtYWlsLmNvbSIsImF1dGgiOiJBRE1JTiIsImV4cCI6MTc2MzkzMzA2OCwiaWF0IjoxNzYzODQ2NjY4fQ.Tn0SS5rVAx3uZ6Gq9AGVM2zlzsWXzfpDFAtMQ08i99CkKul6_6ZKKtvJBu-1Dh3vN8c6q4mhFBtq6qAoq6d8zQ",
+											"type": "string"
+										}
+									]
+								},
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{HOST_GATEWAY}}/monopatines/reportes-mantenimiento/50",
+									"raw": "{{HOST_GATEWAY}}/monopatines/reportes-mantenimiento/150",
 									"host": [
 										"{{HOST_GATEWAY}}"
 									],
 									"path": [
 										"monopatines",
 										"reportes-mantenimiento",
-										"50"
+										"150"
 									]
 								}
 							},
@@ -35,6 +44,16 @@
 						{
 							"name": "B) Como administrador quiero poder anular cuentas de usuarios, para inhabilitar el uso momentáneo de la aplicación.",
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZ3VzdmFuQGdtYWlsLmNvbSIsImF1dGgiOiJBRE1JTiIsImV4cCI6MTc2MzkzMDUzMiwiaWF0IjoxNzYzODQ0MTMyfQ.fHiGAyWuyrVlFQNVkRVV7ZPV0RWeLfgP3W8dxhRmm2zs6vp2MctaJjRE5uUkAl4R0F9CXMrLSxeqCco9crWsDQ",
+											"type": "string"
+										}
+									]
+								},
 								"method": "PATCH",
 								"header": [],
 								"url": {
@@ -114,6 +133,16 @@
 						{
 							"name": "E) Como administrador quiero ver los usuarios que más utilizan los monopatines, filtrado por período y por tipo de usuario.",
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZ3VzdmFuQGdtYWlsLmNvbSIsImF1dGgiOiJBRE1JTiIsImV4cCI6MTc2MzkzMzA2OCwiaWF0IjoxNzYzODQ2NjY4fQ.Tn0SS5rVAx3uZ6Gq9AGVM2zlzsWXzfpDFAtMQ08i99CkKul6_6ZKKtvJBu-1Dh3vN8c6q4mhFBtq6qAoq6d8zQ",
+											"type": "string"
+										}
+									]
+								},
 								"method": "GET",
 								"header": [],
 								"url": {
@@ -170,6 +199,16 @@
 						{
 							"name": "G) Como usuario quiero buscar un listado de los monopatines cercanos a mi zona, para poder encontrar un monopatín cerca de mi ubicación",
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZ3VzdmFuQGdtYWlsLmNvbSIsImF1dGgiOiJBRE1JTiIsImV4cCI6MTc2MzkzMzA2OCwiaWF0IjoxNzYzODQ2NjY4fQ.Tn0SS5rVAx3uZ6Gq9AGVM2zlzsWXzfpDFAtMQ08i99CkKul6_6ZKKtvJBu-1Dh3vN8c6q4mhFBtq6qAoq6d8zQ",
+											"type": "string"
+										}
+									]
+								},
 								"method": "GET",
 								"header": [],
 								"url": {
@@ -198,16 +237,26 @@
 						{
 							"name": "H) Como usuario quiero saber cuánto he usado los monopatines en un período, y opcionalmente si otros usuarios relacionados a mi cuenta los han usado.",
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZ3VzdmFuQGdtYWlsLmNvbSIsImF1dGgiOiJBRE1JTiIsImV4cCI6MTc2MzkzMzA2OCwiaWF0IjoxNzYzODQ2NjY4fQ.Tn0SS5rVAx3uZ6Gq9AGVM2zlzsWXzfpDFAtMQ08i99CkKul6_6ZKKtvJBu-1Dh3vN8c6q4mhFBtq6qAoq6d8zQ",
+											"type": "string"
+										}
+									]
+								},
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{HOST_GATEWAY}}/viajes/reportes?anioDesde=2000&anioHasta=2026&idUsuario=3",
+									"raw": "{{HOST_GATEWAY}}/viajes/reportes-usuario?anioDesde=2000&anioHasta=2026&idUsuario=1",
 									"host": [
 										"{{HOST_GATEWAY}}"
 									],
 									"path": [
 										"viajes",
-										"reportes"
+										"reportes-usuario"
 									],
 									"query": [
 										{
@@ -220,7 +269,7 @@
 										},
 										{
 											"key": "idUsuario",
-											"value": "3"
+											"value": "1"
 										}
 									]
 								}
@@ -678,10 +727,20 @@
 				{
 					"name": "Obtener reportes monopatin x viajes en anio",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtYXRpQGdtYWlsLmNvbSIsImF1dGgiOiJVU1VBUklPIiwiZXhwIjoxNzYzOTMzMTE5LCJpYXQiOjE3NjM4NDY3MTl9.k5JCgBIJ1_6xMlNGtAKlHvRl2bf7ei3v-0KOXQY8Mwbh4hxy--fFQ0cOzBVgqB3jhp2u7IVxGQVaIbk1uAQHfg",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{HOST_GATEWAY}}/viajes/reportes?anio=2025&cantidad=0",
+							"raw": "{{HOST_GATEWAY}}/viajes/reportes?anio=2027&cantidad=0",
 							"host": [
 								"{{HOST_GATEWAY}}"
 							],
@@ -692,7 +751,7 @@
 							"query": [
 								{
 									"key": "anio",
-									"value": "2025"
+									"value": "2027"
 								},
 								{
 									"key": "cantidad",
@@ -706,10 +765,20 @@
 				{
 					"name": "Obtener reportes viajes por usuarios",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZ3VzdmFuQGdtYWlsLmNvbSIsImF1dGgiOiJBRE1JTiIsImV4cCI6MTc2MzkzMzA2OCwiaWF0IjoxNzYzODQ2NjY4fQ.Tn0SS5rVAx3uZ6Gq9AGVM2zlzsWXzfpDFAtMQ08i99CkKul6_6ZKKtvJBu-1Dh3vN8c6q4mhFBtq6qAoq6d8zQ",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{HOST_GATEWAY}}/viajes/reportes?anioDesde=2020&anioHasta=2026",
+							"raw": "{{HOST_GATEWAY}}/viajes/reportes?anioDesde=2020&anioHasta=2027",
 							"host": [
 								"{{HOST_GATEWAY}}"
 							],
@@ -724,7 +793,7 @@
 								},
 								{
 									"key": "anioHasta",
-									"value": "2026"
+									"value": "2027"
 								}
 							]
 						}
@@ -847,6 +916,16 @@
 				{
 					"name": "Todas las facturas",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZ3VzdmFuQGdtYWlsLmNvbSIsImF1dGgiOiJBRE1JTiIsImV4cCI6MTc2MzkzMzA2OCwiaWF0IjoxNzYzODQ2NjY4fQ.Tn0SS5rVAx3uZ6Gq9AGVM2zlzsWXzfpDFAtMQ08i99CkKul6_6ZKKtvJBu-1Dh3vN8c6q4mhFBtq6qAoq6d8zQ",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -870,6 +949,16 @@
 				{
 					"name": "Todas las tarifas",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtYXRpQGdtYWlsLmNvbSIsImF1dGgiOiJVU1VBUklPIiwiZXhwIjoxNzYzOTMzMTE5LCJpYXQiOjE3NjM4NDY3MTl9.k5JCgBIJ1_6xMlNGtAKlHvRl2bf7ei3v-0KOXQY8Mwbh4hxy--fFQ0cOzBVgqB3jhp2u7IVxGQVaIbk1uAQHfg",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -880,6 +969,89 @@
 							"path": [
 								"tarifas",
 								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Autentificacion JWT",
+			"item": [
+				{
+					"name": "Crear usuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\" : \"agus@gmail.com\",\r\n    \"password\" : \"1234\",\r\n    \"nombre\" : \"Agustin\",\r\n    \"apellido\" : \"Van Waarde\",\r\n    \"rol\" : \"ADMIN\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST_GATEWAY}}/registrar",
+							"host": [
+								"{{HOST_GATEWAY}}"
+							],
+							"path": [
+								"registrar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener token ADMIN",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\" : \"agusvan@gmail.com\",\r\n    \"password\" : \"1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST_GATEWAY}}/token",
+							"host": [
+								"{{HOST_GATEWAY}}"
+							],
+							"path": [
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener token USUARIO",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\" : \"mati@gmail.com\",\r\n    \"password\" : \"1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST_GATEWAY}}/token",
+							"host": [
+								"{{HOST_GATEWAY}}"
+							],
+							"path": [
+								"token"
 							]
 						}
 					},

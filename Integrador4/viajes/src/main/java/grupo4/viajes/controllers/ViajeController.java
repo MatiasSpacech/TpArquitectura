@@ -43,27 +43,19 @@ public class ViajeController {
         }
     }
 
+    // REPORTES ADMINISTRATIVOS
     @GetMapping("/reportes")
     public ResponseEntity<?> getReporteViajes(
             @RequestParam(required = false, name = "anio") Integer anio,
             @RequestParam(required = false, name = "cantidad") Integer cantidad,
             @RequestParam(required = false, name = "anioDesde") Integer anioDesde,
             @RequestParam(required = false, name = "anioHasta") Integer anioHasta,
-            @RequestParam(required = false, name = "idUsuario") Long idUsuario,
             @RequestParam(required = false, name = "rol") String rol) {
 
         try {
             // Reporte por año específico
             if (anio != null && cantidad != null) {
                 List<ReporteViajePeriodoDTO> reportes = service.getReporteViajeAnio(anio, cantidad);
-                return reportes.isEmpty()
-                    ? ResponseEntity.noContent().build()
-                    : ResponseEntity.ok(reportes);
-            }
-
-            // Reporte de usuario en período
-            if (anioDesde != null && anioHasta != null && idUsuario != null) {
-                Map<String, Object> reportes = service.getReportesUsuarioYasociadosPerido(idUsuario, anioDesde, anioHasta);
                 return reportes.isEmpty()
                     ? ResponseEntity.noContent().build()
                     : ResponseEntity.ok(reportes);
@@ -84,6 +76,26 @@ public class ViajeController {
             e.printStackTrace(); 
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                 .body("Error al generar reporte: " + e.getMessage());
+        }
+    }
+
+    // REPORTES A SOLICITAR POR USUARIOS
+    @GetMapping("/reportes-usuario")
+    public ResponseEntity<?> getReporteViajesUsuario(
+            @RequestParam(required = true, name = "anioDesde") Integer anioDesde,
+            @RequestParam(required = true, name = "anioHasta") Integer anioHasta,
+            @RequestParam(required = true, name = "idUsuario") Long idUsuario){
+        try {
+            // Reporte de usuario en período y cuentas asociadas
+            Map<String, Object> reportes = service.getReportesUsuarioYasociadosPerido(idUsuario, anioDesde, anioHasta);
+            return reportes.isEmpty()
+                    ? ResponseEntity.noContent().build()
+                    : ResponseEntity.ok(reportes);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Error al generar reporte: " + e.getMessage());
         }
     }
 
