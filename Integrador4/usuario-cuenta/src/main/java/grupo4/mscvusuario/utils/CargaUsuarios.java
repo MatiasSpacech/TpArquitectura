@@ -5,6 +5,7 @@ import java.time.LocalDate;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import grupo4.mscvusuario.entity.Cuenta;
@@ -21,13 +22,15 @@ public class CargaUsuarios implements CommandLineRunner {
     private UsuarioRepository usuarioRepository;
     @Autowired
     private CuentaRepository cuentaRepository;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Override
     public void run(String... args) {
-        CargarDatosIniciales(usuarioRepository, cuentaRepository);
+        CargarDatosIniciales(usuarioRepository, cuentaRepository, passwordEncoder);
     }
 
-    public static void CargarDatosIniciales(UsuarioRepository usuarioRepositoryy, CuentaRepository cuentaRepositoryy) {
+    public static void CargarDatosIniciales(UsuarioRepository usuarioRepositoryy, CuentaRepository cuentaRepositoryy, PasswordEncoder passwordEncoder) {
         // Lógica para cargar datos iniciales en la base de datos
         // generame 5 usuarios y 5 cuentas con datos de ejemplo y asocialos entre si
         Cuenta cuenta1 = new Cuenta();
@@ -76,33 +79,43 @@ public class CargaUsuarios implements CommandLineRunner {
         cuenta5.setFechaRenovacionCupo(null);
 
         Usuario usuario1 = new Usuario();
-        usuario1.setNombre("Juan");
-        usuario1.setApellido("Perez");
+        usuario1.setNombre("Agustin");
+        usuario1.setApellido("Van Waarde");
+        usuario1.setEmail("agusvan@gmail.com");
+        usuario1.setPassword(passwordEncoder.encode("1234"));
         usuario1.setRol(Rol.ADMIN);
         usuario1.addCuenta(cuenta1);
         usuario1.addCuenta(cuenta2);
 
         Usuario usuario2 = new Usuario();
-        usuario2.setNombre("Maria");
-        usuario2.setApellido("Gomez");
+        usuario2.setNombre("Matias");
+        usuario2.setApellido("Spacech");
+        usuario2.setEmail("mati@gmail.com");
+        usuario2.setPassword(passwordEncoder.encode("1234"));
         usuario2.setRol(Rol.USUARIO);
         usuario2.addCuenta(cuenta3);
 
         Usuario usuario3 = new Usuario();
         usuario3.setNombre("Carlos");
         usuario3.setApellido("Lopez");
+        usuario3.setEmail("carlos.lopez@example.com");
+        usuario3.setPassword(passwordEncoder.encode("password123"));
         usuario3.setRol(Rol.USUARIO);
         usuario3.addCuenta(cuenta4);
 
         Usuario usuario4 = new Usuario();
         usuario4.setNombre("Ana");
         usuario4.setApellido("Martinez");
+        usuario4.setEmail("ana.martinez@example.com");
+        usuario4.setPassword(passwordEncoder.encode("password123"));
         usuario4.setRol(Rol.USUARIO);
         usuario4.addCuenta(cuenta5);
 
         Usuario usuario5 = new Usuario();
         usuario5.setNombre("Luis");
         usuario5.setApellido("Rodriguez");
+        usuario5.setEmail("luis.rodriguez@example.com");
+        usuario5.setPassword(passwordEncoder.encode("password123"));
         usuario5.setRol(Rol.USUARIO);
 
         cuenta1.addUsuario(usuario1);
@@ -134,18 +147,24 @@ public class CargaUsuarios implements CommandLineRunner {
         Usuario usuario6 = new Usuario();
         usuario6.setNombre("Sofia");
         usuario6.setApellido("Fernandez");
+        usuario6.setEmail("sofia.fernandez@example.com");
+        usuario6.setPassword(passwordEncoder.encode("password123"));
         usuario6.setRol(Rol.USUARIO);
         usuario6.addCuenta(cuenta2); // comparte cuenta2 con Juan
 
         Usuario usuario7 = new Usuario();
         usuario7.setNombre("Diego");
         usuario7.setApellido("Castro");
+        usuario7.setEmail("diego.castro@example.com");
+        usuario7.setPassword(passwordEncoder.encode("password123"));
         usuario7.setRol(Rol.USUARIO);
         usuario7.addCuenta(cuenta4); // comparte cuenta4 con Carlos
 
         Usuario usuario8 = new Usuario();
         usuario8.setNombre("Florencia");
         usuario8.setApellido("Ruiz");
+        usuario8.setEmail("florencia.ruiz@example.com");
+        usuario8.setPassword(passwordEncoder.encode("password123"));
         usuario8.setRol(Rol.USUARIO);
         usuario8.addCuenta(cuenta3); // comparte cuenta3 con Maria
         usuario8.addCuenta(cuenta6); // nueva cuenta compartida
@@ -153,6 +172,8 @@ public class CargaUsuarios implements CommandLineRunner {
         Usuario usuario9 = new Usuario();
         usuario9.setNombre("Martin");
         usuario9.setApellido("Gonzalez");
+        usuario9.setEmail("martin.gonzalez@example.com");
+        usuario9.setPassword(passwordEncoder.encode("password123"));
         usuario9.setRol(Rol.USUARIO);
         usuario9.addCuenta(cuenta1); // comparte cuenta1 con Juan
         usuario9.addCuenta(cuenta7);

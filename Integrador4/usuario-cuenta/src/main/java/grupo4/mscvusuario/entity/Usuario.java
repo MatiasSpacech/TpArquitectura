@@ -28,6 +28,9 @@ package grupo4.mscvusuario.entity;
             @Column(unique = true)
             private String email;
 
+            @Column(nullable = false, length = 60)
+            private String password;
+
             @Enumerated(EnumType.STRING)
             @Column(nullable = false)
             private Rol rol;
@@ -40,6 +43,14 @@ package grupo4.mscvusuario.entity;
 
             @Column()
             private Double longitud;
+
+            public Usuario(String email, String password, Rol rol, String nombre, String apellido) {
+                this.email = email;
+                this.password = password;
+                this.rol = rol;
+                this.nombre = nombre;
+                this.apellido = apellido;
+            }
 
             /**
              * Metodo para añadir una cuenta al conjunto de cuentas del usuario.

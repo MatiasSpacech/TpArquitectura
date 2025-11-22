@@ -1,5 +1,6 @@
 package grupo4.mscvusuario.service;
 
+import grupo4.mscvusuario.dtos.LoginDTO;
 import grupo4.mscvusuario.entity.Cuenta;
 import grupo4.mscvusuario.entity.EstadoCuenta;
 import grupo4.mscvusuario.entity.Rol;
@@ -32,6 +33,12 @@ public class UsuarioService {
     @Transactional(readOnly = true)
     public Usuario findById(Long id){
         return usuarioRepository.findById(id).orElse(null);
+    }
+
+    @Transactional(readOnly = true)
+    public LoginDTO login(String username) {
+        return usuarioRepository.getUsuarioByUsername(username)
+                .orElseThrow(() -> new NotFoundException("Usuario",username));
     }
 
     @Transactional(readOnly = true)

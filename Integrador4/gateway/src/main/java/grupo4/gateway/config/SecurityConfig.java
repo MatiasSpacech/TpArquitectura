@@ -1,6 +1,5 @@
 package grupo4.gateway.config;
 
-import grupo4.gateway.security.AuthotityConstant;
 import grupo4.gateway.security.jwt.JwtFilter;
 import grupo4.gateway.security.jwt.TokenProvider;
 import org.springframework.context.annotation.Bean;
@@ -40,10 +39,10 @@ public class SecurityConfig {
         http
             .sessionManagement( s -> s.sessionCreationPolicy( SessionCreationPolicy.STATELESS ) );
         http
-            .securityMatcher("/api/**" )
+            .securityMatcher("/api/**" )// FALTA IMPLEMENTA QUIEN PUEDE ACCEDER A QUE
             .authorizeHttpRequests( authz -> authz
-                    .requestMatchers(HttpMethod.POST, "/api/authenticate").permitAll()
-                    .requestMatchers(HttpMethod.POST, "/api/usuarios").permitAll()
+                    .requestMatchers(HttpMethod.POST, "/api/token").permitAll()
+                    .requestMatchers(HttpMethod.POST, "/api/registrar").permitAll()
 //                    .requestMatchers( "/api/carreras/**").hasAuthority( AuthotityConstant._ALUMNO )
 //                    .requestMatchers("/api/estudiantes/**").hasAuthority( AuthotityConstant._ALUMNO )
 //                    .requestMatchers( "/api/inscripciones/**").hasAuthority( AuthotityConstant._ADMIN )

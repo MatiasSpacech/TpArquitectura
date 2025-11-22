@@ -1,16 +1,14 @@
 package grupo4.gateway.security;
 
 
-import grupo4.gateway.entity.Authority;
-import grupo4.gateway.entity.User;
-import grupo4.gateway.repository.UserRepository;
+import grupo4.gateway.feignClients.UsuarioFeign;
+import grupo4.gateway.feignModel.UserResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,10 +20,10 @@ public class DomainUserDetailsService implements UserDetailsService {
 
     private final Logger log = LoggerFactory.getLogger(DomainUserDetailsService.class);
 
-    private final UserRepository userRepository;
+    private final UsuarioFeign usuarioFeign;
 
-    public DomainUserDetailsService( UserRepository userRepository ) {
-        this.userRepository = userRepository;
+    public DomainUserDetailsService( UsuarioFeign usuarioFeign ) {
+        this.usuarioFeign = usuarioFeign;
     }
 
     @Override
@@ -33,20 +31,16 @@ public class DomainUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(final String username ) {
         log.debug("Authenticating {}", username);
 
-        //final var user = this.userRepository.findOneWithAuthoritiesByUsernameIgnoreCase( username ).orElseThrow();
-        //return this.createSpringSecurityUser( user );
+        UserResponse userFeign = usuarioFeign.findUserByUsername(username);// Traigo usuario desde el servicio de usuarios
+        User userConRoles = new User(userFeign);// Creo usuario con roles,ya que en un futuro puede tener varios  roles
 
-        return userRepository
-            .findOneWithAuthoritiesByUsernameIgnoreCase( username.toLowerCase() )
-            .map( this::createSpringSecurityUser )
-            .orElseThrow( () -> new UsernameNotFoundException( "El usuario " + username + " no existe" ) );
+        return this.createSpringSecurityUser( userConRoles );// Devuelvo el userDetails con los authorities
     }
 
     private UserDetails createSpringSecurityUser( User user ) {
         List<GrantedAuthority> grantedAuthorities = user
                 .getAuthorities()
                 .stream()
-                .map( Authority::getName )
                 .map( SimpleGrantedAuthority::new )
                 .collect( Collectors.toList() );
 

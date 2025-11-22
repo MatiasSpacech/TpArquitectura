@@ -1,5 +1,6 @@
 package grupo4.mscvusuario.controllers;
 
+import grupo4.mscvusuario.dtos.LoginDTO;
 import grupo4.mscvusuario.entity.Cuenta;
 import grupo4.mscvusuario.entity.EstadoCuenta;
 import grupo4.mscvusuario.entity.Usuario;
@@ -46,6 +47,16 @@ public class UsuarioController {
         try {
             Set<Cuenta> cuentas = usuarioService.getCuentasByUsuario(id);
             return ResponseEntity.ok(cuentas);
+        }
+        catch (NotFoundException e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @GetMapping("/username")// LOGIN
+    public ResponseEntity<LoginDTO> getUsuarioByUsername(@RequestParam String username) {
+        try {
+            return ResponseEntity.ok(usuarioService.login(username));
         }
         catch (NotFoundException e) {
             return ResponseEntity.notFound().build();

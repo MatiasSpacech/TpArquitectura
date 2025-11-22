@@ -1,8 +1,7 @@
 package grupo4.gateway.service;
 
-import grupo4.gateway.entity.User;
-import grupo4.gateway.repository.AuthorityRepository;
-import grupo4.gateway.repository.UserRepository;
+import grupo4.gateway.feignClients.UsuarioFeign;
+import grupo4.gateway.feignModel.UserResponse;
 import grupo4.gateway.service.dto.user.UserDTO;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -14,16 +13,12 @@ import org.springframework.stereotype.Service;
 @Transactional
 public class UserService {
 
-    private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
-    private final AuthorityRepository authorityRepository;
+    private final UsuarioFeign usuarioFeign;
 
     public long saveUser(UserDTO request) {
-        final var user = new User(request.getUsername());
-        user.setPassword(passwordEncoder.encode(request.getPassword()));
-        final var roles = this.authorityRepository.findAllById(request.getAuthorities());
-        user.setAuthorities(roles);
-        final var result = this.userRepository.save(user);
-        return result.getId();
+        request.setPassword(passwordEncoder.encode(request.getPassword()));
+        UserResponse userGuardado = usuarioFeign.createUser(request);
+        return userGuardado.getId();
     }
 }

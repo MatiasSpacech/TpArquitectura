@@ -5,6 +5,7 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 @Data
+// DTO PARA LOGIN Y OBTENER TOKEN
 public class LoginDTO {
 
     @NotNull( message = "El usuario es un campo requerido." )

@@ -4,14 +4,13 @@ import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
-import java.util.Set;
-
 @Data
+// DTO PARA CREAR UN USUARIO
 public class UserDTO {
 
     @NotNull( message = "El usuario es un campo requerido." )
     @NotEmpty( message = "El usuario es un campo requerido." )
-    private String username;
+    private String email;
 
     @NotNull( message = "La contraseña es un campo requerido." )
     @NotEmpty( message = "La contraseña es un campo requerido." )
@@ -19,5 +18,13 @@ public class UserDTO {
 
     @NotNull( message = "Los roles son un campo requerido." )
     @NotEmpty( message = "Los roles son un campo requerido." )
-    private Set<String> authorities;
+    private String nombre;
+
+    @NotNull( message = "Los roles son un campo requerido." )
+    @NotEmpty( message = "Los roles son un campo requerido." )
+    private String apellido;
+
+    @NotNull( message = "Los roles son un campo requerido." )
+    @NotEmpty( message = "Los roles son un campo requerido." )
+    private String rol;
 }
