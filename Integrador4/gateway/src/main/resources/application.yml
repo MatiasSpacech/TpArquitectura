@@ -18,51 +18,59 @@ spring:
       server:
         webmvc:
           routes:
+            # Microservicio de Administración
             - id: admin
               uri: http://localhost:8081
               predicates:
                 - Path=/api/admin/**
 
+            # Microservicio de Facturación
             - id: facturacion
               uri: http://localhost:8083
               predicates:
                 - Path=/api/facturas/**
 
+            # Microservicio de Monopatines
             - id: monopatin
               uri: http://localhost:8084
               predicates:
                 - Path=/api/monopatines/**
 
+            # Microservicio de Paradas
             - id: parada
               uri: http://localhost:8085
               predicates:
                 - Path=/api/paradas/**
 
+            # Microservicio de Tarifas
             - id: tarifas
               uri: http://localhost:8086
               predicates:
                 - Path=/api/tarifas/**
             
+            # Microservicio de Viajes
             - id: viajes
               uri: http://localhost:8087
               predicates:
                 - Path=/api/viajes/**
 
+            # Microservicio de Cuentas (puerto 8082)
             - id: cuenta
               uri: http://localhost:8082
               predicates:
                 - Path=/api/cuenta/**
 
+            # Microservicio de Usuarios (puerto 8082)
             - id: usuario
               uri: http://localhost:8082
               predicates:
                 - Path=/api/usuario/**
 
+            # Microservicio de IA (puerto 8089)
             - id: ia
-              uri: http://localhost:8082
+              uri: http://localhost:8089
               predicates:
-                - Path=/api/usuario/**
-
+                - Path=/api/ia/**
 
           
 logging:

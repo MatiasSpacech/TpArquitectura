@@ -28,6 +28,9 @@ import org.springframework.web.bind.annotation.RestController;
         private IaService iaService;
 
         @PostMapping(value = "/prompt", produces = "application/json") // 👉 Define endpoint POST /api/ia/prompt que recibe un prompt como cuerpo JSON.
+        // http://localhost:8080/api/ia/prompt
+        // Ejemplo de uso con curl:
+        // curl -X POST http://localhost:8080/api/ia/prompt -H "Content-Type: application/json" -d "¿Cuáles son los nombres y correos electrónicos
         public ResponseEntity<?> procesarPrompt(@RequestBody String prompt) {
             try {
                 return iaService.procesarPrompt(prompt);

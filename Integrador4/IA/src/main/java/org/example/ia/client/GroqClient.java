@@ -28,19 +28,22 @@ public class GroqClient {
 
     public GroqClient(
             @Value("${groq.base-url:https://api.groq.com/openai}") String baseUrl,
-            @Value("${groq.api-key}") String apiKey,
+            @Value("${groq.api-key:#{null}}") String apiKey,
             @Value("${groq.model:llama-3.1-8b-instant}") String model
     ) {
         this.baseUrl = baseUrl;
         this.apiKey = apiKey;
         this.model = model;
+
+        // Solo advertir si no está configurado, pero permitir arrancar
         if (apiKey == null || apiKey.isBlank()) {
-            throw new IllegalStateException("GROQ API key no inyectada. Revisá GROQ_API_KEY o -Dgroq.api-key.");
+            log.warn("⚠️ GROQ API key NO configurada. El servicio arrancará pero las llamadas a la IA fallarán.");
+            log.warn("   Para configurar: export GROQ_API_KEY=tu_clave o agrega -Dgroq.api-key=tu_clave");
+        } else if (!apiKey.startsWith("gsk_")) {
+            log.error("❌ GROQ API key con formato inválido. Debe comenzar con gsk_.");
+        } else {
+            log.info("✅ Groq listo. baseUrl={}, model={}, apiKey=gsk_********", baseUrl, model);
         }
-        if (!apiKey.startsWith("gsk_")) {
-            throw new IllegalStateException("GROQ API key con formato inválido. Debe comenzar con gsk_.");
-        }
-        log.info("Groq listo. baseUrl={}, model={}, apiKey={}", baseUrl, model, "gsk_********");
 
         var factory = new org.springframework.http.client.SimpleClientHttpRequestFactory();
         factory.setConnectTimeout(10_000);
@@ -63,6 +66,12 @@ public class GroqClient {
     }
 
     public String preguntar (String prompt) {
+        // Validar que tengamos API key antes de hacer la llamada
+        if (apiKey == null || apiKey.isBlank()) {
+            throw new IllegalStateException("No se puede hacer consultas a Groq: API key no configurada. " +
+                    "Configure la variable de entorno GROQ_API_KEY");
+        }
+
         String url = baseUrl + "/v1/chat/completions";
 
         Map<String, Object> body = new HashMap<>();

@@ -1,0 +1,5 @@
+{
+  "ok": false,
+  "mensaje": "Error al ejecutar la sentencia: JDBC exception executing SQL [SELECT * FROM cuenta WHERE tipo_cuenta = 'BASICA'] [Table 'ia_db.cuenta' doesn't exist] [n/a]",
+  "datos": null
+}

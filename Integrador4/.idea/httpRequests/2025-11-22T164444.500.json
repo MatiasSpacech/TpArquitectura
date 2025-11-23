@@ -1,0 +1,5 @@
+{
+  "ok": false,
+  "mensaje": "Error al procesar el prompt: No se puede hacer consultas a Groq: API key no configurada. Configure la variable de entorno GROQ_API_KEY",
+  "datos": null
+}

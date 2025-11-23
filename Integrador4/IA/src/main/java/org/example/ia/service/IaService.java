@@ -1,9 +1,8 @@
 package org.example.ia.service;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
 import org.example.ia.client.GroqClient;
+import org.example.ia.config.DataSourceManager;
 import org.example.ia.dto.RespuestaApi;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,26 +10,35 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
  * 👉 Servicio que:
- * - Construye el prompt con el esquema SQL
+ * - Construye el prompt con el esquema SQL de TODAS las bases de datos
  * - Llama a Groq para generar SQL
+ * - Detecta automáticamente qué base de datos usar
  * - Valida y extrae una ÚNICA sentencia SQL (SELECT/INSERT/UPDATE/DELETE)
  * - Ejecuta de forma segura (bloquea DDL peligrosos)
  */
 @Service
 public class IaService {
 
-    @PersistenceContext
-    private EntityManager entityManager;
+    @Autowired
+    private DataSourceManager dataSourceManager;
 
     @Autowired
     private GroqClient groqChatClient;
@@ -53,7 +61,7 @@ public class IaService {
     // ========================================================================
 
     public IaService() {
-        this.CONTEXTO_SQL = cargarEsquemaSQL("esquema_completo.sql");
+        this.CONTEXTO_SQL = cargarEsquemaSQL("dump.sql");
     }
 
     private String cargarEsquemaSQL(String nombreArchivo) {
@@ -65,22 +73,23 @@ public class IaService {
     }
 
     /**
-     * Genera el prompt, obtiene la SQL de Groq, la valida y ejecuta.
+     * Genera el prompt, obtiene la SQL de Groq, la valida y ejecuta EN LA BASE DE DATOS CORRECTA.
      */
-    // ========================================================================
-    // [MOD - NUEVO] Agregamos @Transactional para soportar INSERT/UPDATE/DELETE
-    // ========================================================================
-    @Transactional
     public ResponseEntity<?> procesarPrompt(String promptUsuario) {
         try {
             String promptFinal = """
-                    Este es el esquema de mi base de datos MySQL:
+                    Este es el esquema de mis bases de datos MySQL:
                     %s
 
-                    Basándote exclusivamente en este esquema, devolveme ÚNICAMENTE una sentencia SQL
+                    Basándote exclusivamente en estos esquemas, devolveme ÚNICAMENTE una sentencia SQL
                     MySQL completa y VÁLIDA (sin texto adicional, sin markdown, sin comentarios) que
                     termine con punto y coma. La sentencia puede ser SELECT/INSERT/UPDATE/DELETE.
-                    %s
+                    
+                    IMPORTANTE: Si la pregunta es sobre "monopatines", usa db.monopatin.find() en formato MongoDB.
+                    Para otras tablas, usa SQL estándar con el nombre completo: database.tabla
+                    Por ejemplo: usuarios.usuario, viajes.viaje, facturas.factura, etc.
+                    
+                    Pregunta del usuario: %s
                     """.formatted(CONTEXTO_SQL, promptUsuario);
 
             log.info("==== PROMPT ENVIADO A LA IA ====\n{}", promptFinal);
@@ -88,9 +97,15 @@ public class IaService {
             String respuestaIa = groqChatClient.preguntar(promptFinal);
             log.info("==== RESPUESTA IA ====\n{}", respuestaIa);
 
-            // ========================================================================
-            // [MOD - CAMBIO] Usamos la nueva extracción segura (acepta DML y bloquea DDL)
-            // ========================================================================
+            // Detectar automáticamente qué base de datos usar
+            String database = dataSourceManager.detectDatabase(respuestaIa);
+            log.info("==== BASE DE DATOS DETECTADA: {} ====", database);
+
+            // Verificar si es MongoDB
+            if (dataSourceManager.isMongoDB(database)) {
+                return ejecutarMongoQuery(promptUsuario);
+            }
+
             String sql = extraerConsultaSQL(respuestaIa);
             if (sql == null || sql.isEmpty()) {
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST)
@@ -100,28 +115,28 @@ public class IaService {
 
             log.info("==== SQL EXTRAÍDA ====\n{}", sql);
 
-            // Para JDBC/JPA normalmente NO va el ';' final
+            // Para JDBC normalmente NO va el ';' final
             String sqlToExecute = sql.endsWith(";") ? sql.substring(0, sql.length() - 1) : sql;
 
             try {
                 Object data;
-                // ====================================================================
-                // [MOD - NUEVO] Ejecutamos SELECT con getResultList y DML con executeUpdate
-                // ====================================================================
                 if (sql.trim().regionMatches(true, 0, "SELECT", 0, 6)) {
-                    @SuppressWarnings("unchecked")
-                    List<Object[]> resultados = entityManager.createNativeQuery(sqlToExecute).getResultList();
-                    data = resultados;
-                    return ResponseEntity.ok(new RespuestaApi<>(true, "Consulta SELECT ejecutada con éxito", data));
+                    // Ejecutar SELECT
+                    data = ejecutarSelect(database, sqlToExecute);
+                    return ResponseEntity.ok(new RespuestaApi<>(true,
+                            "Consulta SELECT ejecutada con éxito en BD: " + database, data));
                 } else {
-                    int rows = entityManager.createNativeQuery(sqlToExecute).executeUpdate();
-                    data = rows; // cantidad de filas afectadas
-                    return ResponseEntity.ok(new RespuestaApi<>(true, "Sentencia DML ejecutada con éxito", data));
+                    // Ejecutar DML (INSERT/UPDATE/DELETE)
+                    int rows = ejecutarDML(database, sqlToExecute);
+                    data = Map.of("rowsAffected", rows);
+                    return ResponseEntity.ok(new RespuestaApi<>(true,
+                            "Sentencia DML ejecutada con éxito en BD: " + database, data));
                 }
             } catch (Exception e) {
-                log.warn("Error al ejecutar SQL: {}", e.getMessage(), e);
+                log.warn("Error al ejecutar SQL en {}: {}", database, e.getMessage(), e);
                 return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                        .body(new RespuestaApi<>(false, "Error al ejecutar la sentencia: " + e.getMessage(), null));
+                        .body(new RespuestaApi<>(false,
+                                "Error al ejecutar la sentencia en BD " + database + ": " + e.getMessage(), null));
             }
 
         } catch (Exception e) {
@@ -131,6 +146,62 @@ public class IaService {
                     HttpStatus.INTERNAL_SERVER_ERROR
             );
         }
+    }
+
+    /**
+     * Ejecuta una consulta en MongoDB
+     */
+    private ResponseEntity<?> ejecutarMongoQuery(String promptUsuario) {
+        try {
+            log.info("==== EJECUTANDO CONSULTA MONGODB ====");
+
+            // Obtener todos los monopatines de la colección "monopatines" (no "monopatin")
+            List<Map> monopatines = dataSourceManager.getMongoTemplate()
+                    .findAll(Map.class, "monopatines");
+
+            log.info("==== MONOPATINES ENCONTRADOS: {} ====", monopatines.size());
+
+            return ResponseEntity.ok(new RespuestaApi<>(true,
+                    "Consulta ejecutada con éxito en BD: monopatines (MongoDB)", monopatines));
+        } catch (Exception e) {
+            log.error("Error al ejecutar consulta MongoDB: {}", e.getMessage(), e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(new RespuestaApi<>(false,
+                            "Error al ejecutar la consulta en MongoDB: " + e.getMessage(), null));
+        }
+    }
+
+    /**
+     * Ejecuta una consulta SELECT en la base de datos especificada
+     */
+    private List<Map<String, Object>> ejecutarSelect(String database, String sql) {
+        JdbcTemplate jdbcTemplate = dataSourceManager.getJdbcTemplate(database);
+
+        List<Map<String, Object>> resultados = new ArrayList<>();
+
+        jdbcTemplate.query(sql, (ResultSet rs) -> {
+            ResultSetMetaData metaData = rs.getMetaData();
+            int columnCount = metaData.getColumnCount();
+
+            Map<String, Object> row = new HashMap<>();
+            for (int i = 1; i <= columnCount; i++) {
+                String columnName = metaData.getColumnName(i);
+                Object value = rs.getObject(i);
+                row.put(columnName, value);
+            }
+            resultados.add(row);
+        });
+
+        return resultados;
+    }
+
+    /**
+     * Método transaccional separado para ejecutar operaciones DML (INSERT/UPDATE/DELETE)
+     */
+    @Transactional
+    private int ejecutarDML(String database, String sql) {
+        JdbcTemplate jdbcTemplate = dataSourceManager.getJdbcTemplate(database);
+        return jdbcTemplate.update(sql);
     }
 
     // ========================================================================

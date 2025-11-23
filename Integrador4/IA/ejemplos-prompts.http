@@ -1,0 +1,75 @@
+### ============================================
+### EJEMPLOS PARA MÚLTIPLES BASES DE DATOS
+### ============================================
+
+### Ejemplo 1: Consulta en BD PARADAS
+POST http://localhost:8089/api/ia/prompt
+Content-Type: application/json
+
+"Dame todas las paradas disponibles"
+
+### Ejemplo 2: Consulta en BD USUARIOS
+POST http://localhost:8089/api/ia/prompt
+Content-Type: application/json
+
+"Muéstrame todos los usuarios registrados"
+
+### Ejemplo 3: Consulta en BD VIAJES
+POST http://localhost:8089/api/ia/prompt
+Content-Type: application/json
+
+"Dame los viajes que duraron más de 30 minutos"
+
+### Ejemplo 4: Consulta en BD FACTURAS
+POST http://localhost:8089/api/ia/prompt
+Content-Type: application/json
+
+"Cuánto se facturó en total este mes"
+
+### Ejemplo 5: Consulta en BD TARIFAS
+POST http://localhost:8089/api/ia/prompt
+Content-Type: application/json
+
+"Dame todas las tarifas vigentes"
+
+### Ejemplo 6: Consulta con agregación en USUARIOS
+POST http://localhost:8089/api/ia/prompt
+Content-Type: application/json
+
+"Cuántos usuarios hay registrados en total"
+
+### Ejemplo 7: Consulta con filtros en VIAJES
+POST http://localhost:8089/api/ia/prompt
+Content-Type: application/json
+
+"Dame los 10 viajes más largos ordenados por duración"
+
+### Ejemplo 8: Consulta con JOIN en USUARIOS
+POST http://localhost:8089/api/ia/prompt
+Content-Type: application/json
+
+"Dame los usuarios que tienen cuentas activas"
+
+### Ejemplo 9: INSERT en USUARIOS (cuidado - modifica datos)
+POST http://localhost:8089/api/ia/prompt
+Content-Type: application/json
+
+"Inserta un nuevo usuario con nombre 'Test IA' y email 'test@ia.com'"
+
+### Ejemplo 10: UPDATE en TARIFAS (cuidado - modifica datos)
+POST http://localhost:8089/api/ia/prompt
+Content-Type: application/json
+
+"Actualiza la tarifa normal a 150 pesos"
+
+### Ejemplo 11: Consulta compleja con GROUP BY en FACTURAS
+POST http://localhost:8089/api/ia/prompt
+Content-Type: application/json
+
+"Dame el total facturado por cada mes del año actual"
+
+### Ejemplo 12: Consulta con fechas en VIAJES
+POST http://localhost:8089/api/ia/prompt
+Content-Type: application/json
+
+"Dame todos los viajes realizados hoy"
