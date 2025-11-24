@@ -1,0 +1,81 @@
+### Variables
+@host = http://localhost:8082/api
+@contentType = application/json
+
+### Endpoint de prueba
+GET http://localhost:8082/usuario/hola
+
+### Obtener todos los usuarios
+GET http://localhost:8082/api/usuario
+
+### Obtener un usuario por ID
+GET http://localhost:8082/api/usuario/6
+
+### Crear un nuevo usuario
+POST http://localhost:8082/api/usuario
+Content-Type: {{contentType}}
+
+{
+  "nombre": "Jane",
+  "apellido": "Doe",
+  "email": "janae@hola.com",
+  "latitud": -34.6037,
+  "longitud": -58.3816,
+  "rol": "USUARIO"
+}
+
+### Actualizar un usuario
+PUT http://localhost:8082/api/usuario/6
+Content-Type: {{contentType}}
+
+{
+  "nombre": "Juan Alberto",
+  "apellido": "Perez"
+}
+
+### Eliminar un usuario
+DELETE http://localhost:8082/api/usuario/6
+
+### Asignar una cuenta a un usuario
+# Asigna la cuenta con ID 1 al usuario con ID 1
+PUT http://localhost:8082/api2/asignar-cuenta/3
+
+### Desasignar una cuenta de un usuario
+# Desasigna la cuenta con ID 3 del usuario con ID 2
+DELETE http://localhost:8082/api2/desasignar-cuenta/3
+
+###
+### Solicitudes para Cuenta
+###
+
+### Obtener todas las cuentas
+GET http://localhost:8082/api/cuenta
+
+### Obtener una cuenta por ID
+GET http://localhost:8082/api/cuenta/2
+
+### Crear una nueva cuenta
+POST http://localhost:8082/api/cuenta
+Content-Type: {{contentType}}
+
+{
+  "idMercadoPago": "un-id-unico-de-mercadopago"
+}
+
+
+### Actualizar una cuenta
+PUT http://localhost:8082/api/cuenta/2
+Content-Type: {{contentType}}
+
+{
+  "saldo": 7500.50
+}
+
+### Eliminar una cuenta
+DELETE http://localhost:8082/api/cuenta/2
+
+### Cambiar estado de todas las cuentas de un usuario (ejemplo: pasar a SUSPENDIDA)
+PUT http://localhost:8082/api/usuario/2/cambiar-estado-cuentas?nuevoEstado=SUSPENDIDA
+
+### Cambiar estado de todas las cuentas de un usuario (ejemplo: pasar a ACTIVA)
+PUT http://localhost:8082/api/usuario/1/cambiar-estado-cuentas?nuevoEstado=ACTIVA
