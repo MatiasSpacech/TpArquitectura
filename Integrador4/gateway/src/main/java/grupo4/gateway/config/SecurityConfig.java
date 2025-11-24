@@ -61,6 +61,8 @@ public class SecurityConfig {
                     // MS-VIAJES
                     .requestMatchers("/api/viajes/reportes").hasAuthority( AuthotityConstant._ADMIN )
                     .requestMatchers("/api/viajes/**").hasAnyAuthority( AuthotityConstant._USUARIO, AuthotityConstant._ADMIN )
+                    // MS-IA
+                    .requestMatchers("/api/ia/**").hasAuthority( AuthotityConstant._USUARIOPREMIUM )
                     .anyRequest().authenticated()
             )
             .httpBasic( Customizer.withDefaults() )

@@ -37,8 +37,14 @@ public class UsuarioService {
 
     @Transactional(readOnly = true)
     public LoginDTO login(String username) {
-        return usuarioRepository.getUsuarioByUsername(username)
-                .orElseThrow(() -> new NotFoundException("Usuario",username));
+        // Traigo el usuario por username
+        LoginDTO loginDto = usuarioRepository.getUsuarioByUsername(username)
+                .orElseThrow( () -> new NotFoundException("Usuario",username) );
+        // Verifico si el usuario tiene una cuenta premium
+        loginDto.setPremium(usuarioRepository.isUserPremium(loginDto.getId()));
+        System.out.println(loginDto.isPremium());
+
+        return loginDto;
     }
 
     @Transactional(readOnly = true)

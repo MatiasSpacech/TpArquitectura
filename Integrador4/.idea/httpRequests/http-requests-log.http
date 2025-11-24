@@ -1,6 +1,84 @@
 POST http://localhost:8089/api/ia/prompt
 Content-Type: application/json
 Content-Length: 38
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+"Dame todos los viajes realizados hoy"
+
+<> 2025-11-24T035025.500.json
+
+###
+
+POST http://localhost:8089/api/ia/prompt
+Content-Type: application/json
+Content-Length: 44
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+"Cuántos usuarios hay registrados en total"
+
+<> 2025-11-24T033538.500.json
+
+###
+
+POST http://localhost:8089/api/ia/prompt
+Content-Type: application/json
+Content-Length: 39
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+"Cuánto se facturó en total este mes"
+
+<> 2025-11-24T033535.500.json
+
+###
+
+POST http://localhost:8089/api/ia/prompt
+Content-Type: application/json
+Content-Length: 48
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+"Dame los viajes que duraron más de 30 minutos"
+
+<> 2025-11-24T033508.500.json
+
+###
+
+POST http://localhost:8089/api/ia/prompt
+Content-Type: application/json
+Content-Length: 48
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+"Dame los viajes que duraron más de 30 minutos"
+
+<> 2025-11-24T033451.500.json
+
+###
+
+POST http://localhost:8089/api/ia/prompt
+Content-Type: application/json
+Content-Length: 36
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+"Dame todas las paradas disponibles"
+
+<> 2025-11-24T032853.500.json
+
+###
+
+POST http://localhost:8089/api/ia/prompt
+Content-Type: application/json
+Content-Length: 38
 User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2
 Accept-Encoding: br, deflate, gzip, x-gzip
 Accept: */*

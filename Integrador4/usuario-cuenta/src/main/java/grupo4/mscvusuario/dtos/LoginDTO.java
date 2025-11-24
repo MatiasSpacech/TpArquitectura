@@ -15,4 +15,5 @@ public class LoginDTO {
     private String username;
     private String password;
     private Rol rol;
+    private boolean premium;
 }

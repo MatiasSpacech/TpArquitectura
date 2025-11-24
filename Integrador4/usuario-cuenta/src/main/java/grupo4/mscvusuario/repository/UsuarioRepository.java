@@ -23,17 +23,30 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
     boolean existsCuentaInUsuario(Long idUsuario, Long idCuenta);
 
 
-    @Query("""
+    @Query( value= """
             SELECT u.id
             FROM Usuario u
             WHERE u.rol = UPPER(:rol) 
             """)
     Set<Long> getUsuariosByRol(String rol);
 
+
     @Query(value= """
-                 SELECT new grupo4.mscvusuario.dtos.LoginDTO(u.id,u.email,u.password,u.rol)
+                 SELECT new grupo4.mscvusuario.dtos.LoginDTO(u.id,u.email,u.password,u.rol,false)
                  FROM Usuario u
                  WHERE LOWER(u.email) = LOWER(:username)
                  """)
     Optional<LoginDTO> getUsuarioByUsername(String username);
+
+
+    @Query( value = """
+            SELECT CASE WHEN EXISTS(
+                        SELECT 1 
+                        FROM Usuario u 
+                        JOIN u.cuentas c
+                        WHERE u.id = :idUsuario AND
+                        c.tipoCuenta = "PREMIUM"
+                        ) THEN TRUE ELSE FALSE END 
+            """)
+    Boolean isUserPremium(Long idUsuario);
 }

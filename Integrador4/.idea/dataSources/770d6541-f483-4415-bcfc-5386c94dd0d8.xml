@@ -5,16 +5,16 @@
       <ServerVersion>8.2.1</ServerVersion>
     </root>
     <schema id="2" parent="1" name="admin">
-      <LastIntrospectionLocalTimestamp>2025-11-22.21:39:00</LastIntrospectionLocalTimestamp>
+      <LastIntrospectionLocalTimestamp>2025-11-24.05:10:13</LastIntrospectionLocalTimestamp>
     </schema>
     <schema id="3" parent="1" name="config">
-      <LastIntrospectionLocalTimestamp>2025-11-22.21:39:00</LastIntrospectionLocalTimestamp>
+      <LastIntrospectionLocalTimestamp>2025-11-24.05:10:13</LastIntrospectionLocalTimestamp>
     </schema>
     <schema id="4" parent="1" name="db_monopatines">
-      <LastIntrospectionLocalTimestamp>2025-11-22.21:39:00</LastIntrospectionLocalTimestamp>
+      <LastIntrospectionLocalTimestamp>2025-11-24.05:10:13</LastIntrospectionLocalTimestamp>
     </schema>
     <schema id="5" parent="1" name="local">
-      <LastIntrospectionLocalTimestamp>2025-11-22.21:39:00</LastIntrospectionLocalTimestamp>
+      <LastIntrospectionLocalTimestamp>2025-11-24.05:10:13</LastIntrospectionLocalTimestamp>
     </schema>
     <table id="6" parent="3" name="system.sessions"/>
     <table id="7" parent="4" name="monopatines"/>

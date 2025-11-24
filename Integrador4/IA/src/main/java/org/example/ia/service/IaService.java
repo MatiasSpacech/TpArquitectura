@@ -67,6 +67,12 @@ public class IaService {
     private String cargarEsquemaSQL(String nombreArchivo) {
         try (InputStream inputStream = new ClassPathResource(nombreArchivo).getInputStream()) {
             return new String(inputStream.readAllBytes(), StandardCharsets.UTF_8);
+//            String schema = new String(inputStream.readAllBytes(), StandardCharsets.UTF_8);
+            // ✂️ RECORTAR DUMP SI ES MUY GRANDE (solo agregar estas 2 líneas)
+//            if (schema.length() > 20000) { // ~5000 tokens
+//                schema = schema.substring(0, 20000) + "\n-- [esquema recortado]";
+//            }
+//            return schema;
         } catch (Exception e) {
             throw new RuntimeException("Error al leer el archivo SQL desde resources: " + e.getMessage(), e);
         }
@@ -91,6 +97,13 @@ public class IaService {
                     
                     Pregunta del usuario: %s
                     """.formatted(CONTEXTO_SQL, promptUsuario);
+
+
+            // ✂️ RECORTAR SI EXCEDE LÍMITE (solo estas 3 líneas)
+//            int tokens = promptFinal.length() / 4;
+//            if (tokens > 7000) {
+//                promptFinal = promptFinal.substring(promptFinal.length() - 28000); // 7000*4=28000 chars
+//            }
 
             log.info("==== PROMPT ENVIADO A LA IA ====\n{}", promptFinal);
 
@@ -199,7 +212,7 @@ public class IaService {
      * Método transaccional separado para ejecutar operaciones DML (INSERT/UPDATE/DELETE)
      */
     @Transactional
-    private int ejecutarDML(String database, String sql) {
+    protected int ejecutarDML(String database, String sql) {
         JdbcTemplate jdbcTemplate = dataSourceManager.getJdbcTemplate(database);
         return jdbcTemplate.update(sql);
     }

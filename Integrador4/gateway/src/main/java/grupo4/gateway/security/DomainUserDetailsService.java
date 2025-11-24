@@ -32,7 +32,12 @@ public class DomainUserDetailsService implements UserDetailsService {
         log.debug("Authenticating {}", username);
 
         UserResponse userFeign = usuarioFeign.findUserByUsername(username);// Traigo usuario desde el servicio de usuarios
-        User userConRoles = new User(userFeign);// Creo usuario con roles,ya que en un futuro puede tener varios  roles
+        User userConRoles = new User(userFeign);// Creo usuario con roles,ya que en un futuro puede tener varios roles
+        // VEO SI EL USUARIO ES PREMIUM O NO Y AGREGO ESE NUEVO "ROL"
+        if(userFeign.isPremium())
+            userConRoles.addAuthority("PREMIUM");
+        else
+            userConRoles.addAuthority("REGULAR");
 
         return this.createSpringSecurityUser( userConRoles );// Devuelvo el userDetails con los authorities
     }
