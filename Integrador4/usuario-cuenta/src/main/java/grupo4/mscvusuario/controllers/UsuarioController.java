@@ -8,6 +8,11 @@ import grupo4.mscvusuario.service.UsuarioService;
 import grupo4.mscvusuario.service.exceptions.NotFoundException;
 import java.util.Set;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.servlet.ServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,11 +25,17 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("api/usuario")
+@Tag(name = "Usuarios", description = "API para gestión de usuarios")
 public class UsuarioController {
     @Autowired
     private UsuarioService usuarioService;
 
-    @GetMapping // http://localhost:8080/api/usuario
+    @GetMapping
+    @Operation(summary = "Obtener todos los usuarios", description = "Retorna la lista completa de usuarios")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "Lista de usuarios obtenida exitosamente"),
+        @ApiResponse(responseCode = "204", description = "No hay usuarios registrados")
+    })
     public ResponseEntity<List<Usuario>> findAll(){
         List<Usuario> usuarios = usuarioService.findAll();
         if(usuarios.isEmpty()){
@@ -33,8 +44,14 @@ public class UsuarioController {
         return ResponseEntity.ok(usuarios);
     }
 
-    @GetMapping("/{id}") // http://localhost:8080/api/usuario/1
-    public ResponseEntity<Usuario> findById(@PathVariable Long id) {
+    @GetMapping("/{id}")
+    @Operation(summary = "Obtener usuario por ID", description = "Retorna un usuario específico por su ID")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "Usuario encontrado"),
+        @ApiResponse(responseCode = "404", description = "Usuario no encontrado")
+    })
+    public ResponseEntity<Usuario> findById(
+            @Parameter(description = "ID del usuario") @PathVariable Long id) {
         Usuario usuario = usuarioService.findById(id);
         if (usuario != null) {
             return ResponseEntity.ok(usuario);
@@ -43,7 +60,13 @@ public class UsuarioController {
     }
 
     @GetMapping("/cuentas/{id}")
-    public ResponseEntity<Set<Cuenta>> obtenerCuentasUsuario(@PathVariable Long id) {
+    @Operation(summary = "Obtener cuentas de usuario", description = "Retorna todas las cuentas asociadas a un usuario")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "Cuentas encontradas"),
+        @ApiResponse(responseCode = "404", description = "Usuario no encontrado")
+    })
+    public ResponseEntity<Set<Cuenta>> obtenerCuentasUsuario(
+            @Parameter(description = "ID del usuario") @PathVariable Long id) {
         try {
             Set<Cuenta> cuentas = usuarioService.getCuentasByUsuario(id);
             return ResponseEntity.ok(cuentas);
@@ -53,8 +76,14 @@ public class UsuarioController {
         }
     }
 
-    @GetMapping("/username")// LOGIN
-    public ResponseEntity<LoginDTO> getUsuarioByUsername(@RequestParam String username) {
+    @GetMapping("/username")
+    @Operation(summary = "Login de usuario", description = "Obtiene información de usuario por nombre de usuario para login")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "Usuario encontrado"),
+        @ApiResponse(responseCode = "404", description = "Usuario no encontrado")
+    })
+    public ResponseEntity<LoginDTO> getUsuarioByUsername(
+            @Parameter(description = "Nombre de usuario") @RequestParam String username) {
         try {
             return ResponseEntity.ok(usuarioService.login(username));
         }
@@ -64,9 +93,14 @@ public class UsuarioController {
     }
 
     @GetMapping("/{idUsuario}/cuenta-asociada/{idCuenta}")
+    @Operation(summary = "Verificar cuenta asociada",
+               description = "Verifica si una cuenta está asociada a un usuario específico")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "Verificación exitosa")
+    })
     public ResponseEntity<Boolean> verificarCuentaAsociada(
-                                @PathVariable Long idUsuario,
-                                @PathVariable Long idCuenta) {
+            @Parameter(description = "ID del usuario") @PathVariable Long idUsuario,
+            @Parameter(description = "ID de la cuenta") @PathVariable Long idCuenta) {
 
         // El service ejecuta la lógica en la BD
         boolean esValido = usuarioService.cuentaAsociada(idUsuario, idCuenta);
@@ -76,7 +110,13 @@ public class UsuarioController {
     }
 
     @GetMapping("/tipo/{rol}")
-    public ResponseEntity<Set<Long>> getUsuariosByRol(@PathVariable String rol) {
+    @Operation(summary = "Obtener usuarios por rol", description = "Retorna los IDs de usuarios con un rol específico")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "Usuarios encontrados"),
+        @ApiResponse(responseCode = "400", description = "Error en la consulta")
+    })
+    public ResponseEntity<Set<Long>> getUsuariosByRol(
+            @Parameter(description = "Rol del usuario") @PathVariable String rol) {
         try {
             Set<Long> usuarios = usuarioService.getUsuarioByRol(rol);
             return ResponseEntity.ok(usuarios);
@@ -86,13 +126,24 @@ public class UsuarioController {
         }
     }
 
-    @PostMapping // http://localhost:8080/api/usuario
+    @PostMapping
+    @Operation(summary = "Crear usuario", description = "Registra un nuevo usuario en el sistema")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "201", description = "Usuario creado exitosamente")
+    })
     public ResponseEntity<Usuario> save(@RequestBody Usuario usuario) {
         return ResponseEntity.status(HttpStatus.CREATED).body(usuarioService.save(usuario));
     }
 
-    @PutMapping("/{id}") // http://localhost:8080/api/usuario/1
-    public ResponseEntity<Usuario> update(@RequestBody Usuario usuario, @PathVariable Long id) {
+    @PutMapping("/{id}")
+    @Operation(summary = "Actualizar usuario", description = "Actualiza los datos de un usuario existente")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "Usuario actualizado exitosamente"),
+        @ApiResponse(responseCode = "404", description = "Usuario no encontrado")
+    })
+    public ResponseEntity<Usuario> update(
+            @RequestBody Usuario usuario,
+            @Parameter(description = "ID del usuario") @PathVariable Long id) {
         Usuario usuarioActual = usuarioService.findById(id);
         if (usuarioActual != null) {
             usuarioActual.setNombre(usuario.getNombre());
@@ -103,7 +154,12 @@ public class UsuarioController {
         return ResponseEntity.notFound().build();
     }
 
-    @DeleteMapping("/{id}")  // http://localhost:8080/api/usuario/1
+    @DeleteMapping("/{id}")
+    @Operation(summary = "Eliminar usuario", description = "Elimina un usuario del sistema")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "204", description = "Usuario eliminado exitosamente"),
+        @ApiResponse(responseCode = "404", description = "Usuario no encontrado")
+    })
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         if (usuarioService.findById(id) != null) {
             usuarioService.delete(id);
@@ -112,7 +168,12 @@ public class UsuarioController {
         return ResponseEntity.notFound().build();
     }
 
-    @PutMapping("/{idUsuario}/asignar-cuenta/{idCuenta}") // http://localhost:8080/api/usuario/1/asignar-cuenta/2
+    @PutMapping("/{idUsuario}/asignar-cuenta/{idCuenta}")
+    @Operation(summary = "Asignar cuenta a usuario", description = "Asigna una cuenta existente a un usuario")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "201", description = "Cuenta asignada exitosamente"),
+        @ApiResponse(responseCode = "404", description = "Usuario o cuenta no encontrados")
+    })
     public ResponseEntity<?> asignarCuenta(@PathVariable Long idUsuario, @PathVariable Long idCuenta) {
         Optional<Usuario> o = usuarioService.asignarCuenta(idUsuario, idCuenta);
         if (o.isPresent()) {

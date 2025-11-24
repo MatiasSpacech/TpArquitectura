@@ -40,8 +40,10 @@ public class SecurityConfig {
         http
             .sessionManagement( s -> s.sessionCreationPolicy( SessionCreationPolicy.STATELESS ) );
         http
-            .securityMatcher("/api/**" )// FALTA IMPLEMENTA QUIEN PUEDE ACCEDER A QUE
+            .securityMatcher("/api/**", "/swagger-ui.html", "/swagger-ui/**", "/v3/api-docs/**", "/docs-**/**" )
             .authorizeHttpRequests( authz -> authz
+                    // Permitir acceso a Swagger UI y documentación
+                    .requestMatchers("/swagger-ui.html", "/swagger-ui/**", "/v3/api-docs/**", "/docs-**/**").permitAll()
                     .requestMatchers(HttpMethod.POST, "/api/token").permitAll()
                     .requestMatchers(HttpMethod.POST, "/api/registrar").permitAll()
                     // MS-PARADAS

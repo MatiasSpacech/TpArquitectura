@@ -47,7 +47,7 @@ spring:
               uri: http://localhost:8086
               predicates:
                 - Path=/api/tarifas/**
-            
+
             # Microservicio de Viajes
             - id: viajes
               uri: http://localhost:8087
@@ -72,7 +72,59 @@ spring:
               predicates:
                 - Path=/api/ia/**
 
-          
+            # ====================================================================
+            # RUTAS DE DOCUMENTACIÓN SWAGGER
+            # ====================================================================
+
+            # Documentación Admin
+            - id: docs-admin
+              uri: http://localhost:8081
+              predicates:
+                - Path=/docs-admin/**
+
+            # Documentación Facturación
+            - id: docs-facturacion
+              uri: http://localhost:8083
+              predicates:
+                - Path=/docs-facturacion/**
+
+            # Documentación Monopatín
+            - id: docs-monopatin
+              uri: http://localhost:8084
+              predicates:
+                - Path=/docs-monopatin/**
+
+            # Documentación Parada
+            - id: docs-parada
+              uri: http://localhost:8085
+              predicates:
+                - Path=/docs-parada/**
+
+            # Documentación Tarifas
+            - id: docs-tarifas
+              uri: http://localhost:8086
+              predicates:
+                - Path=/docs-tarifas/**
+
+            # Documentación Viajes
+            - id: docs-viajes
+              uri: http://localhost:8087
+              predicates:
+                - Path=/docs-viajes/**
+
+            # Documentación Usuario
+            - id: docs-usuario
+              uri: http://localhost:8082
+              predicates:
+                - Path=/docs-usuario/**
+
+            # Documentación IA
+            - id: docs-ia
+              uri: http://localhost:8089
+              predicates:
+                - Path=/docs-ia/**
+
+
 logging:
   level:
     '[org.springframework.cloud.gateway]': DEBUG
