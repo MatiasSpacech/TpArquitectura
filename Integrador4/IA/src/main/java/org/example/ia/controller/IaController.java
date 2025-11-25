@@ -1,5 +1,12 @@
 package org.example.ia.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.example.ia.service.IaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
     @RestController
     @RequestMapping("/api/ia")
+    @Tag(name = "IA", description = "API para procesamiento de consultas con IA (Groq) sobre múltiples bases de datos")
     public class IaController {    // IaController exponene el endpoint REST que recibe prompts y delega a IaService.
 
 
@@ -31,7 +39,17 @@ import org.springframework.web.bind.annotation.RestController;
         // http://localhost:8080/api/ia/prompt
         // Ejemplo de uso con curl:
         // curl -X POST http://localhost:8080/api/ia/prompt -H "Content-Type: application/json" -d "¿Cuáles son los nombres y correos electrónicos
-        public ResponseEntity<?> procesarPrompt(@RequestBody String prompt) {
+        @Operation(summary = "Procesar prompt con IA",
+                   description = "Envía un prompt en lenguaje natural que será procesado por IA para generar y ejecutar consultas SQL en las bases de datos del sistema")
+        @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Prompt procesado exitosamente y consulta ejecutada"),
+            @ApiResponse(responseCode = "500", description = "Error al procesar el prompt o ejecutar la consulta")
+        })
+        public ResponseEntity<?> procesarPrompt(
+                @Parameter(description = "Consulta en lenguaje natural (ej: '¿Cuántos monopatines hay disponibles?')",
+                          required = true,
+                          schema = @Schema(type = "string", example = "¿Cuántos usuarios hay registrados?"))
+                @RequestBody String prompt) {
             try {
                 return iaService.procesarPrompt(prompt);
             } catch (Exception e) {
@@ -39,4 +57,3 @@ import org.springframework.web.bind.annotation.RestController;
             }
         }
     }
-

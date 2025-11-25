@@ -4,6 +4,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import grupo4.gateway.security.jwt.JwtFilter;
 import grupo4.gateway.security.jwt.TokenProvider;
 import grupo4.gateway.service.dto.login.LoginDTO;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
@@ -21,12 +27,20 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/token")
 @RequiredArgsConstructor
+@Tag(name = "Autenticación", description = "Endpoints para autenticación y generación de tokens JWT")
 public class JwtController {
 
     private final TokenProvider tokenProvider;
     private final AuthenticationManagerBuilder authenticationManagerBuilder;
 
     @PostMapping()
+    @Operation(summary = "Autenticar usuario",
+               description = "Autentica un usuario con sus credenciales y retorna un token JWT")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "Autenticación exitosa, token JWT generado",
+                     content = @Content(schema = @Schema(implementation = JWTToken.class))),
+        @ApiResponse(responseCode = "401", description = "Credenciales inválidas")
+    })
     public ResponseEntity<JWTToken> authorize(@Valid @RequestBody LoginDTO request) {
 
         UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword());

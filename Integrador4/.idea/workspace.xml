@@ -4,23 +4,50 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1cc54f86-421c-497a-97cc-5533275d5991" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/770d6541-f483-4415-bcfc-5386c94dd0d8.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/770d6541-f483-4415-bcfc-5386c94dd0d8.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/cb48f936-31e2-4ca4-a7cc-5c4f51aee68a.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/cb48f936-31e2-4ca4-a7cc-5c4f51aee68a.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/http-requests-log.http" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/httpRequests/http-requests-log.http" afterDir="false" />
+    <list default="true" id="1cc54f86-421c-497a-97cc-5533275d5991" name="Changes" comment="Add premium user role and update security configuration for premium access">
+      <change afterPath="$PROJECT_DIR$/IA/src/main/java/org/example/ia/config/OpenApiConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/INSTRUCCIONES-SWAGGER.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SWAGGER-DOCUMENTATION.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/main/java/grupo4/mscvadmin/config/OpenApiConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/facturacion/src/main/java/grupo4/facturacion/config/OpenApiConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/grupo4/gateway/Controller/SwaggerProxyController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/grupo4/gateway/config/OpenApiConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/monopatin/src/main/java/grupo4/mscvmonopatin/config/OpenApiConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/parada/src/main/java/grupo4/parada/config/OpenApiConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tarifas/src/main/java/grupo4/tarifas/config/OpenApiConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/usuario-cuenta/src/main/java/grupo4/mscvusuario/config/OpenApiConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/viajes/src/main/java/grupo4/viajes/config/OpenApiConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IA/src/main/java/org/example/ia/client/GroqClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/IA/src/main/java/org/example/ia/client/GroqClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IA/src/main/java/org/example/ia/service/IaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/IA/src/main/java/org/example/ia/service/IaService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IA/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/IA/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IA/src/main/java/org/example/ia/controller/IaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/IA/src/main/java/org/example/ia/controller/IaController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/IA/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/IA/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/admin/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/main/java/grupo4/mscvadmin/controllers/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/grupo4/mscvadmin/controllers/AdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/facturacion/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/facturacion/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/facturacion/src/main/java/grupo4/facturacion/controller/FacturaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/facturacion/src/main/java/grupo4/facturacion/controller/FacturaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/facturacion/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/facturacion/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/grupo4/gateway/Controller/JwtController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/grupo4/gateway/Controller/JwtController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/grupo4/gateway/GatewayApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/grupo4/gateway/GatewayApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gateway/src/main/java/grupo4/gateway/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/grupo4/gateway/config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/grupo4/gateway/feignModel/UserResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/grupo4/gateway/feignModel/UserResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/grupo4/gateway/security/AuthotityConstant.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/grupo4/gateway/security/AuthotityConstant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/grupo4/gateway/security/DomainUserDetailsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/grupo4/gateway/security/DomainUserDetailsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/monopatin/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/monopatin/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/monopatin/src/main/java/grupo4/mscvmonopatin/controllers/MonopatinController.java" beforeDir="false" afterPath="$PROJECT_DIR$/monopatin/src/main/java/grupo4/mscvmonopatin/controllers/MonopatinController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/monopatin/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/monopatin/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parada/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/parada/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parada/src/main/java/grupo4/parada/controllers/ParadaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/parada/src/main/java/grupo4/parada/controllers/ParadaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parada/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/parada/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tarifas/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/tarifas/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tarifas/src/main/java/grupo4/tarifas/controller/TarifaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/tarifas/src/main/java/grupo4/tarifas/controller/TarifaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tarifas/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/tarifas/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usuario-cuenta/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/usuario-cuenta/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usuario-cuenta/src/main/java/grupo4/mscvusuario/controllers/CuentaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/usuario-cuenta/src/main/java/grupo4/mscvusuario/controllers/CuentaController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/usuario-cuenta/src/main/java/grupo4/mscvusuario/controllers/UsuarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/usuario-cuenta/src/main/java/grupo4/mscvusuario/controllers/UsuarioController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/usuario-cuenta/src/main/java/grupo4/mscvusuario/dtos/LoginDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/usuario-cuenta/src/main/java/grupo4/mscvusuario/dtos/LoginDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/usuario-cuenta/src/main/java/grupo4/mscvusuario/repository/UsuarioRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/usuario-cuenta/src/main/java/grupo4/mscvusuario/repository/UsuarioRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/usuario-cuenta/src/main/java/grupo4/mscvusuario/service/UsuarioService.java" beforeDir="false" afterPath="$PROJECT_DIR$/usuario-cuenta/src/main/java/grupo4/mscvusuario/service/UsuarioService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usuario-cuenta/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/usuario-cuenta/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/viajes/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/viajes/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/viajes/src/main/java/grupo4/viajes/controllers/ViajeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/viajes/src/main/java/grupo4/viajes/controllers/ViajeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/viajes/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/viajes/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,12 +86,12 @@
     &quot;assignee&quot;: &quot;MatiasSpacech&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/MatiasSpacech/TpArquitectura.git",
-    "accountId": "3d410d32-784d-47f1-8c1b-8d2e9e5b7da0"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/MatiasSpacech/TpArquitectura.git&quot;,
+    &quot;accountId&quot;: &quot;3d410d32-784d-47f1-8c1b-8d2e9e5b7da0&quot;
   }
-}]]></component>
+}</component>
   <component name="HttpClientEndpointsTabState">
     <option name="cachedRequestData" value="&lt;CachedHttpClientTabRequests&gt;&#10;  &lt;entry key=&quot;847442cfab263638f20a1961fbe00e998dd90bf4&quot; value=&quot;###&amp;#10;POST http://localhost:8087/api/viajes&amp;#10;Content-Type: application/json&amp;#10;&amp;#10;{&amp;#10;  &amp;quot;id&amp;quot;: 0,&amp;#10;  &amp;quot;paradaOrigen&amp;quot;: 0,&amp;#10;  &amp;quot;paradaDestino&amp;quot;: 0,&amp;#10;  &amp;quot;idTarifa&amp;quot;: 0,&amp;#10;  &amp;quot;idMonopatin&amp;quot;: &amp;quot;&amp;quot;,&amp;#10;  &amp;quot;idUsuario&amp;quot;: 0,&amp;#10;  &amp;quot;idCuenta&amp;quot;: 0,&amp;#10;  &amp;quot;fechaInicio&amp;quot;: &amp;quot;&amp;quot;,&amp;#10;  &amp;quot;fechaFin&amp;quot;: &amp;quot;&amp;quot;,&amp;#10;  &amp;quot;tiempoTotalMinutos&amp;quot;: 0,&amp;#10;  &amp;quot;kilometrosRecorridos&amp;quot;: 0,&amp;#10;  &amp;quot;activo&amp;quot;: false&amp;#10;}&quot; /&gt;&#10;  &lt;entry key=&quot;ab32e389cacaa5adee32fd0a71f37b9f6b5ecc6a&quot; value=&quot;###&amp;#10;GET http://localhost:8086/api/tarifas/1&amp;#10;&quot; /&gt;&#10;  &lt;entry key=&quot;bbf9496c0d1a32b3e3ee7d1f2c2c0313cdc394e5&quot; value=&quot;###&amp;#10;GET http://localhost:8081/usuario/1&quot; /&gt;&#10;&lt;/CachedHttpClientTabRequests&gt;" />
   </component>
@@ -82,67 +109,67 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;HTTP Request.ejemplos-prompts | ============================================.executor&quot;: &quot;Run&quot;,
-    &quot;HTTP Request.ejemplos-prompts | Ejemplo 12: Consulta con fechas en VIAJES.executor&quot;: &quot;Run&quot;,
-    &quot;HTTP Request.ejemplos-prompts | Ejemplo 3: Consulta en BD VIAJES.executor&quot;: &quot;Run&quot;,
-    &quot;HTTP Request.ejemplos-prompts | Ejemplo 4: Consulta en BD FACTURAS.executor&quot;: &quot;Run&quot;,
-    &quot;HTTP Request.ejemplos-prompts | Ejemplo 6: Consulta con agregación en USUARIOS.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.viaje [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.viaje [compile].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.viaje [validate].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.viaje [verify].executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;Notification.DisplayName-DoNotAsk-DatabaseConfigFileWatcher.found&quot;: &quot;New/updated database configurations found&quot;,
-    &quot;Notification.DoNotAsk-DatabaseConfigFileWatcher.found&quot;: &quot;true&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Spring Boot.AdminApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.CuentaApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.FacturacionApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.GatewayApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.IaApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.MonopatinApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.MscvAdminApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.MscvCuentaApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.MscvMonopatinApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.MscvUsuarioApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.MscvViajeApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.ParadaApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.TarifasApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.UsuarioApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.UsuarioCuentaApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.ViajesApplication.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/matias/Integrador Arquitecturas/TpArquitectura/Integrador4&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;onboarding.tips.debug.path&quot;: &quot;D:/USUARIO/Desktop/TUDAI/Arquitecturas Web/TpArquitectura/Integrador4/src/main/java/grupo4/Main.java&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Problems&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "HTTP Request.ejemplos-prompts | ============================================.executor": "Run",
+    "HTTP Request.ejemplos-prompts | Ejemplo 12: Consulta con fechas en VIAJES.executor": "Run",
+    "HTTP Request.ejemplos-prompts | Ejemplo 3: Consulta en BD VIAJES.executor": "Run",
+    "HTTP Request.ejemplos-prompts | Ejemplo 4: Consulta en BD FACTURAS.executor": "Run",
+    "HTTP Request.ejemplos-prompts | Ejemplo 6: Consulta con agregación en USUARIOS.executor": "Run",
+    "Maven.viaje [clean].executor": "Run",
+    "Maven.viaje [compile].executor": "Run",
+    "Maven.viaje [validate].executor": "Run",
+    "Maven.viaje [verify].executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Notification.DisplayName-DoNotAsk-DatabaseConfigFileWatcher.found": "New/updated database configurations found",
+    "Notification.DoNotAsk-DatabaseConfigFileWatcher.found": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Spring Boot.AdminApplication.executor": "Run",
+    "Spring Boot.CuentaApplication.executor": "Run",
+    "Spring Boot.FacturacionApplication.executor": "Run",
+    "Spring Boot.GatewayApplication.executor": "Run",
+    "Spring Boot.IaApplication.executor": "Run",
+    "Spring Boot.MonopatinApplication.executor": "Run",
+    "Spring Boot.MscvAdminApplication.executor": "Run",
+    "Spring Boot.MscvCuentaApplication.executor": "Run",
+    "Spring Boot.MscvMonopatinApplication.executor": "Run",
+    "Spring Boot.MscvUsuarioApplication.executor": "Run",
+    "Spring Boot.MscvViajeApplication.executor": "Run",
+    "Spring Boot.ParadaApplication.executor": "Run",
+    "Spring Boot.TarifasApplication.executor": "Run",
+    "Spring Boot.UsuarioApplication.executor": "Run",
+    "Spring Boot.UsuarioCuentaApplication.executor": "Run",
+    "Spring Boot.ViajesApplication.executor": "Run",
+    "git-widget-placeholder": "Merging main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/home/matias/Integrador Arquitecturas/TpArquitectura/Integrador4",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "onboarding.tips.debug.path": "D:/USUARIO/Desktop/TUDAI/Arquitecturas Web/TpArquitectura/Integrador4/src/main/java/grupo4/Main.java",
+    "project.structure.last.edited": "Problems",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
+    "run.configurations.included.in.services": "true",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mongo&quot;,
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mongo",
+      "mysql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="grupo4.mscvusuario.controllers" />
@@ -275,6 +302,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="UsuarioCuentaApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="usuario" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="grupo4.mscvusuario.UsuarioCuentaApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ViajesApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="viajes" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="grupo4.viajes.ViajesApplication" />
@@ -288,6 +322,7 @@
       <item itemvalue="HTTP Request.ejemplos-prompts | Ejemplo 4: Consulta en BD FACTURAS" />
       <item itemvalue="HTTP Request.ejemplos-prompts | Ejemplo 6: Consulta con agregación en USUARIOS" />
       <item itemvalue="HTTP Request.ejemplos-prompts | ============================================" />
+      <item itemvalue="Spring Boot.UsuarioCuentaApplication" />
       <item itemvalue="Spring Boot.IaApplication" />
       <item itemvalue="Spring Boot.AdminApplication" />
       <item itemvalue="Spring Boot.GatewayApplication" />
