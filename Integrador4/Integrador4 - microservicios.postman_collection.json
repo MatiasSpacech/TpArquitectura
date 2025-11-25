@@ -692,6 +692,35 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Ver usuario si es premium",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZ3VzdmFuQGdtYWlsLmNvbSIsImF1dGgiOiJBRE1JTiIsImV4cCI6MTc2NDA1MTYyNiwiaWF0IjoxNzYzOTY1MjI2fQ.RfjanYC3PyE5LwXIedQMOGYa5Syl-yEnedTax9SoFPo13Z5-2WpVERUQshJIfnFeVsYPeA97v_qQpEQmmAZHJg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST_GATEWAY}}/usuario/prueba/1",
+							"host": [
+								"{{HOST_GATEWAY}}"
+							],
+							"path": [
+								"usuario",
+								"prueba",
+								"1"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -1052,6 +1081,48 @@
 							],
 							"path": [
 								"token"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Servicios  IA",
+			"item": [
+				{
+					"name": "Consulta IA",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZ3VzdmFuQGdtYWlsLmNvbSIsImF1dGgiOiJBRE1JTixQUkVNSVVNIiwiZXhwIjoxNzY0MTE3OTcxLCJpYXQiOjE3NjQwMzE1NzF9._rQIMGzjKV22hA2BbF6DjzE5UOHzR-n88zC1BXk9YYWFjpA3tf7crLy5JD0DfcgPywwh28srE2vU7exvRRc8pw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\"Traeme la cantidad de viajes de cada usuario\"",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST_GATEWAY}}/ia/prompt",
+							"host": [
+								"{{HOST_GATEWAY}}"
+							],
+							"path": [
+								"ia",
+								"prompt"
 							]
 						}
 					},
